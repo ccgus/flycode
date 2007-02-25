@@ -1,0 +1,14 @@
+{
+    IBClasses = (
+        {CLASS = FirstResponder; LANGUAGE = ObjC; SUPERCLASS = NSObject; }, 
+        {
+            ACTIONS = {allDone = id; }; 
+            CLASS = LHKeyGrabber; 
+            LANGUAGE = ObjC; 
+            OUTLETS = {grabberView = LHKeyGrabberView; }; 
+            SUPERCLASS = NSWindowController; 
+        }, 
+        {CLASS = LHKeyGrabberView; LANGUAGE = ObjC; SUPERCLASS = NSView; }
+    ); 
+    IBVersion = 1; 
+}

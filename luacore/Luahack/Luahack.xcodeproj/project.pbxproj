@@ -1,0 +1,339 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 42;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		8D5B49B0048680CD000E48DA /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 089C167DFE841241C02AAC07 /* InfoPlist.strings */; };
+		8D5B49B4048680CD000E48DA /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7ADFEA557BF11CA2CBB /* Cocoa.framework */; };
+		CC574F620AE0B84200F337D9 /* LHKeyGrabber.h in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = CC574F600AE0B84200F337D9 /* LHKeyGrabber.h */; };
+		CC574F630AE0B84200F337D9 /* LHKeyGrabber.m in Sources */ = {isa = PBXBuildFile; fileRef = CC574F610AE0B84200F337D9 /* LHKeyGrabber.m */; };
+		CC574F830AE0BCC500F337D9 /* LHKeyGrabberView.h in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = CC574F810AE0BCC500F337D9 /* LHKeyGrabberView.h */; };
+		CC574F840AE0BCC500F337D9 /* LHKeyGrabberView.m in Sources */ = {isa = PBXBuildFile; fileRef = CC574F820AE0BCC500F337D9 /* LHKeyGrabberView.m */; };
+		CC9579090AE080BC000F0C5C /* LuaCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CC9579080AE080BC000F0C5C /* LuaCore.framework */; };
+		CC95790D0AE080DC000F0C5C /* LuaCore.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = CC9579080AE080BC000F0C5C /* LuaCore.framework */; };
+		CC9579170AE081B3000F0C5C /* LuahackLoader.h in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = CC9579150AE081B3000F0C5C /* LuahackLoader.h */; };
+		CC9579180AE081B3000F0C5C /* LuahackLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = CC9579160AE081B3000F0C5C /* LuahackLoader.m */; };
+		CC9579380AE08823000F0C5C /* expand.lua in Resources */ = {isa = PBXBuildFile; fileRef = CC9579360AE087FB000F0C5C /* expand.lua */; };
+		CCEB3BF60AE0B25100567876 /* KeyGrabber.nib in Resources */ = {isa = PBXBuildFile; fileRef = CCEB3BF40AE0B25100567876 /* KeyGrabber.nib */; };
+		CCEB3BFC0AE0B47A00567876 /* LHExtraFunctions.h in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = CCEB3BFA0AE0B47A00567876 /* LHExtraFunctions.h */; };
+		CCEB3BFD0AE0B47A00567876 /* LHExtraFunctions.m in Sources */ = {isa = PBXBuildFile; fileRef = CCEB3BFB0AE0B47A00567876 /* LHExtraFunctions.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		CC95790F0AE080FA000F0C5C /* Copy Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				CC95790D0AE080DC000F0C5C /* LuaCore.framework in Copy Frameworks */,
+				CC9579170AE081B3000F0C5C /* LuahackLoader.h in Copy Frameworks */,
+				CCEB3BFC0AE0B47A00567876 /* LHExtraFunctions.h in Copy Frameworks */,
+				CC574F620AE0B84200F337D9 /* LHKeyGrabber.h in Copy Frameworks */,
+				CC574F830AE0BCC500F337D9 /* LHKeyGrabberView.h in Copy Frameworks */,
+			);
+			name = "Copy Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		089C1672FE841209C02AAC07 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = /System/Library/Frameworks/Foundation.framework; sourceTree = "<absolute>"; };
+		089C167EFE841241C02AAC07 /* English */ = {isa = PBXFileReference; fileEncoding = 10; lastKnownFileType = text.plist.strings; name = English; path = English.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		089C167FFE841241C02AAC07 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = /System/Library/Frameworks/AppKit.framework; sourceTree = "<absolute>"; };
+		1058C7ADFEA557BF11CA2CBB /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = /System/Library/Frameworks/Cocoa.framework; sourceTree = "<absolute>"; };
+		32DBCF630370AF2F00C91783 /* Luahack_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Luahack_Prefix.pch; sourceTree = "<group>"; };
+		8D5B49B6048680CD000E48DA /* Luahack.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Luahack.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
+		8D5B49B7048680CD000E48DA /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Info.plist; sourceTree = "<group>"; };
+		CC574F600AE0B84200F337D9 /* LHKeyGrabber.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LHKeyGrabber.h; sourceTree = "<group>"; };
+		CC574F610AE0B84200F337D9 /* LHKeyGrabber.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LHKeyGrabber.m; sourceTree = "<group>"; };
+		CC574F810AE0BCC500F337D9 /* LHKeyGrabberView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LHKeyGrabberView.h; sourceTree = "<group>"; };
+		CC574F820AE0BCC500F337D9 /* LHKeyGrabberView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LHKeyGrabberView.m; sourceTree = "<group>"; };
+		CC9579080AE080BC000F0C5C /* LuaCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = LuaCore.framework; sourceTree = "<group>"; };
+		CC9579150AE081B3000F0C5C /* LuahackLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LuahackLoader.h; sourceTree = "<group>"; };
+		CC9579160AE081B3000F0C5C /* LuahackLoader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LuahackLoader.m; sourceTree = "<group>"; };
+		CC9579360AE087FB000F0C5C /* expand.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = expand.lua; sourceTree = "<group>"; };
+		CCEB3BF50AE0B25100567876 /* English */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = English; path = English.lproj/KeyGrabber.nib; sourceTree = "<group>"; };
+		CCEB3BFA0AE0B47A00567876 /* LHExtraFunctions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LHExtraFunctions.h; sourceTree = "<group>"; };
+		CCEB3BFB0AE0B47A00567876 /* LHExtraFunctions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LHExtraFunctions.m; sourceTree = "<group>"; };
+		D2F7E65807B2D6F200F64583 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = /System/Library/Frameworks/CoreData.framework; sourceTree = "<absolute>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		8D5B49B3048680CD000E48DA /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8D5B49B4048680CD000E48DA /* Cocoa.framework in Frameworks */,
+				CC9579090AE080BC000F0C5C /* LuaCore.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		089C166AFE841209C02AAC07 /* Luahack */ = {
+			isa = PBXGroup;
+			children = (
+				08FB77AFFE84173DC02AAC07 /* Classes */,
+				32C88E010371C26100C91783 /* Other Sources */,
+				089C167CFE841241C02AAC07 /* Resources */,
+				089C1671FE841209C02AAC07 /* Frameworks and Libraries */,
+				19C28FB8FE9D52D311CA2CBB /* Products */,
+			);
+			name = Luahack;
+			sourceTree = "<group>";
+		};
+		089C1671FE841209C02AAC07 /* Frameworks and Libraries */ = {
+			isa = PBXGroup;
+			children = (
+				CC9579080AE080BC000F0C5C /* LuaCore.framework */,
+				1058C7ACFEA557BF11CA2CBB /* Linked Frameworks */,
+				1058C7AEFEA557BF11CA2CBB /* Other Frameworks */,
+			);
+			name = "Frameworks and Libraries";
+			sourceTree = "<group>";
+		};
+		089C167CFE841241C02AAC07 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				CCEB3BF40AE0B25100567876 /* KeyGrabber.nib */,
+				8D5B49B7048680CD000E48DA /* Info.plist */,
+				089C167DFE841241C02AAC07 /* InfoPlist.strings */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		08FB77AFFE84173DC02AAC07 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				CC9579150AE081B3000F0C5C /* LuahackLoader.h */,
+				CC9579160AE081B3000F0C5C /* LuahackLoader.m */,
+				CC9579360AE087FB000F0C5C /* expand.lua */,
+				CCEB3BFA0AE0B47A00567876 /* LHExtraFunctions.h */,
+				CCEB3BFB0AE0B47A00567876 /* LHExtraFunctions.m */,
+				CC574F600AE0B84200F337D9 /* LHKeyGrabber.h */,
+				CC574F610AE0B84200F337D9 /* LHKeyGrabber.m */,
+				CC574F810AE0BCC500F337D9 /* LHKeyGrabberView.h */,
+				CC574F820AE0BCC500F337D9 /* LHKeyGrabberView.m */,
+			);
+			name = Classes;
+			sourceTree = "<group>";
+		};
+		1058C7ACFEA557BF11CA2CBB /* Linked Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				1058C7ADFEA557BF11CA2CBB /* Cocoa.framework */,
+			);
+			name = "Linked Frameworks";
+			sourceTree = "<group>";
+		};
+		1058C7AEFEA557BF11CA2CBB /* Other Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				089C167FFE841241C02AAC07 /* AppKit.framework */,
+				D2F7E65807B2D6F200F64583 /* CoreData.framework */,
+				089C1672FE841209C02AAC07 /* Foundation.framework */,
+			);
+			name = "Other Frameworks";
+			sourceTree = "<group>";
+		};
+		19C28FB8FE9D52D311CA2CBB /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				8D5B49B6048680CD000E48DA /* Luahack.bundle */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		32C88E010371C26100C91783 /* Other Sources */ = {
+			isa = PBXGroup;
+			children = (
+				32DBCF630370AF2F00C91783 /* Luahack_Prefix.pch */,
+			);
+			name = "Other Sources";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		8D5B49AC048680CD000E48DA /* Luahack */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1DEB913A08733D840010E9CD /* Build configuration list for PBXNativeTarget "Luahack" */;
+			buildPhases = (
+				8D5B49AF048680CD000E48DA /* Resources */,
+				8D5B49B1048680CD000E48DA /* Sources */,
+				8D5B49B3048680CD000E48DA /* Frameworks */,
+				CC95790F0AE080FA000F0C5C /* Copy Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Luahack;
+			productInstallPath = "$(HOME)/Library/Bundles";
+			productName = Luahack;
+			productReference = 8D5B49B6048680CD000E48DA /* Luahack.bundle */;
+			productType = "com.apple.product-type.bundle";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		089C1669FE841209C02AAC07 /* Project object */ = {
+			isa = PBXProject;
+			buildConfigurationList = 1DEB913E08733D840010E9CD /* Build configuration list for PBXProject "Luahack" */;
+			compatibilityVersion = "Xcode 2.4";
+			hasScannedForEncodings = 1;
+			mainGroup = 089C166AFE841209C02AAC07 /* Luahack */;
+			projectDirPath = "";
+			projectRoot = "";
+			shouldCheckCompatibility = 1;
+			targets = (
+				8D5B49AC048680CD000E48DA /* Luahack */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		8D5B49AF048680CD000E48DA /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CC9579380AE08823000F0C5C /* expand.lua in Resources */,
+				8D5B49B0048680CD000E48DA /* InfoPlist.strings in Resources */,
+				CCEB3BF60AE0B25100567876 /* KeyGrabber.nib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		8D5B49B1048680CD000E48DA /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CC9579180AE081B3000F0C5C /* LuahackLoader.m in Sources */,
+				CCEB3BFD0AE0B47A00567876 /* LHExtraFunctions.m in Sources */,
+				CC574F630AE0B84200F337D9 /* LHKeyGrabber.m in Sources */,
+				CC574F840AE0BCC500F337D9 /* LHKeyGrabberView.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		089C167DFE841241C02AAC07 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				089C167EFE841241C02AAC07 /* English */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		CCEB3BF40AE0B25100567876 /* KeyGrabber.nib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				CCEB3BF50AE0B25100567876 /* English */,
+			);
+			name = KeyGrabber.nib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		1DEB913B08733D840010E9CD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_1)",
+				);
+				FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_1 = "\"$(SRCROOT)\"";
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_FIX_AND_CONTINUE = YES;
+				GCC_ENABLE_OBJC_GC = YES;
+				GCC_MODEL_TUNING = G5;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = Luahack_Prefix.pch;
+				INFOPLIST_FILE = Info.plist;
+				INSTALL_PATH = "$(HOME)/Library/Bundles";
+				PRODUCT_NAME = Luahack;
+				WRAPPER_EXTENSION = bundle;
+				ZERO_LINK = YES;
+			};
+			name = Debug;
+		};
+		1DEB913C08733D840010E9CD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = (
+					ppc,
+					i386,
+				);
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_1)",
+				);
+				FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_1 = "\"$(SRCROOT)\"";
+				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
+				GCC_MODEL_TUNING = G5;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = Luahack_Prefix.pch;
+				INFOPLIST_FILE = Info.plist;
+				INSTALL_PATH = "$(HOME)/Library/Bundles";
+				PRODUCT_NAME = Luahack;
+				WRAPPER_EXTENSION = bundle;
+			};
+			name = Release;
+		};
+		1DEB913F08733D840010E9CD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				PREBINDING = NO;
+			};
+			name = Debug;
+		};
+		1DEB914008733D840010E9CD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				PREBINDING = NO;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		1DEB913A08733D840010E9CD /* Build configuration list for PBXNativeTarget "Luahack" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1DEB913B08733D840010E9CD /* Debug */,
+				1DEB913C08733D840010E9CD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		1DEB913E08733D840010E9CD /* Build configuration list for PBXProject "Luahack" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1DEB913F08733D840010E9CD /* Debug */,
+				1DEB914008733D840010E9CD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 089C1669FE841209C02AAC07 /* Project object */;
+}
