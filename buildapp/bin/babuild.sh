@@ -62,7 +62,7 @@ find . | grep \.svn$ | xargs rm -rf
 
 # got tests?
 #echo running tests
-#xcodebuild -target LeTester  -configuration Release OBJROOT=/tmp/buildapp/build SYMROOT=/tmp/buildapp/build OTHER_CFLAGS="" 
+#xcodebuild -target TestTarget  -configuration Release OBJROOT=/tmp/buildapp/build SYMROOT=/tmp/buildapp/build OTHER_CFLAGS="" 
 
 #if [ $? != 0 ]; then
 #    echo "Bad test results"
