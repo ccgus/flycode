@@ -92,7 +92,7 @@ else
     find . | grep h$
     find . | grep svn
     
-    rm -rf ~/cvsbuilds/BuildApp.app
+    rm -rf ~/svnbuilds/BuildApp.app
     
     cd ~/svnbuilds/
     
@@ -109,6 +109,8 @@ else
         fi
         
     fi
+    
+    open ~/svnbuilds
     
     say "done building"
     
