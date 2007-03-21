@@ -88,6 +88,7 @@ else
     # make the disks.
     /tmp/buildapp/bin/makedisk.sh
     
+    # if you see stuff print out- gotta do something about that :)
     cd ~/svnbuilds/
     find . | grep h$
     find . | grep svn
