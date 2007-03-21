@@ -36,6 +36,5 @@ sleep 2
 rm /tmp/BuildAppWrite.sparseimage
 
 # move it to our official builds dir
-mv /tmp/BuildApp.dmg ~/svnbuilds/.
+mv /tmp/BuildApp.dmg ~/svnbuilds/BuildAppPreview.dmg
 
-#open /tmp/BuildApp.dmg

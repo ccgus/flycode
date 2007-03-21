@@ -41,6 +41,9 @@ cd /tmp
 
 echo "doing checkout ($revision)"
 
+if [ -f /tmp/buildapp ]; then
+    rm /tmp/buildapp
+fi
 svn co $revision http://flycode.googlecode.com/svn/trunk/buildapp buildapp
 
 
