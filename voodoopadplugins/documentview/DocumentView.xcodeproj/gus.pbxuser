@@ -1,0 +1,152 @@
+// !$*UTF8*$!
+{
+	089C1669FE841209C02AAC07 /* Project object */ = {
+		activeArchitecture = ppc;
+		activeBuildConfigurationName = Deployment;
+		activeExecutable = CCD5A7970BC5AA7C009E02D3 /* VoodooPad Pro */;
+		activeTarget = CC93E18B066ECBC400D09EFE /* DocumentView */;
+		addToTargets = (
+			CC93E18B066ECBC400D09EFE /* DocumentView */,
+		);
+		codeSenseManager = CCD5A7680BC5A8FC009E02D3 /* Code sense */;
+		executables = (
+			CCD5A7970BC5AA7C009E02D3 /* VoodooPad Pro */,
+		);
+		perUserDictionary = {
+			PBXConfiguration.PBXFileTableDataSource3.PBXExecutablesDataSource = {
+				PBXFileTableDataSourceColumnSortingDirectionKey = "-1";
+				PBXFileTableDataSourceColumnSortingKey = PBXExecutablesDataSource_NameID;
+				PBXFileTableDataSourceColumnWidthsKey = (
+					22,
+					300,
+					156,
+				);
+				PBXFileTableDataSourceColumnsKey = (
+					PBXExecutablesDataSource_ActiveFlagID,
+					PBXExecutablesDataSource_NameID,
+					PBXExecutablesDataSource_CommentsID,
+				);
+			};
+			PBXConfiguration.PBXFileTableDataSource3.PBXFileTableDataSource = {
+				PBXFileTableDataSourceColumnSortingDirectionKey = "-1";
+				PBXFileTableDataSourceColumnSortingKey = PBXFileDataSource_Filename_ColumnID;
+				PBXFileTableDataSourceColumnWidthsKey = (
+					20,
+					268,
+					20,
+					48,
+					43,
+					43,
+					20,
+				);
+				PBXFileTableDataSourceColumnsKey = (
+					PBXFileDataSource_FiletypeID,
+					PBXFileDataSource_Filename_ColumnID,
+					PBXFileDataSource_Built_ColumnID,
+					PBXFileDataSource_ObjectSize_ColumnID,
+					PBXFileDataSource_Errors_ColumnID,
+					PBXFileDataSource_Warnings_ColumnID,
+					PBXFileDataSource_Target_ColumnID,
+				);
+			};
+			PBXPerProjectTemplateStateSaveDate = 197508112;
+			PBXWorkspaceStateSaveDate = 197508112;
+		};
+		sourceControlManager = CCD5A7670BC5A8FC009E02D3 /* Source Control */;
+		userBuildSettings = {
+		};
+	};
+	CC29761F07344E7D00F8D6C4 /* DocumentViewPlugin.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1247, 976}}";
+			sepNavSelRange = "{258, 0}";
+			sepNavVisRect = "{{0, 0}, {1247, 976}}";
+		};
+	};
+	CC29762007344E7D00F8D6C4 /* DocumentViewPlugin.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1157, 1078}}";
+			sepNavSelRange = "{1983, 0}";
+			sepNavVisRect = "{{0, 397}, {1157, 653}}";
+		};
+	};
+	CC93E18B066ECBC400D09EFE /* DocumentView */ = {
+		activeExec = 0;
+	};
+	CCD5A7670BC5A8FC009E02D3 /* Source Control */ = {
+		isa = PBXSourceControlManager;
+		fallbackIsa = XCSourceControlManager;
+		isSCMEnabled = 0;
+		scmConfiguration = {
+		};
+	};
+	CCD5A7680BC5A8FC009E02D3 /* Code sense */ = {
+		isa = PBXCodeSenseManager;
+		indexTemplatePath = "";
+	};
+	CCD5A7970BC5AA7C009E02D3 /* VoodooPad Pro */ = {
+		isa = PBXExecutable;
+		activeArgIndex = 2147483647;
+		activeArgIndices = (
+		);
+		argumentStrings = (
+		);
+		autoAttachOnCrash = 1;
+		breakpointsEnabled = 0;
+		configStateDict = {
+		};
+		customDataFormattersEnabled = 1;
+		debuggerPlugin = GDBDebugging;
+		disassemblyDisplayState = 0;
+		dylibVariantSuffix = "";
+		enableDebugStr = 1;
+		environmentEntries = (
+		);
+		executableSystemSymbolLevel = 0;
+		executableUserSymbolLevel = 0;
+		launchableReference = CCD5A7980BC5AA7C009E02D3 /* VoodooPad Pro.app */;
+		libgmallocEnabled = 0;
+		name = "VoodooPad Pro";
+		savedGlobals = {
+		};
+		sourceDirectories = (
+		);
+		variableFormatDictionary = {
+		};
+	};
+	CCD5A7980BC5AA7C009E02D3 /* VoodooPad Pro.app */ = {
+		isa = PBXFileReference;
+		lastKnownFileType = wrapper.application;
+		name = "VoodooPad Pro.app";
+		path = "/Volumes/srv/Users/gus/builds/Debug/VoodooPad Pro.app";
+		sourceTree = "<absolute>";
+	};
+	CCD5A7BD0BC5AC21009E02D3 /* DocumentViewWindowController.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1157, 653}}";
+			sepNavSelRange = "{357, 0}";
+			sepNavVisRect = "{{0, 0}, {1157, 653}}";
+		};
+	};
+	CCD5A7BE0BC5AC21009E02D3 /* DocumentViewWindowController.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1157, 2058}}";
+			sepNavSelRange = "{4028, 12}";
+			sepNavVisRect = "{{0, 1305}, {1157, 653}}";
+		};
+	};
+	CCD5A7D70BC5AD86009E02D3 /* MultiplePageView.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1157, 2044}}";
+			sepNavSelRange = "{0, 0}";
+			sepNavVisRect = "{{0, 441}, {1157, 653}}";
+		};
+	};
+	CCD5A7D80BC5AD86009E02D3 /* MultiplePageView.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1157, 653}}";
+			sepNavSelRange = "{545, 0}";
+			sepNavVisRect = "{{0, 0}, {1157, 653}}";
+		};
+	};
+}

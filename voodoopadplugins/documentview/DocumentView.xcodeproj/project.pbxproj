@@ -1,0 +1,357 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 42;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		CC136968072D47F300434FEB /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = CC136967072D47F300434FEB /* Info.plist */; };
+		CC29762107344E7D00F8D6C4 /* DocumentViewPlugin.h in Headers */ = {isa = PBXBuildFile; fileRef = CC29761F07344E7D00F8D6C4 /* DocumentViewPlugin.h */; };
+		CC29762207344E7D00F8D6C4 /* DocumentViewPlugin.m in Sources */ = {isa = PBXBuildFile; fileRef = CC29762007344E7D00F8D6C4 /* DocumentViewPlugin.m */; };
+		CC2976910734512500F8D6C4 /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CC2976900734512500F8D6C4 /* Carbon.framework */; };
+		CCD5A77F0BC5A922009E02D3 /* VPPlugin.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CCD5A77E0BC5A922009E02D3 /* VPPlugin.framework */; };
+		CCD5A7BF0BC5AC21009E02D3 /* DocumentViewWindowController.h in Headers */ = {isa = PBXBuildFile; fileRef = CCD5A7BD0BC5AC21009E02D3 /* DocumentViewWindowController.h */; };
+		CCD5A7C00BC5AC21009E02D3 /* DocumentViewWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = CCD5A7BE0BC5AC21009E02D3 /* DocumentViewWindowController.m */; };
+		CCD5A7C50BC5AC4F009E02D3 /* DocumentViewWindow.nib in Resources */ = {isa = PBXBuildFile; fileRef = CCD5A7C40BC5AC4F009E02D3 /* DocumentViewWindow.nib */; };
+		CCD5A7D90BC5AD86009E02D3 /* MultiplePageView.m in Sources */ = {isa = PBXBuildFile; fileRef = CCD5A7D70BC5AD86009E02D3 /* MultiplePageView.m */; };
+		CCD5A7DA0BC5AD86009E02D3 /* MultiplePageView.h in Headers */ = {isa = PBXBuildFile; fileRef = CCD5A7D80BC5AD86009E02D3 /* MultiplePageView.h */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		089C1672FE841209C02AAC07 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = /System/Library/Frameworks/Foundation.framework; sourceTree = "<absolute>"; };
+		089C167FFE841241C02AAC07 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = /System/Library/Frameworks/AppKit.framework; sourceTree = "<absolute>"; };
+		1058C7ADFEA557BF11CA2CBB /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = /System/Library/Frameworks/Cocoa.framework; sourceTree = "<absolute>"; };
+		CC136959072D473700434FEB /* DocumentView.vpplugin */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DocumentView.vpplugin; sourceTree = BUILT_PRODUCTS_DIR; };
+		CC136967072D47F300434FEB /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Info.plist; sourceTree = SOURCE_ROOT; };
+		CC29761F07344E7D00F8D6C4 /* DocumentViewPlugin.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = DocumentViewPlugin.h; sourceTree = SOURCE_ROOT; };
+		CC29762007344E7D00F8D6C4 /* DocumentViewPlugin.m */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.objc; path = DocumentViewPlugin.m; sourceTree = SOURCE_ROOT; };
+		CC2976900734512500F8D6C4 /* Carbon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Carbon.framework; path = /System/Library/Frameworks/Carbon.framework; sourceTree = "<absolute>"; };
+		CCD5A77E0BC5A922009E02D3 /* VPPlugin.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = VPPlugin.framework; path = ../../svn_voodoopad/plugin/build/Deployment/VPPlugin.framework; sourceTree = SOURCE_ROOT; };
+		CCD5A7BD0BC5AC21009E02D3 /* DocumentViewWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DocumentViewWindowController.h; sourceTree = "<group>"; };
+		CCD5A7BE0BC5AC21009E02D3 /* DocumentViewWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DocumentViewWindowController.m; sourceTree = "<group>"; };
+		CCD5A7C40BC5AC4F009E02D3 /* DocumentViewWindow.nib */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; path = DocumentViewWindow.nib; sourceTree = "<group>"; };
+		CCD5A7D70BC5AD86009E02D3 /* MultiplePageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MultiplePageView.m; sourceTree = "<group>"; };
+		CCD5A7D80BC5AD86009E02D3 /* MultiplePageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MultiplePageView.h; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		CC93E199066ECBC400D09EFE /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CC2976910734512500F8D6C4 /* Carbon.framework in Frameworks */,
+				CCD5A77F0BC5A922009E02D3 /* VPPlugin.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		089C166AFE841209C02AAC07 /* voodoopadplugins */ = {
+			isa = PBXGroup;
+			children = (
+				08FB77AFFE84173DC02AAC07 /* Classes */,
+				089C167CFE841241C02AAC07 /* Resources */,
+				089C1671FE841209C02AAC07 /* Frameworks and Libraries */,
+				19C28FB8FE9D52D311CA2CBB /* Products */,
+			);
+			name = voodoopadplugins;
+			sourceTree = "<group>";
+		};
+		089C1671FE841209C02AAC07 /* Frameworks and Libraries */ = {
+			isa = PBXGroup;
+			children = (
+				1058C7ACFEA557BF11CA2CBB /* Linked Frameworks */,
+				1058C7AEFEA557BF11CA2CBB /* Other Frameworks */,
+			);
+			name = "Frameworks and Libraries";
+			sourceTree = "<group>";
+		};
+		089C167CFE841241C02AAC07 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				CCD5A7C40BC5AC4F009E02D3 /* DocumentViewWindow.nib */,
+				CC136967072D47F300434FEB /* Info.plist */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		08FB77AFFE84173DC02AAC07 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				CC29761F07344E7D00F8D6C4 /* DocumentViewPlugin.h */,
+				CC29762007344E7D00F8D6C4 /* DocumentViewPlugin.m */,
+				CCD5A7BD0BC5AC21009E02D3 /* DocumentViewWindowController.h */,
+				CCD5A7BE0BC5AC21009E02D3 /* DocumentViewWindowController.m */,
+				CCD5A7D70BC5AD86009E02D3 /* MultiplePageView.m */,
+				CCD5A7D80BC5AD86009E02D3 /* MultiplePageView.h */,
+			);
+			name = Classes;
+			sourceTree = "<group>";
+		};
+		1058C7ACFEA557BF11CA2CBB /* Linked Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				CCD5A77E0BC5A922009E02D3 /* VPPlugin.framework */,
+				CC2976900734512500F8D6C4 /* Carbon.framework */,
+				1058C7ADFEA557BF11CA2CBB /* Cocoa.framework */,
+			);
+			name = "Linked Frameworks";
+			sourceTree = "<group>";
+		};
+		1058C7AEFEA557BF11CA2CBB /* Other Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				089C1672FE841209C02AAC07 /* Foundation.framework */,
+				089C167FFE841241C02AAC07 /* AppKit.framework */,
+			);
+			name = "Other Frameworks";
+			sourceTree = "<group>";
+		};
+		19C28FB8FE9D52D311CA2CBB /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				CC136959072D473700434FEB /* DocumentView.vpplugin */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		CC93E18C066ECBC400D09EFE /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CC29762107344E7D00F8D6C4 /* DocumentViewPlugin.h in Headers */,
+				CCD5A7BF0BC5AC21009E02D3 /* DocumentViewWindowController.h in Headers */,
+				CCD5A7DA0BC5AD86009E02D3 /* MultiplePageView.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		CC93E18B066ECBC400D09EFE /* DocumentView */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CC8C7FB40BC5A8940052592F /* Build configuration list for PBXNativeTarget "DocumentView" */;
+			buildPhases = (
+				CC93E18C066ECBC400D09EFE /* Headers */,
+				CC93E191066ECBC400D09EFE /* Resources */,
+				CC93E194066ECBC400D09EFE /* Sources */,
+				CC93E199066ECBC400D09EFE /* Frameworks */,
+				CC136984072D496300434FEB /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = DocumentView;
+			productName = HTMLExport;
+			productReference = CC136959072D473700434FEB /* DocumentView.vpplugin */;
+			productType = "com.apple.product-type.bundle";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		089C1669FE841209C02AAC07 /* Project object */ = {
+			isa = PBXProject;
+			buildConfigurationList = CC8C7FB00BC5A8940052592F /* Build configuration list for PBXProject "DocumentView" */;
+			compatibilityVersion = "Xcode 2.4";
+			hasScannedForEncodings = 1;
+			mainGroup = 089C166AFE841209C02AAC07 /* voodoopadplugins */;
+			projectDirPath = "";
+			projectRoot = "";
+			shouldCheckCompatibility = 1;
+			targets = (
+				CC93E18B066ECBC400D09EFE /* DocumentView */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		CC93E191066ECBC400D09EFE /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CC136968072D47F300434FEB /* Info.plist in Resources */,
+				CCD5A7C50BC5AC4F009E02D3 /* DocumentViewWindow.nib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		CC136984072D496300434FEB /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "cd \"$TARGET_BUILD_DIR\"\n/Developer/Tools/SetFile -a B *.vpplugin";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		CC93E194066ECBC400D09EFE /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CC29762207344E7D00F8D6C4 /* DocumentViewPlugin.m in Sources */,
+				CCD5A7C00BC5AC21009E02D3 /* DocumentViewWindowController.m in Sources */,
+				CCD5A7D90BC5AD86009E02D3 /* MultiplePageView.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		CC8C7FB10BC5A8940052592F /* Development */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+			};
+			name = Development;
+		};
+		CC8C7FB20BC5A8940052592F /* Deployment */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = (
+					ppc,
+					i386,
+				);
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.4;
+				SDKROOT = /Developer/SDKs/MacOSX10.4u.sdk;
+				ZERO_LINK = NO;
+			};
+			name = Deployment;
+		};
+		CC8C7FB30BC5A8940052592F /* Default */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+			};
+			name = Default;
+		};
+		CC8C7FB50BC5A8940052592F /* Development */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COPY_PHASE_STRIP = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					/Volumes/srv/Users/gus/Projects/svn_voodoopad/plugin/build,
+					"$(FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_1)",
+				);
+				FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_1 = "\"$(SRCROOT)/../../svn_voodoopad/plugin/build/Deployment\"";
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/AppKit.framework/Headers/AppKit.h";
+				GCC_WARN_FOUR_CHARACTER_CONSTANTS = NO;
+				GCC_WARN_UNKNOWN_PRAGMAS = NO;
+				INFOPLIST_FILE = Info.plist;
+				INSTALL_PATH = "@executable_path/../PlugIns";
+				OTHER_CFLAGS = "";
+				OTHER_LDFLAGS = (
+					"-framework",
+					Foundation,
+					"-framework",
+					AppKit,
+				);
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = DocumentView;
+				SECTORDER_FLAGS = "";
+				WARNING_CFLAGS = "-Wmost";
+				WRAPPER_EXTENSION = vpplugin;
+			};
+			name = Development;
+		};
+		CC8C7FB60BC5A8940052592F /* Deployment */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COPY_PHASE_STRIP = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					/Volumes/srv/Users/gus/Projects/svn_voodoopad/plugin/build,
+					"$(FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_1)",
+				);
+				FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_1 = "\"$(SRCROOT)/../../svn_voodoopad/plugin/build/Deployment\"";
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/AppKit.framework/Headers/AppKit.h";
+				GCC_WARN_FOUR_CHARACTER_CONSTANTS = NO;
+				GCC_WARN_UNKNOWN_PRAGMAS = NO;
+				INFOPLIST_FILE = Info.plist;
+				INSTALL_PATH = "@executable_path/../PlugIns";
+				OTHER_CFLAGS = "";
+				OTHER_LDFLAGS = (
+					"-framework",
+					Foundation,
+					"-framework",
+					AppKit,
+				);
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = DocumentView;
+				SECTORDER_FLAGS = "";
+				WARNING_CFLAGS = "-Wmost";
+				WRAPPER_EXTENSION = vpplugin;
+			};
+			name = Deployment;
+		};
+		CC8C7FB70BC5A8940052592F /* Default */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					/Volumes/srv/Users/gus/Projects/svn_voodoopad/plugin/build,
+					"$(FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_1)",
+				);
+				FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_1 = "\"$(SRCROOT)/../../svn_voodoopad/plugin/build/Deployment\"";
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/AppKit.framework/Headers/AppKit.h";
+				GCC_WARN_FOUR_CHARACTER_CONSTANTS = NO;
+				GCC_WARN_UNKNOWN_PRAGMAS = NO;
+				INFOPLIST_FILE = Info.plist;
+				INSTALL_PATH = "@executable_path/../PlugIns";
+				OTHER_CFLAGS = "";
+				OTHER_LDFLAGS = (
+					"-framework",
+					Foundation,
+					"-framework",
+					AppKit,
+				);
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = DocumentView;
+				SECTORDER_FLAGS = "";
+				WARNING_CFLAGS = "-Wmost";
+				WRAPPER_EXTENSION = vpplugin;
+			};
+			name = Default;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		CC8C7FB00BC5A8940052592F /* Build configuration list for PBXProject "DocumentView" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CC8C7FB10BC5A8940052592F /* Development */,
+				CC8C7FB20BC5A8940052592F /* Deployment */,
+				CC8C7FB30BC5A8940052592F /* Default */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Default;
+		};
+		CC8C7FB40BC5A8940052592F /* Build configuration list for PBXNativeTarget "DocumentView" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CC8C7FB50BC5A8940052592F /* Development */,
+				CC8C7FB60BC5A8940052592F /* Deployment */,
+				CC8C7FB70BC5A8940052592F /* Default */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Default;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 089C1669FE841209C02AAC07 /* Project object */;
+}
