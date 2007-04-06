@@ -31,44 +31,45 @@
 
 - (void) viewDocument:(id<VPPluginWindowController>)windowController {
     
-        NSLog(@"windowController: %@", windowController);
+    NSMutableAttributedString *as   = [[NSMutableAttributedString alloc] init];
+    NSEnumerator *e                 = [[[windowController document] keys] objectEnumerator];
+    NSString *lineBreak             = [NSString stringWithFormat: @"\n%C", NSFormFeedCharacter];
+    NSString *key                   = [e nextObject];
+    
+    while (key) {
         
-        NSMutableAttributedString *as   = [[NSMutableAttributedString alloc] init];
-        NSEnumerator *e                 = [[[windowController document] keys] objectEnumerator];
-        NSString *lineBreak             = [NSString stringWithFormat: @"\n%C", NSFormFeedCharacter];
-        NSString *key                   = [e nextObject];
+        NSAutoreleasePool * pool = [[NSAutoreleasePool alloc] init];
         
-        while (key) {
+        id <VPData> vpData = [[windowController document] pageForKey:key];
+        
+        if ([vpData type] == VPPageType) {
+            NSMutableAttributedString *pageAts = [vpData dataAsAttributedString];
             
-            NSAutoreleasePool * pool = [[NSAutoreleasePool alloc] init];
-            
-            id <VPData> vpData = [[windowController document] pageForKey:key];
-            
-            if ([vpData type] == VPPageType) {
-                [as appendAttributedString:[vpData dataAsAttributedString]];
+            if ([pageAts length] == 0) {
+                pageAts = [[[NSMutableAttributedString alloc] initWithString:@" "] autorelease];
             }
             
-            key = [e nextObject];
-            
-            if (key) {
-                [[as mutableString] appendString:lineBreak];
-            }
-            
-            [pool release];
-            
+            [pageAts addAttribute:@"VPPageName" value:[vpData displayName] range:NSMakeRange(0, [pageAts length])];
+            [as appendAttributedString:pageAts];
         }
         
-        DocumentViewWindowController *wc = [[DocumentViewWindowController alloc] initWithWindowNibName:@"DocumentViewWindow"];
+        key = [e nextObject];
         
-        [wc loadAttributedString:as];
+        if (key) {
+            [[as mutableString] appendString:lineBreak];
+        }
         
-        [[wc window] makeKeyAndOrderFront:self];
+        [pool release];
         
-        [as release];
-        
-        
-        
-        
+    }
+    
+    DocumentViewWindowController *wc = [[DocumentViewWindowController alloc] initWithWindowNibName:@"DocumentViewWindow"];
+    
+    [wc loadAttributedString:as];
+    
+    [[wc window] makeKeyAndOrderFront:self];
+    
+    [as release];
 }
 
 

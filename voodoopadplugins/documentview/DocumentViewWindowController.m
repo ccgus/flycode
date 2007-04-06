@@ -39,13 +39,12 @@
 }
 
 - (void)addPage {
-    NSZone *zone                = [self zone];
-    int numberOfPages    = [self numberOfPages];
-    MultiplePageView *pagesView = [scrollView documentView];
+    NSZone *zone                    = [self zone];
+    int numberOfPages               = [self numberOfPages];
+    MultiplePageView *pagesView     = [scrollView documentView];
+    NSSize textSize                 = [pagesView documentSizeInPage];
+    NSTextContainer *textContainer  = [[NSTextContainer allocWithZone:zone] initWithContainerSize:textSize];
     
-    NSSize textSize = [pagesView documentSizeInPage];
-    
-    NSTextContainer *textContainer = [[NSTextContainer allocWithZone:zone] initWithContainerSize:textSize];
     NSTextView *textView;
     [pagesView setNumberOfPages:numberOfPages + 1];
     textView = [[NSTextView allocWithZone:zone] initWithFrame:[pagesView documentRectForPageNumber:numberOfPages] textContainer:textContainer];
@@ -55,6 +54,7 @@
     [[self layoutManager] addTextContainer:textContainer];
     [textView release];
     [textContainer release];
+    
 }
 - (void)removePage {
     int numberOfPages = [self numberOfPages];
@@ -106,12 +106,17 @@
 - (void) printDocument:(id)sender {
     
     NSMutableDictionary *printInfoDict = [NSMutableDictionary dictionary];
+    
     [printInfoDict setObject:NSPrintSaveJob 
                       forKey:NSPrintJobDisposition];
     
+    [printInfoDict setValue:[NSNumber numberWithBool:YES] forKey:NSPrintHeaderAndFooter];
+    
     NSPrintInfo *printInfo = [[[NSPrintInfo alloc] initWithDictionary: printInfoDict] autorelease];
     
+    
     NSPrintOperation *op = [NSPrintOperation printOperationWithView:[scrollView documentView] printInfo:printInfo];
+    
     [op setShowPanels:YES];
         
     [self doForegroundLayoutToCharacterIndex:LONG_MAX];	// Make sure the whole document is laid out before printing

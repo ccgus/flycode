@@ -7,11 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CC01FA8D0BC5C228000D622C /* VPPlugin.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CC01FA8C0BC5C228000D622C /* VPPlugin.framework */; };
 		CC136968072D47F300434FEB /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = CC136967072D47F300434FEB /* Info.plist */; };
 		CC29762107344E7D00F8D6C4 /* DocumentViewPlugin.h in Headers */ = {isa = PBXBuildFile; fileRef = CC29761F07344E7D00F8D6C4 /* DocumentViewPlugin.h */; };
 		CC29762207344E7D00F8D6C4 /* DocumentViewPlugin.m in Sources */ = {isa = PBXBuildFile; fileRef = CC29762007344E7D00F8D6C4 /* DocumentViewPlugin.m */; };
 		CC2976910734512500F8D6C4 /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CC2976900734512500F8D6C4 /* Carbon.framework */; };
-		CCD5A77F0BC5A922009E02D3 /* VPPlugin.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CCD5A77E0BC5A922009E02D3 /* VPPlugin.framework */; };
 		CCD5A7BF0BC5AC21009E02D3 /* DocumentViewWindowController.h in Headers */ = {isa = PBXBuildFile; fileRef = CCD5A7BD0BC5AC21009E02D3 /* DocumentViewWindowController.h */; };
 		CCD5A7C00BC5AC21009E02D3 /* DocumentViewWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = CCD5A7BE0BC5AC21009E02D3 /* DocumentViewWindowController.m */; };
 		CCD5A7C50BC5AC4F009E02D3 /* DocumentViewWindow.nib in Resources */ = {isa = PBXBuildFile; fileRef = CCD5A7C40BC5AC4F009E02D3 /* DocumentViewWindow.nib */; };
@@ -23,12 +23,12 @@
 		089C1672FE841209C02AAC07 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = /System/Library/Frameworks/Foundation.framework; sourceTree = "<absolute>"; };
 		089C167FFE841241C02AAC07 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = /System/Library/Frameworks/AppKit.framework; sourceTree = "<absolute>"; };
 		1058C7ADFEA557BF11CA2CBB /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = /System/Library/Frameworks/Cocoa.framework; sourceTree = "<absolute>"; };
+		CC01FA8C0BC5C228000D622C /* VPPlugin.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = VPPlugin.framework; path = ../../../svn_voodoopad/plugin/build/Deployment/VPPlugin.framework; sourceTree = SOURCE_ROOT; };
 		CC136959072D473700434FEB /* DocumentView.vpplugin */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DocumentView.vpplugin; sourceTree = BUILT_PRODUCTS_DIR; };
 		CC136967072D47F300434FEB /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Info.plist; sourceTree = SOURCE_ROOT; };
 		CC29761F07344E7D00F8D6C4 /* DocumentViewPlugin.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = DocumentViewPlugin.h; sourceTree = SOURCE_ROOT; };
 		CC29762007344E7D00F8D6C4 /* DocumentViewPlugin.m */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.objc; path = DocumentViewPlugin.m; sourceTree = SOURCE_ROOT; };
 		CC2976900734512500F8D6C4 /* Carbon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Carbon.framework; path = /System/Library/Frameworks/Carbon.framework; sourceTree = "<absolute>"; };
-		CCD5A77E0BC5A922009E02D3 /* VPPlugin.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = VPPlugin.framework; path = ../../svn_voodoopad/plugin/build/Deployment/VPPlugin.framework; sourceTree = SOURCE_ROOT; };
 		CCD5A7BD0BC5AC21009E02D3 /* DocumentViewWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DocumentViewWindowController.h; sourceTree = "<group>"; };
 		CCD5A7BE0BC5AC21009E02D3 /* DocumentViewWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DocumentViewWindowController.m; sourceTree = "<group>"; };
 		CCD5A7C40BC5AC4F009E02D3 /* DocumentViewWindow.nib */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; path = DocumentViewWindow.nib; sourceTree = "<group>"; };
@@ -42,7 +42,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CC2976910734512500F8D6C4 /* Carbon.framework in Frameworks */,
-				CCD5A77F0BC5A922009E02D3 /* VPPlugin.framework in Frameworks */,
+				CC01FA8D0BC5C228000D622C /* VPPlugin.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -94,7 +94,7 @@
 		1058C7ACFEA557BF11CA2CBB /* Linked Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				CCD5A77E0BC5A922009E02D3 /* VPPlugin.framework */,
+				CC01FA8C0BC5C228000D622C /* VPPlugin.framework */,
 				CC2976900734512500F8D6C4 /* Carbon.framework */,
 				1058C7ADFEA557BF11CA2CBB /* Cocoa.framework */,
 			);
@@ -246,8 +246,10 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					/Volumes/srv/Users/gus/Projects/svn_voodoopad/plugin/build,
 					"$(FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_1)",
+					"$(FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_2)",
 				);
 				FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_1 = "\"$(SRCROOT)/../../svn_voodoopad/plugin/build/Deployment\"";
+				FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_2 = "\"$(SRCROOT)/../../../svn_voodoopad/plugin/build/Deployment\"";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/AppKit.framework/Headers/AppKit.h";
 				GCC_WARN_FOUR_CHARACTER_CONSTANTS = NO;
@@ -276,8 +278,10 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					/Volumes/srv/Users/gus/Projects/svn_voodoopad/plugin/build,
 					"$(FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_1)",
+					"$(FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_2)",
 				);
 				FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_1 = "\"$(SRCROOT)/../../svn_voodoopad/plugin/build/Deployment\"";
+				FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_2 = "\"$(SRCROOT)/../../../svn_voodoopad/plugin/build/Deployment\"";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/AppKit.framework/Headers/AppKit.h";
 				GCC_WARN_FOUR_CHARACTER_CONSTANTS = NO;
@@ -305,7 +309,9 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					/Volumes/srv/Users/gus/Projects/svn_voodoopad/plugin/build,
 					"$(FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_1)",
+					"$(FRAMEWORK_SEARCH_PATHS_QUOTED_1)",
 				);
+				FRAMEWORK_SEARCH_PATHS_QUOTED_1 = "\"$(SRCROOT)/../../../svn_voodoopad/plugin/build/Deployment\"";
 				FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_1 = "\"$(SRCROOT)/../../svn_voodoopad/plugin/build/Deployment\"";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/AppKit.framework/Headers/AppKit.h";

@@ -1,10 +1,10 @@
 /*
-        MultiplePageView.m
-        Copyright (c) 1995-2006 by Apple Computer, Inc., all rights reserved.
-        Author: Ali Ozer
-
-        View which holds all the pages together in the multiple-page case
-*/
+ MultiplePageView.m
+ Copyright (c) 1995-2006 by Apple Computer, Inc., all rights reserved.
+ Author: Ali Ozer
+ 
+ View which holds all the pages together in the multiple-page case
+ */
 /*
  IMPORTANT:  This Apple software is supplied to you by Apple Computer, Inc. ("Apple") in
  consideration of your agreement to the following terms, and your use, installation, 
@@ -36,7 +36,7 @@
  REPRODUCTION, MODIFICATION AND/OR DISTRIBUTION OF THE APPLE SOFTWARE, HOWEVER CAUSED AND 
  WHETHER UNDER THEORY OF CONTRACT, TORT (INCLUDING NEGLIGENCE), STRICT LIABILITY OR 
  OTHERWISE, EVEN IF APPLE HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
-*/
+ */
 
 #import <Cocoa/Cocoa.h>
 #import "MultiplePageView.h"
@@ -60,7 +60,7 @@ float defaultTextPadding(void) {
         numPages = 0;
         [self setLineColor:[NSColor lightGrayColor]];
         [self setMarginColor:[NSColor whiteColor]];
-	/* This will set the frame to be whatever's appropriate... */
+        /* This will set the frame to be whatever's appropriate... */
         [self setPrintInfo:[NSPrintInfo sharedPrintInfo]];
     }
     return self;
@@ -100,13 +100,13 @@ float defaultTextPadding(void) {
 
 - (void)setNumberOfPages:(int)num {
     if (numPages != num) {
-	NSRect oldFrame = [self frame];
+        NSRect oldFrame = [self frame];
         NSRect newFrame;
         numPages = num;
         [self updateFrame];
-	newFrame = [self frame];
+        newFrame = [self frame];
         if (newFrame.size.height > oldFrame.size.height) {
-	    [self setNeedsDisplayInRect:NSMakeRect(oldFrame.origin.x, NSMaxY(oldFrame), oldFrame.size.width, NSMaxY(newFrame) - NSMaxY(oldFrame))];
+            [self setNeedsDisplayInRect:NSMakeRect(oldFrame.origin.x, NSMaxY(oldFrame), oldFrame.size.width, NSMaxY(newFrame) - NSMaxY(oldFrame))];
         }
     }
 }
@@ -114,7 +114,7 @@ float defaultTextPadding(void) {
 - (int)numberOfPages {
     return numPages;
 }
-    
+
 - (float)pageSeparatorHeight {
     return 5.0;
 }
@@ -173,6 +173,7 @@ float defaultTextPadding(void) {
 
 - (void)drawRect:(NSRect)rect {
     if ([[NSGraphicsContext currentContext] isDrawingToScreen]) {
+        
         NSSize paperSize = [printInfo paperSize];
         int firstPage = rect.origin.y / (paperSize.height + [self pageSeparatorHeight]);
         int lastPage = NSMaxY(rect) / (paperSize.height + [self pageSeparatorHeight]);
@@ -180,20 +181,20 @@ float defaultTextPadding(void) {
         
         [marginColor set];
         NSRectFill(rect);
-
+        
         [lineColor set];
         for (cnt = firstPage; cnt <= lastPage; cnt++) {
-	    // Draw boundary around the page, making sure it doesn't overlap the document area in terms of pixels
-	    NSRect docRect = NSInsetRect([self centerScanRect:[self documentRectForPageNumber:cnt]], -1.0, -1.0);
-	    NSFrameRectWithWidth(docRect, 1.0);
+            // Draw boundary around the page, making sure it doesn't overlap the document area in terms of pixels
+            NSRect docRect = NSInsetRect([self centerScanRect:[self documentRectForPageNumber:cnt]], -1.0, -1.0);
+            NSFrameRectWithWidth(docRect, 1.0);
         }
-
+        
         if ([[self superview] isKindOfClass:[NSClipView class]]) {
-	    NSColor *backgroundColor = [(NSClipView *)[self superview] backgroundColor];
+            NSColor *backgroundColor = [(NSClipView *)[self superview] backgroundColor];
             [backgroundColor set];
             for (cnt = firstPage; cnt <= lastPage; cnt++) {
-		NSRect pageRect = [self pageRectForPageNumber:cnt];
-		NSRectFill (NSMakeRect(pageRect.origin.x, NSMaxY(pageRect), pageRect.size.width, [self pageSeparatorHeight]));
+                NSRect pageRect = [self pageRectForPageNumber:cnt];
+                NSRectFill (NSMakeRect(pageRect.origin.x, NSMaxY(pageRect), pageRect.size.width, [self pageSeparatorHeight]));
             }
         }
     }
@@ -207,7 +208,23 @@ float defaultTextPadding(void) {
 }
 
 - (NSRect)rectForPage:(int)page {
+    pageBeingPrinted = page;
     return [self documentRectForPageNumber:page-1];  /* Our page numbers start from 0; the kit's from 1 */
 }
+
+- (NSAttributedString *)pageHeader {
+    NSTextView *tv = [[self subviews] objectAtIndex:pageBeingPrinted-1];
+    NSLayoutManager *layoutManager = [tv layoutManager];
+    
+    NSRange r = [layoutManager glyphRangeForBoundingRect:[tv bounds] inTextContainer:[tv textContainer]];
+    NSAttributedString *as = [tv attributedSubstringFromRange:r];
+    
+    NSString *title = [as attribute:@"VPPageName" atIndex:0 effectiveRange:&r];
+        
+    NSDictionary *atts = [NSDictionary dictionaryWithObjectsAndKeys:[NSFont boldSystemFontOfSize:18], NSFontAttributeName, nil];
+        
+    return [[[NSAttributedString alloc] initWithString:title attributes:atts] autorelease];
+}
+
 
 @end

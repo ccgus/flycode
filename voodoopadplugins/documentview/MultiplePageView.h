@@ -5,6 +5,7 @@
     NSColor *lineColor;
     NSColor *marginColor;
     int numPages;
+    int pageBeingPrinted;
 }
 
 - (void)setPrintInfo:(NSPrintInfo *)anObject;

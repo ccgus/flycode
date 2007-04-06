@@ -8,6 +8,8 @@
 		addToTargets = (
 			CC93E18B066ECBC400D09EFE /* DocumentView */,
 		);
+		breakpoints = (
+		);
 		codeSenseManager = CCD5A7680BC5A8FC009E02D3 /* Code sense */;
 		executables = (
 			CCD5A7970BC5AA7C009E02D3 /* VoodooPad Pro */,
@@ -49,8 +51,8 @@
 					PBXFileDataSource_Target_ColumnID,
 				);
 			};
-			PBXPerProjectTemplateStateSaveDate = 197508112;
-			PBXWorkspaceStateSaveDate = 197508112;
+			PBXPerProjectTemplateStateSaveDate = 197514141;
+			PBXWorkspaceStateSaveDate = 197514141;
 		};
 		sourceControlManager = CCD5A7670BC5A8FC009E02D3 /* Source Control */;
 		userBuildSettings = {
@@ -65,9 +67,9 @@
 	};
 	CC29762007344E7D00F8D6C4 /* DocumentViewPlugin.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1157, 1078}}";
-			sepNavSelRange = "{1983, 0}";
-			sepNavVisRect = "{{0, 397}, {1157, 653}}";
+			sepNavIntBoundsRect = "{{0, 0}, {1069, 1092}}";
+			sepNavSelRange = "{0, 0}";
+			sepNavVisRect = "{{0, 0}, {1069, 857}}";
 		};
 	};
 	CC93E18B066ECBC400D09EFE /* DocumentView */ = {
@@ -123,30 +125,30 @@
 	};
 	CCD5A7BD0BC5AC21009E02D3 /* DocumentViewWindowController.h */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1157, 653}}";
-			sepNavSelRange = "{357, 0}";
-			sepNavVisRect = "{{0, 0}, {1157, 653}}";
+			sepNavIntBoundsRect = "{{0, 0}, {1069, 834}}";
+			sepNavSelRange = "{359, 0}";
+			sepNavVisRect = "{{0, 0}, {1069, 834}}";
 		};
 	};
 	CCD5A7BE0BC5AC21009E02D3 /* DocumentViewWindowController.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1157, 2058}}";
-			sepNavSelRange = "{4028, 12}";
-			sepNavVisRect = "{{0, 1305}, {1157, 653}}";
+			sepNavIntBoundsRect = "{{0, 0}, {1069, 2128}}";
+			sepNavSelRange = "{0, 0}";
+			sepNavVisRect = "{{0, 0}, {1069, 857}}";
 		};
 	};
 	CCD5A7D70BC5AD86009E02D3 /* MultiplePageView.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1157, 2044}}";
-			sepNavSelRange = "{0, 0}";
-			sepNavVisRect = "{{0, 441}, {1157, 653}}";
+			sepNavIntBoundsRect = "{{0, 0}, {1069, 3234}}";
+			sepNavSelRange = "{6220, 0}";
+			sepNavVisRect = "{{0, 2029}, {1069, 857}}";
 		};
 	};
 	CCD5A7D80BC5AD86009E02D3 /* MultiplePageView.h */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1157, 653}}";
-			sepNavSelRange = "{545, 0}";
-			sepNavVisRect = "{{0, 0}, {1157, 653}}";
+			sepNavIntBoundsRect = "{{0, 0}, {1069, 834}}";
+			sepNavSelRange = "{186, 0}";
+			sepNavVisRect = "{{0, 0}, {1069, 834}}";
 		};
 	};
 }
