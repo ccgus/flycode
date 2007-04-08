@@ -18,9 +18,6 @@
     NSString *suffixFilter = [[self parameters] objectForKey:@"suffixFilter"];
     BOOL     negateSuffix  = [[[self parameters] objectForKey:@"negateSuffix"] boolValue];
     
-    debug(@"suffixFilter: %@", suffixFilter);
-    debug(@"negateSuffix: %d", negateSuffix);
-    
     for (id item in input) {
         
         if (negateSuffix && (![[item description] hasSuffix:suffixFilter])) {
@@ -31,8 +28,6 @@
         }
         
     }
-    
-    debug(@"output: %@", output);
     
 	return output;
 }

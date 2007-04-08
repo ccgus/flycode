@@ -509,7 +509,7 @@
 	<key>StatusbarIsVisible</key>
 	<true/>
 	<key>TimeStamp</key>
-	<real>197751982.38735801</real>
+	<real>197752363.98912799</real>
 	<key>ToolbarDisplayMode</key>
 	<integer>2</integer>
 	<key>ToolbarIsVisible</key>
@@ -525,9 +525,9 @@
 	<key>WindowOrderList</key>
 	<array>
 		<string>1CD10A99069EF8BA00B06720</string>
-		<string>CCEEB94D0BC96ECF005A8009</string>
 		<string>1C78EAAD065D492600B07095</string>
 		<string>/Volumes/srv/Users/gus/Projects/flycode/arrayfilter/Array Filter.xcodeproj</string>
+		<string>CCEEB94D0BC96ECF005A8009</string>
 		<string>CCEEB94F0BC96F02005A8009</string>
 	</array>
 	<key>WindowString</key>
