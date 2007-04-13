@@ -1,8 +1,7 @@
 // !$*UTF8*$!
 {
 	089C1669FE841209C02AAC07 /* Project object */ = {
-		activeArchitecture = ppc;
-		activeBuildConfigurationName = Debug;
+		activeBuildConfigurationName = Release;
 		activeExecutable = 658A2E03067AB99300421F51 /* Automator */;
 		activeTarget = 8D5B49AC048680CD000E48DA /* Array Filter */;
 		codeSenseManager = 658A2DD0067AB96600421F51 /* Code sense */;
@@ -17,7 +16,7 @@
 					20,
 					243,
 					20,
-					48.16259765625,
+					48,
 					43,
 					43,
 					20,
@@ -32,8 +31,8 @@
 					PBXFileDataSource_Target_ColumnID,
 				);
 			};
-			PBXPerProjectTemplateStateSaveDate = 197750464;
-			PBXWorkspaceStateSaveDate = 197750464;
+			PBXPerProjectTemplateStateSaveDate = 198200205;
+			PBXWorkspaceStateSaveDate = 198200205;
 		};
 		sourceControlManager = 658A2DCF067AB96600421F51 /* Source Control */;
 		userBuildSettings = {
@@ -41,9 +40,9 @@
 	};
 	65181750067A8D39005BD953 /* Array Filter.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {950, 717}}";
-			sepNavSelRange = "{800, 0}";
-			sepNavVisRect = "{{0, 0}, {950, 717}}";
+			sepNavIntBoundsRect = "{{0, 0}, {1054, 944}}";
+			sepNavSelRange = "{968, 0}";
+			sepNavVisRect = "{{0, 0}, {1054, 944}}";
 		};
 	};
 	658A2DCF067AB96600421F51 /* Source Control */ = {
@@ -68,7 +67,6 @@
 			"-action \"Array Filter.action\"",
 		);
 		autoAttachOnCrash = 1;
-		breakpointsEnabled = 0;
 		configStateDict = {
 		};
 		customDataFormattersEnabled = 1;
@@ -88,7 +86,7 @@
 	};
 	658A2E04067AB99300421F51 /* Automator.app */ = {
 		isa = PBXFileReference;
-		lastKnownFileType = wrapper.application;
+		explicitFileType = wrapper.application;
 		name = Automator.app;
 		path = /Applications/Automator.app;
 		sourceTree = "<absolute>";
