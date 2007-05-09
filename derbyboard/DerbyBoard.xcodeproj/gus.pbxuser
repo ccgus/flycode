@@ -1,0 +1,347 @@
+// !$*UTF8*$!
+{
+	29B97313FDCFA39411CA2CEA /* Project object */ = {
+		activeBuildConfigurationName = Debug;
+		activeExecutable = CCCFD8230BEE6E39006ABC6B /* DerbyBoard */;
+		activeTarget = 8D1107260486CEB800E47090 /* DerbyBoard */;
+		addToTargets = (
+			8D1107260486CEB800E47090 /* DerbyBoard */,
+		);
+		codeSenseManager = CCCFD8320BEE6E42006ABC6B /* Code sense */;
+		executables = (
+			CCCFD8230BEE6E39006ABC6B /* DerbyBoard */,
+		);
+		perUserDictionary = {
+			PBXConfiguration.PBXFileTableDataSource3.PBXFileTableDataSource = {
+				PBXFileTableDataSourceColumnSortingDirectionKey = "-1";
+				PBXFileTableDataSourceColumnSortingKey = PBXFileDataSource_Filename_ColumnID;
+				PBXFileTableDataSourceColumnWidthsKey = (
+					20,
+					243,
+					20,
+					48,
+					43,
+					43,
+					20,
+				);
+				PBXFileTableDataSourceColumnsKey = (
+					PBXFileDataSource_FiletypeID,
+					PBXFileDataSource_Filename_ColumnID,
+					PBXFileDataSource_Built_ColumnID,
+					PBXFileDataSource_ObjectSize_ColumnID,
+					PBXFileDataSource_Errors_ColumnID,
+					PBXFileDataSource_Warnings_ColumnID,
+					PBXFileDataSource_Target_ColumnID,
+				);
+			};
+			PBXConfiguration.PBXTargetDataSource.PBXTargetDataSource = {
+				PBXFileTableDataSourceColumnSortingDirectionKey = "-1";
+				PBXFileTableDataSourceColumnSortingKey = PBXFileDataSource_Filename_ColumnID;
+				PBXFileTableDataSourceColumnWidthsKey = (
+					20,
+					200,
+					63,
+					20,
+					48,
+					43,
+					43,
+				);
+				PBXFileTableDataSourceColumnsKey = (
+					PBXFileDataSource_FiletypeID,
+					PBXFileDataSource_Filename_ColumnID,
+					PBXTargetDataSource_PrimaryAttribute,
+					PBXFileDataSource_Built_ColumnID,
+					PBXFileDataSource_ObjectSize_ColumnID,
+					PBXFileDataSource_Errors_ColumnID,
+					PBXFileDataSource_Warnings_ColumnID,
+				);
+			};
+			PBXPerProjectTemplateStateSaveDate = 200350902;
+			PBXWorkspaceStateSaveDate = 200350902;
+		};
+		perUserProjectItems = {
+			CC06A08A0BF120BF003BC59B /* PBXTextBookmark */ = CC06A08A0BF120BF003BC59B /* PBXTextBookmark */;
+			CC06A08B0BF120BF003BC59B /* PBXTextBookmark */ = CC06A08B0BF120BF003BC59B /* PBXTextBookmark */;
+			CC06A09F0BF1235E003BC59B /* PBXTextBookmark */ = CC06A09F0BF1235E003BC59B /* PBXTextBookmark */;
+			CC06A0AD0BF1238F003BC59B /* PBXTextBookmark */ = CC06A0AD0BF1238F003BC59B /* PBXTextBookmark */;
+			CC06A0AE0BF1238F003BC59B /* PBXTextBookmark */ = CC06A0AE0BF1238F003BC59B /* PBXTextBookmark */;
+			CC06A0AF0BF1238F003BC59B /* PBXTextBookmark */ = CC06A0AF0BF1238F003BC59B /* PBXTextBookmark */;
+			CC06A0B00BF1238F003BC59B /* PBXTextBookmark */ = CC06A0B00BF1238F003BC59B /* PBXTextBookmark */;
+			CC06A1300BF129E9003BC59B /* PBXTextBookmark */ = CC06A1300BF129E9003BC59B /* PBXTextBookmark */;
+			CC06A1DA0BF13387003BC59B /* PBXTextBookmark */ = CC06A1DA0BF13387003BC59B /* PBXTextBookmark */;
+			CC06A21B0BF135BA003BC59B /* PBXTextBookmark */ = CC06A21B0BF135BA003BC59B /* PBXTextBookmark */;
+			CC06A21C0BF135BA003BC59B /* PBXTextBookmark */ = CC06A21C0BF135BA003BC59B /* PBXTextBookmark */;
+			CC06A21D0BF135BA003BC59B /* PBXTextBookmark */ = CC06A21D0BF135BA003BC59B /* PBXTextBookmark */;
+			CC06A21E0BF135BA003BC59B /* PBXTextBookmark */ = CC06A21E0BF135BA003BC59B /* PBXTextBookmark */;
+			CC06A22F0BF1362E003BC59B /* PBXTextBookmark */ = CC06A22F0BF1362E003BC59B /* PBXTextBookmark */;
+			CC06A25D0BF13DCD003BC59B /* PBXTextBookmark */ = CC06A25D0BF13DCD003BC59B /* PBXTextBookmark */;
+			CC06A3380BF15D66003BC59B /* PBXTextBookmark */ = CC06A3380BF15D66003BC59B /* PBXTextBookmark */;
+			CC06A33F0BF15E8E003BC59B /* PBXTextBookmark */ = CC06A33F0BF15E8E003BC59B /* PBXTextBookmark */;
+		};
+		sourceControlManager = CCCFD8310BEE6E42006ABC6B /* Source Control */;
+		userBuildSettings = {
+		};
+	};
+	8D1107260486CEB800E47090 /* DerbyBoard */ = {
+		activeExec = 0;
+		executables = (
+			CCCFD8230BEE6E39006ABC6B /* DerbyBoard */,
+		);
+	};
+	CC06A0070BF11D05003BC59B /* DBController.h */ = {
+		isa = PBXFileReference;
+		fileEncoding = 4;
+		lastKnownFileType = sourcecode.c.h;
+		name = DBController.h;
+		path = /Volumes/srv/Users/gus/Projects/flycode/derbyboard/DBController.h;
+		sourceTree = "<absolute>";
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {453, 812}}";
+			sepNavSelRange = "{1288, 26}";
+			sepNavVisRect = "{{0, 294}, {453, 186}}";
+		};
+	};
+	CC06A0080BF11D05003BC59B /* DBController.m */ = {
+		isa = PBXFileReference;
+		fileEncoding = 4;
+		lastKnownFileType = sourcecode.c.objc;
+		name = DBController.m;
+		path = /Volumes/srv/Users/gus/Projects/flycode/derbyboard/DBController.m;
+		sourceTree = "<absolute>";
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {554, 2814}}";
+			sepNavSelRange = "{590, 0}";
+			sepNavVisRect = "{{0, 292}, {453, 186}}";
+		};
+	};
+	CC06A08A0BF120BF003BC59B /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		comments = "error: '_jamTime' undeclared (first use in this function)";
+		fRef = CC06A0080BF11D05003BC59B /* DBController.m */;
+		rLen = 0;
+		rLoc = 155;
+		rType = 1;
+	};
+	CC06A08B0BF120BF003BC59B /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = CC06A0080BF11D05003BC59B /* DBController.m */;
+		name = "DBController.m: setJamStartTime:";
+		rLen = 0;
+		rLoc = 3676;
+		rType = 0;
+		vrLen = 280;
+		vrLoc = 896;
+	};
+	CC06A09F0BF1235E003BC59B /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = CC06A0080BF11D05003BC59B /* DBController.m */;
+		name = "DBController.m: setJamStartTime:";
+		rLen = 0;
+		rLoc = 3676;
+		rType = 0;
+		vrLen = 280;
+		vrLoc = 936;
+	};
+	CC06A0AD0BF1238F003BC59B /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = CC06A0080BF11D05003BC59B /* DBController.m */;
+		name = "DBController.m: setJamStartTime:";
+		rLen = 0;
+		rLoc = 3676;
+		rType = 0;
+		vrLen = 280;
+		vrLoc = 936;
+	};
+	CC06A0AE0BF1238F003BC59B /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		comments = "warning: 'NSView' may not respond to '-setDoubleValue:'";
+		fRef = CCCFD8B40BEE7850006ABC6B /* CToxicProgressIndicator.m */;
+		rLen = 1;
+		rLoc = 51;
+		rType = 1;
+	};
+	CC06A0AF0BF1238F003BC59B /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = CC06A0080BF11D05003BC59B /* DBController.m */;
+		name = "DBController.m: setJamStartTime:";
+		rLen = 0;
+		rLoc = 3676;
+		rType = 0;
+		vrLen = 280;
+		vrLoc = 936;
+	};
+	CC06A0B00BF1238F003BC59B /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = CCCFD8B40BEE7850006ABC6B /* CToxicProgressIndicator.m */;
+		name = "[super setDoubleValue:inValue];";
+		rLen = 36;
+		rLoc = 814;
+		rType = 0;
+		vrLen = 291;
+		vrLoc = 709;
+	};
+	CC06A1300BF129E9003BC59B /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = CCCFD8B40BEE7850006ABC6B /* CToxicProgressIndicator.m */;
+		name = "[super setDoubleValue:inValue];";
+		rLen = 36;
+		rLoc = 814;
+		rType = 0;
+		vrLen = 291;
+		vrLoc = 709;
+	};
+	CC06A1DA0BF13387003BC59B /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = CCCFD8B40BEE7850006ABC6B /* CToxicProgressIndicator.m */;
+		name = "[super setDoubleValue:inValue];";
+		rLen = 36;
+		rLoc = 814;
+		rType = 0;
+		vrLen = 291;
+		vrLoc = 709;
+	};
+	CC06A21B0BF135BA003BC59B /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = CCCFD8B40BEE7850006ABC6B /* CToxicProgressIndicator.m */;
+		name = "[super setDoubleValue:inValue];";
+		rLen = 36;
+		rLoc = 814;
+		rType = 0;
+		vrLen = 291;
+		vrLoc = 709;
+	};
+	CC06A21C0BF135BA003BC59B /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		comments = "error: duplicate declaration of method '-periodTimer'";
+		fRef = CC06A0070BF11D05003BC59B /* DBController.h */;
+		rLen = 1;
+		rLoc = 50;
+		rType = 1;
+	};
+	CC06A21D0BF135BA003BC59B /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = CCCFD8B40BEE7850006ABC6B /* CToxicProgressIndicator.m */;
+		name = "[super setDoubleValue:inValue];";
+		rLen = 36;
+		rLoc = 814;
+		rType = 0;
+		vrLen = 291;
+		vrLoc = 709;
+	};
+	CC06A21E0BF135BA003BC59B /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = CC06A0070BF11D05003BC59B /* DBController.h */;
+		name = "- (DBTimer *)periodTimer;";
+		rLen = 26;
+		rLoc = 1288;
+		rType = 0;
+		vrLen = 294;
+		vrLoc = 692;
+	};
+	CC06A22F0BF1362E003BC59B /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = CC06A0070BF11D05003BC59B /* DBController.h */;
+		name = "- (DBTimer *)periodTimer;";
+		rLen = 26;
+		rLoc = 1288;
+		rType = 0;
+		vrLen = 294;
+		vrLoc = 692;
+	};
+	CC06A25D0BF13DCD003BC59B /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = CC06A0070BF11D05003BC59B /* DBController.h */;
+		name = "- (DBTimer *)periodTimer;";
+		rLen = 26;
+		rLoc = 1288;
+		rType = 0;
+		vrLen = 294;
+		vrLoc = 692;
+	};
+	CC06A3260BF15D51003BC59B /* DBController.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {937, 826}}";
+			sepNavSelRange = "{1454, 0}";
+			sepNavVisRect = "{{0, 16}, {937, 796}}";
+		};
+	};
+	CC06A3270BF15D51003BC59B /* DBController.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1298, 4284}}";
+			sepNavSelRange = "{7285, 0}";
+			sepNavVisRect = "{{0, 2406}, {1298, 1002}}";
+		};
+	};
+	CC06A3380BF15D66003BC59B /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = CCCFD8B40BEE7850006ABC6B /* CToxicProgressIndicator.m */;
+		name = "[super setDoubleValue:inValue];";
+		rLen = 36;
+		rLoc = 814;
+		rType = 0;
+		vrLen = 289;
+		vrLoc = 709;
+	};
+	CC06A33F0BF15E8E003BC59B /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = CCCFD8B40BEE7850006ABC6B /* CToxicProgressIndicator.m */;
+		name = "[super setDoubleValue:inValue];";
+		rLen = 36;
+		rLoc = 814;
+		rType = 0;
+		vrLen = 329;
+		vrLoc = 672;
+	};
+	CCCFD8230BEE6E39006ABC6B /* DerbyBoard */ = {
+		isa = PBXExecutable;
+		activeArgIndex = 2147483647;
+		activeArgIndices = (
+		);
+		argumentStrings = (
+		);
+		autoAttachOnCrash = 1;
+		configStateDict = {
+		};
+		customDataFormattersEnabled = 1;
+		debuggerPlugin = GDBDebugging;
+		disassemblyDisplayState = 0;
+		dylibVariantSuffix = "";
+		enableDebugStr = 1;
+		environmentEntries = (
+		);
+		executableSystemSymbolLevel = 0;
+		executableUserSymbolLevel = 0;
+		libgmallocEnabled = 0;
+		name = DerbyBoard;
+		savedGlobals = {
+		};
+		sourceDirectories = (
+		);
+	};
+	CCCFD8310BEE6E42006ABC6B /* Source Control */ = {
+		isa = PBXSourceControlManager;
+		fallbackIsa = XCSourceControlManager;
+		isSCMEnabled = 0;
+		scmConfiguration = {
+		};
+		scmType = "";
+	};
+	CCCFD8320BEE6E42006ABC6B /* Code sense */ = {
+		isa = PBXCodeSenseManager;
+		indexTemplatePath = "";
+	};
+	CCCFD8B40BEE7850006ABC6B /* CToxicProgressIndicator.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1028, 4830}}";
+			sepNavSelRange = "{814, 36}";
+			sepNavVisRect = "{{0, 612}, {851, 218}}";
+		};
+	};
+	CCCFD8B50BEE7850006ABC6B /* CToxicProgressIndicator.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1202, 1092}}";
+			sepNavSelRange = "{220, 19}";
+			sepNavVisRect = "{{0, 0}, {1202, 651}}";
+		};
+	};
+}

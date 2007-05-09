@@ -2,7 +2,35 @@
 #import <LuaCore/LuaCore.h>
 
 // you'll want to change this
-#define TESTDIR @"/Volumes/srv/Users/gus/Projects/luacore/TestApp"
+#define TESTDIR @"/Volumes/srv/Users/gus/Projects/flycode/luacore/TestApp"
+
+@interface TestClass : NSObject {
+    int i;
+}
+
+- (int) setI:(int) j;
+- (void) setI2:(int) j;
+
+@end
+
+@implementation TestClass
+
+- (int) setI:(int) j {
+	i = j;
+	NSLog(@"set I     to %d",i);
+	return i;
+}
+
+- (void) setI2:(int) j {
+	i = j;
+	NSLog(@"set I (2) to %d",i);
+}
+
+- (int) getI {
+    return i;
+}
+
+@end
 
 void runTest(NSString *testName) {
     
@@ -54,6 +82,8 @@ int main (int argc, const char * argv[]) {
     runTest(@"cgtest.lua");
     
     makeInterpreterFromScratch(@"simpletest.lua");
+    
+    runTest(@"classtest.lua");
     
     [pool release];
     return 0;

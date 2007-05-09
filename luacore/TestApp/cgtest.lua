@@ -35,4 +35,4 @@ CGBitmapContextRelease(context)
 
 mutableData:writeToFile_atomically_("/tmp/bob.tiff", true)
 
-os.execute("/usr/bin/open /tmp/bob.tiff")
+-- os.execute("/usr/bin/open /tmp/bob.tiff")

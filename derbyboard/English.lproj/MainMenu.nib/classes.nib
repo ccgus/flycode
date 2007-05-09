@@ -1,0 +1,38 @@
+{
+    IBClasses = (
+        {
+            ACTIONS = {
+                addPointToTeamA = id; 
+                addPointToTeamB = id; 
+                movePeriodBackOneMinute = id; 
+                movePeriodBackOneSecond = id; 
+                movePeriodForwardOneMinute = id; 
+                movePeriodForwardOneSecond = id; 
+                resetJam = id; 
+                resetPeriod = id; 
+                startPeriod = id; 
+                subtractPointToTeamA = id; 
+                subtractPointToTeamB = id; 
+                toggleFullScreen = id; 
+                toggleJam = id; 
+                togglePeriodTimer = id; 
+            }; 
+            CLASS = DBController; 
+            LANGUAGE = ObjC; 
+            OUTLETS = {
+                jamProgress = CToxicProgressIndicator; 
+                periodTime = NSTextField; 
+                teamAName = NSTextField; 
+                teamAScore = NSTextField; 
+                teamBName = NSTextField; 
+                teamBScore = NSTextField; 
+            }; 
+            SUPERCLASS = NSWindowController; 
+        }, 
+        {CLASS = DBProgressWidget; LANGUAGE = ObjC; SUPERCLASS = NSProgressIndicator; }, 
+        {CLASS = DBWindow; LANGUAGE = ObjC; SUPERCLASS = NSWindow; }, 
+        {CLASS = FirstResponder; LANGUAGE = ObjC; SUPERCLASS = NSObject; }, 
+        {CLASS = NSDatePicker; LANGUAGE = ObjC; SUPERCLASS = NSControl; }
+    ); 
+    IBVersion = 1; 
+}
