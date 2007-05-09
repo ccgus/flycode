@@ -1,7 +1,7 @@
 // !$*UTF8*$!
 {
 	29B97313FDCFA39411CA2CEA /* Project object */ = {
-		activeBuildConfigurationName = Debug;
+		activeBuildConfigurationName = Release;
 		activeExecutable = CCCFD8230BEE6E39006ABC6B /* DerbyBoard */;
 		activeTarget = 8D1107260486CEB800E47090 /* DerbyBoard */;
 		addToTargets = (
@@ -77,6 +77,10 @@
 			CC06A25D0BF13DCD003BC59B /* PBXTextBookmark */ = CC06A25D0BF13DCD003BC59B /* PBXTextBookmark */;
 			CC06A3380BF15D66003BC59B /* PBXTextBookmark */ = CC06A3380BF15D66003BC59B /* PBXTextBookmark */;
 			CC06A33F0BF15E8E003BC59B /* PBXTextBookmark */ = CC06A33F0BF15E8E003BC59B /* PBXTextBookmark */;
+			CC06A44D0BF16838003BC59B /* PBXTextBookmark */ = CC06A44D0BF16838003BC59B /* PBXTextBookmark */;
+			CC06A44E0BF16838003BC59B /* PBXTextBookmark */ = CC06A44E0BF16838003BC59B /* PBXTextBookmark */;
+			CC06A44F0BF16838003BC59B /* PBXTextBookmark */ = CC06A44F0BF16838003BC59B /* PBXTextBookmark */;
+			CC06A4500BF16838003BC59B /* PBXTextBookmark */ = CC06A4500BF16838003BC59B /* PBXTextBookmark */;
 		};
 		sourceControlManager = CCCFD8310BEE6E42006ABC6B /* Source Control */;
 		userBuildSettings = {
@@ -260,16 +264,23 @@
 	};
 	CC06A3260BF15D51003BC59B /* DBController.h */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {937, 826}}";
-			sepNavSelRange = "{1454, 0}";
-			sepNavVisRect = "{{0, 16}, {937, 796}}";
+			sepNavIntBoundsRect = "{{0, 0}, {937, 896}}";
+			sepNavSelRange = "{786, 0}";
+			sepNavVisRect = "{{0, 85}, {937, 796}}";
 		};
 	};
 	CC06A3270BF15D51003BC59B /* DBController.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1298, 4284}}";
-			sepNavSelRange = "{7285, 0}";
-			sepNavVisRect = "{{0, 2406}, {1298, 1002}}";
+			sepNavIntBoundsRect = "{{0, 0}, {1091, 4004}}";
+			sepNavSelRange = "{5275, 0}";
+			sepNavVisRect = "{{0, 2586}, {1091, 470}}";
+		};
+	};
+	CC06A32D0BF15D51003BC59B /* DBWindow.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1298, 1002}}";
+			sepNavSelRange = "{832, 0}";
+			sepNavVisRect = "{{0, 0}, {1298, 1002}}";
 		};
 	};
 	CC06A3380BF15D66003BC59B /* PBXTextBookmark */ = {
@@ -291,6 +302,44 @@
 		rType = 0;
 		vrLen = 329;
 		vrLoc = 672;
+	};
+	CC06A44D0BF16838003BC59B /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = CCCFD8B40BEE7850006ABC6B /* CToxicProgressIndicator.m */;
+		name = "[super setDoubleValue:inValue];";
+		rLen = 36;
+		rLoc = 814;
+		rType = 0;
+		vrLen = 329;
+		vrLoc = 672;
+	};
+	CC06A44E0BF16838003BC59B /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		comments = "error: parse error before 'and'";
+		fRef = CC06A3270BF15D51003BC59B /* DBController.m */;
+		rLen = 1;
+		rLoc = 202;
+		rType = 1;
+	};
+	CC06A44F0BF16838003BC59B /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = CCCFD8B40BEE7850006ABC6B /* CToxicProgressIndicator.m */;
+		name = "[super setDoubleValue:inValue];";
+		rLen = 36;
+		rLoc = 814;
+		rType = 0;
+		vrLen = 329;
+		vrLoc = 672;
+	};
+	CC06A4500BF16838003BC59B /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = CC06A3270BF15D51003BC59B /* DBController.m */;
+		name = "DBController.m: 202";
+		rLen = 0;
+		rLoc = 5304;
+		rType = 0;
+		vrLen = 854;
+		vrLoc = 4806;
 	};
 	CCCFD8230BEE6E39006ABC6B /* DerbyBoard */ = {
 		isa = PBXExecutable;

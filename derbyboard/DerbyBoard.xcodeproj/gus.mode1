@@ -236,6 +236,8 @@
 			<key>Layout</key>
 			<array>
 				<dict>
+					<key>BecomeActive</key>
+					<true/>
 					<key>ContentConfiguration</key>
 					<dict>
 						<key>PBXBottomSmartGroupGIDs</key>
@@ -276,14 +278,15 @@
 								<string>29B97315FDCFA39411CA2CEA</string>
 								<string>29B97317FDCFA39411CA2CEA</string>
 								<string>CC06A3700BF16183003BC59B</string>
+								<string>29B97323FDCFA39411CA2CEA</string>
+								<string>1058C7A0FEA54F0111CA2CBB</string>
 								<string>1C37FBAC04509CD000000102</string>
 								<string>1C37FABC05509CD000000102</string>
 							</array>
 							<key>PBXSmartGroupTreeModuleOutlineStateSelectionKey</key>
 							<array>
 								<array>
-									<integer>17</integer>
-									<integer>16</integer>
+									<integer>20</integer>
 									<integer>15</integer>
 									<integer>0</integer>
 								</array>
@@ -510,7 +513,7 @@
 	<key>StatusbarIsVisible</key>
 	<true/>
 	<key>TimeStamp</key>
-	<real>200369155.90796301</real>
+	<real>200370262.00495401</real>
 	<key>ToolbarDisplayMode</key>
 	<integer>2</integer>
 	<key>ToolbarIsVisible</key>
@@ -531,15 +534,10 @@
 		<string>CCCFD8410BEE6ED2006ABC6B</string>
 		<string>1CD10A99069EF8BA00B06720</string>
 		<string>CC06A0830BF120B9003BC59B</string>
-		<string>CC06A34D0BF15F5E003BC59B</string>
-		<string>CC06A36E0BF16015003BC59B</string>
-		<string>CC06A38D0BF163B5003BC59B</string>
+		<string>CC06A39A0BF16403003BC59B</string>
+		<string>/Volumes/srv/Users/gus/Projects/flycode/derbyboard/DerbyBoard.xcodeproj</string>
 		<string>CC06A3600BF15F98003BC59B</string>
 		<string>CC06A3440BF15E9C003BC59B</string>
-		<string>/Volumes/srv/Users/gus/Projects/flycode/derbyboard/DerbyBoard.xcodeproj</string>
-		<string>CC06A3980BF16403003BC59B</string>
-		<string>CC06A3990BF16403003BC59B</string>
-		<string>CC06A39A0BF16403003BC59B</string>
 		<string>CCCFD8350BEE6EC6006ABC6B</string>
 		<string>1C0AD2B3069F1EA900FABCE6</string>
 	</array>
@@ -572,14 +570,14 @@
 							<key>GeometryConfiguration</key>
 							<dict>
 								<key>Frame</key>
-								<string>{{0, 0}, {898, 250}}</string>
+								<string>{{0, 0}, {1138, 502}}</string>
 								<key>RubberWindowFrame</key>
-								<string>759 446 898 532 0 0 1920 1178 </string>
+								<string>405 267 1138 784 0 0 1920 1178 </string>
 							</dict>
 							<key>Module</key>
 							<string>PBXNavigatorGroup</string>
 							<key>Proportion</key>
-							<string>250pt</string>
+							<string>502pt</string>
 						</dict>
 						<dict>
 							<key>BecomeActive</key>
@@ -598,9 +596,9 @@
 							<key>GeometryConfiguration</key>
 							<dict>
 								<key>Frame</key>
-								<string>{{0, 255}, {898, 236}}</string>
+								<string>{{0, 507}, {1138, 236}}</string>
 								<key>RubberWindowFrame</key>
-								<string>759 446 898 532 0 0 1920 1178 </string>
+								<string>405 267 1138 784 0 0 1920 1178 </string>
 							</dict>
 							<key>Module</key>
 							<string>PBXBuildResultsModule</string>
@@ -609,7 +607,7 @@
 						</dict>
 					</array>
 					<key>Proportion</key>
-					<string>491pt</string>
+					<string>743pt</string>
 				</dict>
 			</array>
 			<key>Name</key>
@@ -630,7 +628,7 @@
 			<key>ToolbarConfiguration</key>
 			<string>xcode.toolbar.config.build</string>
 			<key>WindowString</key>
-			<string>759 446 898 532 0 0 1920 1178 </string>
+			<string>405 267 1138 784 0 0 1920 1178 </string>
 			<key>WindowToolGUID</key>
 			<string>CCCFD8350BEE6EC6006ABC6B</string>
 			<key>WindowToolIsVisible</key>

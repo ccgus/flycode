@@ -62,6 +62,7 @@
     [jamProgress setMaxValue:[self jamLength]];
     [jamProgress setMinValue:0];
     
+    [self updatePeriodTime];
 }
 
 - (int) periodLength {

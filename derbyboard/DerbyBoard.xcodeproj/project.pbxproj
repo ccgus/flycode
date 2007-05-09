@@ -16,6 +16,7 @@
 		CC06A3310BF15D51003BC59B /* DBWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = CC06A32D0BF15D51003BC59B /* DBWindow.m */; };
 		CC06A3340BF15D57003BC59B /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CC06A3330BF15D57003BC59B /* main.m */; };
 		CC06A3720BF16183003BC59B /* header.png in Resources */ = {isa = PBXBuildFile; fileRef = CC06A3710BF16183003BC59B /* header.png */; };
+		CC06A3AE0BF167C0003BC59B /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CC06A3AD0BF167C0003BC59B /* Carbon.framework */; };
 		CCCFD8B60BEE7850006ABC6B /* CToxicProgressIndicator.m in Sources */ = {isa = PBXBuildFile; fileRef = CCCFD8B40BEE7850006ABC6B /* CToxicProgressIndicator.m */; };
 /* End PBXBuildFile section */
 
@@ -39,6 +40,7 @@
 		CC06A3320BF15D57003BC59B /* DerbyBoard_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DerbyBoard_Prefix.pch; path = src/DerbyBoard_Prefix.pch; sourceTree = "<group>"; };
 		CC06A3330BF15D57003BC59B /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = src/main.m; sourceTree = "<group>"; };
 		CC06A3710BF16183003BC59B /* header.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = header.png; sourceTree = "<group>"; };
+		CC06A3AD0BF167C0003BC59B /* Carbon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Carbon.framework; path = /System/Library/Frameworks/Carbon.framework; sourceTree = "<absolute>"; };
 		CCCFD8B40BEE7850006ABC6B /* CToxicProgressIndicator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CToxicProgressIndicator.m; path = toxic/CToxicProgressIndicator.m; sourceTree = "<group>"; };
 		CCCFD8B50BEE7850006ABC6B /* CToxicProgressIndicator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CToxicProgressIndicator.h; path = toxic/CToxicProgressIndicator.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -49,6 +51,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */,
+				CC06A3AE0BF167C0003BC59B /* Carbon.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -75,6 +78,7 @@
 		1058C7A0FEA54F0111CA2CBB /* Linked Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				CC06A3AD0BF167C0003BC59B /* Carbon.framework */,
 				1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */,
 			);
 			name = "Linked Frameworks";
