@@ -1912,7 +1912,8 @@ int lua_objc_methodcall(lua_State* state){
 				resultValue=lua_newuserdata(state,resultSize);
 				bzero(resultValue,resultSize);
 	#ifdef LUA_OBJC_METHODCALL_RETURN_STRUCTS_DIRECTLY
-				if(resultSize<LUA_OBJC_METHODCALL_RETURN_STRUCTS_DIRECTLY_LIMIT){
+                // fix by gus (was < instead of <=) thanks to mikeash
+				if(resultSize<=LUA_OBJC_METHODCALL_RETURN_STRUCTS_DIRECTLY_LIMIT){
 					*((lua_objc_methodcall_struct_result*)resultValue)=((lua_objc_struct_msgSendv)objc_msgSendv)(receiver,selector,argumentSize,argumentList);
 					}
 				else{
