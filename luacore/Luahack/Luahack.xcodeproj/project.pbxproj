@@ -13,8 +13,8 @@
 		CC574F630AE0B84200F337D9 /* LHKeyGrabber.m in Sources */ = {isa = PBXBuildFile; fileRef = CC574F610AE0B84200F337D9 /* LHKeyGrabber.m */; };
 		CC574F830AE0BCC500F337D9 /* LHKeyGrabberView.h in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = CC574F810AE0BCC500F337D9 /* LHKeyGrabberView.h */; };
 		CC574F840AE0BCC500F337D9 /* LHKeyGrabberView.m in Sources */ = {isa = PBXBuildFile; fileRef = CC574F820AE0BCC500F337D9 /* LHKeyGrabberView.m */; };
-		CC9579090AE080BC000F0C5C /* LuaCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CC9579080AE080BC000F0C5C /* LuaCore.framework */; };
-		CC95790D0AE080DC000F0C5C /* LuaCore.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = CC9579080AE080BC000F0C5C /* LuaCore.framework */; };
+		CC7D34490C27B268005C82C8 /* LuaCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CC7D34480C27B268005C82C8 /* LuaCore.framework */; };
+		CC7D34670C27B274005C82C8 /* LuaCore.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = CC7D34480C27B268005C82C8 /* LuaCore.framework */; };
 		CC9579170AE081B3000F0C5C /* LuahackLoader.h in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = CC9579150AE081B3000F0C5C /* LuahackLoader.h */; };
 		CC9579180AE081B3000F0C5C /* LuahackLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = CC9579160AE081B3000F0C5C /* LuahackLoader.m */; };
 		CC9579380AE08823000F0C5C /* expand.lua in Resources */ = {isa = PBXBuildFile; fileRef = CC9579360AE087FB000F0C5C /* expand.lua */; };
@@ -30,7 +30,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				CC95790D0AE080DC000F0C5C /* LuaCore.framework in Copy Frameworks */,
+				CC7D34670C27B274005C82C8 /* LuaCore.framework in Copy Frameworks */,
 				CC9579170AE081B3000F0C5C /* LuahackLoader.h in Copy Frameworks */,
 				CCEB3BFC0AE0B47A00567876 /* LHExtraFunctions.h in Copy Frameworks */,
 				CC574F620AE0B84200F337D9 /* LHKeyGrabber.h in Copy Frameworks */,
@@ -53,7 +53,7 @@
 		CC574F610AE0B84200F337D9 /* LHKeyGrabber.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LHKeyGrabber.m; sourceTree = "<group>"; };
 		CC574F810AE0BCC500F337D9 /* LHKeyGrabberView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LHKeyGrabberView.h; sourceTree = "<group>"; };
 		CC574F820AE0BCC500F337D9 /* LHKeyGrabberView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LHKeyGrabberView.m; sourceTree = "<group>"; };
-		CC9579080AE080BC000F0C5C /* LuaCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = LuaCore.framework; sourceTree = "<group>"; };
+		CC7D34480C27B268005C82C8 /* LuaCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = LuaCore.framework; path = ../../../../builds/Release/LuaCore.framework; sourceTree = SOURCE_ROOT; };
 		CC9579150AE081B3000F0C5C /* LuahackLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LuahackLoader.h; sourceTree = "<group>"; };
 		CC9579160AE081B3000F0C5C /* LuahackLoader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LuahackLoader.m; sourceTree = "<group>"; };
 		CC9579360AE087FB000F0C5C /* expand.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = expand.lua; sourceTree = "<group>"; };
@@ -69,7 +69,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8D5B49B4048680CD000E48DA /* Cocoa.framework in Frameworks */,
-				CC9579090AE080BC000F0C5C /* LuaCore.framework in Frameworks */,
+				CC7D34490C27B268005C82C8 /* LuaCore.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -91,7 +91,7 @@
 		089C1671FE841209C02AAC07 /* Frameworks and Libraries */ = {
 			isa = PBXGroup;
 			children = (
-				CC9579080AE080BC000F0C5C /* LuaCore.framework */,
+				CC7D34480C27B268005C82C8 /* LuaCore.framework */,
 				1058C7ACFEA557BF11CA2CBB /* Linked Frameworks */,
 				1058C7AEFEA557BF11CA2CBB /* Other Frameworks */,
 			);
@@ -191,7 +191,6 @@
 			mainGroup = 089C166AFE841209C02AAC07 /* Luahack */;
 			projectDirPath = "";
 			projectRoot = "";
-			shouldCheckCompatibility = 1;
 			targets = (
 				8D5B49AC048680CD000E48DA /* Luahack */,
 			);
@@ -253,8 +252,10 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_1)",
+					"$(FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_2)",
 				);
 				FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_1 = "\"$(SRCROOT)\"";
+				FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_2 = "\"$(SRCROOT)/../../../../builds/Release\"";
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_ENABLE_FIX_AND_CONTINUE = YES;
 				GCC_ENABLE_OBJC_GC = YES;
@@ -281,8 +282,10 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_1)",
+					"$(FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_2)",
 				);
 				FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_1 = "\"$(SRCROOT)\"";
+				FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_2 = "\"$(SRCROOT)/../../../../builds/Release\"";
 				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
 				GCC_MODEL_TUNING = G5;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -306,6 +309,7 @@
 		1DEB914008733D840010E9CD /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				GCC_ENABLE_OBJC_GC = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				PREBINDING = NO;

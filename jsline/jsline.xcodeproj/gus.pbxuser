@@ -1,15 +1,15 @@
 // !$*UTF8*$!
 {
-	29B97313FDCFA39411CA2CEA /* Project object */ = {
+	08FB7793FE84155DC02AAC07 /* Project object */ = {
 		activeBuildConfigurationName = Release;
-		activeExecutable = CCCFD8230BEE6E39006ABC6B /* DerbyBoard */;
-		activeTarget = 8D1107260486CEB800E47090 /* DerbyBoard */;
+		activeExecutable = CCF6D8000C357835003EF00B /* jsline */;
+		activeTarget = 8DD76F960486AA7600D96B5E /* jsline */;
 		addToTargets = (
-			8D1107260486CEB800E47090 /* DerbyBoard */,
+			8DD76F960486AA7600D96B5E /* jsline */,
 		);
-		codeSenseManager = CCCFD8320BEE6E42006ABC6B /* Code sense */;
+		codeSenseManager = CCF6D8850C357853003EF00B /* Code sense */;
 		executables = (
-			CCCFD8230BEE6E39006ABC6B /* DerbyBoard */,
+			CCF6D8000C357835003EF00B /* jsline */,
 		);
 		perUserDictionary = {
 			PBXConfiguration.PBXFileTableDataSource3.PBXFileTableDataSource = {
@@ -17,7 +17,7 @@
 				PBXFileTableDataSourceColumnSortingKey = PBXFileDataSource_Filename_ColumnID;
 				PBXFileTableDataSourceColumnWidthsKey = (
 					20,
-					243,
+					160,
 					20,
 					48,
 					43,
@@ -40,9 +40,9 @@
 				PBXFileTableDataSourceColumnWidthsKey = (
 					20,
 					200,
-					63,
+					10,
 					20,
-					48,
+					48.1626,
 					43,
 					43,
 				);
@@ -56,41 +56,27 @@
 					PBXFileDataSource_Warnings_ColumnID,
 				);
 			};
-			PBXPerProjectTemplateStateSaveDate = 200817372;
-			PBXWorkspaceStateSaveDate = 200817372;
+			PBXPerProjectTemplateStateSaveDate = 204830773;
+			PBXWorkspaceStateSaveDate = 204830773;
 		};
-		sourceControlManager = CCCFD8310BEE6E42006ABC6B /* Source Control */;
+		sourceControlManager = CCF6D8840C357853003EF00B /* Source Control */;
 		userBuildSettings = {
 		};
 	};
-	8D1107260486CEB800E47090 /* DerbyBoard */ = {
+	08FB7796FE84155DC02AAC07 /* jsline.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {738, 1624}}";
+			sepNavSelRange = "{415, 0}";
+			sepNavVisRect = "{{0, 74}, {738, 118}}";
+		};
+	};
+	8DD76F960486AA7600D96B5E /* jsline */ = {
 		activeExec = 0;
 		executables = (
-			CCCFD8230BEE6E39006ABC6B /* DerbyBoard */,
+			CCF6D8000C357835003EF00B /* jsline */,
 		);
 	};
-	CC06A3260BF15D51003BC59B /* DBController.h */ = {
-		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {937, 896}}";
-			sepNavSelRange = "{786, 0}";
-			sepNavVisRect = "{{0, 85}, {937, 796}}";
-		};
-	};
-	CC06A3270BF15D51003BC59B /* DBController.m */ = {
-		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1298, 4018}}";
-			sepNavSelRange = "{1900, 0}";
-			sepNavVisRect = "{{0, 402}, {1298, 1002}}";
-		};
-	};
-	CC06A32D0BF15D51003BC59B /* DBWindow.m */ = {
-		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1298, 1002}}";
-			sepNavSelRange = "{832, 0}";
-			sepNavVisRect = "{{0, 0}, {1298, 1002}}";
-		};
-	};
-	CCCFD8230BEE6E39006ABC6B /* DerbyBoard */ = {
+	CCF6D8000C357835003EF00B /* jsline */ = {
 		isa = PBXExecutable;
 		activeArgIndex = 2147483647;
 		activeArgIndices = (
@@ -110,13 +96,11 @@
 		executableSystemSymbolLevel = 0;
 		executableUserSymbolLevel = 0;
 		libgmallocEnabled = 0;
-		name = DerbyBoard;
-		savedGlobals = {
-		};
+		name = jsline;
 		sourceDirectories = (
 		);
 	};
-	CCCFD8310BEE6E42006ABC6B /* Source Control */ = {
+	CCF6D8840C357853003EF00B /* Source Control */ = {
 		isa = PBXSourceControlManager;
 		fallbackIsa = XCSourceControlManager;
 		isSCMEnabled = 0;
@@ -124,22 +108,8 @@
 		};
 		scmType = "";
 	};
-	CCCFD8320BEE6E42006ABC6B /* Code sense */ = {
+	CCF6D8850C357853003EF00B /* Code sense */ = {
 		isa = PBXCodeSenseManager;
 		indexTemplatePath = "";
-	};
-	CCCFD8B40BEE7850006ABC6B /* CToxicProgressIndicator.m */ = {
-		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1132, 4830}}";
-			sepNavSelRange = "{814, 36}";
-			sepNavVisRect = "{{0, 3896}, {1132, 934}}";
-		};
-	};
-	CCCFD8B50BEE7850006ABC6B /* CToxicProgressIndicator.h */ = {
-		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1392, 1092}}";
-			sepNavSelRange = "{194, 23}";
-			sepNavVisRect = "{{0, 0}, {1392, 894}}";
-		};
 	};
 }
