@@ -3,6 +3,26 @@
 
 #define debug NSLog
 
+
+
+static JSValueRef print_callAsFunction(JSContextRef context, JSObjectRef functionObject, JSObjectRef thisObject, size_t argumentCount, const JSValueRef arguments[], JSValueRef* exception)
+{
+    //UNUSED_PARAM(functionObject);
+    //UNUSED_PARAM(thisObject);
+    
+    if (argumentCount > 0) {
+        JSStringRef string = JSValueToStringCopy(context, arguments[0], NULL);
+        size_t sizeUTF8 = JSStringGetMaximumUTF8CStringSize(string);
+        char stringUTF8[sizeUTF8];
+        JSStringGetUTF8CString(string, stringUTF8, sizeUTF8);
+        printf("output: %s\n", stringUTF8);
+        JSStringRelease(string);
+    }
+    
+    return JSValueMakeNull(context);
+}
+
+
 // I'm a theif:
 // http://www.cocoabuilder.com/archive/message/cocoa/2005/9/27/147038
 
@@ -19,6 +39,17 @@
     if ((self = [super init])) {
         
         ctx = JSGlobalContextCreate(NULL);
+        
+        JSObjectRef globalObject = JSContextGetGlobalObject(ctx);
+        JSStringRef print = JSStringCreateWithUTF8CString("print");
+        JSObjectRef printFunction = JSObjectMakeFunctionWithCallback(ctx, print, print_callAsFunction);
+        JSObjectSetProperty(ctx, globalObject, print, printFunction, kJSPropertyAttributeNone, NULL); 
+        JSStringRelease(print);
+        
+        assert(!JSObjectSetPrivate(printFunction, (void*)1));
+        assert(!JSObjectGetPrivate(printFunction));
+        
+        
         
         // Read from stdin
         NSFileHandle *inHandle = [NSFileHandle fileHandleWithStandardInput];
@@ -113,3 +144,5 @@ int main (int argc, const char * argv[]) {
     [pool release];
     return 0;
 }
+
+
