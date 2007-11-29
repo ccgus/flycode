@@ -9,7 +9,7 @@ if [ -d gbhack_src ]; then
 fi
 
 
-svn export svn+ssh://elvis.mu.org/home/mu.org/home/gus/subversion/stuff/gbhack/trunk gbhack_src
+svn export svn+ssh://flycode.googlecode.com/svn/trunk/gbmoviehack/ gbhack_src
 
 if [ -f gbhack_src.tgz ] ; then
     rm gbhack_src.tgz
@@ -17,4 +17,4 @@ fi
 
 tar cvfz gbhack_src.tgz gbhack_src
 
-scp gbhack_src.tgz gus@elvis:~/www/gbhack/.
+scp gbhack_src.tgz gus@elvis:~/www/x/.

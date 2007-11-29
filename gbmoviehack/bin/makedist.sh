@@ -14,4 +14,4 @@ cp resources/Info dist/GBHack/.
 cd dist
 
 tar cvfz GBHack.tgz GBHack
-scp GBHack.tgz gus@elvis:~/www/gbhack/.
+scp GBHack.tgz gus@elvis:~/www/x/.
