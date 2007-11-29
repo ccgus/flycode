@@ -15,11 +15,11 @@ static JSValueRef print_callAsFunction(JSContextRef context, JSObjectRef functio
         size_t sizeUTF8 = JSStringGetMaximumUTF8CStringSize(string);
         char stringUTF8[sizeUTF8];
         JSStringGetUTF8CString(string, stringUTF8, sizeUTF8);
-        printf("output: %s\n", stringUTF8);
+        printf("%s\n", stringUTF8);
         JSStringRelease(string);
     }
     
-    return JSValueMakeNull(context);
+    return JSValueMakeUndefined(context);
 }
 
 

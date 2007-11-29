@@ -1,0 +1,420 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 42;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		8D5B49B4048680CD000E48DA /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7ADFEA557BF11CA2CBB /* Cocoa.framework */; };
+		CC14F2EF0681EF2800B94885 /* gbhack.h in Headers */ = {isa = PBXBuildFile; fileRef = CC14F2EC0681EF2800B94885 /* gbhack.h */; };
+		CC14F2F00681EF2800B94885 /* gbhack.m in Sources */ = {isa = PBXBuildFile; fileRef = CC14F2ED0681EF2800B94885 /* gbhack.m */; };
+		CC14F2F10681EF2800B94885 /* gbhack.pch in Headers */ = {isa = PBXBuildFile; fileRef = CC14F2EE0681EF2800B94885 /* gbhack.pch */; };
+		CC14F35B0681F61A00B94885 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = CC14F3590681F61A00B94885 /* InfoPlist.strings */; };
+		CC20CD8D06060DEB00010D21 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CC20CD8006060DEB00010D21 /* main.m */; };
+		CC2CA7880CFE38E300A99D22 /* GBViewAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = CC2CA7840CFE38E300A99D22 /* GBViewAdditions.m */; };
+		CC2CA7890CFE38E300A99D22 /* GBViewAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = CC2CA7850CFE38E300A99D22 /* GBViewAdditions.h */; };
+		CC2CA78A0CFE38E300A99D22 /* GBMovieWindowController.h in Headers */ = {isa = PBXBuildFile; fileRef = CC2CA7860CFE38E300A99D22 /* GBMovieWindowController.h */; };
+		CC2CA78B0CFE38E300A99D22 /* GBMovieWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = CC2CA7870CFE38E300A99D22 /* GBMovieWindowController.m */; };
+		CC620CA40CFE27FE009F0E7D /* MovieWindow.nib in Resources */ = {isa = PBXBuildFile; fileRef = CC620CA20CFE27FE009F0E7D /* MovieWindow.nib */; };
+		CC620CBA0CFE295C009F0E7D /* QTKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CC620CB90CFE295C009F0E7D /* QTKit.framework */; };
+		CC9B487005D2939B0026F5FD /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CC9B486F05D2939B0026F5FD /* Carbon.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		089C1672FE841209C02AAC07 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = /System/Library/Frameworks/Foundation.framework; sourceTree = "<absolute>"; };
+		089C167FFE841241C02AAC07 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = /System/Library/Frameworks/AppKit.framework; sourceTree = "<absolute>"; };
+		1058C7ADFEA557BF11CA2CBB /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = /System/Library/Frameworks/Cocoa.framework; sourceTree = "<absolute>"; };
+		8D5B49B6048680CD000E48DA /* GBHack.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GBHack.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
+		CC14F2EC0681EF2800B94885 /* gbhack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = gbhack.h; path = src/gbhack.h; sourceTree = "<group>"; };
+		CC14F2ED0681EF2800B94885 /* gbhack.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = gbhack.m; path = src/gbhack.m; sourceTree = "<group>"; };
+		CC14F2EE0681EF2800B94885 /* gbhack.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = gbhack.pch; path = src/gbhack.pch; sourceTree = "<group>"; };
+		CC14F35A0681F61A00B94885 /* English */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = English; path = resources/English.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		CC20CD8006060DEB00010D21 /* main.m */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.objc; name = main.m; path = src/main.m; sourceTree = "<group>"; };
+		CC20CD9A06060DFC00010D21 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text.xml; name = Info.plist; path = resources/Info.plist; sourceTree = "<group>"; };
+		CC2CA7840CFE38E300A99D22 /* GBViewAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GBViewAdditions.m; path = src/GBViewAdditions.m; sourceTree = "<group>"; };
+		CC2CA7850CFE38E300A99D22 /* GBViewAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GBViewAdditions.h; path = src/GBViewAdditions.h; sourceTree = "<group>"; };
+		CC2CA7860CFE38E300A99D22 /* GBMovieWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GBMovieWindowController.h; path = src/GBMovieWindowController.h; sourceTree = "<group>"; };
+		CC2CA7870CFE38E300A99D22 /* GBMovieWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GBMovieWindowController.m; path = src/GBMovieWindowController.m; sourceTree = "<group>"; };
+		CC620CA30CFE27FE009F0E7D /* English */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = English; path = resources/English.lproj/MovieWindow.nib; sourceTree = "<group>"; };
+		CC620CB90CFE295C009F0E7D /* QTKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QTKit.framework; path = /System/Library/Frameworks/QTKit.framework; sourceTree = "<absolute>"; };
+		CC9B486F05D2939B0026F5FD /* Carbon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Carbon.framework; path = /System/Library/Frameworks/Carbon.framework; sourceTree = "<absolute>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		8D5B49B3048680CD000E48DA /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8D5B49B4048680CD000E48DA /* Cocoa.framework in Frameworks */,
+				CC9B487005D2939B0026F5FD /* Carbon.framework in Frameworks */,
+				CC620CBA0CFE295C009F0E7D /* QTKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		089C166AFE841209C02AAC07 /* ODBI */ = {
+			isa = PBXGroup;
+			children = (
+				32C88E010371C26100C91783 /* src */,
+				089C167CFE841241C02AAC07 /* Resources */,
+				089C1671FE841209C02AAC07 /* Frameworks and Libraries */,
+				19C28FB8FE9D52D311CA2CBB /* Products */,
+			);
+			name = ODBI;
+			sourceTree = "<group>";
+		};
+		089C1671FE841209C02AAC07 /* Frameworks and Libraries */ = {
+			isa = PBXGroup;
+			children = (
+				1058C7ACFEA557BF11CA2CBB /* Linked Frameworks */,
+				1058C7AEFEA557BF11CA2CBB /* Other Frameworks */,
+			);
+			name = "Frameworks and Libraries";
+			sourceTree = "<group>";
+		};
+		089C167CFE841241C02AAC07 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				CC620CA20CFE27FE009F0E7D /* MovieWindow.nib */,
+				CC20CD9A06060DFC00010D21 /* Info.plist */,
+				CC14F3590681F61A00B94885 /* InfoPlist.strings */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		1058C7ACFEA557BF11CA2CBB /* Linked Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				CC620CB90CFE295C009F0E7D /* QTKit.framework */,
+				CC9B486F05D2939B0026F5FD /* Carbon.framework */,
+				1058C7ADFEA557BF11CA2CBB /* Cocoa.framework */,
+			);
+			name = "Linked Frameworks";
+			sourceTree = "<group>";
+		};
+		1058C7AEFEA557BF11CA2CBB /* Other Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				089C1672FE841209C02AAC07 /* Foundation.framework */,
+				089C167FFE841241C02AAC07 /* AppKit.framework */,
+			);
+			name = "Other Frameworks";
+			sourceTree = "<group>";
+		};
+		19C28FB8FE9D52D311CA2CBB /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				8D5B49B6048680CD000E48DA /* GBHack.bundle */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		32C88E010371C26100C91783 /* src */ = {
+			isa = PBXGroup;
+			children = (
+				CC2CA7840CFE38E300A99D22 /* GBViewAdditions.m */,
+				CC2CA7850CFE38E300A99D22 /* GBViewAdditions.h */,
+				CC2CA7860CFE38E300A99D22 /* GBMovieWindowController.h */,
+				CC2CA7870CFE38E300A99D22 /* GBMovieWindowController.m */,
+				CC20CD8006060DEB00010D21 /* main.m */,
+				CC14F2EC0681EF2800B94885 /* gbhack.h */,
+				CC14F2ED0681EF2800B94885 /* gbhack.m */,
+				CC14F2EE0681EF2800B94885 /* gbhack.pch */,
+			);
+			name = src;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		8D5B49AD048680CD000E48DA /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CC14F2EF0681EF2800B94885 /* gbhack.h in Headers */,
+				CC14F2F10681EF2800B94885 /* gbhack.pch in Headers */,
+				CC2CA7890CFE38E300A99D22 /* GBViewAdditions.h in Headers */,
+				CC2CA78A0CFE38E300A99D22 /* GBMovieWindowController.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		8D5B49AC048680CD000E48DA /* gbhack */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CCA4230C086E04900080B79A /* Build configuration list for PBXNativeTarget "gbhack" */;
+			buildPhases = (
+				8D5B49AD048680CD000E48DA /* Headers */,
+				8D5B49AF048680CD000E48DA /* Resources */,
+				8D5B49B1048680CD000E48DA /* Sources */,
+				8D5B49B3048680CD000E48DA /* Frameworks */,
+				8D5B49B5048680CD000E48DA /* Rez */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = gbhack;
+			productInstallPath = "$(HOME)/Library/Bundles";
+			productName = ODBI;
+			productReference = 8D5B49B6048680CD000E48DA /* GBHack.bundle */;
+			productType = "com.apple.product-type.bundle";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		089C1669FE841209C02AAC07 /* Project object */ = {
+			isa = PBXProject;
+			buildConfigurationList = CCA42310086E04900080B79A /* Build configuration list for PBXProject "gbhack" */;
+			compatibilityVersion = "Xcode 2.4";
+			hasScannedForEncodings = 1;
+			mainGroup = 089C166AFE841209C02AAC07 /* ODBI */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				8D5B49AC048680CD000E48DA /* gbhack */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		8D5B49AF048680CD000E48DA /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CC14F35B0681F61A00B94885 /* InfoPlist.strings in Resources */,
+				CC620CA40CFE27FE009F0E7D /* MovieWindow.nib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXRezBuildPhase section */
+		8D5B49B5048680CD000E48DA /* Rez */ = {
+			isa = PBXRezBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXRezBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		8D5B49B1048680CD000E48DA /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CC20CD8D06060DEB00010D21 /* main.m in Sources */,
+				CC14F2F00681EF2800B94885 /* gbhack.m in Sources */,
+				CC2CA7880CFE38E300A99D22 /* GBViewAdditions.m in Sources */,
+				CC2CA78B0CFE38E300A99D22 /* GBMovieWindowController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		CC14F3590681F61A00B94885 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				CC14F35A0681F61A00B94885 /* English */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		CC620CA20CFE27FE009F0E7D /* MovieWindow.nib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				CC620CA30CFE27FE009F0E7D /* English */,
+			);
+			name = MovieWindow.nib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		CCA4230D086E04900080B79A /* Development */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = (
+					i386,
+					ppc,
+				);
+				COPY_PHASE_STRIP = NO;
+				DEBUGGING_SYMBOLS = YES;
+				FRAMEWORK_SEARCH_PATHS = "";
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_FIX_AND_CONTINUE = YES;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_ENABLE_TRIGRAPHS = NO;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = src/gbhack.pch;
+				GCC_WARN_FOUR_CHARACTER_CONSTANTS = NO;
+				GCC_WARN_UNKNOWN_PRAGMAS = NO;
+				HEADER_SEARCH_PATHS = "";
+				INFOPLIST_FILE = resources/Info.plist;
+				INSTALL_PATH = "$(HOME)/Library/InputManagers";
+				LIBRARY_SEARCH_PATHS = (
+					"$(LIBRARY_SEARCH_PATHS)",
+					"$(SRCROOT)/src/lua",
+				);
+				LIBRARY_STYLE = Bundle;
+				OPTIMIZATION_CFLAGS = "-O0";
+				OTHER_CFLAGS = "-DDEBUG";
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = GBHack;
+				SECTORDER_FLAGS = "";
+				VALID_ARCHS = "ppc64 ppc7400 ppc970 i386 x86_64 ppc";
+				WARNING_CFLAGS = (
+					"-Wmost",
+					"-Wno-four-char-constants",
+					"-Wno-unknown-pragmas",
+				);
+				WRAPPER_EXTENSION = bundle;
+				ZERO_LINK = YES;
+			};
+			name = Development;
+		};
+		CCA4230E086E04900080B79A /* Deployment */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COPY_PHASE_STRIP = YES;
+				FRAMEWORK_SEARCH_PATHS = "";
+				GCC_ENABLE_FIX_AND_CONTINUE = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_ENABLE_TRIGRAPHS = NO;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = src/gbhack.pch;
+				GCC_WARN_FOUR_CHARACTER_CONSTANTS = NO;
+				GCC_WARN_UNKNOWN_PRAGMAS = NO;
+				HEADER_SEARCH_PATHS = "";
+				INFOPLIST_FILE = resources/Info.plist;
+				INSTALL_PATH = "$(HOME)/Library/InputManagers";
+				LIBRARY_SEARCH_PATHS = (
+					"$(LIBRARY_SEARCH_PATHS)",
+					"$(SRCROOT)/src/lua",
+				);
+				LIBRARY_STYLE = Bundle;
+				OTHER_CFLAGS = "";
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = GBHack;
+				SECTORDER_FLAGS = "";
+				WARNING_CFLAGS = (
+					"-Wmost",
+					"-Wno-four-char-constants",
+					"-Wno-unknown-pragmas",
+				);
+				WRAPPER_EXTENSION = bundle;
+				ZERO_LINK = NO;
+			};
+			name = Deployment;
+		};
+		CCA4230F086E04900080B79A /* Default */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = "";
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_ENABLE_TRIGRAPHS = NO;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = src/gbhack.pch;
+				GCC_WARN_FOUR_CHARACTER_CONSTANTS = NO;
+				GCC_WARN_UNKNOWN_PRAGMAS = NO;
+				HEADER_SEARCH_PATHS = "";
+				INFOPLIST_FILE = resources/Info.plist;
+				INSTALL_PATH = "$(HOME)/Library/InputManagers";
+				LIBRARY_SEARCH_PATHS = (
+					"$(LIBRARY_SEARCH_PATHS)",
+					"$(SRCROOT)/src/lua",
+				);
+				LIBRARY_STYLE = Bundle;
+				OTHER_CFLAGS = "";
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = GBHack;
+				SECTORDER_FLAGS = "";
+				WARNING_CFLAGS = (
+					"-Wmost",
+					"-Wno-four-char-constants",
+					"-Wno-unknown-pragmas",
+				);
+				WRAPPER_EXTENSION = bundle;
+			};
+			name = Default;
+		};
+		CCA42311086E04900080B79A /* Development */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = (
+					ppc,
+					i386,
+				);
+				OTHER_CFLAGS = "-DDEBUG";
+				OTHER_LDFLAGS = (
+					"-undefined",
+					dynamic_lookup,
+				);
+				SDKROOT = /Developer/SDKs/MacOSX10.4u.sdk;
+			};
+			name = Development;
+		};
+		CCA42312086E04900080B79A /* Deployment */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = (
+					ppc,
+					i386,
+				);
+				OTHER_LDFLAGS = (
+					"-undefined",
+					dynamic_lookup,
+				);
+				SDKROOT = /Developer/SDKs/MacOSX10.4u.sdk;
+			};
+			name = Deployment;
+		};
+		CCA42313086E04900080B79A /* Default */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = (
+					ppc,
+					i386,
+				);
+				SDKROOT = /Developer/SDKs/MacOSX10.4u.sdk;
+			};
+			name = Default;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		CCA4230C086E04900080B79A /* Build configuration list for PBXNativeTarget "gbhack" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CCA4230D086E04900080B79A /* Development */,
+				CCA4230E086E04900080B79A /* Deployment */,
+				CCA4230F086E04900080B79A /* Default */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Default;
+		};
+		CCA42310086E04900080B79A /* Build configuration list for PBXProject "gbhack" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CCA42311086E04900080B79A /* Development */,
+				CCA42312086E04900080B79A /* Deployment */,
+				CCA42313086E04900080B79A /* Default */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Default;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 089C1669FE841209C02AAC07 /* Project object */;
+}

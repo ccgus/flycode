@@ -65,9 +65,9 @@
 	};
 	08FB7796FE84155DC02AAC07 /* jsline.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {738, 1624}}";
-			sepNavSelRange = "{415, 0}";
-			sepNavVisRect = "{{0, 74}, {738, 118}}";
+			sepNavIntBoundsRect = "{{0, 0}, {1228, 2086}}";
+			sepNavSelRange = "{1144, 0}";
+			sepNavVisRect = "{{0, 0}, {1228, 950}}";
 		};
 	};
 	8DD76F960486AA7600D96B5E /* jsline */ = {
