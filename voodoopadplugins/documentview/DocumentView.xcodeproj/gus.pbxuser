@@ -34,7 +34,7 @@
 				PBXFileTableDataSourceColumnSortingKey = PBXFileDataSource_Filename_ColumnID;
 				PBXFileTableDataSourceColumnWidthsKey = (
 					20,
-					268,
+					251,
 					20,
 					48,
 					43,
@@ -51,8 +51,8 @@
 					PBXFileDataSource_Target_ColumnID,
 				);
 			};
-			PBXPerProjectTemplateStateSaveDate = 197514141;
-			PBXWorkspaceStateSaveDate = 197514141;
+			PBXPerProjectTemplateStateSaveDate = 221640805;
+			PBXWorkspaceStateSaveDate = 221640805;
 		};
 		sourceControlManager = CCD5A7670BC5A8FC009E02D3 /* Source Control */;
 		userBuildSettings = {
@@ -67,8 +67,9 @@
 	};
 	CC29762007344E7D00F8D6C4 /* DocumentViewPlugin.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1069, 1092}}";
-			sepNavSelRange = "{0, 0}";
+			sepNavIntBoundsRect = "{{0, 0}, {1350, 1302}}";
+			sepNavSelRange = "{1612, 0}";
+			sepNavVisRange = "{352, 2429}";
 			sepNavVisRect = "{{0, 0}, {1069, 857}}";
 		};
 	};
@@ -88,7 +89,6 @@
 	};
 	CCD5A7970BC5AA7C009E02D3 /* VoodooPad Pro */ = {
 		isa = PBXExecutable;
-		activeArgIndex = 2147483647;
 		activeArgIndices = (
 		);
 		argumentStrings = (
@@ -132,8 +132,9 @@
 	};
 	CCD5A7BE0BC5AC21009E02D3 /* DocumentViewWindowController.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1069, 2128}}";
+			sepNavIntBoundsRect = "{{0, 0}, {1201, 2128}}";
 			sepNavSelRange = "{0, 0}";
+			sepNavVisRange = "{2550, 2948}";
 			sepNavVisRect = "{{0, 0}, {1069, 857}}";
 		};
 	};

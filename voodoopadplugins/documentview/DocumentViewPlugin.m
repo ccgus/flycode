@@ -32,8 +32,27 @@
 - (void) viewDocument:(id<VPPluginWindowController>)windowController {
     
     NSMutableAttributedString *as   = [[NSMutableAttributedString alloc] init];
-    NSEnumerator *e                 = [[[windowController document] keys] objectEnumerator];
     NSString *lineBreak             = [NSString stringWithFormat: @"\n%C", NSFormFeedCharacter];
+    
+#define DocumentViewPagesList @"documentviewpagelist"
+    
+    NSArray *pagesList = [[windowController document] keys];
+    
+    if ([pagesList containsObject:DocumentViewPagesList]) {
+        id <VPData> vpData = [[windowController document] pageForKey:DocumentViewPagesList];
+        
+        if ([vpData type] != VPPageType) {
+            NSBeep();
+            NSLog(@"Um... DocumentViewPagesList isn't a page.");
+            return;
+        }
+        
+        // ok, "lowercaseString" isn't exactly the algorithm VoodooPad uses for key names... but it's close enough for this.
+        NSCharacterSet *newlineCharSet = [NSCharacterSet newlineCharacterSet];
+        pagesList = [[[[vpData dataAsAttributedString] mutableString] lowercaseString] componentsSeparatedByCharactersInSet:newlineCharSet];
+    }
+    
+    NSEnumerator *e                 = [pagesList objectEnumerator];
     NSString *key                   = [e nextObject];
     
     while (key) {
