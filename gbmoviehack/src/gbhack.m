@@ -18,11 +18,15 @@
     }
     
     if ([@"com.apple.garageband" isEqualToString:bundleId]) {
+        debug(@"I'm in... I think.");
         NSMenuItem *editMenu = [mainMenu itemWithTitle:@"Edit"];
         NSMenuItem *sep = [NSMenuItem separatorItem];
         [[editMenu submenu] addItem: sep];
         
         NSMenuItem *gbCommand = [[editMenu submenu] addItemWithTitle:@"Open Video in Window" action:@selector(gbVideo:) keyEquivalent:@"'"];
+        
+        debug(@"gbCommand: %@", gbCommand);
+        
         [gbCommand setKeyEquivalentModifierMask:NSControlKeyMask | NSCommandKeyMask];
     }
 }

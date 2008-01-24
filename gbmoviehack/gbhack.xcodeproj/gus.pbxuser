@@ -57,7 +57,7 @@
 					345,
 					60,
 					20,
-					48.16259765625,
+					48,
 					43,
 					43,
 				);
@@ -71,8 +71,8 @@
 					PBXFileDataSource_Warnings_ColumnID,
 				);
 			};
-			PBXPerProjectTemplateStateSaveDate = 217986923;
-			PBXWorkspaceStateSaveDate = 217986923;
+			PBXPerProjectTemplateStateSaveDate = 220226772;
+			PBXWorkspaceStateSaveDate = 220226772;
 		};
 		sourceControlManager = CC2CA7820CFE376D00A99D22 /* Source Control */;
 		userBuildSettings = {
@@ -90,9 +90,16 @@
 	};
 	CC14F2ED0681EF2800B94885 /* gbhack.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {951, 733}}";
-			sepNavSelRange = "{203, 0}";
-			sepNavVisRange = "{0, 820}";
+			sepNavIntBoundsRect = "{{0, 0}, {1240, 855}}";
+			sepNavSelRange = "{441, 0}";
+			sepNavVisRange = "{0, 920}";
+		};
+	};
+	CC14F2EE0681EF2800B94885 /* gbhack.pch */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1240, 855}}";
+			sepNavSelRange = "{248, 0}";
+			sepNavVisRange = "{0, 409}";
 		};
 	};
 	CC20CD8006060DEB00010D21 /* main.m */ = {

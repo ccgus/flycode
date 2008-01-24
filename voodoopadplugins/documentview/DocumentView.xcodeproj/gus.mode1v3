@@ -360,6 +360,8 @@
 							<string>0pt</string>
 						</dict>
 						<dict>
+							<key>BecomeActive</key>
+							<true/>
 							<key>ContentConfiguration</key>
 							<dict>
 								<key>PBXProjectModuleGUID</key>
@@ -396,9 +398,9 @@
 			</array>
 			<key>TableOfContents</key>
 			<array>
-				<string>CC01F6CA0D35F868003E85F4</string>
+				<string>CC5DE6600D36001E00FE40FA</string>
 				<string>1CE0B1FE06471DED0097A5F4</string>
-				<string>CC01F6CB0D35F868003E85F4</string>
+				<string>CC5DE6610D36001E00FE40FA</string>
 				<string>1CE0B20306471E060097A5F4</string>
 				<string>1CE0B20506471E060097A5F4</string>
 			</array>
@@ -517,7 +519,7 @@
 	<key>StatusbarIsVisible</key>
 	<true/>
 	<key>TimeStamp</key>
-	<real>221642001.74645901</real>
+	<real>221642822.56862599</real>
 	<key>ToolbarDisplayMode</key>
 	<integer>2</integer>
 	<key>ToolbarIsVisible</key>
@@ -532,14 +534,10 @@
 	<integer>5</integer>
 	<key>WindowOrderList</key>
 	<array>
-		<string>1CD10A99069EF8BA00B06720</string>
-		<string>CC01F6E40D35FCA8003E85F4</string>
-		<string>CC01F6E50D35FCA8003E85F4</string>
-		<string>CC01F6E60D35FCA8003E85F4</string>
+		<string>/Volumes/srv/Users/gus/Projects/flycode/voodoopadplugins/documentview/DocumentView.xcodeproj</string>
 		<string>CC01F6D00D35F8F2003E85F4</string>
 		<string>1C78EAAD065D492600B07095</string>
-		<string>CC01F6E70D35FCA8003E85F4</string>
-		<string>/Volumes/srv/Users/gus/Projects/flycode/voodoopadplugins/documentview/DocumentView.xcodeproj</string>
+		<string>1CD10A99069EF8BA00B06720</string>
 	</array>
 	<key>WindowString</key>
 	<string>966 434 698 549 0 0 1920 1178 </string>
@@ -621,7 +619,7 @@
 			<key>TableOfContents</key>
 			<array>
 				<string>CC01F6D00D35F8F2003E85F4</string>
-				<string>CC01F6D10D35F8F2003E85F4</string>
+				<string>CC5DE6620D36001E00FE40FA</string>
 				<string>1CD0528F0623707200166675</string>
 				<string>XCMainBuildResultsModuleGUID</string>
 			</array>
@@ -741,13 +739,13 @@
 			<key>TableOfContents</key>
 			<array>
 				<string>1CD10A99069EF8BA00B06720</string>
-				<string>CC01F6D20D35F8F2003E85F4</string>
+				<string>CC5DE6630D36001E00FE40FA</string>
 				<string>1C162984064C10D400B95A72</string>
-				<string>CC01F6D30D35F8F2003E85F4</string>
-				<string>CC01F6D40D35F8F2003E85F4</string>
-				<string>CC01F6D50D35F8F2003E85F4</string>
-				<string>CC01F6D60D35F8F2003E85F4</string>
-				<string>CC01F6D70D35F8F2003E85F4</string>
+				<string>CC5DE6640D36001E00FE40FA</string>
+				<string>CC5DE6650D36001E00FE40FA</string>
+				<string>CC5DE6660D36001E00FE40FA</string>
+				<string>CC5DE6670D36001E00FE40FA</string>
+				<string>CC5DE6680D36001E00FE40FA</string>
 			</array>
 			<key>ToolbarConfiguration</key>
 			<string>xcode.toolbar.config.debugV3</string>
@@ -756,7 +754,7 @@
 			<key>WindowToolGUID</key>
 			<string>1CD10A99069EF8BA00B06720</string>
 			<key>WindowToolIsVisible</key>
-			<false/>
+			<true/>
 		</dict>
 		<dict>
 			<key>Identifier</key>
@@ -911,7 +909,7 @@
 			<key>TableOfContents</key>
 			<array>
 				<string>1C78EAAD065D492600B07095</string>
-				<string>CC01F6D80D35F8F2003E85F4</string>
+				<string>CC5DE6690D36001E00FE40FA</string>
 				<string>1C78EAAC065D492600B07095</string>
 			</array>
 			<key>ToolbarConfiguration</key>

@@ -7,11 +7,11 @@
     #import <AppKit/AppKit.h>
 #endif
 
-#ifdef DEBUG
+//#ifdef DEBUG
     #define debug(...) NSLog(__VA_ARGS__)
-#else
-    #define debug(...)
-#endif
+//#else
+//    #define debug(...)
+//#endif
 
 
 #define FMRelease(_x) { [_x release]; _x = 0x00; }

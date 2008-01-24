@@ -1,0 +1,120 @@
+// !$*UTF8*$!
+{
+	089C1669FE841209C02AAC07 /* Project object */ = {
+		activeArchitecture = i386;
+		activeBuildConfigurationName = Release;
+		activeExecutable = CCE615200D469055005E1E71 /* Acorn */;
+		activeTarget = 8D5B49AC048680CD000E48DA /* MediaBrowser */;
+		addToTargets = (
+			8D5B49AC048680CD000E48DA /* MediaBrowser */,
+		);
+		breakpoints = (
+		);
+		codeSenseManager = CC7743EA0D468ED2000BCA8B /* Code sense */;
+		executables = (
+			CCE615200D469055005E1E71 /* Acorn */,
+		);
+		perUserDictionary = {
+			PBXConfiguration.PBXFileTableDataSource3.PBXExecutablesDataSource = {
+				PBXFileTableDataSourceColumnSortingDirectionKey = "-1";
+				PBXFileTableDataSourceColumnSortingKey = PBXExecutablesDataSource_NameID;
+				PBXFileTableDataSourceColumnWidthsKey = (
+					22,
+					300,
+					123,
+				);
+				PBXFileTableDataSourceColumnsKey = (
+					PBXExecutablesDataSource_ActiveFlagID,
+					PBXExecutablesDataSource_NameID,
+					PBXExecutablesDataSource_CommentsID,
+				);
+			};
+			PBXConfiguration.PBXFileTableDataSource3.PBXFileTableDataSource = {
+				PBXFileTableDataSourceColumnSortingDirectionKey = "-1";
+				PBXFileTableDataSourceColumnSortingKey = PBXFileDataSource_Filename_ColumnID;
+				PBXFileTableDataSourceColumnWidthsKey = (
+					20,
+					235,
+					20,
+					48,
+					43,
+					43,
+					20,
+				);
+				PBXFileTableDataSourceColumnsKey = (
+					PBXFileDataSource_FiletypeID,
+					PBXFileDataSource_Filename_ColumnID,
+					PBXFileDataSource_Built_ColumnID,
+					PBXFileDataSource_ObjectSize_ColumnID,
+					PBXFileDataSource_Errors_ColumnID,
+					PBXFileDataSource_Warnings_ColumnID,
+					PBXFileDataSource_Target_ColumnID,
+				);
+			};
+			PBXPerProjectTemplateStateSaveDate = 222841569;
+			PBXWorkspaceStateSaveDate = 222841569;
+		};
+		sourceControlManager = CC7743E90D468ED2000BCA8B /* Source Control */;
+		userBuildSettings = {
+		};
+	};
+	8D5B49AC048680CD000E48DA /* MediaBrowser */ = {
+		activeExec = 0;
+	};
+	CC7743E90D468ED2000BCA8B /* Source Control */ = {
+		isa = PBXSourceControlManager;
+		fallbackIsa = XCSourceControlManager;
+		isSCMEnabled = 0;
+		scmConfiguration = {
+		};
+	};
+	CC7743EA0D468ED2000BCA8B /* Code sense */ = {
+		isa = PBXCodeSenseManager;
+		indexTemplatePath = "";
+	};
+	CCE615200D469055005E1E71 /* Acorn */ = {
+		isa = PBXExecutable;
+		activeArgIndices = (
+			YES,
+		);
+		argumentStrings = (
+			"-plugin /Volumes/srv/Users/gus/builds/Release/MediaBrowser.acplugin",
+		);
+		autoAttachOnCrash = 1;
+		breakpointsEnabled = 0;
+		configStateDict = {
+		};
+		customDataFormattersEnabled = 1;
+		debuggerPlugin = GDBDebugging;
+		disassemblyDisplayState = 0;
+		dylibVariantSuffix = "";
+		enableDebugStr = 1;
+		environmentEntries = (
+		);
+		executableSystemSymbolLevel = 0;
+		executableUserSymbolLevel = 0;
+		launchableReference = CCE615210D469055005E1E71 /* Acorn.app */;
+		libgmallocEnabled = 0;
+		name = Acorn;
+		savedGlobals = {
+		};
+		sourceDirectories = (
+		);
+		variableFormatDictionary = {
+		};
+	};
+	CCE615210D469055005E1E71 /* Acorn.app */ = {
+		isa = PBXFileReference;
+		lastKnownFileType = wrapper.application;
+		name = Acorn.app;
+		path = /Volumes/srv/Users/gus/builds/Debug/Acorn.app;
+		sourceTree = "<absolute>";
+	};
+	CCF900810C29E1CB00BA85E7 /* MediaBrowser.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {786, 1722}}";
+			sepNavSelRange = "{1838, 18}";
+			sepNavVisRange = "{1514, 1516}";
+		};
+	};
+}
