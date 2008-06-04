@@ -1,0 +1,11 @@
+TODO:
+Caching prepared statements, based on a hash of the query would be cool (NSDictionary?)
+A connection manager, so you can checkout and hit the same db over different threads.
+
+2008.06.03:
+Removed all exceptions, now you should use [db hadError] to check for an error.  I hate (ns)exceptions, I'm not sure why I put them in.
+Moved to google code.
+Various little cleanup thingies.
+
+
+questions? comments? patches?  Send them to gus@flyingmeat.com
