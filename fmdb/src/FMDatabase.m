@@ -1,5 +1,4 @@
 #import "FMDatabase.h"
-#import "FMDatabaseAdditions.h"
 
 @implementation FMDatabase
 
