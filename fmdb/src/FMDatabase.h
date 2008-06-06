@@ -36,8 +36,11 @@
 
 - (sqlite3*) sqliteHandle;
 
-- (BOOL) executeUpdate:(NSString*)objs, ...;
-- (id) executeQuery:(NSString*)obj, ...;
+- (BOOL) executeUpdate:(NSString *)sql arguments:(va_list)args;
+- (BOOL) executeUpdate:(NSString*)sql, ...;
+
+- (id) executeQuery:(NSString *)sql arguments:(va_list)args;
+- (id) executeQuery:(NSString*)sql, ...;
 
 - (BOOL) rollback;
 - (BOOL) commit;

@@ -1,5 +1,6 @@
 #import <Foundation/Foundation.h>
 #import "FMDatabase.h"
+#import "FMDatabaseAdditions.h"
 
 int main (int argc, const char * argv[]) {
     NSAutoreleasePool * pool = [[NSAutoreleasePool alloc] init];
@@ -83,6 +84,18 @@ int main (int argc, const char * argv[]) {
     else {
         NSLog(@"Can't find compass image..");
     }
+    
+    
+    // test out the convenience methods in +Additions
+    [db executeUpdate:@"create table t1 (a integer)"];
+    [db executeUpdate:@"insert into t1 values (5)"];
+    int a = [db intForQuery:@"select a from t1 where a = ?", [NSNumber numberWithInt:5]];
+    if (a != 5) {
+        NSLog(@"intForQuery didn't work (a != 5)");
+    }
+    
+    
+    
     
     [db close];
     

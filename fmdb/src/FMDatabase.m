@@ -190,7 +190,7 @@
     }
 }
 
-- (id) executeQuery:(NSString*)objs, ... {
+- (id) executeQuery:(NSString *)sql arguments:(va_list)args {
     
     if (inUse) {
         [self compainAboutInUse];
@@ -201,7 +201,6 @@
     
     FMResultSet *rs = nil;
     
-    NSString *sql = objs;
     int rc;
     sqlite3_stmt *pStmt;
     
@@ -251,11 +250,9 @@
     id obj;
     int idx = 0;
     int queryCount = sqlite3_bind_parameter_count(pStmt); // pointed out by Dominic Yu (thanks!)
-    va_list argList;
-    va_start(argList, objs);
     
     while (idx < queryCount) {
-        obj = va_arg(argList, id);
+        obj = va_arg(args, id);
         
         if (!obj) {
             break;
@@ -267,8 +264,6 @@
         
         [self bindObject:obj toColumn:idx inStatement:pStmt];
     }
-    
-    va_end(argList);
     
     if (idx != queryCount) {
         NSLog(@"Error: the bind count is not correct for the # of variables (executeQuery)");
@@ -284,8 +279,18 @@
     return rs;
 }
 
+- (id) executeQuery:(NSString*)sql, ... {
+    va_list args;
+    va_start(args, sql);
+    
+    id result = [self executeQuery:sql arguments:args];
+    
+    va_end(args);
+    return result;
+}
 
-- (BOOL) executeUpdate:(NSString*)objs, ... {
+
+- (BOOL) executeUpdate:(NSString*)sql arguments:(va_list)args {
     
     if (inUse) {
         [self compainAboutInUse];
@@ -293,7 +298,6 @@
     }
     [self setInUse:YES];
     
-    NSString *sql       = objs;
     int rc              = 0x00;
     sqlite3_stmt *pStmt = 0x00;
     
@@ -340,12 +344,10 @@
     id obj;
     int idx = 0;
     int queryCount = sqlite3_bind_parameter_count(pStmt);
-    va_list argList;
-    va_start(argList, objs);
-    
+
     while (idx < queryCount) {
         
-        obj = va_arg(argList, id);
+        obj = va_arg(args, id);
         
         if (!obj) {
             break;
@@ -355,9 +357,6 @@
         
         [self bindObject:obj toColumn:idx inStatement:pStmt];
     }
-    
-    va_end(argList);
-    
     
     if (idx != queryCount) {
         NSLog(@"Error: the bind count is not correct for the # of variables (%@) (executeUpdate)", sql);
@@ -416,6 +415,18 @@
     
     return (rc == SQLITE_OK);
 }
+
+- (BOOL) executeUpdate:(NSString*)sql, ... {
+    va_list args;
+    va_start(args, sql);
+    
+    BOOL result = [self executeUpdate:sql arguments:args];
+    
+    va_end(args);
+    return result;
+}
+
+
 
 - (BOOL) rollback {
     BOOL b = [self executeUpdate:@"ROLLBACK TRANSACTION;"];
