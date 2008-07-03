@@ -95,7 +95,39 @@ int main (int argc, const char * argv[]) {
     }
     
     
+    // test the busy rety timeout schtuff.
     
+    [db setBusyRetryTimeout:50000];
+    
+    FMDatabase *newDb = [FMDatabase databaseWithPath:@"/tmp/tmp.db"];
+    [newDb open];
+    
+    rs = [newDb executeQuery:@"select rowid,* from test where a = ?", @"hi'"];
+    [rs next]; // just grab one... which will keep the db locked.
+    
+    NSLog(@"Testing the busy timeout");
+    
+    BOOL success = [db executeUpdate:@"insert into t1 values (5)"];
+    
+    if (success) {
+        NSLog(@"Whoa- the database didn't stay locked!");
+        return 7;
+    }
+    else {
+        NSLog(@"Hurray, our timeout worked");
+    }
+    
+    [rs close];
+    [newDb close];
+    
+    success = [db executeUpdate:@"insert into t1 values (5)"];
+    if (!success) {
+        NSLog(@"Whoa- the database shouldn't be locked!");
+        return 8;
+    }
+    else {
+        NSLog(@"Hurray, we can insert again!");
+    }
     
     [db close];
     

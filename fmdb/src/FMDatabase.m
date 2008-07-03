@@ -208,8 +208,6 @@
         NSLog(@"%@ executeQuery: %@", self, sql);
     }
     
-    NSLog(@"sql: %@", sql);
-    
     int numberOfRetries = 0;
     BOOL retry;
     do {
@@ -223,6 +221,8 @@
             if (busyRetryTimeout && (numberOfRetries++ > busyRetryTimeout)) {
                 NSLog(@"%s:%d Database busy (%@)", __FUNCTION__, __LINE__, [self databasePath]);
                 NSLog(@"Database busy");
+                sqlite3_finalize(pStmt);
+                [self setInUse:NO];
                 return nil;
             }
         }
@@ -258,7 +258,9 @@
             break;
         }
         
-        NSLog(@"obj: %@", obj);
+        if (traceExecution) {
+            NSLog(@"obj: %@", obj);
+        }
         
         idx++;
         
@@ -313,9 +315,12 @@
         if (SQLITE_BUSY == rc) {
             retry = YES;
             usleep(20);
+            
             if (busyRetryTimeout && (numberOfRetries++ > busyRetryTimeout)) {
                 NSLog(@"%s:%d Database busy (%@)", __FUNCTION__, __LINE__, [self databasePath]);
                 NSLog(@"Database busy");
+                sqlite3_finalize(pStmt);
+                [self setInUse:NO];
                 return NO;
             }
         }
@@ -352,6 +357,10 @@
         if (!obj) {
             break;
         }
+
+        if (traceExecution) {
+            NSLog(@"obj: %@", obj);
+        }
         
         idx++;
         
@@ -378,10 +387,11 @@
             // in that case, retry the step... and maybe wait just 10 milliseconds.
             retry = YES;
             usleep(20);
+            
             if (busyRetryTimeout && (numberOfRetries++ > busyRetryTimeout)) {
                 NSLog(@"%s:%d Database busy (%@)", __FUNCTION__, __LINE__, [self databasePath]);
                 NSLog(@"Database busy");
-                return NO;
+                retry = NO;
             }
         }
         else if (SQLITE_DONE == rc || SQLITE_ROW == rc) {
@@ -477,8 +487,8 @@
 - (BOOL)inUse {
     return inUse || inTransaction;
 }
+
 - (void)setInUse:(BOOL)flag {
-    
     inUse = flag;
 }
 

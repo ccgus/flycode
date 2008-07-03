@@ -2,6 +2,9 @@ TODO:
 Caching prepared statements, based on a hash of the query would be cool (NSDictionary?)
 A connection manager, so you can checkout and hit the same db over different threads.
 
+2008.07.03
+Thanks to Kris Markel for some extra trace outputs, and a fix where the database would be locked if it was too busy.
+
 2008.06.06
 Thanks to Zach Wily for the return of FMDatabaseAdditions!
 
