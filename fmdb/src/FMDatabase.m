@@ -77,10 +77,10 @@
 	db = nil;
 }
 
-#ifdef SQLITE_HAS_CODEC
+
 
 - (BOOL) rekey:(NSString*)key {
-    
+#ifdef SQLITE_HAS_CODEC
     if (!key) {
         return NO;
     }
@@ -93,9 +93,13 @@
     }
     
     return (rc == SQLITE_OK);
+#else
+    return NO;
+#endif
 }
 
 - (BOOL) setKey:(NSString*)key {
+#ifdef SQLITE_HAS_CODEC
     if (!key) {
         return NO;
     }
@@ -103,9 +107,10 @@
     int rc = sqlite3_key(db, [key UTF8String], strlen([key UTF8String]));
     
     return (rc == SQLITE_OK);
-}
-
+#else
+    return NO;
 #endif
+}
 
 - (BOOL) goodConnection {
     

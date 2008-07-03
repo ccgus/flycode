@@ -21,10 +21,11 @@
 - (BOOL) open;
 - (void) close;
 - (BOOL) goodConnection;
-#ifdef SQLITE_HAS_CODEC
+
+// encryption methods.  You need to have purchased the sqlite encryption extensions for these to work.
 - (BOOL) setKey:(NSString*)key;
 - (BOOL) rekey:(NSString*)key;
-#endif
+
 
 - (NSString *) databasePath;
 
