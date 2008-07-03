@@ -88,8 +88,8 @@ int main (int argc, const char * argv[]) {
     
     // test out the convenience methods in +Additions
     [db executeUpdate:@"create table t1 (a integer)"];
-    [db executeUpdate:@"insert into t1 values (5)"];
-    int a = [db intForQuery:@"select a from t1 where a = ?", [NSNumber numberWithInt:5]];
+    [db executeUpdate:@"insert into t1 values (?)", [NSNumber numberWithUnsignedInteger:5]];
+    int a = [db intForQuery:@"select a from t1 where a = ?", [NSNumber numberWithUnsignedInteger:5]];
     if (a != 5) {
         NSLog(@"intForQuery didn't work (a != 5)");
     }
