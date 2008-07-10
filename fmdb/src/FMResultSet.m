@@ -31,10 +31,10 @@
 - (void)dealloc {
     [self close];
     
-    [query autorelease];
+    [query release];
     query = nil;
     
-    [columnNameToIndexMap autorelease];
+    [columnNameToIndexMap release];
     columnNameToIndexMap = nil;
     
 	[super dealloc];
@@ -68,6 +68,7 @@
         [columnNameToIndexMap setObject:[NSNumber numberWithInt:columnIdx]
                                  forKey:[[NSString stringWithUTF8String:sqlite3_column_name(pStmt, columnIdx)] lowercaseString]];
     }
+    columnNamesSetup = YES;
 }
 
 - (void) kvcMagic:(id)object {

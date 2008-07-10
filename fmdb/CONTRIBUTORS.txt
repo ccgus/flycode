@@ -5,3 +5,5 @@ D. Richard Hipp (The author of SQLite)
 Zach Wily
 Kris Markel
 Blackhole Media
+Daniel Pasco
+Bil Moorehead
