@@ -15,6 +15,9 @@ int main (int argc, const char * argv[]) {
         return 0;
     }
     
+    // kind of experimentalish.
+    [db setShouldCacheStatements:YES];
+    
     // create a bad statement, just to test the error code.
     [db executeUpdate:@"blah blah blah"];
     if ([db hadError]) {
@@ -88,12 +91,11 @@ int main (int argc, const char * argv[]) {
     
     // test out the convenience methods in +Additions
     [db executeUpdate:@"create table t1 (a integer)"];
-    [db executeUpdate:@"insert into t1 values (?)", [NSNumber numberWithUnsignedInteger:5]];
-    int a = [db intForQuery:@"select a from t1 where a = ?", [NSNumber numberWithUnsignedInteger:5]];
+    [db executeUpdate:@"insert into t1 values (?)", [NSNumber numberWithInt:5]];
+    int a = [db intForQuery:@"select a from t1 where a = ?", [NSNumber numberWithInt:5]];
     if (a != 5) {
         NSLog(@"intForQuery didn't work (a != 5)");
     }
-    
     
     // test the busy rety timeout schtuff.
     
@@ -128,6 +130,27 @@ int main (int argc, const char * argv[]) {
     else {
         NSLog(@"Hurray, we can insert again!");
     }
+    
+    
+    // print out some stats if we are using cached statements.
+    if ([db shouldCacheStatements]) {
+        
+        NSEnumerator *e = [[db cachedStatements] objectEnumerator];;
+        FMStatement *statement;
+
+        while ((statement = [e nextObject])) {
+        	NSLog(@"%@", statement);
+        }
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
     
     [db close];
     

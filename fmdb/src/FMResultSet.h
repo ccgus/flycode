@@ -1,28 +1,30 @@
-#import <Cocoa/Cocoa.h>
+#import <Foundation/Foundation.h>
 #import "sqlite3.h"
 
 @class FMDatabase;
+@class FMStatement;
 
 @interface FMResultSet : NSObject {
     FMDatabase *parentDB;
-    sqlite3_stmt *pStmt;
-    //sqlite3 *db;
+    FMStatement *statement;
+    
     NSString *query;
     NSMutableDictionary *columnNameToIndexMap;
     BOOL columnNamesSetup;
 }
 
-+ (id) resultSetWithStatement:(sqlite3_stmt *)stmt usingParentDatabase:(FMDatabase*)aDB;
+
++ (id) resultSetWithStatement:(FMStatement *)statement usingParentDatabase:(FMDatabase*)aDB;
 
 - (void) close;
 
 - (NSString *)query;
 - (void)setQuery:(NSString *)value;
 
-- (void)setPStmt:(sqlite3_stmt *)newsqlite3_stmt;
+- (FMStatement *)statement;
+- (void)setStatement:(FMStatement *)value;
+
 - (void)setParentDB:(FMDatabase *)newDb;
-
-
 
 - (BOOL) next;
 
