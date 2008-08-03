@@ -1,0 +1,395 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 45;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		1DDD58160DA1D0A300B32029 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1DDD58140DA1D0A300B32029 /* MainMenu.xib */; };
+		8D11072B0486CEB800E47090 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 089C165CFE840E0CC02AAC07 /* InfoPlist.strings */; };
+		8D11072D0486CEB800E47090 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; settings = {ATTRIBUTES = (); }; };
+		8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */; };
+		CCBC88BB0E465A2D0083B197 /* PTKeyCodes.plist in Resources */ = {isa = PBXBuildFile; fileRef = CCBC88A30E465A2D0083B197 /* PTKeyCodes.plist */; };
+		CCBC88BC0E465A2D0083B197 /* PTKeyComboPanel.nib in Resources */ = {isa = PBXBuildFile; fileRef = CCBC88A50E465A2D0083B197 /* PTKeyComboPanel.nib */; };
+		CCBC88BD0E465A2D0083B197 /* PTKeyboardIcon.tiff in Resources */ = {isa = PBXBuildFile; fileRef = CCBC88AD0E465A2D0083B197 /* PTKeyboardIcon.tiff */; };
+		CCBC88BE0E465A2D0083B197 /* PTHotKey.m in Sources */ = {isa = PBXBuildFile; fileRef = CCBC88B00E465A2D0083B197 /* PTHotKey.m */; };
+		CCBC88BF0E465A2D0083B197 /* PTHotKeyCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = CCBC88B20E465A2D0083B197 /* PTHotKeyCenter.m */; };
+		CCBC88C00E465A2D0083B197 /* PTKeyBroadcaster.m in Sources */ = {isa = PBXBuildFile; fileRef = CCBC88B40E465A2D0083B197 /* PTKeyBroadcaster.m */; };
+		CCBC88C10E465A2D0083B197 /* PTKeyCodeTranslator.m in Sources */ = {isa = PBXBuildFile; fileRef = CCBC88B60E465A2D0083B197 /* PTKeyCodeTranslator.m */; };
+		CCBC88C20E465A2D0083B197 /* PTKeyCombo.m in Sources */ = {isa = PBXBuildFile; fileRef = CCBC88B80E465A2D0083B197 /* PTKeyCombo.m */; };
+		CCBC88C30E465A2D0083B197 /* PTKeyComboPanel.m in Sources */ = {isa = PBXBuildFile; fileRef = CCBC88BA0E465A2D0083B197 /* PTKeyComboPanel.m */; };
+		CCBC88C90E465A430083B197 /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CCBC88C80E465A430083B197 /* Carbon.framework */; };
+		CCBC89940E465ACD0083B197 /* KHAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CCBC89930E465ACD0083B197 /* KHAppDelegate.m */; };
+		CCBC8A060E46609E0083B197 /* KHKeyCatcherView.m in Sources */ = {isa = PBXBuildFile; fileRef = CCBC8A050E46609E0083B197 /* KHKeyCatcherView.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		089C165DFE840E0CC02AAC07 /* English */ = {isa = PBXFileReference; fileEncoding = 10; lastKnownFileType = text.plist.strings; name = English; path = English.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = /System/Library/Frameworks/Cocoa.framework; sourceTree = "<absolute>"; };
+		13E42FB307B3F0F600E4EEF1 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = /System/Library/Frameworks/CoreData.framework; sourceTree = "<absolute>"; };
+		1DDD58150DA1D0A300B32029 /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = English.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		29B97324FDCFA39411CA2CEA /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = /System/Library/Frameworks/AppKit.framework; sourceTree = "<absolute>"; };
+		29B97325FDCFA39411CA2CEA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = /System/Library/Frameworks/Foundation.framework; sourceTree = "<absolute>"; };
+		32CA4F630368D1EE00C91783 /* khord_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = khord_Prefix.pch; sourceTree = "<group>"; };
+		8D1107310486CEB800E47090 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8D1107320486CEB800E47090 /* Khord.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Khord.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		CCBC88A40E465A2D0083B197 /* English */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = English; path = English.lproj/PTKeyCodes.plist; sourceTree = "<group>"; };
+		CCBC88A60E465A2D0083B197 /* English */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = English; path = English.lproj/PTKeyComboPanel.nib; sourceTree = "<group>"; };
+		CCBC88A70E465A2D0083B197 /* French */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist; name = French; path = French.lproj/PTKeyCodes.plist; sourceTree = "<group>"; };
+		CCBC88A80E465A2D0083B197 /* French */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = French; path = French.lproj/PTKeyComboPanel.nib; sourceTree = "<group>"; };
+		CCBC88A90E465A2D0083B197 /* German */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist; name = German; path = German.lproj/PTKeyCodes.plist; sourceTree = "<group>"; };
+		CCBC88AA0E465A2D0083B197 /* German */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = German; path = German.lproj/PTKeyComboPanel.nib; sourceTree = "<group>"; };
+		CCBC88AB0E465A2D0083B197 /* Japanese */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist; name = Japanese; path = Japanese.lproj/PTKeyCodes.plist; sourceTree = "<group>"; };
+		CCBC88AC0E465A2D0083B197 /* Japanese */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = Japanese; path = Japanese.lproj/PTKeyComboPanel.nib; sourceTree = "<group>"; };
+		CCBC88AD0E465A2D0083B197 /* PTKeyboardIcon.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = PTKeyboardIcon.tiff; sourceTree = "<group>"; };
+		CCBC88AF0E465A2D0083B197 /* PTHotKey.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PTHotKey.h; sourceTree = "<group>"; };
+		CCBC88B00E465A2D0083B197 /* PTHotKey.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PTHotKey.m; sourceTree = "<group>"; };
+		CCBC88B10E465A2D0083B197 /* PTHotKeyCenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PTHotKeyCenter.h; sourceTree = "<group>"; };
+		CCBC88B20E465A2D0083B197 /* PTHotKeyCenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PTHotKeyCenter.m; sourceTree = "<group>"; };
+		CCBC88B30E465A2D0083B197 /* PTKeyBroadcaster.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PTKeyBroadcaster.h; sourceTree = "<group>"; };
+		CCBC88B40E465A2D0083B197 /* PTKeyBroadcaster.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PTKeyBroadcaster.m; sourceTree = "<group>"; };
+		CCBC88B50E465A2D0083B197 /* PTKeyCodeTranslator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PTKeyCodeTranslator.h; sourceTree = "<group>"; };
+		CCBC88B60E465A2D0083B197 /* PTKeyCodeTranslator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PTKeyCodeTranslator.m; sourceTree = "<group>"; };
+		CCBC88B70E465A2D0083B197 /* PTKeyCombo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PTKeyCombo.h; sourceTree = "<group>"; };
+		CCBC88B80E465A2D0083B197 /* PTKeyCombo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PTKeyCombo.m; sourceTree = "<group>"; };
+		CCBC88B90E465A2D0083B197 /* PTKeyComboPanel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PTKeyComboPanel.h; sourceTree = "<group>"; };
+		CCBC88BA0E465A2D0083B197 /* PTKeyComboPanel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PTKeyComboPanel.m; sourceTree = "<group>"; };
+		CCBC88C80E465A430083B197 /* Carbon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Carbon.framework; path = /System/Library/Frameworks/Carbon.framework; sourceTree = "<absolute>"; };
+		CCBC89920E465ACD0083B197 /* KHAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KHAppDelegate.h; path = src/KHAppDelegate.h; sourceTree = "<group>"; };
+		CCBC89930E465ACD0083B197 /* KHAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = KHAppDelegate.m; path = src/KHAppDelegate.m; sourceTree = "<group>"; };
+		CCBC8A040E46609E0083B197 /* KHKeyCatcherView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KHKeyCatcherView.h; path = src/KHKeyCatcherView.h; sourceTree = "<group>"; };
+		CCBC8A050E46609E0083B197 /* KHKeyCatcherView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = KHKeyCatcherView.m; path = src/KHKeyCatcherView.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		8D11072E0486CEB800E47090 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */,
+				CCBC88C90E465A430083B197 /* Carbon.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		080E96DDFE201D6D7F000001 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				CCBC89920E465ACD0083B197 /* KHAppDelegate.h */,
+				CCBC89930E465ACD0083B197 /* KHAppDelegate.m */,
+				CCBC8A040E46609E0083B197 /* KHKeyCatcherView.h */,
+				CCBC8A050E46609E0083B197 /* KHKeyCatcherView.m */,
+			);
+			name = Classes;
+			sourceTree = "<group>";
+		};
+		1058C7A0FEA54F0111CA2CBB /* Linked Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				CCBC88C80E465A430083B197 /* Carbon.framework */,
+				1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */,
+			);
+			name = "Linked Frameworks";
+			sourceTree = "<group>";
+		};
+		1058C7A2FEA54F0111CA2CBB /* Other Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				29B97324FDCFA39411CA2CEA /* AppKit.framework */,
+				13E42FB307B3F0F600E4EEF1 /* CoreData.framework */,
+				29B97325FDCFA39411CA2CEA /* Foundation.framework */,
+			);
+			name = "Other Frameworks";
+			sourceTree = "<group>";
+		};
+		19C28FACFE9D520D11CA2CBB /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				8D1107320486CEB800E47090 /* Khord.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		29B97314FDCFA39411CA2CEA /* khord */ = {
+			isa = PBXGroup;
+			children = (
+				CCBC88A10E465A2D0083B197 /* PTHotKeysLib */,
+				080E96DDFE201D6D7F000001 /* Classes */,
+				29B97315FDCFA39411CA2CEA /* Other Sources */,
+				29B97317FDCFA39411CA2CEA /* Resources */,
+				29B97323FDCFA39411CA2CEA /* Frameworks */,
+				19C28FACFE9D520D11CA2CBB /* Products */,
+			);
+			name = khord;
+			sourceTree = "<group>";
+		};
+		29B97315FDCFA39411CA2CEA /* Other Sources */ = {
+			isa = PBXGroup;
+			children = (
+				32CA4F630368D1EE00C91783 /* khord_Prefix.pch */,
+				29B97316FDCFA39411CA2CEA /* main.m */,
+			);
+			name = "Other Sources";
+			sourceTree = "<group>";
+		};
+		29B97317FDCFA39411CA2CEA /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				8D1107310486CEB800E47090 /* Info.plist */,
+				089C165CFE840E0CC02AAC07 /* InfoPlist.strings */,
+				1DDD58140DA1D0A300B32029 /* MainMenu.xib */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				1058C7A0FEA54F0111CA2CBB /* Linked Frameworks */,
+				1058C7A2FEA54F0111CA2CBB /* Other Frameworks */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		CCBC88A10E465A2D0083B197 /* PTHotKeysLib */ = {
+			isa = PBXGroup;
+			children = (
+				CCBC88A20E465A2D0083B197 /* res */,
+				CCBC88AE0E465A2D0083B197 /* src */,
+			);
+			path = PTHotKeysLib;
+			sourceTree = "<group>";
+		};
+		CCBC88A20E465A2D0083B197 /* res */ = {
+			isa = PBXGroup;
+			children = (
+				CCBC88A30E465A2D0083B197 /* PTKeyCodes.plist */,
+				CCBC88A50E465A2D0083B197 /* PTKeyComboPanel.nib */,
+				CCBC88AD0E465A2D0083B197 /* PTKeyboardIcon.tiff */,
+			);
+			path = res;
+			sourceTree = "<group>";
+		};
+		CCBC88AE0E465A2D0083B197 /* src */ = {
+			isa = PBXGroup;
+			children = (
+				CCBC88AF0E465A2D0083B197 /* PTHotKey.h */,
+				CCBC88B00E465A2D0083B197 /* PTHotKey.m */,
+				CCBC88B10E465A2D0083B197 /* PTHotKeyCenter.h */,
+				CCBC88B20E465A2D0083B197 /* PTHotKeyCenter.m */,
+				CCBC88B30E465A2D0083B197 /* PTKeyBroadcaster.h */,
+				CCBC88B40E465A2D0083B197 /* PTKeyBroadcaster.m */,
+				CCBC88B50E465A2D0083B197 /* PTKeyCodeTranslator.h */,
+				CCBC88B60E465A2D0083B197 /* PTKeyCodeTranslator.m */,
+				CCBC88B70E465A2D0083B197 /* PTKeyCombo.h */,
+				CCBC88B80E465A2D0083B197 /* PTKeyCombo.m */,
+				CCBC88B90E465A2D0083B197 /* PTKeyComboPanel.h */,
+				CCBC88BA0E465A2D0083B197 /* PTKeyComboPanel.m */,
+			);
+			path = src;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		8D1107260486CEB800E47090 /* Khord */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C01FCF4A08A954540054247B /* Build configuration list for PBXNativeTarget "Khord" */;
+			buildPhases = (
+				8D1107290486CEB800E47090 /* Resources */,
+				8D11072C0486CEB800E47090 /* Sources */,
+				8D11072E0486CEB800E47090 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Khord;
+			productInstallPath = "$(HOME)/Applications";
+			productName = khord;
+			productReference = 8D1107320486CEB800E47090 /* Khord.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		29B97313FDCFA39411CA2CEA /* Project object */ = {
+			isa = PBXProject;
+			buildConfigurationList = C01FCF4E08A954540054247B /* Build configuration list for PBXProject "khord" */;
+			compatibilityVersion = "Xcode 3.1";
+			hasScannedForEncodings = 1;
+			mainGroup = 29B97314FDCFA39411CA2CEA /* khord */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				8D1107260486CEB800E47090 /* Khord */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		8D1107290486CEB800E47090 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8D11072B0486CEB800E47090 /* InfoPlist.strings in Resources */,
+				1DDD58160DA1D0A300B32029 /* MainMenu.xib in Resources */,
+				CCBC88BB0E465A2D0083B197 /* PTKeyCodes.plist in Resources */,
+				CCBC88BC0E465A2D0083B197 /* PTKeyComboPanel.nib in Resources */,
+				CCBC88BD0E465A2D0083B197 /* PTKeyboardIcon.tiff in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		8D11072C0486CEB800E47090 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8D11072D0486CEB800E47090 /* main.m in Sources */,
+				CCBC88BE0E465A2D0083B197 /* PTHotKey.m in Sources */,
+				CCBC88BF0E465A2D0083B197 /* PTHotKeyCenter.m in Sources */,
+				CCBC88C00E465A2D0083B197 /* PTKeyBroadcaster.m in Sources */,
+				CCBC88C10E465A2D0083B197 /* PTKeyCodeTranslator.m in Sources */,
+				CCBC88C20E465A2D0083B197 /* PTKeyCombo.m in Sources */,
+				CCBC88C30E465A2D0083B197 /* PTKeyComboPanel.m in Sources */,
+				CCBC89940E465ACD0083B197 /* KHAppDelegate.m in Sources */,
+				CCBC8A060E46609E0083B197 /* KHKeyCatcherView.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		089C165CFE840E0CC02AAC07 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				089C165DFE840E0CC02AAC07 /* English */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		1DDD58140DA1D0A300B32029 /* MainMenu.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				1DDD58150DA1D0A300B32029 /* English */,
+			);
+			name = MainMenu.xib;
+			sourceTree = "<group>";
+		};
+		CCBC88A30E465A2D0083B197 /* PTKeyCodes.plist */ = {
+			isa = PBXVariantGroup;
+			children = (
+				CCBC88A40E465A2D0083B197 /* English */,
+				CCBC88A70E465A2D0083B197 /* French */,
+				CCBC88A90E465A2D0083B197 /* German */,
+				CCBC88AB0E465A2D0083B197 /* Japanese */,
+			);
+			name = PTKeyCodes.plist;
+			sourceTree = "<group>";
+		};
+		CCBC88A50E465A2D0083B197 /* PTKeyComboPanel.nib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				CCBC88A60E465A2D0083B197 /* English */,
+				CCBC88A80E465A2D0083B197 /* French */,
+				CCBC88AA0E465A2D0083B197 /* German */,
+				CCBC88AC0E465A2D0083B197 /* Japanese */,
+			);
+			name = PTKeyComboPanel.nib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		C01FCF4B08A954540054247B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(NATIVE_ARCH)";
+				COPY_PHASE_STRIP = NO;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_FIX_AND_CONTINUE = YES;
+				GCC_MODEL_TUNING = G5;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = khord_Prefix.pch;
+				INFOPLIST_FILE = Info.plist;
+				INSTALL_PATH = "$(HOME)/Applications";
+				OTHER_CFLAGS = "-DDEBUG";
+				PRODUCT_NAME = Khord;
+			};
+			name = Debug;
+		};
+		C01FCF4C08A954540054247B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_MODEL_TUNING = G5;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = khord_Prefix.pch;
+				INFOPLIST_FILE = Info.plist;
+				INSTALL_PATH = "$(HOME)/Applications";
+				PRODUCT_NAME = Khord;
+			};
+			name = Release;
+		};
+		C01FCF4F08A954540054247B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				GCC_C_LANGUAGE_STANDARD = c99;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PREBINDING = NO;
+				SDKROOT = macosx10.5;
+			};
+			name = Debug;
+		};
+		C01FCF5008A954540054247B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				GCC_C_LANGUAGE_STANDARD = c99;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				PREBINDING = NO;
+				SDKROOT = macosx10.5;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		C01FCF4A08A954540054247B /* Build configuration list for PBXNativeTarget "Khord" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C01FCF4B08A954540054247B /* Debug */,
+				C01FCF4C08A954540054247B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C01FCF4E08A954540054247B /* Build configuration list for PBXProject "khord" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C01FCF4F08A954540054247B /* Debug */,
+				C01FCF5008A954540054247B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 29B97313FDCFA39411CA2CEA /* Project object */;
+}
