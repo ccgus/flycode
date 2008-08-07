@@ -31,26 +31,29 @@ enum {
     NSMutableArray *_directoryBucket;
     
     NSInteger _responseStatusCode;
+    
+    BOOL _synchronous;
 }
 
 @property (retain) NSURLConnection *connection;
-@property (retain) NSMutableData *responseData;
+@property (retain) NSMutableData *responseData; // even though this is "mutable", it isn't if you are doing synchronous connections
 @property (retain) NSURL *url;
 @property (assign) id delegate;
 @property (retain) id contextInfo;
 @property (assign) SEL endSelector;
 @property (assign) NSInteger responseStatusCode;
 
-
 + (id) requestToURL:(NSURL*)url delegate:(id)del endSelector:(SEL)anEndSelector contextInfo:(id)context;
 
-- (void) fetchDirectoryListing;
+- (FMWebDAVRequest*) fetchDirectoryListing;
 - (NSArray*) directoryListing;
 
 - (void) createDirectory;
 - (void) delete;
 - (void) putData:(NSData*)data;
-- (void) get;
+- (FMWebDAVRequest*) get;
+
+- (FMWebDAVRequest*) synchronous;
 
 @end
 

@@ -51,6 +51,34 @@
     [super dealloc];
 }
 
+- (FMWebDAVRequest*) synchronous {
+    _synchronous = YES;
+    return self;
+}
+
+- (void) sendRequest:(NSMutableURLRequest *)req {
+    
+    if (_synchronous) {
+        NSURLResponse *response = 0x00;
+        NSError *err = 0x00;
+            
+        self.responseData = (NSMutableData*)[NSURLConnection sendSynchronousRequest:req returningResponse:&response error:&err];
+        
+        NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse*)response;
+        
+        if (![httpResponse isKindOfClass:[NSHTTPURLResponse class]]) {
+            NSLog(@"Unknown response type: %@", httpResponse);
+        }
+        else {
+            _responseStatusCode = [httpResponse statusCode];
+        }
+    }
+    else {
+        [NSURLConnection connectionWithRequest:req delegate:self];
+    }
+    
+}
+
 - (void) createDirectory {
     if (!_endSelector) {
         _endSelector = @selector(requestDidCreateDirectory:);
@@ -62,7 +90,7 @@
     
     [req setValue:@"application/xml" forHTTPHeaderField:@"Content-Type:"];
     
-    [NSURLConnection connectionWithRequest:req delegate:self];
+    [self sendRequest:req];
 }
 
 - (void) delete {
@@ -76,7 +104,7 @@
     
     [req setValue:@"application/xml" forHTTPHeaderField:@"Content-Type:"];
     
-    [NSURLConnection connectionWithRequest:req delegate:self];
+    [self sendRequest:req];
 }
 
 - (void) putData:(NSData*)data {
@@ -93,10 +121,10 @@
     
     [req setHTTPBody:data];
     
-    [NSURLConnection connectionWithRequest:req delegate:self];
+    [self sendRequest:req];
 }
 
-- (void) get {
+- (FMWebDAVRequest*) get {
     
     if (!_endSelector) {
         _endSelector = @selector(requestDidGet:);
@@ -104,11 +132,13 @@
     
     NSMutableURLRequest *req = [NSMutableURLRequest requestWithURL:_url];
     
-    [NSURLConnection connectionWithRequest:req delegate:self];
+    [self sendRequest:req];
+    
+    return self;
 }
 
 
-- (void) fetchDirectoryListing {
+- (FMWebDAVRequest*) fetchDirectoryListing {
     
     if (!_endSelector) {
         _endSelector = @selector(requestDidFetchDirectoryListing:);
@@ -128,7 +158,9 @@
     
     [req setHTTPBody:[xml dataUsingEncoding:NSUTF8StringEncoding]];
     
-    [NSURLConnection connectionWithRequest:req delegate:self];
+    [self sendRequest:req];
+    
+    return self;
 }
 
 - (NSArray*) directoryListing {

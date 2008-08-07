@@ -23,7 +23,13 @@
     
     NSString *putURL    = [baseURL stringByAppendingPathComponent:@"Compass.icns"];
     NSData *data        = [NSData dataWithContentsOfFile:@"/Applications/Safari.app/Contents/Resources/compass.icns"];
-    [[FMWebDAVRequest requestToURL:NSStringToURL(putURL) delegate:self endSelector:nil contextInfo:nil] putData:data];
+    
+    (void)[[[FMWebDAVRequest requestToURL:NSStringToURL(putURL) delegate:self endSelector:nil contextInfo:nil] synchronous] putData:data];
+    
+    data = [[[FMWebDAVRequest requestToURL:NSStringToURL(putURL) delegate:self endSelector:nil contextInfo:nil] synchronous] get].responseData;
+    
+    [data writeToFile:@"/tmp/compass.icns" atomically:YES];
+    system("open /tmp/compass.icns");
 }
 
 - (void) requestDidFetchDirectoryListing:(FMWebDAVRequest*)req {
@@ -61,17 +67,5 @@
     debug(@"response from delete directory: %d", request.responseStatusCode);
 }
 
-- (void) requestDidPutData:(FMWebDAVRequest*)request {
-    debug(@"response from putData: %d", request.responseStatusCode);
-    
-    [[FMWebDAVRequest requestToURL:request.url delegate:self endSelector:nil contextInfo:nil] get];
-}
-
-- (void) requestDidGet:(FMWebDAVRequest*)request {
-    
-    [[request responseData] writeToFile:@"/tmp/compass.icns" atomically:YES];
-    system("open /tmp/compass.icns");
-    
-}
 
 @end
