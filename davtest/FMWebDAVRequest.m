@@ -21,12 +21,6 @@
 + (id) requestToURL:(NSURL*)url delegate:(id)del endSelector:(SEL)anEndSelector contextInfo:(id)context {
     
     FMWebDAVRequest *request = [[FMWebDAVRequest alloc] init];
-    /*
-    if (![[url absoluteString] hasSuffix:@"/"]) {
-        NSString *junk = [[url absoluteString] stringByAppendingString:@"/"];
-        url = NSStringToURL(junk);
-    }
-    */
     
     [request setUrl:url];
     [request setDelegate:del];
@@ -37,7 +31,7 @@
 }
 
 - (void)dealloc {
-    [[NSNotificationCenter defaultCenter] removeObserver:self];
+    debug(@"%s:%d", __FUNCTION__, __LINE__);
     
     // _delegate isn't retained.
     
@@ -53,7 +47,7 @@
 
 - (FMWebDAVRequest*) synchronous {
     _synchronous = YES;
-    return self;
+    return [self autorelease];
 }
 
 - (void) sendRequest:(NSMutableURLRequest *)req {
