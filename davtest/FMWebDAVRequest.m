@@ -94,7 +94,19 @@
     [req setHTTPBody:data];
     
     [NSURLConnection connectionWithRequest:req delegate:self];
-}   
+}
+
+- (void) get {
+    
+    if (!_endSelector) {
+        _endSelector = @selector(requestDidGet:);
+    }
+    
+    NSMutableURLRequest *req = [NSMutableURLRequest requestWithURL:_url];
+    
+    [NSURLConnection connectionWithRequest:req delegate:self];
+}
+
 
 - (void) fetchDirectoryListing {
     

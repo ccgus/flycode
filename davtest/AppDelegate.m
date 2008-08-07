@@ -63,6 +63,15 @@
 
 - (void) requestDidPutData:(FMWebDAVRequest*)request {
     debug(@"response from putData: %d", request.responseStatusCode);
+    
+    [[FMWebDAVRequest requestToURL:request.url delegate:self endSelector:nil contextInfo:nil] get];
+}
+
+- (void) requestDidGet:(FMWebDAVRequest*)request {
+    
+    [[request responseData] writeToFile:@"/tmp/compass.icns" atomically:YES];
+    system("open /tmp/compass.icns");
+    
 }
 
 @end

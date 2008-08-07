@@ -6,7 +6,7 @@
 //  Copyright 2008 Flying Meat Inc. All rights reserved.
 //
 
-#import <Cocoa/Cocoa.h>
+#import <Foundation/Foundation.h>
 
 #define NSStringToURL(arrrrgh) [NSURL URLWithString:arrrrgh]
 #define NSDataToString(blah) [[[NSString alloc] initWithData:blah encoding:NSUTF8StringEncoding] autorelease]
@@ -50,6 +50,7 @@ enum {
 - (void) createDirectory;
 - (void) delete;
 - (void) putData:(NSData*)data;
+- (void) get;
 
 @end
 
