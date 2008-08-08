@@ -18,6 +18,14 @@
 @synthesize endSelector=_endSelector;
 @synthesize responseStatusCode=_responseStatusCode;
 
++ (id) requestToURL:(NSURL*)url {
+    FMWebDAVRequest *request = [[FMWebDAVRequest alloc] init];
+    
+    [request setUrl:url];
+    
+    return request;
+}
+
 + (id) requestToURL:(NSURL*)url delegate:(id)del endSelector:(SEL)anEndSelector contextInfo:(id)context {
     
     FMWebDAVRequest *request = [[FMWebDAVRequest alloc] init];
@@ -55,8 +63,10 @@
     if (_synchronous) {
         NSURLResponse *response = 0x00;
         NSError *err = 0x00;
-            
+        
         self.responseData = (NSMutableData*)[NSURLConnection sendSynchronousRequest:req returningResponse:&response error:&err];
+        
+        debug(@"err: %@", err);
         
         NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse*)response;
         
@@ -131,7 +141,26 @@
     return self;
 }
 
+- (FMWebDAVRequest*) head {
+    
+    if (!_endSelector) {
+        _endSelector = @selector(requestDidHead:);
+    }
+    
+    NSMutableURLRequest *req = [NSMutableURLRequest requestWithURL:_url];
+    
+    [req setHTTPMethod:@"HEAD"];
+    
+    [self sendRequest:req];
+    
+    return self;
+}
 
+- (FMWebDAVRequest*) propfind {
+    return [self fetchDirectoryListing];
+}
+
+// hrm...
 - (FMWebDAVRequest*) fetchDirectoryListing {
     
     if (!_endSelector) {

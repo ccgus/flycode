@@ -43,6 +43,7 @@ enum {
 @property (assign) SEL endSelector;
 @property (assign) NSInteger responseStatusCode;
 
++ (id) requestToURL:(NSURL*)url;
 + (id) requestToURL:(NSURL*)url delegate:(id)del endSelector:(SEL)anEndSelector contextInfo:(id)context;
 
 - (FMWebDAVRequest*) fetchDirectoryListing;
@@ -52,8 +53,11 @@ enum {
 - (void) delete;
 - (void) putData:(NSData*)data;
 - (FMWebDAVRequest*) get;
+- (FMWebDAVRequest*) head;
 
 - (FMWebDAVRequest*) synchronous;
+
+- (FMWebDAVRequest*) propfind;
 
 @end
 

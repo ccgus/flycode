@@ -59,13 +59,12 @@
 - (void) requestDidCreateDirectory:(FMWebDAVRequest*)request {
     debug(@"response from create directory: %d", request.responseStatusCode);
     
-    // ok, let's delete it now...
-    [[FMWebDAVRequest requestToURL:request.url delegate:self endSelector:nil contextInfo:nil] delete];
+    NSInteger responseStatusCode = [[[FMWebDAVRequest requestToURL:request.url] synchronous] propfind].responseStatusCode;
+    
+    if (207 == responseStatusCode) {
+        // ok, let's delete it now...
+        [[FMWebDAVRequest requestToURL:request.url delegate:self endSelector:nil contextInfo:nil] delete];
+    }
 }
-
-- (void) requestDidDelete:(FMWebDAVRequest*)request {
-    debug(@"response from delete directory: %d", request.responseStatusCode);
-}
-
 
 @end
