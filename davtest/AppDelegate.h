@@ -10,7 +10,7 @@
 
 
 @interface AppDelegate : NSObject {
-    
+    BOOL waitingOnAuthentication;
 }
 
 @end

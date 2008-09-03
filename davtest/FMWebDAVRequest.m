@@ -17,6 +17,7 @@
 @synthesize contextInfo=_contextInfo;
 @synthesize endSelector=_endSelector;
 @synthesize responseStatusCode=_responseStatusCode;
+@synthesize error=_error;
 
 + (id) requestToURL:(NSURL*)url {
     FMWebDAVRequest *request = [[FMWebDAVRequest alloc] init];
@@ -62,16 +63,14 @@
     
     if (_synchronous) {
         NSURLResponse *response = 0x00;
-        NSError *err = 0x00;
         
-        self.responseData = (NSMutableData*)[NSURLConnection sendSynchronousRequest:req returningResponse:&response error:&err];
-        
-        debug(@"err: %@", err);
+        self.responseData = (NSMutableData*)[NSURLConnection sendSynchronousRequest:req returningResponse:&response error:&_error];
         
         NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse*)response;
         
         if (![httpResponse isKindOfClass:[NSHTTPURLResponse class]]) {
-            NSLog(@"Unknown response type: %@", httpResponse);
+            NSLog(@"%s:%d", __FUNCTION__, __LINE__);
+            NSLog(@"FMWebDAVRequest Unknown response type: %@", httpResponse);
         }
         else {
             _responseStatusCode = [httpResponse statusCode];
@@ -83,7 +82,7 @@
     
 }
 
-- (void) createDirectory {
+- (FMWebDAVRequest*) createDirectory {
     if (!_endSelector) {
         _endSelector = @selector(requestDidCreateDirectory:);
     }
@@ -92,12 +91,14 @@
     
     [req setHTTPMethod:@"MKCOL"];
     
-    [req setValue:@"application/xml" forHTTPHeaderField:@"Content-Type:"];
+    [req setValue:@"application/xml" forHTTPHeaderField:@"Content-Type"];
     
     [self sendRequest:req];
+    
+    return self;
 }
 
-- (void) delete {
+- (FMWebDAVRequest*) delete {
     if (!_endSelector) {
         _endSelector = @selector(requestDidDelete:);
     }
@@ -106,12 +107,14 @@
     
     [req setHTTPMethod:@"DELETE"];
     
-    [req setValue:@"application/xml" forHTTPHeaderField:@"Content-Type:"];
+    [req setValue:@"application/xml" forHTTPHeaderField:@"Content-Type"];
     
     [self sendRequest:req];
+    
+    return self;
 }
 
-- (void) putData:(NSData*)data {
+- (FMWebDAVRequest*) putData:(NSData*)data {
     
     if (!_endSelector) {
         _endSelector = @selector(requestDidPutData:);
@@ -121,11 +124,13 @@
     
     [req setHTTPMethod:@"PUT"];
     
-    [req setValue:@"application/octet-stream" forHTTPHeaderField:@"Content-Type:"];
+    [req setValue:@"application/octet-stream" forHTTPHeaderField:@"Content-Type"];
     
     [req setHTTPBody:data];
     
     [self sendRequest:req];
+    
+    return self;
 }
 
 - (FMWebDAVRequest*) get {
@@ -135,6 +140,23 @@
     }
     
     NSMutableURLRequest *req = [NSMutableURLRequest requestWithURL:_url];
+    
+    [self sendRequest:req];
+    
+    return self;
+}
+
+- (FMWebDAVRequest*) copyToDestinationURL:(NSURL*)dest {
+    
+    if (!_endSelector) {
+        _endSelector = @selector(requestDidCopy:);
+    }
+    
+    NSMutableURLRequest *req = [NSMutableURLRequest requestWithURL:_url];
+    
+    [req setHTTPMethod:@"COPY"];
+    
+    [req setValue:[dest absoluteString] forHTTPHeaderField:@"Destination"];
     
     [self sendRequest:req];
     
@@ -157,11 +179,20 @@
 }
 
 - (FMWebDAVRequest*) propfind {
-    return [self fetchDirectoryListing];
+    
+    if (!_endSelector) {
+        _endSelector = @selector(requestDidPropfind:);
+    }
+    
+    return [self fetchDirectoryListingWithDepth:0];
 }
 
-// hrm...
+
 - (FMWebDAVRequest*) fetchDirectoryListing {
+    return [self fetchDirectoryListingWithDepth:1];
+}
+
+- (FMWebDAVRequest*) fetchDirectoryListingWithDepth:(NSUInteger)depth {
     
     if (!_endSelector) {
         _endSelector = @selector(requestDidFetchDirectoryListing:);
@@ -176,8 +207,15 @@
     
     NSString *xml = @"<?xml version=\"1.0\" encoding=\"utf-8\" ?>\n<D:propfind xmlns:D=\"DAV:\"><D:allprop/></D:propfind>";
     
-    [req setValue:@"1" forHTTPHeaderField:@"Depth"];
-    [req setValue:@"application/xml" forHTTPHeaderField:@"Content-Type:"];
+    if (depth > 1) {
+        // http://tools.ietf.org/html/rfc2518#section-9.2
+        [req setValue:@"infinity" forHTTPHeaderField:@"Depth"];
+    }
+    else {
+        [req setValue:[NSString stringWithFormat:@"%d", depth] forHTTPHeaderField:@"Depth"];
+    }
+    
+    [req setValue:@"application/xml" forHTTPHeaderField:@"Content-Type"];
     
     [req setHTTPBody:[xml dataUsingEncoding:NSUTF8StringEncoding]];
     
@@ -214,16 +252,19 @@
 }
 
 - (void)connection:(NSURLConnection *)connection didReceiveAuthenticationChallenge:(NSURLAuthenticationChallenge *)challenge {
-     if (self.delegate && [self.delegate respondsToSelector:@selector(request:didReceiveAuthenticationChallenge:)]) {
-         [self.delegate request:self didReceiveAuthenticationChallenge:challenge];
-     }
+    if (self.delegate && [self.delegate respondsToSelector:@selector(request:didReceiveAuthenticationChallenge:)]) {
+        [self.delegate request:self didReceiveAuthenticationChallenge:challenge];
+    }
 }
 
 - (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)URLresponse {
     
+    [_responseData setLength:0]; 
+    
     NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse*)URLresponse;
     
     if (![httpResponse isKindOfClass:[NSHTTPURLResponse class]]) {
+        NSLog(@"%s:%d", __FUNCTION__, __LINE__);
         NSLog(@"Unknown response type: %@", URLresponse);
         return;
     }
@@ -237,6 +278,23 @@
         }
     }
 }
+
+
+- (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error {
+    
+    // hrm... do we really want to do this?
+    if (self.delegate && [self.delegate respondsToSelector:@selector(connection:didFailWithError:)]) {
+        [self.delegate connection:connection didFailWithError:error];
+    }
+    
+    // what about this?
+    if (self.delegate && [self.delegate respondsToSelector:_endSelector]) {
+        [self.delegate performSelector:_endSelector withObject:self];
+    }
+    
+    [self autorelease];
+}
+
 
 -(void)connectionDidFinishLoading:(NSURLConnection *)connection {
     

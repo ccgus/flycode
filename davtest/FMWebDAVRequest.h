@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-#define NSStringToURL(arrrrgh) [NSURL URLWithString:arrrrgh]
+#define NSStringToURL(arrrrgh) [NSURL URLWithString:[arrrrgh stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]]
 #define NSDataToString(blah) [[[NSString alloc] initWithData:blah encoding:NSUTF8StringEncoding] autorelease]
 
 enum {
@@ -33,6 +33,8 @@ enum {
     NSInteger _responseStatusCode;
     
     BOOL _synchronous;
+    
+    NSError *_error;
 }
 
 @property (retain) NSURLConnection *connection;
@@ -42,22 +44,28 @@ enum {
 @property (retain) id contextInfo;
 @property (assign) SEL endSelector;
 @property (assign) NSInteger responseStatusCode;
+@property (retain) NSError *error;
+
 
 + (id) requestToURL:(NSURL*)url;
 + (id) requestToURL:(NSURL*)url delegate:(id)del endSelector:(SEL)anEndSelector contextInfo:(id)context;
 
+- (FMWebDAVRequest*) fetchDirectoryListingWithDepth:(NSUInteger)depth;
 - (FMWebDAVRequest*) fetchDirectoryListing;
 - (NSArray*) directoryListing;
 
-- (void) createDirectory;
-- (void) delete;
-- (void) putData:(NSData*)data;
+- (FMWebDAVRequest*) createDirectory;
+- (FMWebDAVRequest*) delete;
+- (FMWebDAVRequest*) putData:(NSData*)data;
 - (FMWebDAVRequest*) get;
 - (FMWebDAVRequest*) head;
+- (FMWebDAVRequest*) copyToDestinationURL:(NSURL*)dest;
 
 - (FMWebDAVRequest*) synchronous;
 
 - (FMWebDAVRequest*) propfind;
+
+// maybe I went a little overboard with the whole return self thing?  Probably.
 
 @end
 
