@@ -43,6 +43,24 @@ int main (int argc, const char * argv[]) {
     [db commit];
     
     
+    
+    // do it again, just because
+    [db beginTransaction];
+    i = 0;
+    while (i++ < 20) {
+        [db executeUpdate:@"insert into test (a, b, c, d, e) values (?, ?, ?, ?, ?)" ,
+         @"hi again'", // look!  I put in a ', and I'm not escaping it!
+         [NSString stringWithFormat:@"number %d", i],
+         [NSNumber numberWithInt:i],
+         [NSDate date],
+         [NSNumber numberWithFloat:2.2f]];
+    }
+    [db commit];
+    
+    
+    
+    
+    
     FMResultSet *rs = [db executeQuery:@"select rowid,* from test where a = ?", @"hi'"];
     while ([rs next]) {
         // just print out what we've got in a number of formats.

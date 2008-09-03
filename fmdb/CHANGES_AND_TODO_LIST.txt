@@ -17,11 +17,13 @@ Thanks to Kris Markel for some extra trace outputs, and a fix where the database
 2008.06.06
 Thanks to Zach Wily for the return of FMDatabaseAdditions!
 
-
 2008.06.03:
 Removed all exceptions, now you should use [db hadError] to check for an error.  I hate (ns)exceptions, I'm not sure why I put them in.
 Moved to google code.
 Various little cleanup thingies.
+
+2008.10.03
+Fixed a crasher in FMResultSet's close where if the parent DB was already released, the result set would be talking to a bad address and fmdb went boom. (thanks to Brian Stern for the patch)
 
 
 questions? comments? patches?  Send them to gus@flyingmeat.com

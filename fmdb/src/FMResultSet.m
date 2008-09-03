@@ -47,6 +47,7 @@
     statement = nil;
     
     [parentDB setInUse:NO];
+    parentDB = nil; // parentDB is never retained, so no need for a release.
 }
 
 - (void) setupColumnNames {
