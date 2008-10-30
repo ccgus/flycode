@@ -16,11 +16,28 @@ enum {
 };
 
 
+// http://www.ietf.org/rfc/rfc2518.txt
+// just a small collection of stuff that I find useful.
+enum {
+    FMWebDAVOKStatusCode = 200,
+    FMWebDAVCreatedStatusCode = 201,
+    FMWebDAVNoContentStatusCode = 204,
+    FMWebDAVForbiddenStatusCode = 403,
+    FMWebDAVNotFoundStatusCode = 404,
+    FMWebDAVMethodNotAllowedStatusCode = 405,
+    FMWebDAVConflictStatusCode = 409,
+};
+
+
 @interface FMWebDAVRequest : NSObject {
     
     NSURLConnection *_connection;
     NSMutableData *_responseData;
+    
     NSMutableString *_xmlChars;
+    NSMutableDictionary *_xmlBucket;
+    NSMutableArray *_directoryBucket;
+    
     NSURL *_url;
     id _delegate;
     id _contextInfo;
@@ -28,7 +45,6 @@ enum {
     NSUInteger _parseState;
     
     NSUInteger _uriLength;
-    NSMutableArray *_directoryBucket;
     
     NSInteger _responseStatusCode;
     
@@ -53,6 +69,8 @@ enum {
 - (FMWebDAVRequest*) fetchDirectoryListingWithDepth:(NSUInteger)depth;
 - (FMWebDAVRequest*) fetchDirectoryListing;
 - (NSArray*) directoryListing;
+- (NSArray*) directoryListingWithAttributes;
+- (NSString*) responseString;
 
 - (FMWebDAVRequest*) createDirectory;
 - (FMWebDAVRequest*) delete;
@@ -60,6 +78,7 @@ enum {
 - (FMWebDAVRequest*) get;
 - (FMWebDAVRequest*) head;
 - (FMWebDAVRequest*) copyToDestinationURL:(NSURL*)dest;
+- (FMWebDAVRequest*) moveToDestinationURL:(NSURL*)dest;
 
 - (FMWebDAVRequest*) synchronous;
 
