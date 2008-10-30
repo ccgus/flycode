@@ -18,16 +18,6 @@
     return [rs autorelease];
 }
 
-- (id)init {
-	self = [super init];
-    if (self) {
-        [self setColumnNameToIndexMap:[NSMutableDictionary dictionary]];
-    }
-	
-	return self;
-}
-
-
 - (void)dealloc {
     [self close];
     
@@ -50,6 +40,10 @@
 }
 
 - (void) setupColumnNames {
+    
+    if (!columnNameToIndexMap) {
+        [self setColumnNameToIndexMap:[NSMutableDictionary dictionary]];
+    }	
     
     int columnCount = sqlite3_column_count(statement.statement);
     
