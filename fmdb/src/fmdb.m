@@ -150,6 +150,43 @@ int main (int argc, const char * argv[]) {
     }
     
     
+    
+    // test some nullness.
+    [db executeUpdate:@"create table t2 (a integer, b integer)"];
+    
+    if (![db executeUpdate:@"insert into t2 values (?, ?)", nil, [NSNumber numberWithInt:5]]) {
+        NSLog(@"UH OH, can't insert a nil value for some reason...");
+    }
+    
+    
+    
+    
+    rs = [db executeQuery:@"select * from t2"];
+    while ([rs next]) {
+        NSString *a = [rs stringForColumnIndex:0];
+        NSString *b = [rs stringForColumnIndex:1];
+        
+        if (a != nil) {
+            NSLog(@"%s:%d", __FUNCTION__, __LINE__);
+            NSLog(@"OH OH, PROBLEMO!");
+            return 10;
+        }
+        else {
+            NSLog(@"YAY, NULL VALUES");
+        }
+        
+        if (![b isEqualToString:@"5"]) {
+            NSLog(@"%s:%d", __FUNCTION__, __LINE__);
+            NSLog(@"OH OH, PROBLEMO!");
+            return 10;
+        }
+    }
+    
+    
+    
+    
+    
+    
     // print out some stats if we are using cached statements.
     if ([db shouldCacheStatements]) {
         

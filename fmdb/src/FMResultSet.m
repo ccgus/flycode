@@ -47,7 +47,6 @@
     statement = nil;
     
     [parentDB setInUse:NO];
-    parentDB = nil; // parentDB is never retained, so no need for a release.
 }
 
 - (void) setupColumnNames {
@@ -184,11 +183,11 @@
         return 0;
     }
     
-    return sqlite3_column_int64(statement.statement, columnIdx);
+    return (long)sqlite3_column_int64(statement.statement, columnIdx);
 }
 
 - (long) longForColumnIndex:(int)columnIdx {
-    return sqlite3_column_int64(statement.statement, columnIdx);
+    return (long)sqlite3_column_int64(statement.statement, columnIdx);
 }
 
 - (BOOL) boolForColumn:(NSString*)columnName {

@@ -194,8 +194,12 @@
 
 - (void) bindObject:(id)obj toColumn:(int)idx inStatement:(sqlite3_stmt*)pStmt; {
     
+    if (!obj) {
+        sqlite3_bind_null(pStmt, idx);
+    }
+    
     // FIXME - someday check the return codes on these binds.
-    if ([obj isKindOfClass:[NSData class]]) {
+    else if ([obj isKindOfClass:[NSData class]]) {
         sqlite3_bind_blob(pStmt, idx, [obj bytes], [obj length], SQLITE_STATIC);
     }
     else if ([obj isKindOfClass:[NSDate class]]) {
@@ -300,10 +304,6 @@
     while (idx < queryCount) {
         obj = va_arg(args, id);
         
-        if (!obj) {
-            break;
-        }
-        
         if (traceExecution) {
             NSLog(@"obj: %@", obj);
         }
@@ -396,7 +396,7 @@
                 }
             }
             else if (SQLITE_OK != rc) {
-                int ret = rc;
+                
                 rc = sqlite3_finalize(pStmt);
                 
                 if (logsErrors) {
@@ -411,7 +411,8 @@
                 }
                 
                 [self setInUse:NO];
-                return ret;
+                
+                return NO;
             }
         }
         while (retry);
@@ -425,10 +426,6 @@
     while (idx < queryCount) {
         
         obj = va_arg(args, id);
-        
-        if (!obj) {
-            break;
-        }
         
         if (traceExecution) {
             NSLog(@"obj: %@", obj);
@@ -470,12 +467,12 @@
             // all is well, let's return.
         }
         else if (SQLITE_ERROR == rc) {
-            NSLog(@"Error calling sqlite3_step (%d: %s) eu", rc, sqlite3_errmsg(db));
+            NSLog(@"Error calling sqlite3_step (%d: %s) SQLITE_ERROR", rc, sqlite3_errmsg(db));
             NSLog(@"DB Query: %@", sql);
         }
         else if (SQLITE_MISUSE == rc) {
             // uh oh.
-            NSLog(@"Error calling sqlite3_step (%d: %s) eu", rc, sqlite3_errmsg(db));
+            NSLog(@"Error calling sqlite3_step (%d: %s) SQLITE_MISUSE", rc, sqlite3_errmsg(db));
             NSLog(@"DB Query: %@", sql);
         }
         else {
