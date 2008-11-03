@@ -244,8 +244,8 @@
     NSMutableArray *ret = [NSMutableArray array];
     
     for (NSDictionary *dict in [self directoryListingWithAttributes]) {
-        if ([dict objectForKey:@"D:href"]) {
-            [ret addObject:[dict objectForKey:@"D:href"]];
+        if ([dict objectForKey:@"href"]) {
+            [ret addObject:[dict objectForKey:@"href"]];
         }
     }
     
@@ -363,13 +363,19 @@
     
     if (_parseState == FMWebDAVDirectoryListing) {
         if ([elementName isEqualToString:@"D:href"]) {
-        
+            
+            if ([_xmlChars length] < _uriLength) {
+                // whoa, problemo.
+                return;
+            }
+            
             NSString *lastBit = [_xmlChars substringFromIndex:_uriLength];
             if ([lastBit length]) {
                 [_xmlBucket setObject:lastBit forKey:@"href"];
             }
         }
-        else if ([elementName hasSuffix:@":creationdate"]) {
+        else if ([elementName hasSuffix:@":creationdate"] || [elementName hasSuffix:@":modificationdate"]) {
+            
             // '2008-10-30T02:52:47Z'
             // 1997-12-01T17:42:21-08:00
             // date-time = full-date "T" full-time, aka ISO-8601
@@ -391,8 +397,11 @@
             
             NSDate *d = [sISO8601 dateFromString:dateString];
             
-            [_xmlBucket setObject:d forKey:@"creationdate"];
+            int colIdx = [elementName rangeOfString:@":"].location;
+            
+            [_xmlBucket setObject:d forKey:[elementName substringFromIndex:colIdx + 1]];
         }
+        
         else if ([elementName hasSuffix:@":getlastmodified"]) {
             // 'Thu, 30 Oct 2008 02:52:47 GMT'
             // Monday, 12-Jan-98 09:25:56 GMT
