@@ -37,6 +37,7 @@
     statement = nil;
     
     [parentDB setInUse:NO];
+    parentDB = nil;
 }
 
 - (void) setupColumnNames {

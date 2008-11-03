@@ -1,18 +1,11 @@
 TODO:
 A connection manager, so you can checkout and hit the same db over different threads.  Although I guess the latest versions of sqlite can be compiled as thread safe..
 
-2008.00.01
-Fixed a problemo that kept it from compiling for the iPhone (Thanks to Sam Steele for the patch)
+2008.10.30
+Some bug fixes + warning fixes from Brad Stern (thanks again Brad!)
 
-2008.07.18
-FMDatabase will now cache statements if you turn it on using shouldCacheStatements:YES.  In theory, this should speed things up.  Test it out, let me know if it makes things good for ya.
-Note: This is pretty new code, so it hasn't gone through a lot of testing... you've been warned. (seems to work though!)
-
-2008.07.10
-Thanks to Daniel Pasco and Bil Moorehead for catching a problem where the column names lookup table was created on every row iteration.  Doh! 
-
-2008.07.03
-Thanks to Kris Markel for some extra trace outputs, and a fix where the database would be locked if it was too busy.
+2008.10.03
+Fixed a crasher in FMResultSet's close where if the parent DB was already released, the result set would be talking to a bad address and fmdb went boom. (thanks to Brian Stern for the patch)
 
 2008.06.06
 Thanks to Zach Wily for the return of FMDatabaseAdditions!
@@ -22,8 +15,19 @@ Removed all exceptions, now you should use [db hadError] to check for an error. 
 Moved to google code.
 Various little cleanup thingies.
 
-2008.10.03
-Fixed a crasher in FMResultSet's close where if the parent DB was already released, the result set would be talking to a bad address and fmdb went boom. (thanks to Brian Stern for the patch)
+2008.07.03
+Thanks to Kris Markel for some extra trace outputs, and a fix where the database would be locked if it was too busy.
+
+2008.07.10
+Thanks to Daniel Pasco and Bil Moorehead for catching a problem where the column names lookup table was created on every row iteration.  Doh! 
+
+2008.07.18
+FMDatabase will now cache statements if you turn it on using shouldCacheStatements:YES.  In theory, this should speed things up.  Test it out, let me know if it makes things good for ya.
+Note: This is pretty new code, so it hasn't gone through a lot of testing... you've been warned. (seems to work though!)
+
+2008.00.01
+Fixed a problemo that kept it from compiling for the iPhone (Thanks to Sam Steele for the patch)
+
 
 
 questions? comments? patches?  Send them to gus@flyingmeat.com
