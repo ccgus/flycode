@@ -5,7 +5,7 @@ A connection manager, so you can checkout and hit the same db over different thr
 Removed the block keeping you from performing updates or selects while going through a result set.
 
 2008.10.30
-Some bug fixes + warning fixes from Brad Stern (thanks again Brad!)
+Some bug fixes + warning fixes from Brian Stern (thanks again Brian!)
 
 2008.10.03
 Fixed a crasher in FMResultSet's close where if the parent DB was already released, the result set would be talking to a bad address and fmdb went boom. (thanks to Brian Stern for the patch)
