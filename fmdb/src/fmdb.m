@@ -187,16 +187,68 @@ int main (int argc, const char * argv[]) {
     
     
     
+    
+    
+    
+    
+    // test some inner loop funkness.
+    [db executeUpdate:@"create table t3 (a somevalue)"];
+    
+    
+    // do it again, just because
+    [db beginTransaction];
+    i = 0;
+    while (i++ < 20) {
+        [db executeUpdate:@"insert into t3 (a) values (?)" , [NSNumber numberWithInt:i]];
+    }
+    [db commit];
+    
+    
+    
+    
+    rs = [db executeQuery:@"select * from t3"];
+    while ([rs next]) {
+        int foo = [rs intForColumnIndex:0];
+        
+        int newVal = foo + 100;
+        
+        [db executeUpdate:@"update t3 set a = ? where a = ?" , [NSNumber numberWithInt:newVal], [NSNumber numberWithInt:foo]];
+        
+        
+        FMResultSet *rs2 = [db executeQuery:@"select a from t3 where a = ?", [NSNumber numberWithInt:newVal]];
+        [rs2 next];
+        
+        if ([rs2 intForColumnIndex:0] != newVal) {
+            NSLog(@"Oh crap, our update didn't work out!");
+            return 9;
+        }
+        
+        [rs2 close];
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     // print out some stats if we are using cached statements.
     if ([db shouldCacheStatements]) {
         
         NSEnumerator *e = [[db cachedStatements] objectEnumerator];;
         FMStatement *statement;
-
+        
         while ((statement = [e nextObject])) {
         	NSLog(@"%@", statement);
         }
     }
+    
+    
+    
+    
     
     
     

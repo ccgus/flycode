@@ -36,7 +36,8 @@
     [statement release];
     statement = nil;
     
-    [parentDB setInUse:NO];
+    // we don't need this anymore... (i think)
+    //[parentDB setInUse:NO];
     parentDB = nil;
 }
 

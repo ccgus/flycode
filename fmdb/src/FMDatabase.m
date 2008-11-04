@@ -339,6 +339,8 @@
     
     [statement release];    
     
+    [self setInUse:NO];
+    
     return rs;
 }
 
