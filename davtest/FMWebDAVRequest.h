@@ -62,7 +62,6 @@ enum {
 @property (assign) NSInteger responseStatusCode;
 @property (retain) NSError *error;
 
-
 + (id) requestToURL:(NSURL*)url;
 + (id) requestToURL:(NSURL*)url delegate:(id)del endSelector:(SEL)anEndSelector contextInfo:(id)context;
 
