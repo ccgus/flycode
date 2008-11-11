@@ -11,12 +11,14 @@ if not os.path.exists(appFolder):
     print("The folder " + appFolder + " does not exist.")
     sys.exit(1)
 
-s = os.popen("curl http://nightly.webkit.org/").read()
+s = os.popen("curl http://nightly.webkit.org/builds/trunk/mac/rss").read()
 
-sloc = s.find('<a href="/files/trunk/mac/WebKit-SVN-')
-eloc = s.find('.dmg"')
+sloc = s.find('<guid>')
+eloc = s.find('</guid>')
 
-url = "http://nightly.webkit.org/" + s[sloc+10:eloc + 4]
+#url = "http://builds.nightly.webkit.org/" + s[sloc+10:eloc + 4]
+
+url = s[sloc+6: eloc]
 
 print url
 

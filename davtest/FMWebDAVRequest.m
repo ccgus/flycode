@@ -87,7 +87,8 @@
     
     NSMutableURLRequest *req = [NSMutableURLRequest requestWithURL:_url];
     
-    [req setCachePolicy:NSURLRequestReloadIgnoringLocalAndRemoteCacheData];
+    [req setCachePolicy:NSURLRequestReloadIgnoringLocalCacheData];
+    [req setTimeoutInterval:60 * 5];
     
     [req setHTTPMethod:@"MKCOL"];
     
@@ -105,7 +106,8 @@
     
     NSMutableURLRequest *req = [NSMutableURLRequest requestWithURL:_url];
     
-    [req setCachePolicy:NSURLRequestReloadIgnoringLocalAndRemoteCacheData];
+    [req setCachePolicy:NSURLRequestReloadIgnoringLocalCacheData];
+    [req setTimeoutInterval:60 * 5];
     
     [req setHTTPMethod:@"DELETE"];
     
@@ -124,12 +126,12 @@
     
     NSMutableURLRequest *req = [NSMutableURLRequest requestWithURL:_url];
     
-    [req setCachePolicy:NSURLRequestReloadIgnoringLocalAndRemoteCacheData];
+    [req setCachePolicy:NSURLRequestReloadIgnoringLocalCacheData];
+    [req setTimeoutInterval:60 * 5];
     
     [req setHTTPMethod:@"PUT"];
     
     [req setValue:@"application/octet-stream" forHTTPHeaderField:@"Content-Type"];
-    [req setValue:@"FMKit" forHTTPHeaderField:@"User-Agent"];
     
     // this actually speeds things up for some reason.
     [req setValue:[NSString stringWithFormat:@"%d", [data length]] forHTTPHeaderField:@"Content-Length"];
@@ -149,7 +151,8 @@
     
     NSMutableURLRequest *req = [NSMutableURLRequest requestWithURL:_url];
     
-    [req setCachePolicy:NSURLRequestReloadIgnoringLocalAndRemoteCacheData];
+    [req setCachePolicy:NSURLRequestReloadIgnoringLocalCacheData];
+    [req setTimeoutInterval:60 * 5];
     
     [self sendRequest:req];
     
@@ -164,7 +167,8 @@
     
     NSMutableURLRequest *req = [NSMutableURLRequest requestWithURL:_url];
     
-    [req setCachePolicy:NSURLRequestReloadIgnoringLocalAndRemoteCacheData];
+    [req setCachePolicy:NSURLRequestReloadIgnoringLocalCacheData];
+    [req setTimeoutInterval:60 * 5];
     
     [req setHTTPMethod:@"COPY"];
     
@@ -183,7 +187,8 @@
     
     NSMutableURLRequest *req = [NSMutableURLRequest requestWithURL:_url];
     
-    [req setCachePolicy:NSURLRequestReloadIgnoringLocalAndRemoteCacheData];
+    [req setCachePolicy:NSURLRequestReloadIgnoringLocalCacheData];
+    [req setTimeoutInterval:60 * 5];
     
     [req setHTTPMethod:@"MOVE"];
     
@@ -202,7 +207,8 @@
     
     NSMutableURLRequest *req = [NSMutableURLRequest requestWithURL:_url];
     
-    [req setCachePolicy:NSURLRequestReloadIgnoringLocalAndRemoteCacheData];
+    [req setCachePolicy:NSURLRequestReloadIgnoringLocalCacheData];
+    [req setTimeoutInterval:60 * 5];
     
     [req setHTTPMethod:@"HEAD"];
     
@@ -233,7 +239,8 @@
     
     NSMutableURLRequest *req = [NSMutableURLRequest requestWithURL:_url];
     
-    [req setCachePolicy:NSURLRequestReloadIgnoringLocalAndRemoteCacheData];
+    [req setCachePolicy:NSURLRequestReloadIgnoringLocalCacheData];
+    [req setTimeoutInterval:60 * 5];
     
     // the trailing / always gets stripped off for some reason...
     _uriLength = [[_url path] length] + 1;

@@ -21,6 +21,13 @@
                          keyEquivalent:@"p"
              keyEquivalentModifierMask:NSControlKeyMask | NSAlternateKeyMask | NSCommandKeyMask];
     
+    [pluginManager addPluginsMenuTitle:@"Save Document as PDF"
+                    withSuperMenuTitle:@"Miscellaneous"
+                                target:self
+                                action:@selector(pdfDocument:)
+                         keyEquivalent:@"o"
+             keyEquivalentModifierMask:NSControlKeyMask | NSAlternateKeyMask | NSCommandKeyMask];
+    
 }
 
 
@@ -29,22 +36,22 @@
     
 }
 
-- (void) viewDocument:(id<VPPluginWindowController>)windowController {
+- (NSMutableAttributedString *) makeAttributedStringFromDocument:(id<VPPluginDocument>)document {
     
-    NSMutableAttributedString *as   = [[NSMutableAttributedString alloc] init];
+    NSMutableAttributedString *as   = [[[NSMutableAttributedString alloc] init] autorelease];
     NSString *lineBreak             = [NSString stringWithFormat: @"\n%C", NSFormFeedCharacter];
     
 #define DocumentViewPagesList @"documentviewpagelist"
     
-    NSArray *pagesList = [[windowController document] keys];
+    NSArray *pagesList = [document keys];
     
     if ([pagesList containsObject:DocumentViewPagesList]) {
-        id <VPData> vpData = [[windowController document] pageForKey:DocumentViewPagesList];
+        id <VPData> vpData = [document pageForKey:DocumentViewPagesList];
         
         if ([vpData type] != VPPageType) {
             NSBeep();
             NSLog(@"Um... DocumentViewPagesList isn't a page.");
-            return;
+            return nil;
         }
         
         // ok, "lowercaseString" isn't exactly the algorithm VoodooPad uses for key names... but it's close enough for this.
@@ -55,11 +62,13 @@
     NSEnumerator *e                 = [pagesList objectEnumerator];
     NSString *key                   = [e nextObject];
     
+    NSAutoreleasePool * pool = [[NSAutoreleasePool alloc] init];
+    
     while (key) {
         
-        NSAutoreleasePool * pool = [[NSAutoreleasePool alloc] init];
+        id <VPData> vpData = [document pageForKey:key];
         
-        id <VPData> vpData = [[windowController document] pageForKey:key];
+        key = [e nextObject];
         
         if ([vpData type] == VPPageType) {
             NSMutableAttributedString *pageAts = [vpData dataAsAttributedString];
@@ -70,17 +79,36 @@
             
             [pageAts addAttribute:@"VPPageName" value:[vpData displayName] range:NSMakeRange(0, [pageAts length])];
             [as appendAttributedString:pageAts];
+            
+            if (key) {
+                [[as mutableString] appendString:lineBreak];
+            }
         }
         
-        key = [e nextObject];
-        
-        if (key) {
-            [[as mutableString] appendString:lineBreak];
-        }
-        
-        [pool release];
+        [pool drain];
         
     }
+    
+    [pool release];
+    
+    return as;
+}
+
+- (void) pdfDocument:(id<VPPluginWindowController>)windowController {
+    
+    NSMutableAttributedString *as = [self makeAttributedStringFromDocument:[windowController document]];
+    
+    DocumentViewWindowController *wc = [[DocumentViewWindowController alloc] initWithWindowNibName:@"DocumentViewWindow"];
+    
+    [wc loadAttributedString:as];
+    
+    [(id)wc printDocument:nil];
+    
+}
+
+- (void) viewDocument:(id<VPPluginWindowController>)windowController {
+    
+    NSMutableAttributedString *as = [self makeAttributedStringFromDocument:[windowController document]];
     
     DocumentViewWindowController *wc = [[DocumentViewWindowController alloc] initWithWindowNibName:@"DocumentViewWindow"];
     

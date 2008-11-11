@@ -1,8 +1,7 @@
 // !$*UTF8*$!
 {
 	089C1669FE841209C02AAC07 /* Project object */ = {
-		activeArchitecture = ppc;
-		activeBuildConfigurationName = Deployment;
+		activeBuildConfigurationName = Development;
 		activeExecutable = CCD5A7970BC5AA7C009E02D3 /* VoodooPad Pro */;
 		activeTarget = CC93E18B066ECBC400D09EFE /* DocumentView */;
 		addToTargets = (
@@ -21,7 +20,7 @@
 				PBXFileTableDataSourceColumnWidthsKey = (
 					22,
 					300,
-					156,
+					57.58349609375,
 				);
 				PBXFileTableDataSourceColumnsKey = (
 					PBXExecutablesDataSource_ActiveFlagID,
@@ -34,7 +33,7 @@
 				PBXFileTableDataSourceColumnSortingKey = PBXFileDataSource_Filename_ColumnID;
 				PBXFileTableDataSourceColumnWidthsKey = (
 					20,
-					251,
+					169,
 					20,
 					48,
 					43,
@@ -51,8 +50,30 @@
 					PBXFileDataSource_Target_ColumnID,
 				);
 			};
-			PBXPerProjectTemplateStateSaveDate = 221642779;
-			PBXWorkspaceStateSaveDate = 221642779;
+			PBXConfiguration.PBXTargetDataSource.PBXTargetDataSource = {
+				PBXFileTableDataSourceColumnSortingDirectionKey = "-1";
+				PBXFileTableDataSourceColumnSortingKey = PBXFileDataSource_Filename_ColumnID;
+				PBXFileTableDataSourceColumnWidthsKey = (
+					20,
+					129,
+					60,
+					20,
+					48.16259765625,
+					43,
+					43,
+				);
+				PBXFileTableDataSourceColumnsKey = (
+					PBXFileDataSource_FiletypeID,
+					PBXFileDataSource_Filename_ColumnID,
+					PBXTargetDataSource_PrimaryAttribute,
+					PBXFileDataSource_Built_ColumnID,
+					PBXFileDataSource_ObjectSize_ColumnID,
+					PBXFileDataSource_Errors_ColumnID,
+					PBXFileDataSource_Warnings_ColumnID,
+				);
+			};
+			PBXPerProjectTemplateStateSaveDate = 236129816;
+			PBXWorkspaceStateSaveDate = 236129816;
 		};
 		sourceControlManager = CCD5A7670BC5A8FC009E02D3 /* Source Control */;
 		userBuildSettings = {
@@ -60,16 +81,17 @@
 	};
 	CC29761F07344E7D00F8D6C4 /* DocumentViewPlugin.h */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1247, 976}}";
-			sepNavSelRange = "{258, 0}";
+			sepNavIntBoundsRect = "{{0, 0}, {1015, 981}}";
+			sepNavSelRange = "{0, 0}";
+			sepNavVisRange = "{0, 263}";
 			sepNavVisRect = "{{0, 0}, {1247, 976}}";
 		};
 	};
 	CC29762007344E7D00F8D6C4 /* DocumentViewPlugin.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1350, 1302}}";
-			sepNavSelRange = "{1612, 0}";
-			sepNavVisRange = "{352, 2429}";
+			sepNavIntBoundsRect = "{{0, 0}, {1015, 1680}}";
+			sepNavSelRange = "{1249, 1962}";
+			sepNavVisRange = "{1446, 2495}";
 			sepNavVisRect = "{{0, 0}, {1069, 857}}";
 		};
 	};
@@ -125,30 +147,33 @@
 	};
 	CCD5A7BD0BC5AC21009E02D3 /* DocumentViewWindowController.h */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1069, 834}}";
-			sepNavSelRange = "{359, 0}";
+			sepNavIntBoundsRect = "{{0, 0}, {1229, 984}}";
+			sepNavSelRange = "{360, 57}";
+			sepNavVisRange = "{0, 424}";
 			sepNavVisRect = "{{0, 0}, {1069, 834}}";
 		};
 	};
 	CCD5A7BE0BC5AC21009E02D3 /* DocumentViewWindowController.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1201, 2128}}";
-			sepNavSelRange = "{0, 0}";
-			sepNavVisRange = "{2550, 2948}";
+			sepNavIntBoundsRect = "{{0, 0}, {1015, 2128}}";
+			sepNavSelRange = "{279, 5213}";
+			sepNavVisRange = "{0, 2296}";
 			sepNavVisRect = "{{0, 0}, {1069, 857}}";
 		};
 	};
 	CCD5A7D70BC5AD86009E02D3 /* MultiplePageView.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1069, 3234}}";
-			sepNavSelRange = "{6220, 0}";
+			sepNavIntBoundsRect = "{{0, 0}, {1015, 3234}}";
+			sepNavSelRange = "{2551, 5832}";
+			sepNavVisRange = "{5849, 2534}";
 			sepNavVisRect = "{{0, 2029}, {1069, 857}}";
 		};
 	};
 	CCD5A7D80BC5AD86009E02D3 /* MultiplePageView.h */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1069, 834}}";
-			sepNavSelRange = "{186, 0}";
+			sepNavIntBoundsRect = "{{0, 0}, {1015, 981}}";
+			sepNavSelRange = "{24, 699}";
+			sepNavVisRange = "{0, 723}";
 			sepNavVisRect = "{{0, 0}, {1069, 834}}";
 		};
 	};

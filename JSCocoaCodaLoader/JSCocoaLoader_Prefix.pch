@@ -1,0 +1,10 @@
+//
+// Prefix header for all source files of the 'Capitalize' target in the 'Capitalize' project.
+//
+
+#ifdef __OBJC__
+    #import <Cocoa/Cocoa.h>
+#endif
+
+
+#define debug NSLog
