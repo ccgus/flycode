@@ -9,8 +9,6 @@ static CodaPlugInsController *JSCocoaLoaderPlugInCodaPlugInsController;
 
 - (id)initWithPlugInController:(CodaPlugInsController*)inController bundle:(NSBundle*)aBundle
 {
-    debug(@"%s:%d", __FUNCTION__, __LINE__);
-    
 	if ( (self = [super init]) != nil ) {
 		controller = inController;
         JSCocoaLoaderPlugInCodaPlugInsController = controller;
@@ -62,7 +60,7 @@ static CodaPlugInsController *JSCocoaLoaderPlugInCodaPlugInsController;
                                      target:self
                                    selector:@selector(execute:)
                           representedObject:[pluginDir stringByAppendingPathComponent:fileName]
-                              keyEquivalent:@"^@A"
+                              keyEquivalent:@""
                                  pluginName:[fileName stringByDeletingPathExtension]];
     }
 }
