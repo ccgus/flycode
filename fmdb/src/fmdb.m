@@ -235,6 +235,47 @@ int main (int argc, const char * argv[]) {
     
     
     
+    // NSNull tests
+    [db executeUpdate:@"create table nulltest (a text, b text)"];
+    
+    [db executeUpdate:@"insert into nulltest (a, b) values (?, ?)" , [NSNull null], @"a"];
+    [db executeUpdate:@"insert into nulltest (a, b) values (?, ?)" , nil, @"b"];
+    
+    rs = [db executeQuery:@"select * from nulltest"];
+    
+    while ([rs next]) {
+        
+        NSString *a = [rs stringForColumnIndex:0];
+        NSString *b = [rs stringForColumnIndex:1];
+        
+        if (!b) {
+            NSLog(@"Oh crap, the nil / null inserts didn't work!");
+            return 10;
+        }
+        
+        if (a) {
+            NSLog(@"Oh crap, the nil / null inserts didn't work (son of error message)!");
+            return 11;
+        }
+        else {
+            NSLog(@"HURRAH FOR NSNULL (and nil)!");
+        }
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     // print out some stats if we are using cached statements.
     if ([db shouldCacheStatements]) {
         

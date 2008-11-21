@@ -1,6 +1,9 @@
 TODO:
 A connection manager, so you can checkout and hit the same db over different threads.  Although I guess the latest versions of sqlite can be compiled as thread safe..
 
+2008.20.02
+Added a check for NSNull in bindObject, which works just like passing nil does (patch provded by Robert Tolar Haining)
+
 2008.11.02
 Removed the block keeping you from performing updates or selects while going through a result set.
 
