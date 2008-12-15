@@ -34,6 +34,9 @@
 - (long) longForColumn:(NSString*)columnName;
 - (long) longForColumnIndex:(int)columnIdx;
 
+- (long long int) longLongIntForColumn:(NSString*)columnName;
+- (long long int) longLongIntForColumnIndex:(int)columnIdx;
+
 - (BOOL) boolForColumn:(NSString*)columnName;
 - (BOOL) boolForColumnIndex:(int)columnIdx;
 

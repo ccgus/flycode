@@ -1,7 +1,10 @@
 TODO:
-A connection manager, so you can checkout and hit the same db over different threads.  Although I guess the latest versions of sqlite can be compiled as thread safe..
+Zip, nada, zilch.  Got any ideas?
 
-2008.20.02
+2008.12.14
+Added longLongIntForColumn: and longLongIntForColumnIndex: to FMResultSet. (patch provided by Will Cosgrove)
+
+2008.11.20
 Added a check for NSNull in bindObject, which works just like passing nil does (patch provded by Robert Tolar Haining)
 
 2008.11.02

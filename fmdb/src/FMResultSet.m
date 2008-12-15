@@ -186,6 +186,25 @@
     return (long)sqlite3_column_int64(statement.statement, columnIdx);
 }
 
+- (long long int) longLongIntForColumn:(NSString*)columnName {
+    
+    if (!columnNamesSetup) {
+        [self setupColumnNames];
+    }
+    
+    int columnIdx = [self columnIndexForName:columnName];
+    
+    if (columnIdx == -1) {
+        return 0;
+    }
+    
+    return sqlite3_column_int64(statement.statement, columnIdx);
+}
+
+- (long long int) longLongIntForColumnIndex:(int)columnIdx {
+    return sqlite3_column_int64(statement.statement, columnIdx);
+}
+
 - (BOOL) boolForColumn:(NSString*)columnName {
     return ([self intForColumn:columnName] != 0);
 }
