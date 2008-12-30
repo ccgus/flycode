@@ -161,7 +161,7 @@
     NSLog(@"The FMDatabase %@ is currently in use.", self);
     
     if (crashOnErrors) {
-        *(long*)0 = 0xDEADBEEF;
+        NSAssert1(false, @"The FMDatabase %@ is currently in use.", self);
     }
 }
 
@@ -277,7 +277,6 @@
             }
             else if (SQLITE_OK != rc) {
                 
-                rc = sqlite3_finalize(pStmt);
                 
                 if (logsErrors) {
                     NSLog(@"DB Error: %d \"%@\"", [self lastErrorCode], [self lastErrorMessage]);
@@ -286,9 +285,11 @@
 #ifdef __BIG_ENDIAN__
                         asm{ trap };
 #endif
-                        *(long*)0 = 0xDEADBEEF;
+                        NSAssert2(false, @"DB Error: %d \"%@\"", [self lastErrorCode], [self lastErrorMessage]);
                     }
                 }
+                
+                sqlite3_finalize(pStmt);
                 
                 [self setInUse:NO];
                 return nil;
@@ -399,7 +400,6 @@
             }
             else if (SQLITE_OK != rc) {
                 
-                rc = sqlite3_finalize(pStmt);
                 
                 if (logsErrors) {
                     NSLog(@"DB Error: %d \"%@\"", [self lastErrorCode], [self lastErrorMessage]);
@@ -408,10 +408,11 @@
 #ifdef __BIG_ENDIAN__
                         asm{ trap };
 #endif
-                        *(long*)0 = 0xDEADBEEF;
+                        NSAssert2(false, @"DB Error: %d \"%@\"", [self lastErrorCode], [self lastErrorMessage]);
                     }
                 }
                 
+                sqlite3_finalize(pStmt);
                 [self setInUse:NO];
                 
                 return NO;

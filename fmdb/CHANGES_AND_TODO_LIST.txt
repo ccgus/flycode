@@ -1,6 +1,10 @@
 TODO:
 Zip, nada, zilch.  Got any ideas?
 
+
+2008.12.29
+Some changes to make Clang's static analysis happy (http://clang.llvm.org/StaticAnalysis.html). (patch provided by Matt Comi)
+
 2008.12.14
 Added longLongIntForColumn: and longLongIntForColumnIndex: to FMResultSet. (patch provided by Will Cosgrove)
 
