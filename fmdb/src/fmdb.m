@@ -12,6 +12,7 @@ int main (int argc, const char * argv[]) {
     FMDatabase* db = [FMDatabase databaseWithPath:@"/tmp/tmp.db"];
     if (![db open]) {
         NSLog(@"Could not open db.");
+        [pool release];
         return 0;
     }
     
