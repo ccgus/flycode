@@ -95,6 +95,11 @@ int main (int argc, const char * argv[]) {
             
             // let's look at our fancy image that we just wrote out..
             system("/usr/bin/open /tmp/compass.icns");
+            
+            // ye shall read the header for this function, or suffer the consequences.
+            d = [rs dataNoCopyForColumn:@"b"];
+            [d writeToFile:@"/tmp/compass_data_no_copy.icns" atomically:NO];
+            system("/usr/bin/open /tmp/compass_data_no_copy.icns");
         }
         else {
             NSLog(@"Could not select image.");
@@ -228,14 +233,6 @@ int main (int argc, const char * argv[]) {
     }
     
     
-    
-    
-    
-    
-    
-    
-    
-    
     // NSNull tests
     [db executeUpdate:@"create table nulltest (a text, b text)"];
     
@@ -263,20 +260,6 @@ int main (int argc, const char * argv[]) {
         }
     }
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
     // print out some stats if we are using cached statements.
     if ([db shouldCacheStatements]) {
         
@@ -290,15 +273,7 @@ int main (int argc, const char * argv[]) {
     
     
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
+    NSLog(@"That was version %@ of sqlite", [FMDatabase sqliteLibVersion]);
     
     
     [db close];

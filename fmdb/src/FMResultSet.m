@@ -297,13 +297,8 @@
         return nil;
     }
     
-    int dataSize = sqlite3_column_bytes(statement.statement, columnIdx);
     
-    NSMutableData *data = [NSMutableData dataWithLength:dataSize];
-    
-    memcpy([data mutableBytes], sqlite3_column_blob(statement.statement, columnIdx), dataSize);
-    
-    return data;
+    return [self dataForColumnIndex:columnIdx];
 }
 
 - (NSData*) dataForColumnIndex:(int)columnIdx {
@@ -316,6 +311,35 @@
     
     return data;
 }
+
+
+- (NSData*) dataNoCopyForColumn:(NSString*)columnName {
+    
+    if (!columnNamesSetup) {
+        [self setupColumnNames];
+    }
+    
+    int columnIdx = [self columnIndexForName:columnName];
+    
+    if (columnIdx == -1) {
+        return nil;
+    }
+    
+    
+    return [self dataNoCopyForColumnIndex:columnIdx];
+}
+
+- (NSData*) dataNoCopyForColumnIndex:(int)columnIdx {
+    
+    int dataSize = sqlite3_column_bytes(statement.statement, columnIdx);
+    
+    NSData *data = [NSData dataWithBytesNoCopy:(void *)sqlite3_column_blob(statement.statement, columnIdx) length:dataSize freeWhenDone:NO];
+    
+    return data;
+}
+
+
+
 
 
 - (void)setParentDB:(FMDatabase *)newDb {

@@ -1,6 +1,12 @@
 TODO:
 Zip, nada, zilch.  Got any ideas?
 
+2000.01.02
+HAPPY NEW YEAR WOOOO!
+Added dataNoCopyForColumn: and dataNoCopyForColumnIndex: to FMResultSet.
+If you are going to use this data after you iterate over the next row, or after you close the
+result set, make sure to make a copy of the data first (or just use dataForColumn/dataForColumnIndex)
+If you don't, you're going to be in a world of hurt when you try and use the data.
 
 2008.12.29
 Some changes to make Clang's static analysis happy (http://clang.llvm.org/StaticAnalysis.html). (patch provided by Matt Comi)
