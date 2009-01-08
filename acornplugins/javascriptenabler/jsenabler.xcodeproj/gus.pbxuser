@@ -1,0 +1,209 @@
+// !$*UTF8*$!
+{
+	089C1669FE841209C02AAC07 /* Project object */ = {
+		activeBuildConfigurationName = Debug;
+		activeExecutable = CC726DCF0F156B2500EB02AF /* Acorn */;
+		activeTarget = 8D5B49AC048680CD000E48DA /* JSEnabler */;
+		addToTargets = (
+			8D5B49AC048680CD000E48DA /* JSEnabler */,
+		);
+		breakpoints = (
+		);
+		codeSenseManager = CCC7E60B0ECA3C50001F3E02 /* Code sense */;
+		executables = (
+			CC726DCF0F156B2500EB02AF /* Acorn */,
+		);
+		perUserDictionary = {
+			PBXConfiguration.PBXFileTableDataSource3.PBXExecutablesDataSource = {
+				PBXFileTableDataSourceColumnSortingDirectionKey = "-1";
+				PBXFileTableDataSourceColumnSortingKey = PBXExecutablesDataSource_NameID;
+				PBXFileTableDataSourceColumnWidthsKey = (
+					22,
+					300,
+					396,
+				);
+				PBXFileTableDataSourceColumnsKey = (
+					PBXExecutablesDataSource_ActiveFlagID,
+					PBXExecutablesDataSource_NameID,
+					PBXExecutablesDataSource_CommentsID,
+				);
+			};
+			PBXConfiguration.PBXFileTableDataSource3.PBXFileTableDataSource = {
+				PBXFileTableDataSourceColumnSortingDirectionKey = "-1";
+				PBXFileTableDataSourceColumnSortingKey = PBXFileDataSource_Filename_ColumnID;
+				PBXFileTableDataSourceColumnWidthsKey = (
+					20,
+					386,
+					20,
+					48,
+					43,
+					43,
+					20,
+				);
+				PBXFileTableDataSourceColumnsKey = (
+					PBXFileDataSource_FiletypeID,
+					PBXFileDataSource_Filename_ColumnID,
+					PBXFileDataSource_Built_ColumnID,
+					PBXFileDataSource_ObjectSize_ColumnID,
+					PBXFileDataSource_Errors_ColumnID,
+					PBXFileDataSource_Warnings_ColumnID,
+					PBXFileDataSource_Target_ColumnID,
+				);
+			};
+			PBXPerProjectTemplateStateSaveDate = 253138309;
+			PBXWorkspaceStateSaveDate = 253138309;
+		};
+		perUserProjectItems = {
+			CCC7E6310ECA44F1001F3E02 = CCC7E6310ECA44F1001F3E02 /* PBXTextBookmark */;
+		};
+		sourceControlManager = CCC7E60A0ECA3C50001F3E02 /* Source Control */;
+		userBuildSettings = {
+		};
+	};
+	8D5B49AC048680CD000E48DA /* JSEnabler */ = {
+		activeExec = 0;
+	};
+	CC726D6A0F1568BC00EB02AF /* JSEnablerPlugIn.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1263, 833}}";
+			sepNavSelRange = "{71, 0}";
+			sepNavVisRange = "{0, 78}";
+		};
+	};
+	CC726D6B0F1568BC00EB02AF /* JSEnablerPlugIn.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1120, 2548}}";
+			sepNavSelRange = "{3034, 0}";
+			sepNavVisRange = "{1403, 2377}";
+		};
+	};
+	CC726D6D0F1568C700EB02AF /* jsenabler_Prefix.pch */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1263, 833}}";
+			sepNavSelRange = "{153, 0}";
+			sepNavVisRange = "{0, 153}";
+		};
+	};
+	CC726D9D0F1569FA00EB02AF /* JSCocoaController.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1381, 1708}}";
+			sepNavSelRange = "{1491, 29}";
+			sepNavVisRange = "{474, 1292}";
+		};
+	};
+	CC726D9E0F1569FA00EB02AF /* JSCocoaController.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1381, 29764}}";
+			sepNavSelRange = "{24381, 19}";
+			sepNavVisRange = "{23773, 1787}";
+		};
+	};
+	CC726D9F0F1569FA00EB02AF /* JSCocoaFFIArgument.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1381, 1078}}";
+			sepNavSelRange = "{2501, 15}";
+			sepNavVisRange = "{367, 2239}";
+		};
+	};
+	CC726DA00F1569FA00EB02AF /* JSCocoaFFIArgument.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1381, 14014}}";
+			sepNavSelRange = "{23501, 86}";
+			sepNavVisRange = "{22645, 1150}";
+		};
+	};
+	CC726DA20F1569FA00EB02AF /* JSCocoaFFIClosure.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {950, 2422}}";
+			sepNavSelRange = "{1991, 70}";
+			sepNavVisRange = "{1880, 1755}";
+		};
+	};
+	CC726DA30F1569FA00EB02AF /* JSCocoaPrivateObject.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {950, 882}}";
+			sepNavSelRange = "{0, 0}";
+			sepNavVisRange = "{42, 1092}";
+		};
+	};
+	CC726DA40F1569FA00EB02AF /* JSCocoaPrivateObject.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {950, 1666}}";
+			sepNavSelRange = "{949, 24}";
+			sepNavVisRange = "{1075, 683}";
+		};
+	};
+	CC726DCF0F156B2500EB02AF /* Acorn */ = {
+		isa = PBXExecutable;
+		activeArgIndices = (
+			YES,
+		);
+		argumentStrings = (
+			"-plugin /Volumes/srv/Users/gus/builds/Debug/JSEnabler.acplugin",
+		);
+		autoAttachOnCrash = 1;
+		breakpointsEnabled = 0;
+		configStateDict = {
+		};
+		customDataFormattersEnabled = 1;
+		debuggerPlugin = GDBDebugging;
+		disassemblyDisplayState = 0;
+		dylibVariantSuffix = "";
+		enableDebugStr = 1;
+		environmentEntries = (
+		);
+		executableSystemSymbolLevel = 0;
+		executableUserSymbolLevel = 0;
+		launchableReference = CC726DD00F156B2500EB02AF /* Acorn.app */;
+		libgmallocEnabled = 0;
+		name = Acorn;
+		savedGlobals = {
+		};
+		sourceDirectories = (
+		);
+		variableFormatDictionary = {
+		};
+	};
+	CC726DD00F156B2500EB02AF /* Acorn.app */ = {
+		isa = PBXFileReference;
+		lastKnownFileType = wrapper.application;
+		name = Acorn.app;
+		path = /Volumes/srv/Users/gus/builds/Debug/Acorn.app;
+		sourceTree = "<absolute>";
+	};
+	CC726DF80F156BE500EB02AF /* ACPlugin.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1263, 3542}}";
+			sepNavSelRange = "{147, 5}";
+			sepNavVisRange = "{0, 1404}";
+		};
+	};
+	CCC7E60A0ECA3C50001F3E02 /* Source Control */ = {
+		isa = PBXSourceControlManager;
+		fallbackIsa = XCSourceControlManager;
+		isSCMEnabled = 0;
+		scmConfiguration = {
+		};
+	};
+	CCC7E60B0ECA3C50001F3E02 /* Code sense */ = {
+		isa = PBXCodeSenseManager;
+		indexTemplatePath = "";
+	};
+	CCC7E6310ECA44F1001F3E02 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = CCC7E6320ECA44F1001F3E02 /* main.py */;
+		name = "main.py: 511";
+		rLen = 18;
+		rLoc = 18685;
+		rType = 0;
+		vrLen = 1565;
+		vrLoc = 17516;
+	};
+	CCC7E6320ECA44F1001F3E02 /* main.py */ = {
+		isa = PBXFileReference;
+		lastKnownFileType = text.script.python;
+		name = main.py;
+		path = /Volumes/srv/Users/gus/Projects/svn_voodoopad/plugin/flyblog/main.py;
+		sourceTree = "<absolute>";
+	};
+}
