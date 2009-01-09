@@ -507,7 +507,7 @@
 							<real>261</real>
 						</array>
 						<key>RubberWindowFrame</key>
-						<string>1590 331 300 838 0 0 1920 1178 </string>
+						<string>1268 329 300 838 0 0 1920 1178 </string>
 					</dict>
 					<key>Module</key>
 					<string>PBXSmartGroupTreeModule</string>
@@ -526,7 +526,7 @@
 			</array>
 			<key>TableOfContents</key>
 			<array>
-				<string>CC8A82CA0F169598001EC5DF</string>
+				<string>CC3237700F17F1A500E60740</string>
 				<string>11E0B1FE06471DED0097A5F4</string>
 			</array>
 			<key>ToolbarConfiguration</key>
@@ -542,7 +542,7 @@
 	<key>StatusbarIsVisible</key>
 	<true/>
 	<key>TimeStamp</key>
-	<real>253140171.870426</real>
+	<real>253227502.43213901</real>
 	<key>ToolbarDisplayMode</key>
 	<integer>2</integer>
 	<key>ToolbarIsVisible</key>
@@ -557,11 +557,12 @@
 	<integer>5</integer>
 	<key>WindowOrderList</key>
 	<array>
-		<string>/Volumes/srv/Users/gus/Projects/flycode/acornplugins/javascriptenabler/jsenabler.xcodeproj</string>
 		<string>CCC7E6100ECA3D78001F3E02</string>
+		<string>/Volumes/srv/Users/gus/Projects/flycode/acornplugins/javascriptenabler/jsenabler.xcodeproj</string>
+		<string>CC3237710F17F1A500E60740</string>
 	</array>
 	<key>WindowString</key>
-	<string>1590 331 300 838 0 0 1920 1178 </string>
+	<string>1268 329 300 838 0 0 1920 1178 </string>
 	<key>WindowToolsV3</key>
 	<array>
 		<dict>
@@ -582,7 +583,7 @@
 								<key>PBXProjectModuleGUID</key>
 								<string>1CD0528F0623707200166675</string>
 								<key>PBXProjectModuleLabel</key>
-								<string></string>
+								<string>JSEnablerPlugIn.m</string>
 								<key>StatusBarVisibility</key>
 								<true/>
 							</dict>
@@ -640,7 +641,7 @@
 			<key>TableOfContents</key>
 			<array>
 				<string>CCC7E6100ECA3D78001F3E02</string>
-				<string>CC8A82CD0F169CA8001EC5DF</string>
+				<string>CC3237680F17F19800E60740</string>
 				<string>1CD0528F0623707200166675</string>
 				<string>XCMainBuildResultsModuleGUID</string>
 			</array>
@@ -651,7 +652,7 @@
 			<key>WindowToolGUID</key>
 			<string>CCC7E6100ECA3D78001F3E02</string>
 			<key>WindowToolIsVisible</key>
-			<true/>
+			<false/>
 		</dict>
 		<dict>
 			<key>FirstTimeWindowDisplayed</key>

@@ -1,7 +1,7 @@
 // !$*UTF8*$!
 {
 	089C1669FE841209C02AAC07 /* Project object */ = {
-		activeBuildConfigurationName = Debug;
+		activeBuildConfigurationName = Release;
 		activeExecutable = CC726DCF0F156B2500EB02AF /* Acorn */;
 		activeTarget = 8D5B49AC048680CD000E48DA /* JSEnabler */;
 		addToTargets = (
@@ -50,11 +50,20 @@
 					PBXFileDataSource_Target_ColumnID,
 				);
 			};
-			PBXPerProjectTemplateStateSaveDate = 253138309;
-			PBXWorkspaceStateSaveDate = 253138309;
+			PBXPerProjectTemplateStateSaveDate = 253226873;
+			PBXWorkspaceStateSaveDate = 253226873;
 		};
 		perUserProjectItems = {
-			CCC7E6310ECA44F1001F3E02 = CCC7E6310ECA44F1001F3E02 /* PBXTextBookmark */;
+			CC3237660F17F19800E60740 /* PBXTextBookmark */ = CC3237660F17F19800E60740 /* PBXTextBookmark */;
+			CC3237670F17F19800E60740 /* PBXTextBookmark */ = CC3237670F17F19800E60740 /* PBXTextBookmark */;
+			CC3237690F17F19900E60740 /* PBXTextBookmark */ = CC3237690F17F19900E60740 /* PBXTextBookmark */;
+			CC32376A0F17F19900E60740 /* PBXTextBookmark */ = CC32376A0F17F19900E60740 /* PBXTextBookmark */;
+			CC32376C0F17F1A200E60740 /* PBXTextBookmark */ = CC32376C0F17F1A200E60740 /* PBXTextBookmark */;
+			CC32376D0F17F1A200E60740 /* PBXTextBookmark */ = CC32376D0F17F1A200E60740 /* PBXTextBookmark */;
+			CC32376E0F17F1A300E60740 /* PBXTextBookmark */ = CC32376E0F17F1A300E60740 /* PBXTextBookmark */;
+			CC3237730F17F1ED00E60740 /* PBXTextBookmark */ = CC3237730F17F1ED00E60740 /* PBXTextBookmark */;
+			CC3237740F17F1ED00E60740 /* PBXTextBookmark */ = CC3237740F17F1ED00E60740 /* PBXTextBookmark */;
+			CC3237750F17F1ED00E60740 /* PBXTextBookmark */ = CC3237750F17F1ED00E60740 /* PBXTextBookmark */;
 		};
 		sourceControlManager = CCC7E60A0ECA3C50001F3E02 /* Source Control */;
 		userBuildSettings = {
@@ -62,6 +71,104 @@
 	};
 	8D5B49AC048680CD000E48DA /* JSEnabler */ = {
 		activeExec = 0;
+	};
+	CC3237660F17F19800E60740 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		comments = "error: 'userObject' undeclared (first use in this function)";
+		fRef = CC726D6B0F1568BC00EB02AF /* JSEnablerPlugIn.m */;
+		rLen = 1;
+		rLoc = 49;
+		rType = 1;
+	};
+	CC3237670F17F19800E60740 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = CC726D6B0F1568BC00EB02AF /* JSEnablerPlugIn.m */;
+		name = "JSEnablerPlugIn.m: 50";
+		rLen = 96;
+		rLoc = 1493;
+		rType = 0;
+		vrLen = 196;
+		vrLoc = 1403;
+	};
+	CC3237690F17F19900E60740 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = CC726D6B0F1568BC00EB02AF /* JSEnablerPlugIn.m */;
+		name = "JSEnablerPlugIn.m: 50";
+		rLen = 96;
+		rLoc = 1493;
+		rType = 0;
+		vrLen = 196;
+		vrLoc = 1403;
+	};
+	CC32376A0F17F19900E60740 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = CC726D6B0F1568BC00EB02AF /* JSEnablerPlugIn.m */;
+		name = "JSEnablerPlugIn.m: 50";
+		rLen = 96;
+		rLoc = 1493;
+		rType = 0;
+		vrLen = 196;
+		vrLoc = 1403;
+	};
+	CC32376C0F17F1A200E60740 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = CC726D6B0F1568BC00EB02AF /* JSEnablerPlugIn.m */;
+		name = "JSEnablerPlugIn.m: 50";
+		rLen = 96;
+		rLoc = 1493;
+		rType = 0;
+		vrLen = 196;
+		vrLoc = 1403;
+	};
+	CC32376D0F17F1A200E60740 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = CC726D6B0F1568BC00EB02AF /* JSEnablerPlugIn.m */;
+		name = "JSEnablerPlugIn.m: 50";
+		rLen = 96;
+		rLoc = 1493;
+		rType = 0;
+		vrLen = 196;
+		vrLoc = 1403;
+	};
+	CC32376E0F17F1A300E60740 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = CC726D6B0F1568BC00EB02AF /* JSEnablerPlugIn.m */;
+		name = "JSEnablerPlugIn.m: 50";
+		rLen = 96;
+		rLoc = 1493;
+		rType = 0;
+		vrLen = 196;
+		vrLoc = 1403;
+	};
+	CC3237730F17F1ED00E60740 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = CC726D6B0F1568BC00EB02AF /* JSEnablerPlugIn.m */;
+		name = "JSEnablerPlugIn.m: 50";
+		rLen = 96;
+		rLoc = 1493;
+		rType = 0;
+		vrLen = 196;
+		vrLoc = 1403;
+	};
+	CC3237740F17F1ED00E60740 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = CC726D6B0F1568BC00EB02AF /* JSEnablerPlugIn.m */;
+		name = "JSEnablerPlugIn.m: 50";
+		rLen = 96;
+		rLoc = 1493;
+		rType = 0;
+		vrLen = 196;
+		vrLoc = 1403;
+	};
+	CC3237750F17F1ED00E60740 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = CC726D6B0F1568BC00EB02AF /* JSEnablerPlugIn.m */;
+		name = "JSEnablerPlugIn.m: 50";
+		rLen = 96;
+		rLoc = 1493;
+		rType = 0;
+		vrLen = 196;
+		vrLoc = 1403;
 	};
 	CC726D6A0F1568BC00EB02AF /* JSEnablerPlugIn.h */ = {
 		uiCtxt = {
@@ -72,9 +179,9 @@
 	};
 	CC726D6B0F1568BC00EB02AF /* JSEnablerPlugIn.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1120, 2548}}";
-			sepNavSelRange = "{3034, 0}";
-			sepNavVisRange = "{1403, 2377}";
+			sepNavIntBoundsRect = "{{0, 0}, {969, 1834}}";
+			sepNavSelRange = "{1493, 96}";
+			sepNavVisRange = "{1403, 196}";
 		};
 	};
 	CC726D6D0F1568C700EB02AF /* jsenabler_Prefix.pch */ = {
@@ -188,22 +295,5 @@
 	CCC7E60B0ECA3C50001F3E02 /* Code sense */ = {
 		isa = PBXCodeSenseManager;
 		indexTemplatePath = "";
-	};
-	CCC7E6310ECA44F1001F3E02 /* PBXTextBookmark */ = {
-		isa = PBXTextBookmark;
-		fRef = CCC7E6320ECA44F1001F3E02 /* main.py */;
-		name = "main.py: 511";
-		rLen = 18;
-		rLoc = 18685;
-		rType = 0;
-		vrLen = 1565;
-		vrLoc = 17516;
-	};
-	CCC7E6320ECA44F1001F3E02 /* main.py */ = {
-		isa = PBXFileReference;
-		lastKnownFileType = text.script.python;
-		name = main.py;
-		path = /Volumes/srv/Users/gus/Projects/svn_voodoopad/plugin/flyblog/main.py;
-		sourceTree = "<absolute>";
 	};
 }
