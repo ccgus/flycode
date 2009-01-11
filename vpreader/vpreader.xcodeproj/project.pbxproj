@@ -22,6 +22,7 @@
 		CC0ADFF40F1AA575000275DA /* doclist.png in Resources */ = {isa = PBXBuildFile; fileRef = CC0ADFF30F1AA575000275DA /* doclist.png */; };
 		CC1C89F10F18387F00E71072 /* SyncViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CC1C89F00F18387F00E71072 /* SyncViewController.xib */; };
 		CC1C89F50F18389F00E71072 /* SyncViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CC1C89F40F18389F00E71072 /* SyncViewController.m */; };
+		CC6A37D10F1AAACC006A09B6 /* VPReader.png in Resources */ = {isa = PBXBuildFile; fileRef = CC6A37D00F1AAACC006A09B6 /* VPReader.png */; };
 		CCC14B950F184494004BD04E /* IPAddress.m in Sources */ = {isa = PBXBuildFile; fileRef = CCC14B660F184494004BD04E /* IPAddress.m */; };
 		CCC14B960F184494004BD04E /* TCPConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = CCC14B690F184494004BD04E /* TCPConnection.m */; };
 		CCC14B970F184494004BD04E /* TCPEndpoint.m in Sources */ = {isa = PBXBuildFile; fileRef = CCC14B6B0F184494004BD04E /* TCPEndpoint.m */; };
@@ -69,6 +70,7 @@
 		CC1C89F00F18387F00E71072 /* SyncViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SyncViewController.xib; sourceTree = "<group>"; };
 		CC1C89F30F18389F00E71072 /* SyncViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SyncViewController.h; sourceTree = "<group>"; };
 		CC1C89F40F18389F00E71072 /* SyncViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SyncViewController.m; sourceTree = "<group>"; };
+		CC6A37D00F1AAACC006A09B6 /* VPReader.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = VPReader.png; path = res/VPReader.png; sourceTree = "<group>"; };
 		CCC14B650F184494004BD04E /* IPAddress.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = IPAddress.h; path = blip/MYNetwork/IPAddress.h; sourceTree = "<group>"; };
 		CCC14B660F184494004BD04E /* IPAddress.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = IPAddress.m; path = blip/MYNetwork/IPAddress.m; sourceTree = "<group>"; };
 		CCC14B680F184494004BD04E /* TCPConnection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TCPConnection.h; sourceTree = "<group>"; };
@@ -184,6 +186,7 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				CC6A37D00F1AAACC006A09B6 /* VPReader.png */,
 				CC0ADFBC0F1AA0A7000275DA /* Default.png */,
 				CC0ADFF30F1AA575000275DA /* doclist.png */,
 				CC0ADF900F1A9AED000275DA /* homebutton.png */,
@@ -352,6 +355,7 @@
 				CC0ADF910F1A9AED000275DA /* homebutton.png in Resources */,
 				CC0ADFBD0F1AA0A7000275DA /* Default.png in Resources */,
 				CC0ADFF40F1AA575000275DA /* doclist.png in Resources */,
+				CC6A37D10F1AAACC006A09B6 /* VPReader.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

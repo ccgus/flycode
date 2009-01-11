@@ -8,7 +8,7 @@
 		<string key="IBDocument.HIToolboxVersion">353.00</string>
 		<object class="NSMutableArray" key="IBDocument.EditedObjectIDs">
 			<bool key="EncodedWithXMLCoder">YES</bool>
-			<integer value="29"/>
+			<integer value="12"/>
 		</object>
 		<object class="NSArray" key="IBDocument.PluginDependencies">
 			<bool key="EncodedWithXMLCoder">YES</bool>
@@ -66,31 +66,32 @@
 								</object>
 								<reference key="IBUIToolbar" ref="110972967"/>
 							</object>
-							<object class="IBUIBarButtonItem" id="140821163">
+							<object class="IBUIBarButtonItem" id="759334327">
 								<object class="NSCustomResource" key="IBUIImage">
 									<string key="NSClassName">NSImage</string>
 									<string key="NSResourceName">rightbutton.png</string>
 								</object>
 								<reference key="IBUIToolbar" ref="110972967"/>
 							</object>
-							<object class="IBUIBarButtonItem" id="768153179">
+							<object class="IBUIBarButtonItem" id="472953119">
 								<object class="NSCustomResource" key="IBUIImage">
 									<string key="NSClassName">NSImage</string>
 									<string key="NSResourceName">homebutton.png</string>
 								</object>
+								<float key="IBUIWidth">6.300000e+01</float>
 								<reference key="IBUIToolbar" ref="110972967"/>
 							</object>
-							<object class="IBUIBarButtonItem" id="265952092">
-								<float key="IBUIWidth">1.400000e+02</float>
+							<object class="IBUIBarButtonItem" id="641624157">
+								<float key="IBUIWidth">1.480000e+02</float>
 								<int key="IBUISystemItemIdentifier">11</int>
 								<reference key="IBUIToolbar" ref="110972967"/>
 							</object>
-							<object class="IBUIBarButtonItem" id="440384995">
+							<object class="IBUIBarButtonItem" id="545137357">
 								<object class="NSCustomResource" key="IBUIImage">
 									<string key="NSClassName">NSImage</string>
 									<string key="NSResourceName">doclist.png</string>
 								</object>
-								<float key="IBUIWidth">5.000000e+01</float>
+								<float key="IBUIWidth">5.700000e+01</float>
 								<reference key="IBUIToolbar" ref="110972967"/>
 							</object>
 						</object>
@@ -146,7 +147,7 @@
 				<object class="IBConnectionRecord">
 					<object class="IBCocoaTouchEventConnection" key="connection">
 						<string key="label">goForward</string>
-						<reference key="source" ref="140821163"/>
+						<reference key="source" ref="759334327"/>
 						<reference key="destination" ref="1048793212"/>
 					</object>
 					<int key="connectionID">21</int>
@@ -162,7 +163,7 @@
 				<object class="IBConnectionRecord">
 					<object class="IBCocoaTouchEventConnection" key="connection">
 						<string key="label">goHome:</string>
-						<reference key="source" ref="768153179"/>
+						<reference key="source" ref="472953119"/>
 						<reference key="destination" ref="372490531"/>
 					</object>
 					<int key="connectionID">24</int>
@@ -171,7 +172,7 @@
 					<object class="IBCocoaTouchOutletConnection" key="connection">
 						<string key="label">forwardButton</string>
 						<reference key="source" ref="372490531"/>
-						<reference key="destination" ref="140821163"/>
+						<reference key="destination" ref="759334327"/>
 					</object>
 					<int key="connectionID">26</int>
 				</object>
@@ -179,14 +180,14 @@
 					<object class="IBCocoaTouchOutletConnection" key="connection">
 						<string key="label">homeButton</string>
 						<reference key="source" ref="372490531"/>
-						<reference key="destination" ref="768153179"/>
+						<reference key="destination" ref="472953119"/>
 					</object>
 					<int key="connectionID">27</int>
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBCocoaTouchEventConnection" key="connection">
 						<string key="label">goToIndex:</string>
-						<reference key="source" ref="265952092"/>
+						<reference key="source" ref="641624157"/>
 						<reference key="destination" ref="372490531"/>
 					</object>
 					<int key="connectionID">28</int>
@@ -194,7 +195,7 @@
 				<object class="IBConnectionRecord">
 					<object class="IBCocoaTouchEventConnection" key="connection">
 						<string key="label">goToDocList:</string>
-						<reference key="source" ref="440384995"/>
+						<reference key="source" ref="545137357"/>
 						<reference key="destination" ref="372490531"/>
 					</object>
 					<int key="connectionID">31</int>
@@ -242,11 +243,11 @@
 						<reference key="object" ref="110972967"/>
 						<object class="NSMutableArray" key="children">
 							<bool key="EncodedWithXMLCoder">YES</bool>
-							<reference ref="140821163"/>
+							<reference ref="759334327"/>
 							<reference ref="843677649"/>
-							<reference ref="768153179"/>
-							<reference ref="265952092"/>
-							<reference ref="440384995"/>
+							<reference ref="472953119"/>
+							<reference ref="641624157"/>
+							<reference ref="545137357"/>
 						</object>
 						<reference key="parent" ref="491303951"/>
 					</object>
@@ -257,22 +258,22 @@
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">20</int>
-						<reference key="object" ref="140821163"/>
+						<reference key="object" ref="759334327"/>
 						<reference key="parent" ref="110972967"/>
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">23</int>
-						<reference key="object" ref="768153179"/>
+						<reference key="object" ref="472953119"/>
 						<reference key="parent" ref="110972967"/>
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">25</int>
-						<reference key="object" ref="265952092"/>
+						<reference key="object" ref="641624157"/>
 						<reference key="parent" ref="110972967"/>
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">29</int>
-						<reference key="object" ref="440384995"/>
+						<reference key="object" ref="545137357"/>
 						<reference key="parent" ref="110972967"/>
 					</object>
 				</object>

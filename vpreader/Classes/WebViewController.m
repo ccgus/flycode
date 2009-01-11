@@ -47,6 +47,8 @@
 
 - (void) loadDocumentDirectory:(NSString*)path {
     
+    debug(@"path: %@", path);
+    
     self.documentDirectory = path;
     
     NSDictionary *d = [NSDictionary dictionaryWithContentsOfFile:[path stringByAppendingPathComponent:@"docinfo.plist"]];
@@ -61,6 +63,11 @@
 }
 
 - (void)webViewDidFinishLoad:(UIWebView *)awebView {
+    backButton.enabled = webView.canGoBack;
+    forwardButton.enabled = webView.canGoForward;
+}
+
+- (void)webViewDidStartLoad:(UIWebView *)awebView {
     backButton.enabled = webView.canGoBack;
     forwardButton.enabled = webView.canGoForward;
 }
