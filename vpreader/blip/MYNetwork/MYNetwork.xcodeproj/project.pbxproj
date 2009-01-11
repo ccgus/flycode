@@ -1,0 +1,685 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 45;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		270461130DE49030003D9D3F /* BLIPConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = 270460F40DE49030003D9D3F /* BLIPConnection.m */; };
+		270461140DE49030003D9D3F /* BLIPDispatcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 270460F60DE49030003D9D3F /* BLIPDispatcher.m */; };
+		270461150DE49030003D9D3F /* BLIPMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 270460F90DE49030003D9D3F /* BLIPMessage.m */; };
+		270461160DE49030003D9D3F /* BLIPProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 270460FB0DE49030003D9D3F /* BLIPProperties.m */; };
+		270461170DE49030003D9D3F /* BLIPReader.m in Sources */ = {isa = PBXBuildFile; fileRef = 270460FD0DE49030003D9D3F /* BLIPReader.m */; };
+		270461190DE49030003D9D3F /* BLIPWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = 270461000DE49030003D9D3F /* BLIPWriter.m */; };
+		2704611A0DE49030003D9D3F /* IPAddress.m in Sources */ = {isa = PBXBuildFile; fileRef = 270461020DE49030003D9D3F /* IPAddress.m */; };
+		2704611B0DE49030003D9D3F /* TCPConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = 2704610A0DE49030003D9D3F /* TCPConnection.m */; };
+		2704611C0DE49030003D9D3F /* TCPEndpoint.m in Sources */ = {isa = PBXBuildFile; fileRef = 2704610C0DE49030003D9D3F /* TCPEndpoint.m */; };
+		2704611D0DE49030003D9D3F /* TCPListener.m in Sources */ = {isa = PBXBuildFile; fileRef = 2704610E0DE49030003D9D3F /* TCPListener.m */; };
+		2704611E0DE49030003D9D3F /* TCPStream.m in Sources */ = {isa = PBXBuildFile; fileRef = 270461100DE49030003D9D3F /* TCPStream.m */; };
+		2704611F0DE49030003D9D3F /* TCPWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = 270461120DE49030003D9D3F /* TCPWriter.m */; };
+		2704612C0DE49088003D9D3F /* Test.m in Sources */ = {isa = PBXBuildFile; fileRef = 270461280DE49088003D9D3F /* Test.m */; };
+		2704612D0DE49088003D9D3F /* Logging.m in Sources */ = {isa = PBXBuildFile; fileRef = 2704612A0DE49088003D9D3F /* Logging.m */; };
+		270461370DE4918D003D9D3F /* ExceptionUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 270461350DE4918D003D9D3F /* ExceptionUtils.m */; };
+		270461470DE491A6003D9D3F /* Target.m in Sources */ = {isa = PBXBuildFile; fileRef = 270461460DE491A6003D9D3F /* Target.m */; };
+		270461890DE49634003D9D3F /* CollectionUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 270461870DE49634003D9D3F /* CollectionUtils.m */; };
+		2704618C0DE49652003D9D3F /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 2704618B0DE49652003D9D3F /* libz.dylib */; };
+		270461920DE4975D003D9D3F /* CoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 270461910DE4975C003D9D3F /* CoreServices.framework */; };
+		277904330DE91DE600C6D295 /* BLIPConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = 270460F40DE49030003D9D3F /* BLIPConnection.m */; };
+		277904340DE91DE700C6D295 /* BLIPDispatcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 270460F60DE49030003D9D3F /* BLIPDispatcher.m */; };
+		277904350DE91DE800C6D295 /* BLIPEchoClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 277903E90DE8F08100C6D295 /* BLIPEchoClient.m */; };
+		277904370DE91DEB00C6D295 /* BLIPMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 270460F90DE49030003D9D3F /* BLIPMessage.m */; };
+		277904380DE91DEC00C6D295 /* BLIPProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 270460FB0DE49030003D9D3F /* BLIPProperties.m */; };
+		277904390DE91DEE00C6D295 /* BLIPReader.m in Sources */ = {isa = PBXBuildFile; fileRef = 270460FD0DE49030003D9D3F /* BLIPReader.m */; };
+		2779043A0DE91DEF00C6D295 /* BLIPRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 27D5EC060DE5FEDE00CD84FA /* BLIPRequest.m */; };
+		2779043C0DE91DF100C6D295 /* BLIPWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = 270461000DE49030003D9D3F /* BLIPWriter.m */; };
+		2779043D0DE91DF300C6D295 /* IPAddress.m in Sources */ = {isa = PBXBuildFile; fileRef = 270461020DE49030003D9D3F /* IPAddress.m */; };
+		2779043E0DE91DF500C6D295 /* TCPConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = 2704610A0DE49030003D9D3F /* TCPConnection.m */; };
+		2779043F0DE91DF800C6D295 /* TCPEndpoint.m in Sources */ = {isa = PBXBuildFile; fileRef = 2704610C0DE49030003D9D3F /* TCPEndpoint.m */; };
+		277904400DE91DF900C6D295 /* TCPListener.m in Sources */ = {isa = PBXBuildFile; fileRef = 2704610E0DE49030003D9D3F /* TCPListener.m */; };
+		277904410DE91DFA00C6D295 /* TCPStream.m in Sources */ = {isa = PBXBuildFile; fileRef = 270461100DE49030003D9D3F /* TCPStream.m */; };
+		277904420DE91DFC00C6D295 /* TCPWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = 270461120DE49030003D9D3F /* TCPWriter.m */; };
+		277904440DE91E3500C6D295 /* CollectionUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 270461870DE49634003D9D3F /* CollectionUtils.m */; };
+		277904450DE91E3600C6D295 /* ExceptionUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 270461350DE4918D003D9D3F /* ExceptionUtils.m */; };
+		277904460DE91E3700C6D295 /* Logging.m in Sources */ = {isa = PBXBuildFile; fileRef = 2704612A0DE49088003D9D3F /* Logging.m */; };
+		277904480DE91E3900C6D295 /* Target.m in Sources */ = {isa = PBXBuildFile; fileRef = 270461460DE491A6003D9D3F /* Target.m */; };
+		277904490DE91E3A00C6D295 /* Test.m in Sources */ = {isa = PBXBuildFile; fileRef = 270461280DE49088003D9D3F /* Test.m */; };
+		2779048B0DE9204300C6D295 /* BLIPEchoClient.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2779048A0DE9204300C6D295 /* BLIPEchoClient.xib */; };
+		277905110DE9E5BC00C6D295 /* BLIPConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = 270460F40DE49030003D9D3F /* BLIPConnection.m */; };
+		277905120DE9E5BC00C6D295 /* BLIPDispatcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 270460F60DE49030003D9D3F /* BLIPDispatcher.m */; };
+		277905130DE9E5BC00C6D295 /* BLIPMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 270460F90DE49030003D9D3F /* BLIPMessage.m */; };
+		277905140DE9E5BC00C6D295 /* BLIPProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 270460FB0DE49030003D9D3F /* BLIPProperties.m */; };
+		277905150DE9E5BC00C6D295 /* BLIPReader.m in Sources */ = {isa = PBXBuildFile; fileRef = 270460FD0DE49030003D9D3F /* BLIPReader.m */; };
+		277905160DE9E5BC00C6D295 /* BLIPWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = 270461000DE49030003D9D3F /* BLIPWriter.m */; };
+		277905170DE9E5BC00C6D295 /* IPAddress.m in Sources */ = {isa = PBXBuildFile; fileRef = 270461020DE49030003D9D3F /* IPAddress.m */; };
+		277905180DE9E5BC00C6D295 /* TCPConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = 2704610A0DE49030003D9D3F /* TCPConnection.m */; };
+		277905190DE9E5BC00C6D295 /* TCPEndpoint.m in Sources */ = {isa = PBXBuildFile; fileRef = 2704610C0DE49030003D9D3F /* TCPEndpoint.m */; };
+		2779051A0DE9E5BC00C6D295 /* TCPListener.m in Sources */ = {isa = PBXBuildFile; fileRef = 2704610E0DE49030003D9D3F /* TCPListener.m */; };
+		2779051B0DE9E5BC00C6D295 /* TCPStream.m in Sources */ = {isa = PBXBuildFile; fileRef = 270461100DE49030003D9D3F /* TCPStream.m */; };
+		2779051C0DE9E5BC00C6D295 /* TCPWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = 270461120DE49030003D9D3F /* TCPWriter.m */; };
+		2779051D0DE9E5BC00C6D295 /* Test.m in Sources */ = {isa = PBXBuildFile; fileRef = 270461280DE49088003D9D3F /* Test.m */; };
+		2779051E0DE9E5BC00C6D295 /* Logging.m in Sources */ = {isa = PBXBuildFile; fileRef = 2704612A0DE49088003D9D3F /* Logging.m */; };
+		2779051F0DE9E5BC00C6D295 /* ExceptionUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 270461350DE4918D003D9D3F /* ExceptionUtils.m */; };
+		277905200DE9E5BC00C6D295 /* Target.m in Sources */ = {isa = PBXBuildFile; fileRef = 270461460DE491A6003D9D3F /* Target.m */; };
+		277905220DE9E5BC00C6D295 /* CollectionUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 270461870DE49634003D9D3F /* CollectionUtils.m */; };
+		277905230DE9E5BC00C6D295 /* BLIPRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 27D5EC060DE5FEDE00CD84FA /* BLIPRequest.m */; };
+		277905240DE9E5BC00C6D295 /* BLIPEchoServer.m in Sources */ = {isa = PBXBuildFile; fileRef = 277903D60DE8EE4800C6D295 /* BLIPEchoServer.m */; };
+		277905260DE9E5BC00C6D295 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 08FB779EFE84155DC02AAC07 /* Foundation.framework */; };
+		277905270DE9E5BC00C6D295 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 2704618B0DE49652003D9D3F /* libz.dylib */; };
+		277905280DE9E5BC00C6D295 /* CoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 270461910DE4975C003D9D3F /* CoreServices.framework */; };
+		277905300DE9ED9100C6D295 /* MYUtilitiesTest_main.m in Sources */ = {isa = PBXBuildFile; fileRef = 270462C10DE4A64B003D9D3F /* MYUtilitiesTest_main.m */; };
+		2779053B0DE9EDAA00C6D295 /* BLIPTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 270460FE0DE49030003D9D3F /* BLIPTest.m */; };
+		277ECFBC0E2A73A100D756BB /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 2704618B0DE49652003D9D3F /* libz.dylib */; };
+		27D5EC070DE5FEDE00CD84FA /* BLIPRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 27D5EC060DE5FEDE00CD84FA /* BLIPRequest.m */; };
+		27E0DBF00DF3450F00E7F648 /* GTMNSData+zlib.m in Sources */ = {isa = PBXBuildFile; fileRef = 27E0DBEF0DF3450F00E7F648 /* GTMNSData+zlib.m */; };
+		27E0DBF10DF3450F00E7F648 /* GTMNSData+zlib.m in Sources */ = {isa = PBXBuildFile; fileRef = 27E0DBEF0DF3450F00E7F648 /* GTMNSData+zlib.m */; };
+		27E0DBF20DF3450F00E7F648 /* GTMNSData+zlib.m in Sources */ = {isa = PBXBuildFile; fileRef = 27E0DBEF0DF3450F00E7F648 /* GTMNSData+zlib.m */; };
+		8DD76F9C0486AA7600D96B5E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 08FB779EFE84155DC02AAC07 /* Foundation.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		277905290DE9E5BC00C6D295 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 8;
+			dstPath = /usr/share/man/man1/;
+			dstSubfolderSpec = 0;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
+		8DD76F9E0486AA7600D96B5E /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 8;
+			dstPath = /usr/share/man/man1/;
+			dstSubfolderSpec = 0;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		08FB779EFE84155DC02AAC07 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = /System/Library/Frameworks/Foundation.framework; sourceTree = "<absolute>"; };
+		270460F30DE49030003D9D3F /* BLIPConnection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BLIPConnection.h; sourceTree = "<group>"; };
+		270460F40DE49030003D9D3F /* BLIPConnection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BLIPConnection.m; sourceTree = "<group>"; };
+		270460F50DE49030003D9D3F /* BLIPDispatcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BLIPDispatcher.h; sourceTree = "<group>"; };
+		270460F60DE49030003D9D3F /* BLIPDispatcher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BLIPDispatcher.m; sourceTree = "<group>"; };
+		270460F70DE49030003D9D3F /* BLIP_Internal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BLIP_Internal.h; sourceTree = "<group>"; };
+		270460F80DE49030003D9D3F /* BLIPMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BLIPMessage.h; sourceTree = "<group>"; };
+		270460F90DE49030003D9D3F /* BLIPMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BLIPMessage.m; sourceTree = "<group>"; };
+		270460FA0DE49030003D9D3F /* BLIPProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BLIPProperties.h; sourceTree = "<group>"; };
+		270460FB0DE49030003D9D3F /* BLIPProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BLIPProperties.m; sourceTree = "<group>"; };
+		270460FC0DE49030003D9D3F /* BLIPReader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BLIPReader.h; sourceTree = "<group>"; };
+		270460FD0DE49030003D9D3F /* BLIPReader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BLIPReader.m; sourceTree = "<group>"; };
+		270460FE0DE49030003D9D3F /* BLIPTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BLIPTest.m; path = BLIP/BLIPTest.m; sourceTree = "<group>"; };
+		270460FF0DE49030003D9D3F /* BLIPWriter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BLIPWriter.h; sourceTree = "<group>"; };
+		270461000DE49030003D9D3F /* BLIPWriter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BLIPWriter.m; sourceTree = "<group>"; };
+		270461010DE49030003D9D3F /* IPAddress.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IPAddress.h; sourceTree = "<group>"; };
+		270461020DE49030003D9D3F /* IPAddress.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IPAddress.m; sourceTree = "<group>"; };
+		270461080DE49030003D9D3F /* TCP_Internal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TCP_Internal.h; sourceTree = "<group>"; };
+		270461090DE49030003D9D3F /* TCPConnection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TCPConnection.h; sourceTree = "<group>"; };
+		2704610A0DE49030003D9D3F /* TCPConnection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TCPConnection.m; sourceTree = "<group>"; };
+		2704610B0DE49030003D9D3F /* TCPEndpoint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TCPEndpoint.h; sourceTree = "<group>"; };
+		2704610C0DE49030003D9D3F /* TCPEndpoint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TCPEndpoint.m; sourceTree = "<group>"; };
+		2704610D0DE49030003D9D3F /* TCPListener.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TCPListener.h; sourceTree = "<group>"; };
+		2704610E0DE49030003D9D3F /* TCPListener.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TCPListener.m; sourceTree = "<group>"; };
+		2704610F0DE49030003D9D3F /* TCPStream.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TCPStream.h; sourceTree = "<group>"; };
+		270461100DE49030003D9D3F /* TCPStream.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TCPStream.m; sourceTree = "<group>"; };
+		270461110DE49030003D9D3F /* TCPWriter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TCPWriter.h; sourceTree = "<group>"; };
+		270461120DE49030003D9D3F /* TCPWriter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TCPWriter.m; sourceTree = "<group>"; };
+		270461280DE49088003D9D3F /* Test.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Test.m; sourceTree = "<group>"; };
+		270461290DE49088003D9D3F /* Test.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Test.h; sourceTree = "<group>"; };
+		2704612A0DE49088003D9D3F /* Logging.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Logging.m; sourceTree = "<group>"; };
+		2704612B0DE49088003D9D3F /* Logging.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Logging.h; sourceTree = "<group>"; };
+		270461350DE4918D003D9D3F /* ExceptionUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExceptionUtils.m; sourceTree = "<group>"; };
+		270461360DE4918D003D9D3F /* ExceptionUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExceptionUtils.h; sourceTree = "<group>"; };
+		270461450DE491A6003D9D3F /* Target.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Target.h; sourceTree = "<group>"; };
+		270461460DE491A6003D9D3F /* Target.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Target.m; sourceTree = "<group>"; };
+		270461720DE49340003D9D3F /* MYNetwork */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = MYNetwork; sourceTree = BUILT_PRODUCTS_DIR; };
+		270461870DE49634003D9D3F /* CollectionUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CollectionUtils.m; sourceTree = "<group>"; };
+		270461880DE49634003D9D3F /* CollectionUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CollectionUtils.h; sourceTree = "<group>"; };
+		2704618B0DE49652003D9D3F /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = /usr/lib/libz.dylib; sourceTree = "<absolute>"; };
+		270461910DE4975C003D9D3F /* CoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreServices.framework; path = /System/Library/Frameworks/CoreServices.framework; sourceTree = "<absolute>"; };
+		270462C00DE4A639003D9D3F /* MYUtilities_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MYUtilities_Prefix.pch; sourceTree = "<group>"; };
+		270462C10DE4A64B003D9D3F /* MYUtilitiesTest_main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MYUtilitiesTest_main.m; sourceTree = "<group>"; };
+		270462C30DE4A65B003D9D3F /* BLIP Overview.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = "BLIP Overview.txt"; path = "BLIP/BLIP Overview.txt"; sourceTree = "<group>"; wrapsLines = 1; };
+		277903830DE8C2DD00C6D295 /* maindocs.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = maindocs.h; sourceTree = "<group>"; wrapsLines = 1; };
+		277903D50DE8EE4800C6D295 /* BLIPEchoServer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BLIPEchoServer.h; sourceTree = "<group>"; };
+		277903D60DE8EE4800C6D295 /* BLIPEchoServer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BLIPEchoServer.m; sourceTree = "<group>"; };
+		277903D80DE8EFC900C6D295 /* BLIP.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BLIP.h; sourceTree = "<group>"; };
+		277903E80DE8F08100C6D295 /* BLIPEchoClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BLIPEchoClient.h; sourceTree = "<group>"; };
+		277903E90DE8F08100C6D295 /* BLIPEchoClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BLIPEchoClient.m; sourceTree = "<group>"; };
+		277904260DE91C7900C6D295 /* BLIP Echo Client.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "BLIP Echo Client.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		277904280DE91C7900C6D295 /* BLIP Echo Client-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "BLIP Echo Client-Info.plist"; sourceTree = "<group>"; };
+		2779048A0DE9204300C6D295 /* BLIPEchoClient.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BLIPEchoClient.xib; sourceTree = "<group>"; };
+		2779052D0DE9E5BC00C6D295 /* BLIPEchoServer */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = BLIPEchoServer; sourceTree = BUILT_PRODUCTS_DIR; };
+		27D5EC050DE5FEDE00CD84FA /* BLIPRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BLIPRequest.h; sourceTree = "<group>"; };
+		27D5EC060DE5FEDE00CD84FA /* BLIPRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BLIPRequest.m; sourceTree = "<group>"; };
+		27E0DBED0DF3450F00E7F648 /* GTMDefines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTMDefines.h; sourceTree = "<group>"; };
+		27E0DBEE0DF3450F00E7F648 /* GTMNSData+zlib.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "GTMNSData+zlib.h"; sourceTree = "<group>"; };
+		27E0DBEF0DF3450F00E7F648 /* GTMNSData+zlib.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "GTMNSData+zlib.m"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		277904240DE91C7900C6D295 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				277ECFBC0E2A73A100D756BB /* libz.dylib in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		277905250DE9E5BC00C6D295 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				277905260DE9E5BC00C6D295 /* Foundation.framework in Frameworks */,
+				277905270DE9E5BC00C6D295 /* libz.dylib in Frameworks */,
+				277905280DE9E5BC00C6D295 /* CoreServices.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8DD76F9B0486AA7600D96B5E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8DD76F9C0486AA7600D96B5E /* Foundation.framework in Frameworks */,
+				2704618C0DE49652003D9D3F /* libz.dylib in Frameworks */,
+				270461920DE4975D003D9D3F /* CoreServices.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		08FB7794FE84155DC02AAC07 /* MYNetwork */ = {
+			isa = PBXGroup;
+			children = (
+				270462C30DE4A65B003D9D3F /* BLIP Overview.txt */,
+				277903830DE8C2DD00C6D295 /* maindocs.h */,
+				270460F00DE49030003D9D3F /* MYNetwork */,
+				270461220DE49055003D9D3F /* MYUtilities */,
+				270460FE0DE49030003D9D3F /* BLIPTest.m */,
+				277903E70DE8F05F00C6D295 /* Demo */,
+				08FB779DFE84155DC02AAC07 /* External Frameworks and Libraries */,
+				1AB674ADFE9D54B511CA2CBB /* Products */,
+			);
+			name = MYNetwork;
+			sourceTree = "<group>";
+		};
+		08FB779DFE84155DC02AAC07 /* External Frameworks and Libraries */ = {
+			isa = PBXGroup;
+			children = (
+				270461910DE4975C003D9D3F /* CoreServices.framework */,
+				08FB779EFE84155DC02AAC07 /* Foundation.framework */,
+				2704618B0DE49652003D9D3F /* libz.dylib */,
+			);
+			name = "External Frameworks and Libraries";
+			sourceTree = "<group>";
+		};
+		1AB674ADFE9D54B511CA2CBB /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				270461720DE49340003D9D3F /* MYNetwork */,
+				277904260DE91C7900C6D295 /* BLIP Echo Client.app */,
+				2779052D0DE9E5BC00C6D295 /* BLIPEchoServer */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		270460F00DE49030003D9D3F /* MYNetwork */ = {
+			isa = PBXGroup;
+			children = (
+				270461010DE49030003D9D3F /* IPAddress.h */,
+				270461020DE49030003D9D3F /* IPAddress.m */,
+				270461070DE49030003D9D3F /* TCP */,
+				270460F10DE49030003D9D3F /* BLIP */,
+			);
+			name = MYNetwork;
+			sourceTree = "<group>";
+		};
+		270460F10DE49030003D9D3F /* BLIP */ = {
+			isa = PBXGroup;
+			children = (
+				277903D80DE8EFC900C6D295 /* BLIP.h */,
+				270460F30DE49030003D9D3F /* BLIPConnection.h */,
+				270460F40DE49030003D9D3F /* BLIPConnection.m */,
+				270460F50DE49030003D9D3F /* BLIPDispatcher.h */,
+				270460F60DE49030003D9D3F /* BLIPDispatcher.m */,
+				270460F80DE49030003D9D3F /* BLIPMessage.h */,
+				270460F90DE49030003D9D3F /* BLIPMessage.m */,
+				27D5EC050DE5FEDE00CD84FA /* BLIPRequest.h */,
+				27D5EC060DE5FEDE00CD84FA /* BLIPRequest.m */,
+				270460FA0DE49030003D9D3F /* BLIPProperties.h */,
+				270460FB0DE49030003D9D3F /* BLIPProperties.m */,
+				270460FC0DE49030003D9D3F /* BLIPReader.h */,
+				270460FD0DE49030003D9D3F /* BLIPReader.m */,
+				270460FF0DE49030003D9D3F /* BLIPWriter.h */,
+				270461000DE49030003D9D3F /* BLIPWriter.m */,
+				270460F70DE49030003D9D3F /* BLIP_Internal.h */,
+			);
+			path = BLIP;
+			sourceTree = "<group>";
+		};
+		270461070DE49030003D9D3F /* TCP */ = {
+			isa = PBXGroup;
+			children = (
+				270461090DE49030003D9D3F /* TCPConnection.h */,
+				2704610A0DE49030003D9D3F /* TCPConnection.m */,
+				2704610B0DE49030003D9D3F /* TCPEndpoint.h */,
+				2704610C0DE49030003D9D3F /* TCPEndpoint.m */,
+				2704610D0DE49030003D9D3F /* TCPListener.h */,
+				2704610E0DE49030003D9D3F /* TCPListener.m */,
+				2704610F0DE49030003D9D3F /* TCPStream.h */,
+				270461100DE49030003D9D3F /* TCPStream.m */,
+				270461110DE49030003D9D3F /* TCPWriter.h */,
+				270461120DE49030003D9D3F /* TCPWriter.m */,
+				270461080DE49030003D9D3F /* TCP_Internal.h */,
+			);
+			path = TCP;
+			sourceTree = "<group>";
+		};
+		270461220DE49055003D9D3F /* MYUtilities */ = {
+			isa = PBXGroup;
+			children = (
+				270462C10DE4A64B003D9D3F /* MYUtilitiesTest_main.m */,
+				270462C00DE4A639003D9D3F /* MYUtilities_Prefix.pch */,
+				270461880DE49634003D9D3F /* CollectionUtils.h */,
+				270461870DE49634003D9D3F /* CollectionUtils.m */,
+				270461360DE4918D003D9D3F /* ExceptionUtils.h */,
+				270461350DE4918D003D9D3F /* ExceptionUtils.m */,
+				2704612B0DE49088003D9D3F /* Logging.h */,
+				2704612A0DE49088003D9D3F /* Logging.m */,
+				270461450DE491A6003D9D3F /* Target.h */,
+				270461460DE491A6003D9D3F /* Target.m */,
+				270461290DE49088003D9D3F /* Test.h */,
+				270461280DE49088003D9D3F /* Test.m */,
+				27E0DBEC0DF3450F00E7F648 /* GoogleToolboxSubset */,
+			);
+			name = MYUtilities;
+			path = ../MYUtilities;
+			sourceTree = "<group>";
+		};
+		277903E70DE8F05F00C6D295 /* Demo */ = {
+			isa = PBXGroup;
+			children = (
+				277903D50DE8EE4800C6D295 /* BLIPEchoServer.h */,
+				277903D60DE8EE4800C6D295 /* BLIPEchoServer.m */,
+				277903E80DE8F08100C6D295 /* BLIPEchoClient.h */,
+				277903E90DE8F08100C6D295 /* BLIPEchoClient.m */,
+				2779048A0DE9204300C6D295 /* BLIPEchoClient.xib */,
+				277904280DE91C7900C6D295 /* BLIP Echo Client-Info.plist */,
+			);
+			name = Demo;
+			path = BLIP/Demo;
+			sourceTree = "<group>";
+		};
+		27E0DBEC0DF3450F00E7F648 /* GoogleToolboxSubset */ = {
+			isa = PBXGroup;
+			children = (
+				27E0DBED0DF3450F00E7F648 /* GTMDefines.h */,
+				27E0DBEE0DF3450F00E7F648 /* GTMNSData+zlib.h */,
+				27E0DBEF0DF3450F00E7F648 /* GTMNSData+zlib.m */,
+			);
+			path = GoogleToolboxSubset;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		277904250DE91C7900C6D295 /* BLIP Echo Client */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2779042B0DE91C7A00C6D295 /* Build configuration list for PBXNativeTarget "BLIP Echo Client" */;
+			buildPhases = (
+				277904220DE91C7900C6D295 /* Resources */,
+				277904230DE91C7900C6D295 /* Sources */,
+				277904240DE91C7900C6D295 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "BLIP Echo Client";
+			productName = "BLIP Echo Client";
+			productReference = 277904260DE91C7900C6D295 /* BLIP Echo Client.app */;
+			productType = "com.apple.product-type.application";
+		};
+		2779050F0DE9E5BC00C6D295 /* BLIP Echo Server */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2779052A0DE9E5BC00C6D295 /* Build configuration list for PBXNativeTarget "BLIP Echo Server" */;
+			buildPhases = (
+				277905100DE9E5BC00C6D295 /* Sources */,
+				277905250DE9E5BC00C6D295 /* Frameworks */,
+				277905290DE9E5BC00C6D295 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "BLIP Echo Server";
+			productInstallPath = "$(HOME)/bin";
+			productName = MYNetwork;
+			productReference = 2779052D0DE9E5BC00C6D295 /* BLIPEchoServer */;
+			productType = "com.apple.product-type.tool";
+		};
+		8DD76F960486AA7600D96B5E /* MYNetwork */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1DEB927408733DD40010E9CD /* Build configuration list for PBXNativeTarget "MYNetwork" */;
+			buildPhases = (
+				8DD76F990486AA7600D96B5E /* Sources */,
+				8DD76F9B0486AA7600D96B5E /* Frameworks */,
+				8DD76F9E0486AA7600D96B5E /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = MYNetwork;
+			productInstallPath = "$(HOME)/bin";
+			productName = MYNetwork;
+			productReference = 270461720DE49340003D9D3F /* MYNetwork */;
+			productType = "com.apple.product-type.tool";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		08FB7793FE84155DC02AAC07 /* Project object */ = {
+			isa = PBXProject;
+			buildConfigurationList = 1DEB927808733DD40010E9CD /* Build configuration list for PBXProject "MYNetwork" */;
+			compatibilityVersion = "Xcode 3.1";
+			hasScannedForEncodings = 1;
+			mainGroup = 08FB7794FE84155DC02AAC07 /* MYNetwork */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				8DD76F960486AA7600D96B5E /* MYNetwork */,
+				277904250DE91C7900C6D295 /* BLIP Echo Client */,
+				2779050F0DE9E5BC00C6D295 /* BLIP Echo Server */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		277904220DE91C7900C6D295 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2779048B0DE9204300C6D295 /* BLIPEchoClient.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		277904230DE91C7900C6D295 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				277904330DE91DE600C6D295 /* BLIPConnection.m in Sources */,
+				277904340DE91DE700C6D295 /* BLIPDispatcher.m in Sources */,
+				277904350DE91DE800C6D295 /* BLIPEchoClient.m in Sources */,
+				277904370DE91DEB00C6D295 /* BLIPMessage.m in Sources */,
+				277904380DE91DEC00C6D295 /* BLIPProperties.m in Sources */,
+				277904390DE91DEE00C6D295 /* BLIPReader.m in Sources */,
+				2779043A0DE91DEF00C6D295 /* BLIPRequest.m in Sources */,
+				2779043C0DE91DF100C6D295 /* BLIPWriter.m in Sources */,
+				2779043D0DE91DF300C6D295 /* IPAddress.m in Sources */,
+				2779043E0DE91DF500C6D295 /* TCPConnection.m in Sources */,
+				2779043F0DE91DF800C6D295 /* TCPEndpoint.m in Sources */,
+				277904400DE91DF900C6D295 /* TCPListener.m in Sources */,
+				277904410DE91DFA00C6D295 /* TCPStream.m in Sources */,
+				277904420DE91DFC00C6D295 /* TCPWriter.m in Sources */,
+				277904440DE91E3500C6D295 /* CollectionUtils.m in Sources */,
+				277904450DE91E3600C6D295 /* ExceptionUtils.m in Sources */,
+				277904460DE91E3700C6D295 /* Logging.m in Sources */,
+				277904480DE91E3900C6D295 /* Target.m in Sources */,
+				277904490DE91E3A00C6D295 /* Test.m in Sources */,
+				27E0DBF00DF3450F00E7F648 /* GTMNSData+zlib.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		277905100DE9E5BC00C6D295 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				277905110DE9E5BC00C6D295 /* BLIPConnection.m in Sources */,
+				277905120DE9E5BC00C6D295 /* BLIPDispatcher.m in Sources */,
+				277905130DE9E5BC00C6D295 /* BLIPMessage.m in Sources */,
+				277905140DE9E5BC00C6D295 /* BLIPProperties.m in Sources */,
+				277905150DE9E5BC00C6D295 /* BLIPReader.m in Sources */,
+				277905160DE9E5BC00C6D295 /* BLIPWriter.m in Sources */,
+				277905170DE9E5BC00C6D295 /* IPAddress.m in Sources */,
+				277905180DE9E5BC00C6D295 /* TCPConnection.m in Sources */,
+				277905190DE9E5BC00C6D295 /* TCPEndpoint.m in Sources */,
+				2779051A0DE9E5BC00C6D295 /* TCPListener.m in Sources */,
+				2779051B0DE9E5BC00C6D295 /* TCPStream.m in Sources */,
+				2779051C0DE9E5BC00C6D295 /* TCPWriter.m in Sources */,
+				2779051D0DE9E5BC00C6D295 /* Test.m in Sources */,
+				2779051E0DE9E5BC00C6D295 /* Logging.m in Sources */,
+				2779051F0DE9E5BC00C6D295 /* ExceptionUtils.m in Sources */,
+				277905200DE9E5BC00C6D295 /* Target.m in Sources */,
+				277905220DE9E5BC00C6D295 /* CollectionUtils.m in Sources */,
+				277905230DE9E5BC00C6D295 /* BLIPRequest.m in Sources */,
+				277905240DE9E5BC00C6D295 /* BLIPEchoServer.m in Sources */,
+				27E0DBF20DF3450F00E7F648 /* GTMNSData+zlib.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8DD76F990486AA7600D96B5E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				270461130DE49030003D9D3F /* BLIPConnection.m in Sources */,
+				270461140DE49030003D9D3F /* BLIPDispatcher.m in Sources */,
+				270461150DE49030003D9D3F /* BLIPMessage.m in Sources */,
+				270461160DE49030003D9D3F /* BLIPProperties.m in Sources */,
+				270461170DE49030003D9D3F /* BLIPReader.m in Sources */,
+				270461190DE49030003D9D3F /* BLIPWriter.m in Sources */,
+				2704611A0DE49030003D9D3F /* IPAddress.m in Sources */,
+				2704611B0DE49030003D9D3F /* TCPConnection.m in Sources */,
+				2704611C0DE49030003D9D3F /* TCPEndpoint.m in Sources */,
+				2704611D0DE49030003D9D3F /* TCPListener.m in Sources */,
+				2704611E0DE49030003D9D3F /* TCPStream.m in Sources */,
+				2704611F0DE49030003D9D3F /* TCPWriter.m in Sources */,
+				2704612C0DE49088003D9D3F /* Test.m in Sources */,
+				2704612D0DE49088003D9D3F /* Logging.m in Sources */,
+				270461370DE4918D003D9D3F /* ExceptionUtils.m in Sources */,
+				270461470DE491A6003D9D3F /* Target.m in Sources */,
+				270461890DE49634003D9D3F /* CollectionUtils.m in Sources */,
+				27D5EC070DE5FEDE00CD84FA /* BLIPRequest.m in Sources */,
+				277905300DE9ED9100C6D295 /* MYUtilitiesTest_main.m in Sources */,
+				2779053B0DE9EDAA00C6D295 /* BLIPTest.m in Sources */,
+				27E0DBF10DF3450F00E7F648 /* GTMNSData+zlib.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		1DEB927508733DD40010E9CD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = c99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_FIX_AND_CONTINUE = YES;
+				GCC_MODEL_TUNING = G5;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = ../MYUtilities/MYUtilities_Prefix.pch;
+				GCC_PREPROCESSOR_DEFINITIONS = DEBUG;
+				INSTALL_PATH = /usr/local/bin;
+				PRODUCT_NAME = MYNetwork;
+			};
+			name = Debug;
+		};
+		1DEB927608733DD40010E9CD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_C_LANGUAGE_STANDARD = c99;
+				GCC_MODEL_TUNING = G5;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = ../MYUtilities/MYUtilities_Prefix.pch;
+				INSTALL_PATH = /usr/local/bin;
+				PRODUCT_NAME = MYNetwork;
+			};
+			name = Release;
+		};
+		1DEB927908733DD40010E9CD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				GCC_C_LANGUAGE_STANDARD = c99;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = DEBUG;
+				GCC_TREAT_WARNINGS_AS_ERRORS = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PREBINDING = NO;
+				SDKROOT = macosx10.5;
+				WARNING_CFLAGS = "-Wall";
+			};
+			name = Debug;
+		};
+		1DEB927A08733DD40010E9CD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				GCC_C_LANGUAGE_STANDARD = c99;
+				GCC_TREAT_WARNINGS_AS_ERRORS = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				PREBINDING = NO;
+				SDKROOT = macosx10.5;
+				WARNING_CFLAGS = "-Wall";
+			};
+			name = Release;
+		};
+		277904290DE91C7A00C6D295 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = NO;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_FIX_AND_CONTINUE = YES;
+				GCC_MODEL_TUNING = G5;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/AppKit.framework/Headers/AppKit.h";
+				INFOPLIST_FILE = "BLIP/Demo/BLIP Echo Client-Info.plist";
+				INSTALL_PATH = "$(HOME)/Applications";
+				OTHER_LDFLAGS = (
+					"-framework",
+					Foundation,
+					"-framework",
+					AppKit,
+				);
+				PREBINDING = NO;
+				PRODUCT_NAME = "BLIP Echo Client";
+			};
+			name = Debug;
+		};
+		2779042A0DE91C7A00C6D295 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_ENABLE_FIX_AND_CONTINUE = NO;
+				GCC_MODEL_TUNING = G5;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/AppKit.framework/Headers/AppKit.h";
+				INFOPLIST_FILE = "BLIP/Demo/BLIP Echo Client-Info.plist";
+				INSTALL_PATH = "$(HOME)/Applications";
+				OTHER_LDFLAGS = (
+					"-framework",
+					Foundation,
+					"-framework",
+					AppKit,
+				);
+				PREBINDING = NO;
+				PRODUCT_NAME = "BLIP Echo Client";
+				ZERO_LINK = NO;
+			};
+			name = Release;
+		};
+		2779052B0DE9E5BC00C6D295 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_FIX_AND_CONTINUE = YES;
+				GCC_MODEL_TUNING = G5;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = ../MYUtilities/MYUtilities_Prefix.pch;
+				GCC_PREPROCESSOR_DEFINITIONS = DEBUG;
+				INSTALL_PATH = /usr/local/bin;
+				PRODUCT_NAME = BLIPEchoServer;
+			};
+			name = Debug;
+		};
+		2779052C0DE9E5BC00C6D295 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_MODEL_TUNING = G5;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = MYNetwork_Prefix.pch;
+				INSTALL_PATH = /usr/local/bin;
+				PRODUCT_NAME = BLIPEchoServer;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		1DEB927408733DD40010E9CD /* Build configuration list for PBXNativeTarget "MYNetwork" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1DEB927508733DD40010E9CD /* Debug */,
+				1DEB927608733DD40010E9CD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		1DEB927808733DD40010E9CD /* Build configuration list for PBXProject "MYNetwork" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1DEB927908733DD40010E9CD /* Debug */,
+				1DEB927A08733DD40010E9CD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		2779042B0DE91C7A00C6D295 /* Build configuration list for PBXNativeTarget "BLIP Echo Client" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				277904290DE91C7A00C6D295 /* Debug */,
+				2779042A0DE91C7A00C6D295 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		2779052A0DE9E5BC00C6D295 /* Build configuration list for PBXNativeTarget "BLIP Echo Server" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2779052B0DE9E5BC00C6D295 /* Debug */,
+				2779052C0DE9E5BC00C6D295 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 08FB7793FE84155DC02AAC07 /* Project object */;
+}

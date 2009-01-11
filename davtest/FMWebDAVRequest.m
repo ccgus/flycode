@@ -396,6 +396,12 @@
                 return;
             }
             
+            if ([_xmlChars hasPrefix:@"http"]) {
+                // aakkkk!
+                NSURL *junk = [NSURL URLWithString:_xmlChars];
+                [_xmlChars setString:[[junk path] stringByAppendingString:@"/"]];
+            }
+            
             NSString *lastBit = [_xmlChars substringFromIndex:_uriLength];
             if ([lastBit length]) {
                 [_xmlBucket setObject:lastBit forKey:@"href"];
@@ -415,7 +421,7 @@
             if (!sISO8601) {
                 sISO8601 = [[NSDateFormatter alloc] init];
                 [sISO8601 setTimeStyle:NSDateFormatterFullStyle];
-                [sISO8601 setDateFormat:@"yyyy-MM-dd'T'HH:mm:ssZZZ"];    // NOTE: problem!
+                [sISO8601 setDateFormat:@"yyyy-MM-dd'T'HH:mm:ssZZZ"];    // NOTE: problem! (but I'm not sure what that problem would be)
             }
             
             if ([dateString hasSuffix:@"Z"]) {
@@ -424,9 +430,21 @@
             
             NSDate *d = [sISO8601 dateFromString:dateString];
             
-            int colIdx = [elementName rangeOfString:@":"].location;
+            if (!d && ![dateString hasSuffix:@"GMT"]) {
+                dateString = [dateString stringByAppendingString:@"GMT"];
+                d = [sISO8601 dateFromString:dateString];
+            }
             
-            [_xmlBucket setObject:d forKey:[elementName substringFromIndex:colIdx + 1]];
+            if (d) {
+                
+                int colIdx = [elementName rangeOfString:@":"].location;
+                
+                [_xmlBucket setObject:d forKey:[elementName substringFromIndex:colIdx + 1]];
+            }
+            else {
+                NSLog(@"Could not parse date string '%@' for '%@'", dateString, elementName);
+            }
+            
         }
         
         else if ([elementName hasSuffix:@":getlastmodified"]) {

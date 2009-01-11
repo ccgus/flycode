@@ -1,0 +1,24 @@
+=====Acorn=====
+
+"Acorn is a new image editor built with one goal in mind - simplicity. Fast, easy, and fluid, Acorn provides the options you'll need without any overhead. Acorn feels right, and won't drain your bank account."  http://flyingmeat.com/acorn/
+
+**[[AcornTour Take a Tour of Acorn]]:** Get started with an introduction to the interface and the features of Acorn
+~-[[AcornTour Opening Acorn]]
+~-[[AcornToolsPalette Tools Palette]]
+~-[[AcornLayers Layers]]
+~-[[AcornColorsFonts Color and Fonts Palette]]
+~-[[AcornMenuItems Menu Items]]
+~-[[AcornLevels Levels]]
+~-[[AcornScreenShots Taking Screen Shots with Acorn]]
+~-[[AcornSlideShow Making Slideshows with Acorn]]
+
+**[[AcornFilters Go Further with Filters]]** --- A guide to the filters included in Acorn.
+
+**[[ThirdPartyAcornPlugins 3rd Party Acorn Plugins]]** --- Download extra filters and plugins for Acorn.
+
+**[[AcornTipsAndTricks How To's, Tips, and Tricks for Acorn]]** --- Simple ideas and tricks to make working with Acorn easier.
+
+=====Advanced uses of Acorn for developers and curious persons=====
+
+~-[[AcornPlugins Writing Acorn Plugins]] --- Information and examples for developers wanting to write plugins for Acorn in [[http://www.python.org/ Python]] and Objective-C
+~-[[http://flyingmeat.com/download/latest/ Development Builds]] --- Prerelease versions of Acorn that will crash your computer, punch you in the eye, and steal your girlfriend.

@@ -1,0 +1,109 @@
+// !$*UTF8*$!
+{
+	1D6058900D05DD3D006BFB54 /* MYNetwork-iPhone */ = {
+		activeExec = 0;
+		executables = (
+			CC1C8B2F0F18442B00E71072 /* MYNetwork-iPhone */,
+		);
+	};
+	270E9B9D0EE64B4E003F17CA /* HelloWorldAppDelegate.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1087, 924}}";
+			sepNavSelRange = "{0, 0}";
+			sepNavVisRange = "{126, 2744}";
+		};
+	};
+	270E9B9E0EE64B4E003F17CA /* HelloWorldAppDelegate.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1087, 1190}}";
+			sepNavSelRange = "{0, 0}";
+			sepNavVisRange = "{1172, 2210}";
+		};
+	};
+	270E9B9F0EE64B4E003F17CA /* MyViewController.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1087, 966}}";
+			sepNavSelRange = "{2829, 0}";
+			sepNavVisRange = "{274, 2733}";
+		};
+	};
+	270E9BA00EE64B4E003F17CA /* MyViewController.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1087, 2156}}";
+			sepNavSelRange = "{2482, 16}";
+			sepNavVisRange = "{1384, 2173}";
+		};
+	};
+	29B97313FDCFA39411CA2CEA /* Project object */ = {
+		activeBuildConfigurationName = Debug;
+		activeExecutable = CC1C8B2F0F18442B00E71072 /* MYNetwork-iPhone */;
+		activeTarget = 1D6058900D05DD3D006BFB54 /* MYNetwork-iPhone */;
+		codeSenseManager = CC1C8B3B0F18443900E71072 /* Code sense */;
+		executables = (
+			CC1C8B2F0F18442B00E71072 /* MYNetwork-iPhone */,
+		);
+		perUserDictionary = {
+			PBXConfiguration.PBXFileTableDataSource3.PBXFileTableDataSource = {
+				PBXFileTableDataSourceColumnSortingDirectionKey = "-1";
+				PBXFileTableDataSourceColumnSortingKey = PBXFileDataSource_Filename_ColumnID;
+				PBXFileTableDataSourceColumnWidthsKey = (
+					20,
+					379,
+					20,
+					48,
+					43,
+					43,
+					20,
+				);
+				PBXFileTableDataSourceColumnsKey = (
+					PBXFileDataSource_FiletypeID,
+					PBXFileDataSource_Filename_ColumnID,
+					PBXFileDataSource_Built_ColumnID,
+					PBXFileDataSource_ObjectSize_ColumnID,
+					PBXFileDataSource_Errors_ColumnID,
+					PBXFileDataSource_Warnings_ColumnID,
+					PBXFileDataSource_Target_ColumnID,
+				);
+			};
+			PBXPerProjectTemplateStateSaveDate = 253248586;
+			PBXWorkspaceStateSaveDate = 253248586;
+		};
+		sourceControlManager = CC1C8B3A0F18443900E71072 /* Source Control */;
+		userBuildSettings = {
+		};
+	};
+	CC1C8B2F0F18442B00E71072 /* MYNetwork-iPhone */ = {
+		isa = PBXExecutable;
+		activeArgIndices = (
+		);
+		argumentStrings = (
+		);
+		autoAttachOnCrash = 1;
+		breakpointsEnabled = 1;
+		configStateDict = {
+		};
+		customDataFormattersEnabled = 1;
+		debuggerPlugin = GDBDebugging;
+		disassemblyDisplayState = 0;
+		enableDebugStr = 1;
+		environmentEntries = (
+		);
+		executableSystemSymbolLevel = 0;
+		executableUserSymbolLevel = 0;
+		libgmallocEnabled = 0;
+		name = "MYNetwork-iPhone";
+		sourceDirectories = (
+		);
+	};
+	CC1C8B3A0F18443900E71072 /* Source Control */ = {
+		isa = PBXSourceControlManager;
+		fallbackIsa = XCSourceControlManager;
+		isSCMEnabled = 0;
+		scmConfiguration = {
+		};
+	};
+	CC1C8B3B0F18443900E71072 /* Code sense */ = {
+		isa = PBXCodeSenseManager;
+		indexTemplatePath = "";
+	};
+}

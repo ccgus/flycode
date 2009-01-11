@@ -1,0 +1,17 @@
+//
+// Prefix header for all source files of the 'vpreader' target in the 'vpreader' project
+//
+
+#ifdef __OBJC__
+    #import <Foundation/Foundation.h>
+    #import <UIKit/UIKit.h>
+#endif
+
+#define DEBUG 1
+
+#ifdef DEBUG
+#define debug(...) NSLog(__VA_ARGS__)
+#else
+#define debug(...)
+#endif
+

@@ -1,0 +1,32 @@
+{
+    IBClasses =     (
+                {
+            CLASS = FirstResponder;
+            LANGUAGE = ObjC;
+            SUPERCLASS = NSObject;
+        },
+                {
+            ACTIONS =             {
+                updateHTMLPreview = id;
+            };
+            CLASS = HTMLToolsPlugin;
+            LANGUAGE = ObjC;
+            OUTLETS =             {
+                formattingSelection = NSPopUpButton;
+                previewDoc = id;
+                previewWindow = NSWindow;
+                webView = WebView;
+            };
+            SUPERCLASS = VPPlugin;
+        },
+                {
+            CLASS = VPPlugin;
+            LANGUAGE = ObjC;
+            OUTLETS =             {
+                manager = id;
+            };
+            SUPERCLASS = NSObject;
+        }
+    );
+    IBVersion = 1;
+}
