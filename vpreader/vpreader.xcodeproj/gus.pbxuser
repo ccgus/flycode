@@ -29,20 +29,20 @@
 	};
 	28C286DF0D94DF7D0034E888 /* RootViewController.h */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1441, 864}}";
-			sepNavSelRange = "{424, 22}";
+			sepNavIntBoundsRect = "{{0, 0}, {1026, 898}}";
+			sepNavSelRange = "{355, 17}";
 			sepNavVisRange = "{0, 656}";
 		};
 	};
 	28C286E00D94DF7D0034E888 /* RootViewController.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1123, 2142}}";
-			sepNavSelRange = "{2262, 0}";
-			sepNavVisRange = "{0, 2010}";
+			sepNavIntBoundsRect = "{{0, 0}, {1026, 2240}}";
+			sepNavSelRange = "{4253, 0}";
+			sepNavVisRange = "{2673, 2263}";
 		};
 	};
 	29B97313FDCFA39411CA2CEA /* Project object */ = {
-		activeBuildConfigurationName = Debug;
+		activeBuildConfigurationName = Release;
 		activeExecutable = CC1C89BA0F182CED00E71072 /* vpreader */;
 		activeSDKPreference = iphonesimulator2.2;
 		activeTarget = 1D6058900D05DD3D006BFB54 /* vpreader */;
@@ -221,16 +221,16 @@
 	};
 	CCC14E610F188A27004BD04E /* WebViewController.h */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1123, 914}}";
-			sepNavSelRange = "{338, 0}";
-			sepNavVisRange = "{0, 393}";
+			sepNavIntBoundsRect = "{{0, 0}, {835, 648}}";
+			sepNavSelRange = "{586, 32}";
+			sepNavVisRange = "{0, 625}";
 		};
 	};
 	CCC14E620F188A27004BD04E /* WebViewController.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1123, 1022}}";
-			sepNavSelRange = "{853, 0}";
-			sepNavVisRange = "{3, 1722}";
+			sepNavIntBoundsRect = "{{0, 0}, {1026, 1246}}";
+			sepNavSelRange = "{2341, 0}";
+			sepNavVisRange = "{588, 1762}";
 		};
 	};
 }

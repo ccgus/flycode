@@ -47,13 +47,9 @@
 
 - (void) loadDocumentDirectory:(NSString*)path {
     
-    debug(@"path: %@", path);
-    
     self.documentDirectory = path;
     
     NSDictionary *d = [NSDictionary dictionaryWithContentsOfFile:[path stringByAppendingPathComponent:@"docinfo.plist"]];
-    
-    debug(@"d: %@", d);
     
     NSString *startPage = [d objectForKey:@"defaultPage"];
     
@@ -64,9 +60,30 @@
     
 }
 
-- (void)dealloc {
-    [super dealloc];
+- (void)webViewDidFinishLoad:(UIWebView *)awebView {
+    backButton.enabled = webView.canGoBack;
+    forwardButton.enabled = webView.canGoForward;
 }
 
+
+
+- (void) goHome:(id)sender {
+    [self loadDocumentDirectory:_documentDirectory];
+}
+
+- (void) goToIndex:(id)sender {
+    debug(@"%s:%d", __FUNCTION__, __LINE__);
+    // notice the space.  That's a special page in VP land.
+    NSString *indexPage = [_documentDirectory stringByAppendingPathComponent:@" index.html"];
+    
+    NSURLRequest *req = [NSURLRequest requestWithURL:[NSURL fileURLWithPath:indexPage]];
+    [webView loadRequest:req];
+    
+}
+
+- (void) goToDocList:(id)sender {
+    [[self navigationController] setNavigationBarHidden:NO animated:NO];
+    [[self navigationController] popViewControllerAnimated:NO];
+}
 
 @end

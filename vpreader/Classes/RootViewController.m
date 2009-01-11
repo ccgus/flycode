@@ -122,13 +122,20 @@
     
     NSString *vpFolder = [[VPReaderAppDelegate documentFolder] stringByAppendingPathComponent:[_documentNames objectAtIndex:indexPath.row]];
     
-    if (!webViewController) {
+    BOOL shouldLoad = NO;
+    
+    if (!webViewController || ![webViewController.documentDirectory isEqualToString:vpFolder]) {
         self.webViewController = [[[WebViewController alloc] initWithNibName:@"WebViewController" bundle:[NSBundle mainBundle]] autorelease];
+        shouldLoad = YES;
     }
     
-    [[self navigationController] pushViewController:webViewController animated:YES];
+    [[self navigationController] pushViewController:webViewController animated:NO];
+    [[self navigationController] setNavigationBarHidden:YES animated:NO];
     
-    [webViewController loadDocumentDirectory:vpFolder];
+    if (shouldLoad) {
+        [webViewController loadView];
+        [webViewController loadDocumentDirectory:vpFolder];
+    }
     
 }
 

@@ -471,8 +471,8 @@
 							<key>PBXSmartGroupTreeModuleOutlineStateSelectionKey</key>
 							<array>
 								<array>
-									<integer>26</integer>
-									<integer>25</integer>
+									<integer>15</integer>
+									<integer>13</integer>
 									<integer>0</integer>
 								</array>
 							</array>
@@ -531,7 +531,7 @@
 	<key>StatusbarIsVisible</key>
 	<true/>
 	<key>TimeStamp</key>
-	<real>253343886.008037</real>
+	<real>253404792.159951</real>
 	<key>ToolbarDisplayMode</key>
 	<integer>2</integer>
 	<key>ToolbarIsVisible</key>
@@ -546,9 +546,17 @@
 	<integer>5</integer>
 	<key>WindowOrderList</key>
 	<array>
-		<string>1CD10A99069EF8BA00B06720</string>
-		<string>/Volumes/srv/Users/gus/Projects/flycode/vpreader/vpreader.xcodeproj</string>
+		<string>CC0ADFC90F1AA11F000275DA</string>
+		<string>CC0ADFCA0F1AA11F000275DA</string>
 		<string>CC1C89C60F182D2000E71072</string>
+		<string>1CD10A99069EF8BA00B06720</string>
+		<string>CC0ADFCC0F1AA11F000275DA</string>
+		<string>1C78EAAD065D492600B07095</string>
+		<string>CC0ADFD50F1AA1F1000275DA</string>
+		<string>CC0ADFCD0F1AA11F000275DA</string>
+		<string>CC0ADFCB0F1AA11F000275DA</string>
+		<string>CC0ADFCE0F1AA11F000275DA</string>
+		<string>/Volumes/srv/Users/gus/Projects/flycode/vpreader/vpreader.xcodeproj</string>
 	</array>
 	<key>WindowString</key>
 	<string>1575 237 300 894 0 0 1920 1178 </string>
@@ -641,7 +649,7 @@
 			<key>WindowToolGUID</key>
 			<string>CC1C89C60F182D2000E71072</string>
 			<key>WindowToolIsVisible</key>
-			<true/>
+			<false/>
 		</dict>
 		<dict>
 			<key>FirstTimeWindowDisplayed</key>
@@ -875,6 +883,8 @@
 					<key>Dock</key>
 					<array>
 						<dict>
+							<key>BecomeActive</key>
+							<true/>
 							<key>ContentConfiguration</key>
 							<dict>
 								<key>PBXProjectModuleGUID</key>
@@ -910,7 +920,7 @@
 			<key>TableOfContents</key>
 			<array>
 				<string>1C78EAAD065D492600B07095</string>
-				<string>CC27CC0E0F19B5EA00C5DBC9</string>
+				<string>CC0ADF6F0F1A8C80000275DA</string>
 				<string>1C78EAAC065D492600B07095</string>
 			</array>
 			<key>ToolbarConfiguration</key>
@@ -920,7 +930,7 @@
 			<key>WindowToolGUID</key>
 			<string>1C78EAAD065D492600B07095</string>
 			<key>WindowToolIsVisible</key>
-			<false/>
+			<true/>
 		</dict>
 		<dict>
 			<key>Identifier</key>

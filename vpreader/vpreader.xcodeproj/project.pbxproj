@@ -15,6 +15,11 @@
 		2899E5600DE3E45000AC0155 /* RootViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2899E55F0DE3E45000AC0155 /* RootViewController.xib */; };
 		28AD73600D9D9599002E5188 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28AD735F0D9D9599002E5188 /* MainWindow.xib */; };
 		28C286E10D94DF7D0034E888 /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28C286E00D94DF7D0034E888 /* RootViewController.m */; };
+		CC0ADF8C0F1A98E2000275DA /* rightbutton.png in Resources */ = {isa = PBXBuildFile; fileRef = CC0ADF8A0F1A98E2000275DA /* rightbutton.png */; };
+		CC0ADF8D0F1A98E2000275DA /* leftbutton.png in Resources */ = {isa = PBXBuildFile; fileRef = CC0ADF8B0F1A98E2000275DA /* leftbutton.png */; };
+		CC0ADF910F1A9AED000275DA /* homebutton.png in Resources */ = {isa = PBXBuildFile; fileRef = CC0ADF900F1A9AED000275DA /* homebutton.png */; };
+		CC0ADFBD0F1AA0A7000275DA /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = CC0ADFBC0F1AA0A7000275DA /* Default.png */; };
+		CC0ADFF40F1AA575000275DA /* doclist.png in Resources */ = {isa = PBXBuildFile; fileRef = CC0ADFF30F1AA575000275DA /* doclist.png */; };
 		CC1C89F10F18387F00E71072 /* SyncViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CC1C89F00F18387F00E71072 /* SyncViewController.xib */; };
 		CC1C89F50F18389F00E71072 /* SyncViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CC1C89F40F18389F00E71072 /* SyncViewController.m */; };
 		CCC14B950F184494004BD04E /* IPAddress.m in Sources */ = {isa = PBXBuildFile; fileRef = CCC14B660F184494004BD04E /* IPAddress.m */; };
@@ -56,6 +61,11 @@
 		28C286E00D94DF7D0034E888 /* RootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootViewController.m; sourceTree = "<group>"; };
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CC0ADF8A0F1A98E2000275DA /* rightbutton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = rightbutton.png; path = res/rightbutton.png; sourceTree = "<group>"; };
+		CC0ADF8B0F1A98E2000275DA /* leftbutton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = leftbutton.png; path = res/leftbutton.png; sourceTree = "<group>"; };
+		CC0ADF900F1A9AED000275DA /* homebutton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = homebutton.png; path = res/homebutton.png; sourceTree = "<group>"; };
+		CC0ADFBC0F1AA0A7000275DA /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Default.png; path = res/Default.png; sourceTree = "<group>"; };
+		CC0ADFF30F1AA575000275DA /* doclist.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = doclist.png; path = res/doclist.png; sourceTree = "<group>"; };
 		CC1C89F00F18387F00E71072 /* SyncViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SyncViewController.xib; sourceTree = "<group>"; };
 		CC1C89F30F18389F00E71072 /* SyncViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SyncViewController.h; sourceTree = "<group>"; };
 		CC1C89F40F18389F00E71072 /* SyncViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SyncViewController.m; sourceTree = "<group>"; };
@@ -174,6 +184,11 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				CC0ADFBC0F1AA0A7000275DA /* Default.png */,
+				CC0ADFF30F1AA575000275DA /* doclist.png */,
+				CC0ADF900F1A9AED000275DA /* homebutton.png */,
+				CC0ADF8A0F1A98E2000275DA /* rightbutton.png */,
+				CC0ADF8B0F1A98E2000275DA /* leftbutton.png */,
 				CCC14E5D0F188A0E004BD04E /* WebViewController.xib */,
 				CC1C89F00F18387F00E71072 /* SyncViewController.xib */,
 				2899E55F0DE3E45000AC0155 /* RootViewController.xib */,
@@ -332,6 +347,11 @@
 				2899E5600DE3E45000AC0155 /* RootViewController.xib in Resources */,
 				CC1C89F10F18387F00E71072 /* SyncViewController.xib in Resources */,
 				CCC14E5E0F188A0E004BD04E /* WebViewController.xib in Resources */,
+				CC0ADF8C0F1A98E2000275DA /* rightbutton.png in Resources */,
+				CC0ADF8D0F1A98E2000275DA /* leftbutton.png in Resources */,
+				CC0ADF910F1A9AED000275DA /* homebutton.png in Resources */,
+				CC0ADFBD0F1AA0A7000275DA /* Default.png in Resources */,
+				CC0ADFF40F1AA575000275DA /* doclist.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
