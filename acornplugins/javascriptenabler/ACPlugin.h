@@ -4,10 +4,11 @@
 // don't feel like using a debugger.
 
 #ifdef DEBUG
-#define debug(...) NSLog(__VA_ARGS__)
+    #define debug(...) NSLog(__VA_ARGS__)
 #else
-#define debug(...)
+    #define debug(...)
 #endif
+
 
 enum {
     ACBitmapLayer = 1,

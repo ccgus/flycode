@@ -1,6 +1,7 @@
 #import "JSEnablerPlugIn.h"
 #import "JSCocoaController.h"
 #import "ACPlugin.h"
+#import "JSTListener.h"
 
 @interface JSEnablerPlugIn (SuperSecret)
 - (void) findJSCocoaScriptsForPluginManager:(id<ACPluginManager>)pluginManager;
@@ -18,6 +19,9 @@
 }
 
 - (void) didRegister {
+    
+    [JSTListener listen];
+    
     /*
       
       this space intentionally left blank.
