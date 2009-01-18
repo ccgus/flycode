@@ -20,7 +20,6 @@
 + (id) sharedListener {
     static JSTListener *me = 0x00;
     if (!me) {
-        debug(@"setting up listener");
         me = [[JSTListener alloc] init];
     }
     
@@ -44,10 +43,9 @@ CFDataRef receivedJSTalkMessage(CFMessagePortRef local, SInt32 msgid, CFDataRef 
     
     NSMutableDictionary *T = [[[dict objectForKey:@"T"] mutableCopy] autorelease];
     
-    debug(@"T: %@", T);
-    
     NSString *source = [dict objectForKey:@"source"];
-    debug(@"source: %@", source);
+    
+    source = [NSString stringWithFormat:@"function JSTalkMain() {\n%@\n}", source];
     
     JSTalk *jsTalk = [[[JSTalk alloc] init] autorelease];
     
@@ -55,10 +53,15 @@ CFDataRef receivedJSTalkMessage(CFMessagePortRef local, SInt32 msgid, CFDataRef 
     
     [jsTalk executeString:source];
     
+    id returnValue = [jsTalk callFunctionNamed:@"JSTalkMain" withArguments:nil];
     
     NSMutableDictionary *ret = [NSMutableDictionary dictionary];
     
     [ret setObject:T forKey:@"T"];
+    
+    if (returnValue) {
+        [ret setObject:returnValue forKey:@"returnValue"];
+    }
     
     err = 0x00;
     data = (CFDataRef)[[NSPropertyListSerialization dataFromPropertyList:ret

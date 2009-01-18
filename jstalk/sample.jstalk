@@ -1,7 +1,9 @@
 // "T" is a global dictionary, which is used to pass (serialized) values back and forth between apps.
+// We can pretend it stands for "transport" or something like that.  Idealy, we could get rid of it.
 T.pngPath = "/tmp/bob.png";
 
-// Only the stuff between the JSTalk {}'s are sent to Acorn
+// The code block for JTalk is sent to Acorn over a CFMessagePort, and it runs it in
+// it's own JavaScript instance, using the cocoa bridge.
 x = JSTalk("Acorn") {
     
     App.activate()
@@ -9,7 +11,7 @@ x = JSTalk("Acorn") {
     // changing the variable, just to test that it gets sent back.
     T.pngPath = "/tmp/sam.png"
     
-    doc = App.open("/Volumes/srv/Users/gus/Desktop/ridge.acorn");
+    doc = App.open("/Volumes/srv/Users/gus/Desktop/sortme/ridge.acorn");
     
     doc.windowController().callFilterWithName("CIGaussianBlur")
     
@@ -17,27 +19,28 @@ x = JSTalk("Acorn") {
     
     doc.undoManager().undo()
     
-    //JSApp uses the scripting bridge, and this is sent from Acorn:
-    iTunes = JSApp("iTunes");
-    iTunes.playpause();
+    doc.close();
     
+    return true;
 }
 
+if (x) {
+    // JSApp uses the scripting bridge, so all those apple events you have exposed can
+    // be put to good use.
+    QT = JSApp("QuickTime Player");
+    QT.open(T.pngPath)
+    QT.activate()
+    print("All done.")
+}
+else {
+    print("Not a good response from Acorn...");
+}
 
-QT = JSApp("QuickTime Player");
-QT.open(T.pngPath)
-QT.activate()
-
+// get rid of the image.
+jsc.system("rm " + T.pngPath);
 
 /*
-if (x) {
-    
-    JSTalk("VoodooPad Pro") {
-        doc = App.open("/Volumes/srv/Users/gus/Documents/VPDocs/VPWikkaDocs.vpdoc");
-        doc.injectFileAtPath(T.pngPath);
-        App.activate();
-    }
-    
-}
-
+This would controll iTunes... neat huh?
+iTunes = JSApp("iTunes");
+iTunes.playpause();
 */

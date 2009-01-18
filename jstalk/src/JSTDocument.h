@@ -8,17 +8,18 @@
 
 
 #import <Cocoa/Cocoa.h>
+#import "MarkerLineNumberView.h"
+#import "JSTTextView.h"
 
 @interface JSTDocument : NSDocument {
-    IBOutlet NSTextView *jsTextView;
-    IBOutlet NSTextField *jsBundleId;
+    IBOutlet JSTTextView *jsTextView;
+    IBOutlet NSTextView *outputTextView;
+    IBOutlet NSSplitView *splitView;
     
-    NSString *_jsSrc;
     
+	NoodleLineNumberView	*lineNumberView;
 }
 
-@property (retain) NSString *jsSrc;
-
-- (void) send:(id)sender;
+- (void) executeScript:(id)sender;
 
 @end

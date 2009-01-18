@@ -16,8 +16,10 @@
 @property (retain) NSMutableDictionary *T;
 
 - (void) executeString:(NSString*) str;
-
 - (BOOL) sendJavascript:(NSString*)msg toBundleId:(NSString*)bundleId response:(NSString**)response;
 - (void) pushObject:(id)obj withName:(NSString*)name inController:(JSCocoaController*)jsController;
+
+- (JSCocoaController*) jsController;
+- (id) callFunctionNamed:(NSString*)name withArguments:(NSArray*)args;
 
 @end

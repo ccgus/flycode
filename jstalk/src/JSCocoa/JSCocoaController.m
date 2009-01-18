@@ -77,7 +77,7 @@ static id JSCocoaSingleton = NULL;
 			//	Why ? if init is calling sharedController, the pointer won't have been set and it will call itself over and over again.
 			//
 			JSCocoaSingleton = [self alloc];
-			NSLog(@"JSCocoa : allocating shared instance %x", JSCocoaSingleton);
+			//NSLog(@"JSCocoa : allocating shared instance %x", JSCocoaSingleton);
 			[JSCocoaSingleton init];
 		}
 	}
@@ -93,7 +93,7 @@ static id JSCocoaSingleton = NULL;
 //
 - (id)init
 {
-	NSLog(@"JSCocoa : %x spawning", self);
+	//NSLog(@"JSCocoa : %x spawning", self);
 	id o	= [super init];
 
 	closureHash			= [[NSMutableDictionary alloc] init];
@@ -883,7 +883,7 @@ void blah(id a, SEL b)
 	NSError*	error;
 	id script = [NSString stringWithContentsOfFile:path encoding:NSUTF8StringEncoding error:&error];
 	// Skip .DS_Store and directories
-	if (script == nil)	return	NSLog(@"evalJSFile could not open %@ (%@) — Check file encoding and file build phase (Should be in \"Copy Bundle Resources\")", path, error), NO;
+	if (script == nil)	return	NO; //NSLog(@"evalJSFile could not open %@ (%@) — Check file encoding and file build phase (Should be in \"Copy Bundle Resources\")", path, error), NO;
 	// Convert script and script URL to js strings
 //	JSStringRef scriptJS		= JSStringCreateWithUTF8CString([script UTF8String]);
 	// Using CreateWithUTF8 yields wrong results on PPC
