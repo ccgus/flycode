@@ -1,0 +1,43 @@
+// "T" is a global dictionary, which is used to pass (serialized) values back and forth between apps.
+T.pngPath = "/tmp/bob.png";
+
+// Only the stuff between the JSTalk {}'s are sent to Acorn
+x = JSTalk("Acorn") {
+    
+    App.activate()
+    
+    // changing the variable, just to test that it gets sent back.
+    T.pngPath = "/tmp/sam.png"
+    
+    doc = App.open("/Volumes/srv/Users/gus/Desktop/ridge.acorn");
+    
+    doc.windowController().callFilterWithName("CIGaussianBlur")
+    
+    doc.dataOfType("public.png").writeToFile(T.pngPath);
+    
+    doc.undoManager().undo()
+    
+    //JSApp uses the scripting bridge, and this is sent from Acorn:
+    iTunes = JSApp("iTunes");
+    iTunes.playpause();
+    
+}
+
+
+QT = JSApp("QuickTime Player");
+QT.open(T.pngPath)
+QT.activate()
+
+
+/*
+if (x) {
+    
+    JSTalk("VoodooPad Pro") {
+        doc = App.open("/Volumes/srv/Users/gus/Documents/VPDocs/VPWikkaDocs.vpdoc");
+        doc.injectFileAtPath(T.pngPath);
+        App.activate();
+    }
+    
+}
+
+*/

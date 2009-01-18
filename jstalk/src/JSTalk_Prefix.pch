@@ -1,0 +1,13 @@
+//
+// Prefix header for all source files of the 'JSTalk' target in the 'JSTalk' project
+//
+
+#ifdef __OBJC__
+    #import <Cocoa/Cocoa.h>
+#endif
+
+#ifdef DEBUG
+    #define debug(...) NSLog(__VA_ARGS__)
+#else
+    #define debug(...)
+#endif

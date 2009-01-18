@@ -1,0 +1,505 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 45;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		8D15AC340486D014006FF6A4 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7A7FEA54F5311CA2CBB /* Cocoa.framework */; };
+		CC0EC0F70F2170A10094F69D /* JSTScanner.m in Sources */ = {isa = PBXBuildFile; fileRef = CC0EC0F60F2170A10094F69D /* JSTScanner.m */; };
+		CC0EC0F80F2170A10094F69D /* JSTScanner.m in Sources */ = {isa = PBXBuildFile; fileRef = CC0EC0F60F2170A10094F69D /* JSTScanner.m */; };
+		CC0EC3290F226F550094F69D /* ScriptingBridge.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CC0EC3280F226F550094F69D /* ScriptingBridge.framework */; };
+		CC0EC32A0F226F550094F69D /* ScriptingBridge.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CC0EC3280F226F550094F69D /* ScriptingBridge.framework */; };
+		CC5FB7D80F1FDDE900F4ECC2 /* JSTalk.m in Sources */ = {isa = PBXBuildFile; fileRef = CC5FB7D70F1FDDE900F4ECC2 /* JSTalk.m */; };
+		CC5FB7DB0F1FDE2500F4ECC2 /* JSTalk.m in Sources */ = {isa = PBXBuildFile; fileRef = CC5FB7D70F1FDDE900F4ECC2 /* JSTalk.m */; };
+		CC5FB7DC0F1FDE2600F4ECC2 /* JSTListener.m in Sources */ = {isa = PBXBuildFile; fileRef = CCC5B95B0F1EFCFE00126722 /* JSTListener.m */; };
+		CC5FB7DD0F1FDE2900F4ECC2 /* jstalkmain.m in Sources */ = {isa = PBXBuildFile; fileRef = CC5FB7C70F1FDD0B00F4ECC2 /* jstalkmain.m */; };
+		CC5FB7DF0F1FDE3800F4ECC2 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7A7FEA54F5311CA2CBB /* Cocoa.framework */; };
+		CC5FB7E00F1FDE3900F4ECC2 /* JavaScriptCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CCC5B8A40F1EFA6D00126722 /* JavaScriptCore.framework */; };
+		CC5FB7E50F1FDE7000F4ECC2 /* BridgeSupportController.m in Sources */ = {isa = PBXBuildFile; fileRef = CCC5B92E0F1EFB6700126722 /* BridgeSupportController.m */; };
+		CC5FB7E60F1FDE7100F4ECC2 /* JSCocoaController.m in Sources */ = {isa = PBXBuildFile; fileRef = CCC5B9300F1EFB6700126722 /* JSCocoaController.m */; };
+		CC5FB7E70F1FDE7200F4ECC2 /* JSCocoaFFIArgument.m in Sources */ = {isa = PBXBuildFile; fileRef = CCC5B9320F1EFB6700126722 /* JSCocoaFFIArgument.m */; };
+		CC5FB7E80F1FDE7200F4ECC2 /* JSCocoaFFIClosure.m in Sources */ = {isa = PBXBuildFile; fileRef = CCC5B9340F1EFB6700126722 /* JSCocoaFFIClosure.m */; };
+		CC5FB7E90F1FDE7300F4ECC2 /* JSCocoaPrivateObject.m in Sources */ = {isa = PBXBuildFile; fileRef = CCC5B9360F1EFB6700126722 /* JSCocoaPrivateObject.m */; };
+		CC5FB7EA0F1FDE7400F4ECC2 /* JSCocoaLib.m in Sources */ = {isa = PBXBuildFile; fileRef = CCC5B9380F1EFB6700126722 /* JSCocoaLib.m */; };
+		CCC5B8A50F1EFA6D00126722 /* JavaScriptCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CCC5B8A40F1EFA6D00126722 /* JavaScriptCore.framework */; };
+		CCC5B8C70F1EFA9700126722 /* JSTDocument.xib in Resources */ = {isa = PBXBuildFile; fileRef = CCC5B8BA0F1EFA9700126722 /* JSTDocument.xib */; };
+		CCC5B8C90F1EFA9700126722 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = CCC5B8BE0F1EFA9700126722 /* MainMenu.xib */; };
+		CCC5B8CA0F1EFA9700126722 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = CCC5B8C00F1EFA9700126722 /* Credits.rtf */; };
+		CCC5B8CD0F1EFAAA00126722 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CCC5B8CC0F1EFAAA00126722 /* main.m */; };
+		CCC5B8D00F1EFABA00126722 /* JSTDocument.m in Sources */ = {isa = PBXBuildFile; fileRef = CCC5B8CE0F1EFABA00126722 /* JSTDocument.m */; };
+		CCC5B93A0F1EFB6700126722 /* BridgeSupportController.m in Sources */ = {isa = PBXBuildFile; fileRef = CCC5B92E0F1EFB6700126722 /* BridgeSupportController.m */; };
+		CCC5B93B0F1EFB6700126722 /* JSCocoaController.m in Sources */ = {isa = PBXBuildFile; fileRef = CCC5B9300F1EFB6700126722 /* JSCocoaController.m */; };
+		CCC5B93C0F1EFB6700126722 /* JSCocoaFFIArgument.m in Sources */ = {isa = PBXBuildFile; fileRef = CCC5B9320F1EFB6700126722 /* JSCocoaFFIArgument.m */; };
+		CCC5B93D0F1EFB6700126722 /* JSCocoaFFIClosure.m in Sources */ = {isa = PBXBuildFile; fileRef = CCC5B9340F1EFB6700126722 /* JSCocoaFFIClosure.m */; };
+		CCC5B93E0F1EFB6700126722 /* JSCocoaPrivateObject.m in Sources */ = {isa = PBXBuildFile; fileRef = CCC5B9360F1EFB6700126722 /* JSCocoaPrivateObject.m */; };
+		CCC5B93F0F1EFB6700126722 /* JSCocoaLib.m in Sources */ = {isa = PBXBuildFile; fileRef = CCC5B9380F1EFB6700126722 /* JSCocoaLib.m */; };
+		CCC5B94E0F1EFC4500126722 /* JSTAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CCC5B94D0F1EFC4500126722 /* JSTAppDelegate.m */; };
+		CCC5B95C0F1EFCFE00126722 /* JSTListener.m in Sources */ = {isa = PBXBuildFile; fileRef = CCC5B95B0F1EFCFE00126722 /* JSTListener.m */; };
+		CCC5BA960F1F20B900126722 /* class.js in Resources */ = {isa = PBXBuildFile; fileRef = CCC5BA930F1F209F00126722 /* class.js */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		1058C7A7FEA54F5311CA2CBB /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = /System/Library/Frameworks/Cocoa.framework; sourceTree = "<absolute>"; };
+		13E42FBA07B3F13500E4EEF1 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = /System/Library/Frameworks/CoreData.framework; sourceTree = "<absolute>"; };
+		2A37F4C4FDCFA73011CA2CEA /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = /System/Library/Frameworks/AppKit.framework; sourceTree = "<absolute>"; };
+		2A37F4C5FDCFA73011CA2CEA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = /System/Library/Frameworks/Foundation.framework; sourceTree = "<absolute>"; };
+		8D15AC370486D014006FF6A4 /* JSTalk.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JSTalk.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		CC0EC0F50F2170A10094F69D /* JSTScanner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JSTScanner.h; path = src/JSTScanner.h; sourceTree = "<group>"; };
+		CC0EC0F60F2170A10094F69D /* JSTScanner.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JSTScanner.m; path = src/JSTScanner.m; sourceTree = "<group>"; };
+		CC0EC3280F226F550094F69D /* ScriptingBridge.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ScriptingBridge.framework; path = /System/Library/Frameworks/ScriptingBridge.framework; sourceTree = "<absolute>"; };
+		CC5FB6E80F1FBEB800F4ECC2 /* sample.jstalk */ = {isa = PBXFileReference; explicitFileType = sourcecode.javascript; fileEncoding = 4; path = sample.jstalk; sourceTree = "<group>"; };
+		CC5FB7C20F1FDCCC00F4ECC2 /* jstalk */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = jstalk; sourceTree = BUILT_PRODUCTS_DIR; };
+		CC5FB7C70F1FDD0B00F4ECC2 /* jstalkmain.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = jstalkmain.m; path = src/jstalkmain.m; sourceTree = "<group>"; };
+		CC5FB7D60F1FDDE900F4ECC2 /* JSTalk.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JSTalk.h; path = src/JSTalk.h; sourceTree = "<group>"; };
+		CC5FB7D70F1FDDE900F4ECC2 /* JSTalk.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JSTalk.m; path = src/JSTalk.m; sourceTree = "<group>"; };
+		CCC5B8A40F1EFA6D00126722 /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = /System/Library/Frameworks/JavaScriptCore.framework; sourceTree = "<absolute>"; };
+		CCC5B8B00F1EFA9700126722 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = res/Info.plist; sourceTree = "<group>"; };
+		CCC5B8BB0F1EFA9700126722 /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = res/English.lproj/JSTDocument.xib; sourceTree = "<group>"; };
+		CCC5B8BF0F1EFA9700126722 /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = res/English.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		CCC5B8C10F1EFA9700126722 /* English */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = English; path = res/English.lproj/Credits.rtf; sourceTree = "<group>"; };
+		CCC5B8CB0F1EFAAA00126722 /* JSTalk_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JSTalk_Prefix.pch; path = src/JSTalk_Prefix.pch; sourceTree = "<group>"; };
+		CCC5B8CC0F1EFAAA00126722 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = src/main.m; sourceTree = "<group>"; };
+		CCC5B8CE0F1EFABA00126722 /* JSTDocument.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JSTDocument.m; path = src/JSTDocument.m; sourceTree = "<group>"; };
+		CCC5B8CF0F1EFABA00126722 /* JSTDocument.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JSTDocument.h; path = src/JSTDocument.h; sourceTree = "<group>"; };
+		CCC5B92E0F1EFB6700126722 /* BridgeSupportController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BridgeSupportController.m; path = src/JSCocoa/BridgeSupportController.m; sourceTree = "<group>"; };
+		CCC5B92F0F1EFB6700126722 /* BridgeSupportController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BridgeSupportController.h; path = src/JSCocoa/BridgeSupportController.h; sourceTree = "<group>"; };
+		CCC5B9300F1EFB6700126722 /* JSCocoaController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JSCocoaController.m; path = src/JSCocoa/JSCocoaController.m; sourceTree = "<group>"; };
+		CCC5B9310F1EFB6700126722 /* JSCocoaController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JSCocoaController.h; path = src/JSCocoa/JSCocoaController.h; sourceTree = "<group>"; };
+		CCC5B9320F1EFB6700126722 /* JSCocoaFFIArgument.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JSCocoaFFIArgument.m; path = src/JSCocoa/JSCocoaFFIArgument.m; sourceTree = "<group>"; };
+		CCC5B9330F1EFB6700126722 /* JSCocoaFFIArgument.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JSCocoaFFIArgument.h; path = src/JSCocoa/JSCocoaFFIArgument.h; sourceTree = "<group>"; };
+		CCC5B9340F1EFB6700126722 /* JSCocoaFFIClosure.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JSCocoaFFIClosure.m; path = src/JSCocoa/JSCocoaFFIClosure.m; sourceTree = "<group>"; };
+		CCC5B9350F1EFB6700126722 /* JSCocoaFFIClosure.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JSCocoaFFIClosure.h; path = src/JSCocoa/JSCocoaFFIClosure.h; sourceTree = "<group>"; };
+		CCC5B9360F1EFB6700126722 /* JSCocoaPrivateObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JSCocoaPrivateObject.m; path = src/JSCocoa/JSCocoaPrivateObject.m; sourceTree = "<group>"; };
+		CCC5B9370F1EFB6700126722 /* JSCocoaPrivateObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JSCocoaPrivateObject.h; path = src/JSCocoa/JSCocoaPrivateObject.h; sourceTree = "<group>"; };
+		CCC5B9380F1EFB6700126722 /* JSCocoaLib.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JSCocoaLib.m; path = src/JSCocoa/JSCocoaLib.m; sourceTree = "<group>"; };
+		CCC5B9390F1EFB6700126722 /* JSCocoaLib.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JSCocoaLib.h; path = src/JSCocoa/JSCocoaLib.h; sourceTree = "<group>"; };
+		CCC5B94C0F1EFC4500126722 /* JSTAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JSTAppDelegate.h; path = src/JSTAppDelegate.h; sourceTree = "<group>"; };
+		CCC5B94D0F1EFC4500126722 /* JSTAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JSTAppDelegate.m; path = src/JSTAppDelegate.m; sourceTree = "<group>"; };
+		CCC5B95A0F1EFCFE00126722 /* JSTListener.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JSTListener.h; path = src/JSTListener.h; sourceTree = "<group>"; };
+		CCC5B95B0F1EFCFE00126722 /* JSTListener.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JSTListener.m; path = src/JSTListener.m; sourceTree = "<group>"; };
+		CCC5BA930F1F209F00126722 /* class.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; name = class.js; path = src/JSCocoa/class.js; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		8D15AC330486D014006FF6A4 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8D15AC340486D014006FF6A4 /* Cocoa.framework in Frameworks */,
+				CCC5B8A50F1EFA6D00126722 /* JavaScriptCore.framework in Frameworks */,
+				CC0EC3290F226F550094F69D /* ScriptingBridge.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CC5FB7C00F1FDCCC00F4ECC2 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CC5FB7DF0F1FDE3800F4ECC2 /* Cocoa.framework in Frameworks */,
+				CC5FB7E00F1FDE3900F4ECC2 /* JavaScriptCore.framework in Frameworks */,
+				CC0EC32A0F226F550094F69D /* ScriptingBridge.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		1058C7A6FEA54F5311CA2CBB /* Linked Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				1058C7A7FEA54F5311CA2CBB /* Cocoa.framework */,
+			);
+			name = "Linked Frameworks";
+			sourceTree = "<group>";
+		};
+		1058C7A8FEA54F5311CA2CBB /* Other Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				2A37F4C4FDCFA73011CA2CEA /* AppKit.framework */,
+				13E42FBA07B3F13500E4EEF1 /* CoreData.framework */,
+				2A37F4C5FDCFA73011CA2CEA /* Foundation.framework */,
+			);
+			name = "Other Frameworks";
+			sourceTree = "<group>";
+		};
+		19C28FB0FE9D524F11CA2CBB /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				8D15AC370486D014006FF6A4 /* JSTalk.app */,
+				CC5FB7C20F1FDCCC00F4ECC2 /* jstalk */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		2A37F4AAFDCFA73011CA2CEA /* JSTalk */ = {
+			isa = PBXGroup;
+			children = (
+				CC0EC3380F2274730094F69D /* JSTalk */,
+				CC5FB6E80F1FBEB800F4ECC2 /* sample.jstalk */,
+				CCC5B92C0F1EFB5900126722 /* JSCocoa */,
+				2A37F4ABFDCFA73011CA2CEA /* App Classes */,
+				2A37F4AFFDCFA73011CA2CEA /* Other Sources */,
+				2A37F4B8FDCFA73011CA2CEA /* Resources */,
+				2A37F4C3FDCFA73011CA2CEA /* Frameworks */,
+				19C28FB0FE9D524F11CA2CBB /* Products */,
+			);
+			name = JSTalk;
+			sourceTree = "<group>";
+		};
+		2A37F4ABFDCFA73011CA2CEA /* App Classes */ = {
+			isa = PBXGroup;
+			children = (
+				CCC5B94C0F1EFC4500126722 /* JSTAppDelegate.h */,
+				CCC5B94D0F1EFC4500126722 /* JSTAppDelegate.m */,
+				CCC5B8CF0F1EFABA00126722 /* JSTDocument.h */,
+				CCC5B8CE0F1EFABA00126722 /* JSTDocument.m */,
+			);
+			name = "App Classes";
+			sourceTree = "<group>";
+		};
+		2A37F4AFFDCFA73011CA2CEA /* Other Sources */ = {
+			isa = PBXGroup;
+			children = (
+				CCC5B8CB0F1EFAAA00126722 /* JSTalk_Prefix.pch */,
+				CCC5B8CC0F1EFAAA00126722 /* main.m */,
+				CC5FB7C70F1FDD0B00F4ECC2 /* jstalkmain.m */,
+			);
+			name = "Other Sources";
+			sourceTree = "<group>";
+		};
+		2A37F4B8FDCFA73011CA2CEA /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				CCC5B8B00F1EFA9700126722 /* Info.plist */,
+				CCC5B8BA0F1EFA9700126722 /* JSTDocument.xib */,
+				CCC5B8BE0F1EFA9700126722 /* MainMenu.xib */,
+				CCC5B8C00F1EFA9700126722 /* Credits.rtf */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		2A37F4C3FDCFA73011CA2CEA /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				CC0EC3280F226F550094F69D /* ScriptingBridge.framework */,
+				CCC5B8A40F1EFA6D00126722 /* JavaScriptCore.framework */,
+				1058C7A6FEA54F5311CA2CBB /* Linked Frameworks */,
+				1058C7A8FEA54F5311CA2CBB /* Other Frameworks */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		CC0EC3380F2274730094F69D /* JSTalk */ = {
+			isa = PBXGroup;
+			children = (
+				CC5FB7D60F1FDDE900F4ECC2 /* JSTalk.h */,
+				CC5FB7D70F1FDDE900F4ECC2 /* JSTalk.m */,
+				CCC5B95A0F1EFCFE00126722 /* JSTListener.h */,
+				CCC5B95B0F1EFCFE00126722 /* JSTListener.m */,
+				CC0EC0F50F2170A10094F69D /* JSTScanner.h */,
+				CC0EC0F60F2170A10094F69D /* JSTScanner.m */,
+			);
+			name = JSTalk;
+			sourceTree = "<group>";
+		};
+		CCC5B92C0F1EFB5900126722 /* JSCocoa */ = {
+			isa = PBXGroup;
+			children = (
+				CCC5BA930F1F209F00126722 /* class.js */,
+				CCC5B92E0F1EFB6700126722 /* BridgeSupportController.m */,
+				CCC5B92F0F1EFB6700126722 /* BridgeSupportController.h */,
+				CCC5B9300F1EFB6700126722 /* JSCocoaController.m */,
+				CCC5B9310F1EFB6700126722 /* JSCocoaController.h */,
+				CCC5B9320F1EFB6700126722 /* JSCocoaFFIArgument.m */,
+				CCC5B9330F1EFB6700126722 /* JSCocoaFFIArgument.h */,
+				CCC5B9340F1EFB6700126722 /* JSCocoaFFIClosure.m */,
+				CCC5B9350F1EFB6700126722 /* JSCocoaFFIClosure.h */,
+				CCC5B9360F1EFB6700126722 /* JSCocoaPrivateObject.m */,
+				CCC5B9370F1EFB6700126722 /* JSCocoaPrivateObject.h */,
+				CCC5B9380F1EFB6700126722 /* JSCocoaLib.m */,
+				CCC5B9390F1EFB6700126722 /* JSCocoaLib.h */,
+			);
+			name = JSCocoa;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		8D15AC270486D014006FF6A4 /* JSTalk Editor */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C05733C708A9546B00998B17 /* Build configuration list for PBXNativeTarget "JSTalk Editor" */;
+			buildPhases = (
+				8D15AC2B0486D014006FF6A4 /* Resources */,
+				8D15AC300486D014006FF6A4 /* Sources */,
+				8D15AC330486D014006FF6A4 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "JSTalk Editor";
+			productInstallPath = "$(HOME)/Applications";
+			productName = JSTalk;
+			productReference = 8D15AC370486D014006FF6A4 /* JSTalk.app */;
+			productType = "com.apple.product-type.application";
+		};
+		CC5FB7C10F1FDCCC00F4ECC2 /* jstalk command line */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CC5FB7C60F1FDCFE00F4ECC2 /* Build configuration list for PBXNativeTarget "jstalk command line" */;
+			buildPhases = (
+				CC5FB7BF0F1FDCCC00F4ECC2 /* Sources */,
+				CC5FB7C00F1FDCCC00F4ECC2 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "jstalk command line";
+			productName = "jstalk command";
+			productReference = CC5FB7C20F1FDCCC00F4ECC2 /* jstalk */;
+			productType = "com.apple.product-type.tool";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		2A37F4A9FDCFA73011CA2CEA /* Project object */ = {
+			isa = PBXProject;
+			buildConfigurationList = C05733CB08A9546B00998B17 /* Build configuration list for PBXProject "jstalk" */;
+			compatibilityVersion = "Xcode 3.1";
+			hasScannedForEncodings = 1;
+			mainGroup = 2A37F4AAFDCFA73011CA2CEA /* JSTalk */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				8D15AC270486D014006FF6A4 /* JSTalk Editor */,
+				CC5FB7C10F1FDCCC00F4ECC2 /* jstalk command line */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		8D15AC2B0486D014006FF6A4 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CCC5BA960F1F20B900126722 /* class.js in Resources */,
+				CCC5B8C70F1EFA9700126722 /* JSTDocument.xib in Resources */,
+				CCC5B8C90F1EFA9700126722 /* MainMenu.xib in Resources */,
+				CCC5B8CA0F1EFA9700126722 /* Credits.rtf in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		8D15AC300486D014006FF6A4 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CCC5B8CD0F1EFAAA00126722 /* main.m in Sources */,
+				CCC5B8D00F1EFABA00126722 /* JSTDocument.m in Sources */,
+				CCC5B93A0F1EFB6700126722 /* BridgeSupportController.m in Sources */,
+				CCC5B93B0F1EFB6700126722 /* JSCocoaController.m in Sources */,
+				CCC5B93C0F1EFB6700126722 /* JSCocoaFFIArgument.m in Sources */,
+				CCC5B93D0F1EFB6700126722 /* JSCocoaFFIClosure.m in Sources */,
+				CCC5B93E0F1EFB6700126722 /* JSCocoaPrivateObject.m in Sources */,
+				CCC5B93F0F1EFB6700126722 /* JSCocoaLib.m in Sources */,
+				CCC5B94E0F1EFC4500126722 /* JSTAppDelegate.m in Sources */,
+				CCC5B95C0F1EFCFE00126722 /* JSTListener.m in Sources */,
+				CC5FB7D80F1FDDE900F4ECC2 /* JSTalk.m in Sources */,
+				CC0EC0F70F2170A10094F69D /* JSTScanner.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CC5FB7BF0F1FDCCC00F4ECC2 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CC5FB7DB0F1FDE2500F4ECC2 /* JSTalk.m in Sources */,
+				CC5FB7DC0F1FDE2600F4ECC2 /* JSTListener.m in Sources */,
+				CC5FB7DD0F1FDE2900F4ECC2 /* jstalkmain.m in Sources */,
+				CC5FB7E50F1FDE7000F4ECC2 /* BridgeSupportController.m in Sources */,
+				CC5FB7E60F1FDE7100F4ECC2 /* JSCocoaController.m in Sources */,
+				CC5FB7E70F1FDE7200F4ECC2 /* JSCocoaFFIArgument.m in Sources */,
+				CC5FB7E80F1FDE7200F4ECC2 /* JSCocoaFFIClosure.m in Sources */,
+				CC5FB7E90F1FDE7300F4ECC2 /* JSCocoaPrivateObject.m in Sources */,
+				CC5FB7EA0F1FDE7400F4ECC2 /* JSCocoaLib.m in Sources */,
+				CC0EC0F80F2170A10094F69D /* JSTScanner.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		CCC5B8BA0F1EFA9700126722 /* JSTDocument.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				CCC5B8BB0F1EFA9700126722 /* English */,
+			);
+			name = JSTDocument.xib;
+			sourceTree = "<group>";
+		};
+		CCC5B8BE0F1EFA9700126722 /* MainMenu.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				CCC5B8BF0F1EFA9700126722 /* English */,
+			);
+			name = MainMenu.xib;
+			sourceTree = "<group>";
+		};
+		CCC5B8C00F1EFA9700126722 /* Credits.rtf */ = {
+			isa = PBXVariantGroup;
+			children = (
+				CCC5B8C10F1EFA9700126722 /* English */,
+			);
+			name = Credits.rtf;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		C05733C808A9546B00998B17 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = NO;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_FIX_AND_CONTINUE = YES;
+				GCC_MODEL_TUNING = G5;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = src/JSTalk_Prefix.pch;
+				INFOPLIST_FILE = res/Info.plist;
+				INSTALL_PATH = "$(HOME)/Applications";
+				OTHER_CFLAGS = "-DDEBUG";
+				OTHER_LDFLAGS = "-lffi";
+				PRODUCT_NAME = JSTalk;
+			};
+			name = Debug;
+		};
+		C05733C908A9546B00998B17 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_MODEL_TUNING = G5;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = src/JSTalk_Prefix.pch;
+				INFOPLIST_FILE = res/Info.plist;
+				INSTALL_PATH = "$(HOME)/Applications";
+				OTHER_LDFLAGS = "-lffi";
+				PRODUCT_NAME = "JSTalk Editor";
+			};
+			name = Release;
+		};
+		C05733CC08A9546B00998B17 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				GCC_C_LANGUAGE_STANDARD = c99;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PREBINDING = NO;
+				SDKROOT = macosx10.5;
+			};
+			name = Debug;
+		};
+		C05733CD08A9546B00998B17 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				GCC_C_LANGUAGE_STANDARD = c99;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				PREBINDING = NO;
+				SDKROOT = macosx10.5;
+			};
+			name = Release;
+		};
+		CC5FB7C40F1FDCCC00F4ECC2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = NO;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_FIX_AND_CONTINUE = YES;
+				GCC_MODEL_TUNING = G5;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = src/JSTalk_Prefix.pch;
+				INSTALL_PATH = /usr/local/bin;
+				OTHER_CFLAGS = "-DDEBUG";
+				OTHER_LDFLAGS = (
+					"-lffi",
+					"-framework",
+					Foundation,
+					"-framework",
+					AppKit,
+				);
+				PREBINDING = NO;
+				PRODUCT_NAME = jstalk;
+			};
+			name = Debug;
+		};
+		CC5FB7C50F1FDCCC00F4ECC2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_ENABLE_FIX_AND_CONTINUE = NO;
+				GCC_MODEL_TUNING = G5;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/AppKit.framework/Headers/AppKit.h";
+				INSTALL_PATH = /usr/local/bin;
+				OTHER_LDFLAGS = (
+					"-framework",
+					Foundation,
+					"-framework",
+					AppKit,
+				);
+				PREBINDING = NO;
+				PRODUCT_NAME = "jstalk command";
+				ZERO_LINK = NO;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		C05733C708A9546B00998B17 /* Build configuration list for PBXNativeTarget "JSTalk Editor" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C05733C808A9546B00998B17 /* Debug */,
+				C05733C908A9546B00998B17 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C05733CB08A9546B00998B17 /* Build configuration list for PBXProject "jstalk" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C05733CC08A9546B00998B17 /* Debug */,
+				C05733CD08A9546B00998B17 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		CC5FB7C60F1FDCFE00F4ECC2 /* Build configuration list for PBXNativeTarget "jstalk command line" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CC5FB7C40F1FDCCC00F4ECC2 /* Debug */,
+				CC5FB7C50F1FDCCC00F4ECC2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 2A37F4A9FDCFA73011CA2CEA /* Project object */;
+}
