@@ -11,9 +11,12 @@
 
 @interface JSTalk : NSObject {
     NSMutableDictionary *_T;
+    id _printController;
 }
 
 @property (retain) NSMutableDictionary *T;
+
+@property (assign) id printController;
 
 - (void) executeString:(NSString*) str;
 - (BOOL) sendJavascript:(NSString*)msg toBundleId:(NSString*)bundleId response:(NSString**)response;
@@ -21,5 +24,7 @@
 
 - (JSCocoaController*) jsController;
 - (id) callFunctionNamed:(NSString*)name withArguments:(NSArray*)args;
+
++ (void) listen;
 
 @end

@@ -6,8 +6,8 @@
     #import <Cocoa/Cocoa.h>
 #endif
 
-#ifdef DEBUG
+//#ifdef DEBUG
     #define debug(...) NSLog(__VA_ARGS__)
-#else
-    #define debug(...)
-#endif
+//#else
+//    #define debug(...)
+//#endif

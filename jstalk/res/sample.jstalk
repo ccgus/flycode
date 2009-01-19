@@ -19,7 +19,7 @@ x = JSTalk("Acorn") {
     
     doc.undoManager().undo()
     
-    doc.close();
+    //doc.close();
     
     return true;
 }
@@ -40,7 +40,7 @@ else {
 jsc.system("rm " + T.pngPath);
 
 /*
-This would controll iTunes... neat huh?
+This would control iTunes... neat huh?
 iTunes = JSApp("iTunes");
 iTunes.playpause();
 */

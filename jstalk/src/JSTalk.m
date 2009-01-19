@@ -7,11 +7,18 @@
 //
 
 #import "JSTalk.h"
+#import "JSTListener.h"
 #import "JSTScanner.h"
 #import <ScriptingBridge/ScriptingBridge.h>
+#include "mach_inject_bundle.h"
 
 @implementation JSTalk
 @synthesize T=_T;
+@synthesize printController=_printController;
+
++ (void) load {
+    debug(@"%s:%d", __FUNCTION__, __LINE__);
+}
 
 - (void)dealloc {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
@@ -20,6 +27,15 @@
     [super dealloc];
 }
 
+/*
+- (id) injectApp:(NSString*)app withSource:(NSString*) source {
+    
+    NSString *bundlePath = [[NSBundle mainBundle] pathForResource:@"JSTalk" ofType:@"bundle"];
+    
+    //mach_error_t err = mach_inject_bundle_pid([bundlePath fileSystemRepresentation], pid );
+    
+}
+*/
 
 - (id) bridgeApp:(NSString*)appName {
     NSString *appPath = [[NSWorkspace sharedWorkspace] fullPathForApplication:appName];
@@ -36,7 +52,7 @@
 }
 
 
-- (id) callApp:(NSString*)app withSource:(NSString*)source {
+- (id) callApp:(NSString*)app withSource:(NSString*)source shouldInject:(BOOL)inject {
     
     NSString *appPath = [[NSWorkspace sharedWorkspace] fullPathForApplication:app];
     
@@ -56,6 +72,43 @@
     
     NSString *port = [NSString stringWithFormat:@"%@.JSTalk", bundleId];
     
+    inject = NO; // alright, this isn't working at all.
+    if (inject) {
+        
+        NSUInteger pid = 0;
+        for (NSDictionary *appInfo in [[NSWorkspace sharedWorkspace] launchedApplications]) {
+            if ([bundleId isEqualToString:[appInfo objectForKey:@"NSApplicationBundleIdentifier"]]) {
+                debug(@"appInfo: %@", appInfo);
+                
+                pid = [[appInfo objectForKey:@"NSApplicationProcessIdentifier"] unsignedIntegerValue];
+            }
+        }
+        
+        NSString *bundlePath = [[NSBundle bundleForClass:[self class]] bundlePath];
+        
+        if (pid && bundlePath) {
+            mach_error_t err = mach_inject_bundle_pid([bundlePath fileSystemRepresentation], pid);
+            
+            if (err == err_mach_inject_bundle_couldnt_load_framework_bundle) {
+                debug(@"err_mach_inject_bundle_couldnt_load_framework_bundle");
+            }
+            else if (err == err_mach_inject_bundle_couldnt_find_injection_bundle) {
+                debug(@"err_mach_inject_bundle_couldnt_find_injection_bundle");
+            }
+            else if (err == err_mach_inject_bundle_couldnt_load_injection_bundle) {
+                debug(@"err_mach_inject_bundle_couldnt_load_injection_bundle");
+            }
+            else if (err == err_mach_inject_bundle_couldnt_find_inject_entry_symbol) {
+                debug(@"err_mach_inject_bundle_couldnt_find_inject_entry_symbol");
+            }
+            
+            if (err) {
+                return nil;
+            }
+        }
+    }
+    
+    
     CFMessagePortRef remotePort = 0x00;
     
     NSUInteger tries = 0;
@@ -64,6 +117,7 @@
         remotePort = CFMessagePortCreateRemote(kCFAllocatorDefault, (CFStringRef)port);
         tries++;
         if (!remotePort) {
+            debug(@"Sleeping, waiting for %@ to open its port", app);
             sleep(1);
         }
     }
@@ -157,7 +211,7 @@
             script = [script stringByReplacingOccurrencesOfString:@"\r" withString:@"\n"];
             script = [script stringByReplacingOccurrencesOfString:@"\n" withString:@"\\n\\\n"];
             
-            [newSource appendFormat:@"JSTalk.callApp_withSource(\"%@\", \"\\\n%@\");\n", appName, script];
+            [newSource appendFormat:@"JSTalk.callApp_withSource_shouldInject(\"%@\", \"\\\n%@\", true);\n", appName, script];
         }
     }
     
@@ -179,6 +233,7 @@
     
     @try {
         [jsController setUseAutoCall:NO];
+        [jsController evalJSString:@"function print(s) { JSTalkx.print(s); }"];
         [jsController evalJSString:newSource];
     }
     @catch (NSException * e) {
@@ -243,5 +298,18 @@
     return returnObject;
 }
 
++ (void) listen {
+    [JSTListener listen];
+}
+
+- (void) print:(NSString*)s {
+    
+    if (_printController && [_printController respondsToSelector:@selector(print:)]) {
+        [_printController print:s];
+    }
+    else {
+        NSLog(@"%@", s);
+    }
+}
 
 @end

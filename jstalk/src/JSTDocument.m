@@ -87,7 +87,10 @@
     JSCocoaController *jsController = [jstalk jsController];
     
     [jstalk pushObject:self withName:@"_jstDocument" inController:jsController];
-    [jsController evalJSString:@"function print(s) { _jstDocument.print(s); }"];
+    
+    
+    jstalk.printController = self;
+    
     
     [jstalk executeString:s];
 }
