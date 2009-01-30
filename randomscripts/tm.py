@@ -1,5 +1,17 @@
 #!/usr/bin/env python3.0
 
+'''
+
+HELLO,
+
+This is Gus's command line interface for Time Machine, because he can't stand the built in way to restore.
+
+There are probably alllllllll kinds of problems with this script, so use at your own risk.
+
+BUILT WITH BBEDIT
+
+'''
+
 import os
 import os.path
 import sys
@@ -85,7 +97,7 @@ def main(argv=None):
             print("Unknown command '%s'" % (command))
         
         
-        print("q [index] to quicklook, k to quit, r [index] to restore")
+        print("q [num] to quicklook, k to quit, r [num] to restore")
         
         
         command = sys.stdin.readline().strip()
