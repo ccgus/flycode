@@ -1,0 +1,565 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml">
+                  <head> 
+                  <title>py2html.py</title>
+                  <!--css-->
+                  
+        <STYLE TYPE="text/css"> 
+          <!-- 
+            body{ background: #FFFFFF; }
+            .PY_KEYWORD{ color: #0000C0; font-weight: bold; }
+            .PY_COMMENT{ color: #000080; }
+            .PY_PARAMETER{ color: #C00000; }
+            .PY_IDENTIFIER{ color: #C00000; font-weight: bold; }
+            .PY_STRING{ color: #008000; }
+          --> 
+        </STYLE>  
+                  </head>
+                  <body>
+                  <!--header-->
+                  
+                  <!--script-->
+                  <pre><span class="PY_COMMENT">#!/usr/bin/python -u</span>
+
+<span class="PY_STRING">""" Python Highlighter                                    Version: 0.8
+
+    py2html.py [options] files...
+
+    options:
+     -h             print help
+     -              read from stdin, write to stdout
+     -stdout        read from files, write to stdout
+     -files         read from files, write to filename+'.html' (default)
+     -format:
+       html         output XHTML page (default)
+       rawhtml      output pure XHTML (without headers, titles, etc.)
+     -mode:
+       color        output in color (default)
+       mono         output b/w (for printing)
+     -title:Title   use 'Title' as title of the generated page
+     -bgcolor:color use color as background-color for page
+     -header:file   use contents of file as header
+     -footer:file   use contents of file as footer
+     -URL           replace all occurances of 'URL: link' with
+                    '&lt;a href="link"&gt;link&lt;/a&gt;'; this is always enabled
+                    in CGI mode
+     -v             verbose
+
+    Takes the input, assuming it is Python code and formats it into
+    colored XHTML. When called without parameters the script tries to
+    work in CGI mode. It looks for a field 'script=URL' and tries to
+    use that URL as input file. If it can't find this field, the path
+    info (the part of the URL following the CGI script name) is
+    tried. In case no host is given, the host where the CGI script
+    lives and HTTP are used.
+ 
+    * Uses Just van Rossum's PyFontify version 0.3 to tag Python scripts.
+      You can get it via his homepage on starship:
+        URL: http://starship.python.net/crew/just
+"""</span>
+__comments__ = <span class="PY_STRING">"""
+
+    The following snippet is a small shell script I use for viewing
+    Python scripts via less on Unix:
+
+pyless:
+#!/bin/sh
+# Browse pretty printed Python code using ANSI codes for highlighting
+py2html -stdout -format:ansi -mode:color $* | less -r
+
+    History:
+        
+    0.8: Added patch by Patrick Lynch to have py2html.py use style
+         sheets for markup
+    0.7: Added patch by Ville Skyttä to make py2html.py output
+         valid XHTML.
+    0.6: Fixed a bug in .escape_html(); thanks to Vespe Savikko for
+         finding this one.
+    0.5: Added a few suggestions by Kevin Ng to make the CGI version
+         a little more robust.
+
+"""</span>
+__copyright__ = <span class="PY_STRING">"""\
+    Copyright (c) 1998-2000, Marc-Andre Lemburg; mailto:mal@lemburg.com
+    Copyright (c) 2000-2002, eGenix.com Software GmbH; mailto:info@egenix.com
+    Distributed under the terms and conditions of the eGenix.com Public
+    License. See http://www.egenix.com/files/python/mxLicense.html for 
+    details, or contact the author. All Rights Reserved.\
+"""</span>
+
+__version__ = <span class="PY_STRING">'0.8'</span>
+
+__cgifooter__ = (<span class="PY_STRING">'\n&lt;pre&gt;# code highlighted using &lt;a href='</span>
+                 <span class="PY_STRING">'"http://www.lemburg.com/files/python/"&gt;py2html.py&lt;/a&gt; '</span>
+                 <span class="PY_STRING">'version %s&lt;/pre&gt;\n'</span> % __version__)
+
+<span class="PY_KEYWORD">import</span> sys,string,re
+
+<span class="PY_COMMENT"># Adjust path so that PyFontify is found...</span>
+sys.path.append(<span class="PY_STRING">'.'</span>)
+
+<span class="PY_COMMENT">### Constants</span>
+
+<span class="PY_COMMENT"># URL of the input form the user is redirected to in case no script=xxx</span>
+<span class="PY_COMMENT"># form field is given. The URL *must* be absolute. Leave blank to</span>
+<span class="PY_COMMENT"># have the script issue an error instead.</span>
+INPUT_FORM = <span class="PY_STRING">'http://www.lemburg.com/files/python/SoftwareDescriptions.html#py2html.py'</span>
+
+<span class="PY_COMMENT"># HTML DOCTYPE and XML namespace</span>
+HTML_DOCTYPE = <span class="PY_STRING">'&lt;!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"&gt;'</span>
+HTML_XMLNS = <span class="PY_STRING">' xmlns="http://www.w3.org/1999/xhtml"'</span>
+
+<span class="PY_COMMENT">### Helpers</span>
+
+<span class="PY_KEYWORD">def</span><a name="fileio"><span class="PY_IDENTIFIER"> fileio</span></a>(file, mode=<span class="PY_STRING">'rb'</span>, data=None, close=0):
+
+    <span class="PY_KEYWORD">if</span> type(file) == type(<span class="PY_STRING">''</span>):
+        f = open(file,mode)
+        close = 1
+    <span class="PY_KEYWORD">else</span>:
+        f = file
+    <span class="PY_KEYWORD">if</span> data:
+        f.write(data)
+    <span class="PY_KEYWORD">else</span>:
+        data = f.read()
+    <span class="PY_KEYWORD">if</span> close: f.close()
+    <span class="PY_KEYWORD">return</span> data
+
+<span class="PY_COMMENT">### Converter class</span>
+
+<span class="PY_KEYWORD">class</span><a name="PrettyPrint"><span class="PY_IDENTIFIER"> PrettyPrint</span></a>:
+
+    <span class="PY_STRING">""" generic Pretty Printer class
+
+        * supports tagging Python scripts in the following ways: 
+
+          # format/mode |  color  mono
+          # --------------------------
+          # rawhtml     |    x     x   (HTML without headers, etc.)
+          # html        |    x     x   (a HTML page with HEAD&amp;BODY:)
+          # ansi        |    x     x   (with Ansi-escape sequences)
+
+        * interfaces:
+
+           file_filter -- takes two files: input &amp; output (may be stdin/stdout)
+           filter -- takes a string and returns the highlighted version
+        
+        * to create an instance use:
+
+          c = PrettyPrint(tagfct,format,mode)
+
+          where format and mode must be strings according to the
+          above table if you plan to use PyFontify.fontify as
+          tagfct
+
+        * the tagfct has to take one argument, text, and return a taglist
+          (format: [(id,left,right,sublist),...], where id is the
+          "name" given to the slice left:right in text and sublist is a
+          taglist for tags inside the slice or None)
+
+    """</span>
+
+    <span class="PY_COMMENT"># misc settings</span>
+    title = <span class="PY_STRING">''</span>
+    bgcolor = <span class="PY_STRING">'#FFFFFF'</span>
+    css = <span class="PY_STRING">''</span>
+    header = <span class="PY_STRING">''</span>
+    footer = <span class="PY_STRING">''</span>
+    replace_URLs = 0
+    <span class="PY_COMMENT"># formats to be used</span>
+    formats = {}
+
+    <span class="PY_KEYWORD">def</span><a name="__init__"><span class="PY_IDENTIFIER"> __init__</span></a>(self,tagfct=None,format=<span class="PY_STRING">'html'</span>,mode=<span class="PY_STRING">'color'</span>):
+
+        self.tag = tagfct
+        self.set_mode = getattr(self,<span class="PY_STRING">'set_mode_%s_%s'</span> % (format, mode))
+        self.filter = getattr(self,<span class="PY_STRING">'filter_%s'</span> % format)
+
+    <span class="PY_KEYWORD">def</span><a name="file_filter"><span class="PY_IDENTIFIER"> file_filter</span></a>(self,infile,outfile):
+
+        self.set_mode()
+        text = fileio(infile,<span class="PY_STRING">'r'</span>)
+        <span class="PY_KEYWORD">if</span> type(infile) == type(<span class="PY_STRING">''</span>) <span class="PY_KEYWORD">and</span> self.title == <span class="PY_STRING">''</span>:
+            self.title = infile
+        fileio(outfile,<span class="PY_STRING">'w'</span>,self.filter(text))
+
+    <span class="PY_COMMENT">### Set pre- and postfixes for formats &amp; modes</span>
+    <span class="PY_COMMENT">#</span>
+    <span class="PY_COMMENT"># These methods must set self.formats to a dictionary having</span>
+    <span class="PY_COMMENT"># an entry for every tag returned by the tagging function.</span>
+    <span class="PY_COMMENT">#</span>
+    <span class="PY_COMMENT"># The format used is simple:</span>
+    <span class="PY_COMMENT">#  tag:(prefix,postfix)</span>
+    <span class="PY_COMMENT"># where prefix and postfix are either strings or callable objects,</span>
+    <span class="PY_COMMENT"># that return a string (they are called with the matching tag text</span>
+    <span class="PY_COMMENT"># as only parameter). prefix is inserted in front of the tag, postfix</span>
+    <span class="PY_COMMENT"># is inserted right after the tag.</span>
+
+    <span class="PY_KEYWORD">def</span><a name="set_mode_html_color"><span class="PY_IDENTIFIER"> set_mode_html_color</span></a>(self):
+
+        self.css = <span class="PY_STRING">"""
+        &lt;STYLE TYPE="text/css"&gt; 
+          &lt;!-- 
+            body{ background: %s; }
+            .PY_KEYWORD{ color: #0000C0; font-weight: bold; }
+            .PY_COMMENT{ color: #000080; }
+            .PY_PARAMETER{ color: #C00000; }
+            .PY_IDENTIFIER{ color: #C00000; font-weight: bold; }
+            .PY_STRING{ color: #008000; }
+          --&gt; 
+        &lt;/STYLE&gt; """</span> % self.bgcolor
+
+        self.formats = {
+            <span class="PY_STRING">'all'</span>:(<span class="PY_STRING">'&lt;pre&gt;'</span>,<span class="PY_STRING">'&lt;/pre&gt;'</span>),
+            <span class="PY_STRING">'comment'</span>:(<span class="PY_STRING">'&lt;span class="PY_COMMENT"&gt;'</span>,<span class="PY_STRING">'&lt;/span&gt;'</span>),
+            <span class="PY_STRING">'keyword'</span>:(<span class="PY_STRING">'&lt;span class="PY_KEYWORD"&gt;'</span>,<span class="PY_STRING">'&lt;/span&gt;'</span>),
+            <span class="PY_STRING">'parameter'</span>:(<span class="PY_STRING">'&lt;span class="PY_PARAMETER"&gt;'</span>,<span class="PY_STRING">'&lt;/span&gt;'</span>),
+            <span class="PY_STRING">'identifier'</span>:( <span class="PY_KEYWORD">lambda</span> x,strip=string.strip:
+                           <span class="PY_STRING">'&lt;a name="%s"&gt;&lt;span class="PY_IDENTIFIER"&gt;'</span> % (strip(x)),
+                           <span class="PY_STRING">'&lt;/span&gt;&lt;/a&gt;'</span>),
+            <span class="PY_STRING">'string'</span>:(<span class="PY_STRING">'&lt;span class="PY_STRING"&gt;'</span>,<span class="PY_STRING">'&lt;/span&gt;'</span>)
+            }
+
+    set_mode_rawhtml_color = set_mode_html_color
+
+    <span class="PY_KEYWORD">def</span><a name="set_mode_html_mono"><span class="PY_IDENTIFIER"> set_mode_html_mono</span></a>(self):
+
+        self.css = <span class="PY_STRING">"""
+        &lt;STYLE TYPE="text/css"&gt; 
+          &lt;!-- 
+            body{ background-color: %s }
+            .PY_KEYWORD{ text-decoration: underline }
+            .PY_COMMENT{ }
+            .PY_PARAMETER{ }
+            .PY_IDENTIFIER{ font-weight: bold}
+            .PY_STRING{ font-style: italic}
+          --&gt; 
+        &lt;/STYLE&gt; """</span> % self.bgcolor
+
+        self.formats = {
+            <span class="PY_STRING">'all'</span>:(<span class="PY_STRING">'&lt;pre&gt;'</span>,<span class="PY_STRING">'&lt;/pre&gt;'</span>),
+            <span class="PY_STRING">'comment'</span>:(<span class="PY_STRING">'&lt;span class="PY_COMMENT"&gt;'</span>,<span class="PY_STRING">'&lt;/span&gt;'</span>),
+            <span class="PY_STRING">'keyword'</span>:( <span class="PY_STRING">'&lt;span class="PY_KEYWORD"&gt;'</span>,<span class="PY_STRING">'&lt;/span&gt;'</span>),
+            <span class="PY_STRING">'parameter'</span>:(<span class="PY_STRING">'&lt;span class="PY_PARAMETER"&gt;'</span>,<span class="PY_STRING">'&lt;/span&gt;'</span>),
+            <span class="PY_STRING">'identifier'</span>:( <span class="PY_KEYWORD">lambda</span> x,strip=string.strip:
+                           <span class="PY_STRING">'&lt;a name="%s"&gt;&lt;span class="PY_IDENTIFIER"&gt;'</span> % (strip(x)),
+                           <span class="PY_STRING">'&lt;/span&gt;&lt;/a&gt;'</span>),
+            <span class="PY_STRING">'string'</span>:(<span class="PY_STRING">'&lt;span class="PY_STRING"&gt;'</span>,<span class="PY_STRING">'&lt;/span&gt;'</span>)
+            }
+
+    set_mode_rawhtml_mono = set_mode_html_mono
+
+    <span class="PY_KEYWORD">def</span><a name="set_mode_ansi_mono"><span class="PY_IDENTIFIER"> set_mode_ansi_mono</span></a>(self):
+
+        self.formats = {
+            <span class="PY_STRING">'all'</span>:(<span class="PY_STRING">''</span>,<span class="PY_STRING">''</span>),
+            <span class="PY_STRING">'comment'</span>:(<span class="PY_STRING">'\033[2m'</span>,<span class="PY_STRING">'\033[m'</span>),
+            <span class="PY_STRING">'keyword'</span>:(<span class="PY_STRING">'\033[4m'</span>,<span class="PY_STRING">'\033[m'</span>),
+            <span class="PY_STRING">'parameter'</span>:(<span class="PY_STRING">''</span>,<span class="PY_STRING">''</span>),
+            <span class="PY_STRING">'identifier'</span>:(<span class="PY_STRING">'\033[1m'</span>,<span class="PY_STRING">'\033[m'</span>),
+            <span class="PY_STRING">'string'</span>:(<span class="PY_STRING">''</span>,<span class="PY_STRING">''</span>)
+            }
+
+    <span class="PY_KEYWORD">def</span><a name="set_mode_ansi_color"><span class="PY_IDENTIFIER"> set_mode_ansi_color</span></a>(self):
+
+        self.formats = {
+            <span class="PY_STRING">'all'</span>:(<span class="PY_STRING">''</span>,<span class="PY_STRING">''</span>),
+            <span class="PY_STRING">'comment'</span>:(<span class="PY_STRING">'\033[34;2m'</span>,<span class="PY_STRING">'\033[m'</span>),
+            <span class="PY_STRING">'keyword'</span>:(<span class="PY_STRING">'\033[1;34m'</span>,<span class="PY_STRING">'\033[m'</span>),
+            <span class="PY_STRING">'parameter'</span>:(<span class="PY_STRING">''</span>,<span class="PY_STRING">''</span>),
+            <span class="PY_STRING">'identifier'</span>:(<span class="PY_STRING">'\033[1;31m'</span>,<span class="PY_STRING">'\033[m'</span>),
+            <span class="PY_STRING">'string'</span>:(<span class="PY_STRING">'\033[32;2m'</span>,<span class="PY_STRING">'\033[m'</span>)
+            }
+
+    <span class="PY_COMMENT">### Filters for Python scripts given as string</span>
+
+    <span class="PY_KEYWORD">def</span><a name="escape_html"><span class="PY_IDENTIFIER"> escape_html</span></a>(self,text):
+
+        t = ((<span class="PY_STRING">'&amp;'</span>,<span class="PY_STRING">'&amp;amp;'</span>),(<span class="PY_STRING">'&lt;'</span>,<span class="PY_STRING">'&amp;lt;'</span>),(<span class="PY_STRING">'&gt;'</span>,<span class="PY_STRING">'&amp;gt;'</span>))
+        <span class="PY_KEYWORD">for</span> x,y <span class="PY_KEYWORD">in</span> t:
+            text = string.join(string.split(text,x),y)
+        <span class="PY_KEYWORD">return</span> text
+
+    <span class="PY_KEYWORD">def</span><a name="filter_html"><span class="PY_IDENTIFIER"> filter_html</span></a>(self,text):
+
+        output = self.fontify(self.escape_html(text))
+        <span class="PY_KEYWORD">if</span> self.replace_URLs: 
+            output = re.sub(<span class="PY_STRING">'URL:([ \t]+)([^ \n\r&lt;]+)'</span>,
+                            <span class="PY_STRING">'URL:\\1&lt;a href="\\2"&gt;\\2&lt;/a&gt;'</span>,output)
+        html = <span class="PY_STRING">"""%s&lt;html%s&gt;
+                  &lt;head&gt; 
+                  &lt;title&gt;%s&lt;/title&gt;
+                  &lt;!--css--&gt;
+                  %s 
+                  &lt;/head&gt;
+                  &lt;body&gt;
+                  &lt;!--header--&gt;
+                  %s
+                  &lt;!--script--&gt;
+                  %s
+                  &lt;!--footer--&gt;
+                  %s
+                  &lt;/body&gt;&lt;/html&gt;\n"""</span>%(HTML_DOCTYPE,
+                                       HTML_XMLNS,
+                                       self.title,
+                                       self.css,
+                                       self.header,
+                                       output,
+                                       self.footer)
+        <span class="PY_KEYWORD">return</span> html
+
+    <span class="PY_KEYWORD">def</span><a name="filter_rawhtml"><span class="PY_IDENTIFIER"> filter_rawhtml</span></a>(self,text):
+
+        output = self.fontify(self.escape_html(text))
+        <span class="PY_KEYWORD">if</span> self.replace_URLs: 
+            output = re.sub(<span class="PY_STRING">'URL:([ \t]+)([^ \n\r&lt;]+)'</span>,
+                            <span class="PY_STRING">'URL:\\1&lt;a href="\\2"&gt;\\2&lt;/a&gt;'</span>,output)
+        <span class="PY_KEYWORD">return</span> self.header + output + self.footer
+
+    <span class="PY_KEYWORD">def</span><a name="filter_ansi"><span class="PY_IDENTIFIER"> filter_ansi</span></a>(self,text):
+
+        output = self.fontify(text)
+        <span class="PY_KEYWORD">return</span> self.header + output + self.footer
+
+    <span class="PY_COMMENT">### Fontify engine</span>
+
+    <span class="PY_KEYWORD">def</span><a name="fontify"><span class="PY_IDENTIFIER"> fontify</span></a>(self,pytext):
+
+        <span class="PY_COMMENT"># parse</span>
+        taglist = self.tag(pytext)
+
+        <span class="PY_COMMENT"># prepend special 'all' tag:</span>
+        taglist[:0] = [(<span class="PY_STRING">'all'</span>,0,len(pytext),None)]
+
+        <span class="PY_COMMENT"># prepare splitting</span>
+        splits = []
+        addsplits(splits,pytext,self.formats,taglist)
+
+        <span class="PY_COMMENT"># do splitting &amp; inserting</span>
+        splits.sort()
+        l = []
+        li = 0
+        <span class="PY_KEYWORD">for</span> ri,dummy,insert <span class="PY_KEYWORD">in</span> splits:
+            <span class="PY_KEYWORD">if</span> ri &gt; li: l.append(pytext[li:ri])
+            l.append(insert)
+            li = ri
+        <span class="PY_KEYWORD">if</span> li &lt; len(pytext): l.append(pytext[li:])
+        
+        <span class="PY_KEYWORD">return</span> string.join(l,<span class="PY_STRING">''</span>)
+
+<span class="PY_KEYWORD">def</span><a name="addsplits"><span class="PY_IDENTIFIER"> addsplits</span></a>(splits,text,formats,taglist):
+
+    <span class="PY_STRING">""" Helper for .fontify()
+    """</span>
+    <span class="PY_KEYWORD">for</span> id,left,right,sublist <span class="PY_KEYWORD">in</span> taglist:
+        <span class="PY_KEYWORD">try</span>:
+            pre,post = formats[id]
+        <span class="PY_KEYWORD">except</span> KeyError:
+            <span class="PY_COMMENT"># sys.stderr.write('Warning: no format for %s specified\n'%repr(id))</span>
+            pre,post = <span class="PY_STRING">''</span>,<span class="PY_STRING">''</span>
+        <span class="PY_KEYWORD">if</span> type(pre) != type(<span class="PY_STRING">''</span>):
+            pre = pre(text[left:right])
+        <span class="PY_KEYWORD">if</span> type(post) != type(<span class="PY_STRING">''</span>):
+            post = post(text[left:right])
+        <span class="PY_COMMENT"># len(splits) is a dummy used to make sorting stable</span>
+        splits.append((left,len(splits),pre))
+        <span class="PY_KEYWORD">if</span> sublist:
+            addsplits(splits,text,formats,sublist)
+        splits.append((right,len(splits),post))
+
+<span class="PY_KEYWORD">def</span><a name="write_html_error"><span class="PY_IDENTIFIER"> write_html_error</span></a>(titel,text):
+
+    <span class="PY_KEYWORD">print</span> <span class="PY_STRING">"""\
+%s&lt;html%s&gt;&lt;head&gt;&lt;title&gt;%s&lt;/title&gt;&lt;/head&gt;
+&lt;body&gt;
+&lt;h2&gt;%s&lt;/h2&gt;
+%s
+&lt;/body&gt;&lt;/html&gt;
+"""</span> % (HTML_DOCTYPE,HTML_XMLNS,titel,titel,text)
+
+<span class="PY_KEYWORD">def</span><a name="redirect_to"><span class="PY_IDENTIFIER"> redirect_to</span></a>(url):
+
+    sys.stdout.write(<span class="PY_STRING">'Content-Type: text/html\r\n'</span>)
+    sys.stdout.write(<span class="PY_STRING">'Status: 302\r\n'</span>)
+    sys.stdout.write(<span class="PY_STRING">'Location: %s\r\n\r\n'</span> % url)
+    <span class="PY_KEYWORD">print</span> <span class="PY_STRING">"""
+%s&lt;html%s&gt;&lt;head&gt;
+&lt;title&gt;302 Moved Temporarily&lt;/title&gt;
+&lt;/head&gt;&lt;body&gt;
+&lt;h1&gt;302 Moved Temporarily&lt;/h1&gt;
+The document has moved to &lt;a href="%s"&gt;%s&lt;/a&gt;.&lt;p&gt;&lt;/p&gt;
+&lt;/body&gt;&lt;/html&gt;
+"""</span> % (HTML_DOCTYPE,HTML_XMLNS,url,url)
+
+<span class="PY_KEYWORD">def</span><a name="main"><span class="PY_IDENTIFIER"> main</span></a>(cmdline):
+
+    <span class="PY_STRING">""" main(cmdline) -- process cmdline as if it were sys.argv 
+    """</span>
+    <span class="PY_COMMENT"># parse options/files</span>
+    options = []
+    optvalues = {}
+    <span class="PY_KEYWORD">for</span> o <span class="PY_KEYWORD">in</span> cmdline[1:]:
+        <span class="PY_KEYWORD">if</span> o[0] == <span class="PY_STRING">'-'</span>:
+            <span class="PY_KEYWORD">if</span> <span class="PY_STRING">':'</span> <span class="PY_KEYWORD">in</span> o:
+                k,v = tuple(string.split(o,<span class="PY_STRING">':'</span>))
+                optvalues[k] = v
+                options.append(k)
+            <span class="PY_KEYWORD">else</span>:
+                options.append(o)
+        <span class="PY_KEYWORD">else</span>:
+            <span class="PY_KEYWORD">break</span>
+    files = cmdline[len(options)+1:]
+
+    <span class="PY_COMMENT">### create converting object  </span>
+
+    <span class="PY_COMMENT"># load fontifier</span>
+    <span class="PY_KEYWORD">if</span> <span class="PY_STRING">'-marcs'</span> <span class="PY_KEYWORD">in</span> options:
+        <span class="PY_COMMENT"># use mxTextTool's tagging engine as fontifier</span>
+        <span class="PY_KEYWORD">from</span> mx.TextTools <span class="PY_KEYWORD">import</span> tag
+        <span class="PY_KEYWORD">from</span> mx.TextTools.Examples.Python <span class="PY_KEYWORD">import</span> python_script
+        tagfct = <span class="PY_KEYWORD">lambda</span> text,tag=tag,pytable=python_script: \
+                 tag(text,pytable)[1]
+        <span class="PY_KEYWORD">print</span> <span class="PY_STRING">"Py2HTML: using Marc's tagging engine"</span>
+    <span class="PY_KEYWORD">else</span>:
+        <span class="PY_COMMENT"># load Just's fontifier</span>
+        <span class="PY_KEYWORD">try</span>:
+            <span class="PY_KEYWORD">import</span> PyFontify
+            <span class="PY_KEYWORD">if</span> PyFontify.__version__ &lt; <span class="PY_STRING">'0.3'</span>: <span class="PY_KEYWORD">raise</span> ValueError
+            tagfct = PyFontify.fontify
+        <span class="PY_KEYWORD">except</span>:
+            <span class="PY_KEYWORD">print</span> <span class="PY_STRING">"""
+    Sorry, but this script needs the PyFontify.py module version 0.3;
+    You can download it from Just's homepage at
+
+       URL: http://starship.python.net/crew/just
+"""</span>
+            sys.exit()
+        
+
+    <span class="PY_KEYWORD">if</span> <span class="PY_STRING">'-format'</span> <span class="PY_KEYWORD">in</span> options:
+        format = optvalues[<span class="PY_STRING">'-format'</span>]
+    <span class="PY_KEYWORD">else</span>:
+        <span class="PY_COMMENT"># use default</span>
+        format = <span class="PY_STRING">'html'</span>
+
+    <span class="PY_KEYWORD">if</span> <span class="PY_STRING">'-mode'</span> <span class="PY_KEYWORD">in</span> options:
+        mode = optvalues[<span class="PY_STRING">'-mode'</span>]
+    <span class="PY_KEYWORD">else</span>:
+        <span class="PY_COMMENT"># use default</span>
+        mode = <span class="PY_STRING">'color'</span>
+
+    c = PrettyPrint(tagfct,format,mode)
+    convert = c.file_filter
+
+    <span class="PY_COMMENT">### start working</span>
+    
+    <span class="PY_KEYWORD">if</span> <span class="PY_STRING">'-title'</span> <span class="PY_KEYWORD">in</span> options:
+        c.title = optvalues[<span class="PY_STRING">'-title'</span>]
+
+    <span class="PY_KEYWORD">if</span> <span class="PY_STRING">'-bgcolor'</span> <span class="PY_KEYWORD">in</span> options:
+        c.bgcolor = optvalues[<span class="PY_STRING">'-bgcolor'</span>]
+
+    <span class="PY_KEYWORD">if</span> <span class="PY_STRING">'-header'</span> <span class="PY_KEYWORD">in</span> options:
+        <span class="PY_KEYWORD">try</span>:
+            f = open(optvalues[<span class="PY_STRING">'-header'</span>])
+            c.header = f.read()
+            f.close()
+        <span class="PY_KEYWORD">except</span> IOError:
+            <span class="PY_KEYWORD">if</span> verbose: <span class="PY_KEYWORD">print</span> <span class="PY_STRING">'IOError: header file not found'</span>
+            
+    <span class="PY_KEYWORD">if</span> <span class="PY_STRING">'-footer'</span> <span class="PY_KEYWORD">in</span> options:
+        <span class="PY_KEYWORD">try</span>:
+            f = open(optvalues[<span class="PY_STRING">'-footer'</span>])
+            c.footer = f.read()
+            f.close()
+        <span class="PY_KEYWORD">except</span> IOError:
+            <span class="PY_KEYWORD">if</span> verbose: <span class="PY_KEYWORD">print</span> <span class="PY_STRING">'IOError: footer file not found'</span>
+
+    <span class="PY_KEYWORD">if</span> <span class="PY_STRING">'-URL'</span> <span class="PY_KEYWORD">in</span> options:
+        c.replace_URLs = 1
+
+    <span class="PY_KEYWORD">if</span> <span class="PY_STRING">'-'</span> <span class="PY_KEYWORD">in</span> options:
+        convert(sys.stdin,sys.stdout)
+        sys.exit()
+
+    <span class="PY_KEYWORD">if</span> <span class="PY_STRING">'-h'</span> <span class="PY_KEYWORD">in</span> options:
+        <span class="PY_KEYWORD">print</span> __doc__
+        sys.exit()
+
+    <span class="PY_KEYWORD">if</span> len(files) == 0:
+        <span class="PY_COMMENT"># Turn URL processing on</span>
+        c.replace_URLs = 1
+        <span class="PY_COMMENT"># Try CGI processing...</span>
+        <span class="PY_KEYWORD">import</span> cgi,urllib,urlparse,os
+        form = cgi.FieldStorage()
+        <span class="PY_KEYWORD">if</span> <span class="PY_KEYWORD">not</span> form.has_key(<span class="PY_STRING">'script'</span>):
+            <span class="PY_COMMENT"># Ok, then try pathinfo</span>
+            <span class="PY_KEYWORD">if</span> <span class="PY_KEYWORD">not</span> os.environ.has_key(<span class="PY_STRING">'PATH_INFO'</span>):
+                <span class="PY_KEYWORD">if</span> INPUT_FORM:
+                    redirect_to(INPUT_FORM)
+                <span class="PY_KEYWORD">else</span>:
+                    sys.stdout.write(<span class="PY_STRING">'Content-Type: text/html\r\n\r\n'</span>)
+                    write_html_error(<span class="PY_STRING">'Missing Parameter'</span>,
+                                     <span class="PY_STRING">'Missing script=URL field in request'</span>)
+                sys.exit(1)
+            url = os.environ[<span class="PY_STRING">'PATH_INFO'</span>][1:] <span class="PY_COMMENT"># skip the leading slash</span>
+        <span class="PY_KEYWORD">else</span>:
+            url = form[<span class="PY_STRING">'script'</span>].value
+        sys.stdout.write(<span class="PY_STRING">'Content-Type: text/html\r\n\r\n'</span>)
+        scheme, host, path, params, query, frag = urlparse.urlparse(url)
+        <span class="PY_KEYWORD">if</span> <span class="PY_KEYWORD">not</span> host:
+            scheme = <span class="PY_STRING">'http'</span>
+            <span class="PY_KEYWORD">if</span> os.environ.has_key(<span class="PY_STRING">'HTTP_HOST'</span>):
+                host = os.environ[<span class="PY_STRING">'HTTP_HOST'</span>]
+            <span class="PY_KEYWORD">else</span>:
+                host = <span class="PY_STRING">'localhost'</span>
+            url = urlparse.urlunparse((scheme, host, path, params, query, frag))
+        <span class="PY_COMMENT">#print </span>url; sys.exit()
+        network = urllib.URLopener()
+        <span class="PY_KEYWORD">try</span>:
+            tempfile,headers = network.retrieve(url)
+        <span class="PY_KEYWORD">except</span> IOError,reason:
+            write_html_error(<span class="PY_STRING">'Error opening "%s"'</span> % url,
+                             <span class="PY_STRING">'The given URL could not be opened. Reason: %s'</span> %\
+                             str(reason))
+            sys.exit(1)
+        f = open(tempfile,<span class="PY_STRING">'rb'</span>)
+        c.title = url
+        c.footer = __cgifooter__
+        convert(f,sys.stdout)
+        f.close()
+        network.close()
+        sys.exit()
+
+    <span class="PY_KEYWORD">if</span> <span class="PY_STRING">'-stdout'</span> <span class="PY_KEYWORD">in</span> options:
+        filebreak = <span class="PY_STRING">'-'</span>*72
+        <span class="PY_KEYWORD">for</span> f <span class="PY_KEYWORD">in</span> files:
+            <span class="PY_KEYWORD">try</span>:
+                <span class="PY_KEYWORD">if</span> len(files) &gt; 1:
+                    <span class="PY_KEYWORD">print</span> filebreak
+                    <span class="PY_KEYWORD">print</span> <span class="PY_STRING">'File:'</span>,f
+                    <span class="PY_KEYWORD">print</span> filebreak
+                convert(f,sys.stdout)
+            <span class="PY_KEYWORD">except</span> IOError:
+                <span class="PY_KEYWORD">pass</span>
+    <span class="PY_KEYWORD">else</span>:
+        verbose = (<span class="PY_STRING">'-v'</span> <span class="PY_KEYWORD">in</span> options)
+        <span class="PY_KEYWORD">if</span> verbose:
+            <span class="PY_KEYWORD">print</span> <span class="PY_STRING">'Py2HTML: working on'</span>,
+        <span class="PY_KEYWORD">for</span> f <span class="PY_KEYWORD">in</span> files:
+            <span class="PY_KEYWORD">try</span>:
+                <span class="PY_KEYWORD">if</span> verbose: <span class="PY_KEYWORD">print</span> f,
+                convert(f,f+<span class="PY_STRING">'.html'</span>)
+            <span class="PY_KEYWORD">except</span> IOError:
+                <span class="PY_KEYWORD">if</span> verbose: <span class="PY_KEYWORD">print</span> <span class="PY_STRING">'(IOError!)'</span>,
+        <span class="PY_KEYWORD">if</span> verbose:
+            <span class="PY_KEYWORD">print</span>
+            <span class="PY_KEYWORD">print</span> <span class="PY_STRING">'Done.'</span>
+
+<span class="PY_KEYWORD">if</span> __name__==<span class="PY_STRING">'__main__'</span>:
+    main(sys.argv)
+
+
+</pre>
+                  <!--footer-->
+                  
+                  </body></html>

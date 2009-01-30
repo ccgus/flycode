@@ -1,0 +1,337 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 45;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		CC13697F072D487100434FEB /* ScriptStuffPlugin.h in Headers */ = {isa = PBXBuildFile; fileRef = CC13697D072D487100434FEB /* ScriptStuffPlugin.h */; };
+		CC136980072D487100434FEB /* ScriptStuffPlugin.m in Sources */ = {isa = PBXBuildFile; fileRef = CC13697E072D487100434FEB /* ScriptStuffPlugin.m */; };
+		CC1369A4072D6D5300434FEB /* py2html.py in Resources */ = {isa = PBXBuildFile; fileRef = CC1369A2072D6D5300434FEB /* py2html.py */; };
+		CC1369A5072D6D5300434FEB /* PyFontify.py in Resources */ = {isa = PBXBuildFile; fileRef = CC1369A3072D6D5300434FEB /* PyFontify.py */; };
+		CCE9D2790F327FCE00AAFE39 /* VPPlugin.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CCE9D2780F327FCE00AAFE39 /* VPPlugin.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		089C1672FE841209C02AAC07 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = /System/Library/Frameworks/Foundation.framework; sourceTree = "<absolute>"; };
+		089C167FFE841241C02AAC07 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = /System/Library/Frameworks/AppKit.framework; sourceTree = "<absolute>"; };
+		1058C7ADFEA557BF11CA2CBB /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = /System/Library/Frameworks/Cocoa.framework; sourceTree = "<absolute>"; };
+		CC136959072D473700434FEB /* ScriptStuff.vpplugin */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ScriptStuff.vpplugin; sourceTree = BUILT_PRODUCTS_DIR; };
+		CC136967072D47F300434FEB /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = SOURCE_ROOT; };
+		CC13697D072D487100434FEB /* ScriptStuffPlugin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScriptStuffPlugin.h; sourceTree = "<group>"; };
+		CC13697E072D487100434FEB /* ScriptStuffPlugin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScriptStuffPlugin.m; sourceTree = "<group>"; };
+		CC1369A2072D6D5300434FEB /* py2html.py */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.python; path = py2html.py; sourceTree = SOURCE_ROOT; };
+		CC1369A3072D6D5300434FEB /* PyFontify.py */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.python; path = PyFontify.py; sourceTree = SOURCE_ROOT; };
+		CCE9D2780F327FCE00AAFE39 /* VPPlugin.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = VPPlugin.framework; path = ../../../../svn_voodoopad/plugin/build/Deployment/VPPlugin.framework; sourceTree = SOURCE_ROOT; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		CC93E199066ECBC400D09EFE /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CCE9D2790F327FCE00AAFE39 /* VPPlugin.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		089C166AFE841209C02AAC07 /* voodoopadplugins */ = {
+			isa = PBXGroup;
+			children = (
+				08FB77AFFE84173DC02AAC07 /* Classes */,
+				089C167CFE841241C02AAC07 /* Resources */,
+				089C1671FE841209C02AAC07 /* Frameworks and Libraries */,
+				19C28FB8FE9D52D311CA2CBB /* Products */,
+			);
+			name = voodoopadplugins;
+			sourceTree = "<group>";
+		};
+		089C1671FE841209C02AAC07 /* Frameworks and Libraries */ = {
+			isa = PBXGroup;
+			children = (
+				1058C7ACFEA557BF11CA2CBB /* Linked Frameworks */,
+				1058C7AEFEA557BF11CA2CBB /* Other Frameworks */,
+			);
+			name = "Frameworks and Libraries";
+			sourceTree = "<group>";
+		};
+		089C167CFE841241C02AAC07 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				CC1369A2072D6D5300434FEB /* py2html.py */,
+				CC1369A3072D6D5300434FEB /* PyFontify.py */,
+				CC136967072D47F300434FEB /* Info.plist */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		08FB77AFFE84173DC02AAC07 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				CC13697D072D487100434FEB /* ScriptStuffPlugin.h */,
+				CC13697E072D487100434FEB /* ScriptStuffPlugin.m */,
+			);
+			name = Classes;
+			sourceTree = "<group>";
+		};
+		1058C7ACFEA557BF11CA2CBB /* Linked Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				CCE9D2780F327FCE00AAFE39 /* VPPlugin.framework */,
+				1058C7ADFEA557BF11CA2CBB /* Cocoa.framework */,
+			);
+			name = "Linked Frameworks";
+			sourceTree = "<group>";
+		};
+		1058C7AEFEA557BF11CA2CBB /* Other Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				089C1672FE841209C02AAC07 /* Foundation.framework */,
+				089C167FFE841241C02AAC07 /* AppKit.framework */,
+			);
+			name = "Other Frameworks";
+			sourceTree = "<group>";
+		};
+		19C28FB8FE9D52D311CA2CBB /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				CC136959072D473700434FEB /* ScriptStuff.vpplugin */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		CC93E18C066ECBC400D09EFE /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CC13697F072D487100434FEB /* ScriptStuffPlugin.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		CC93E18B066ECBC400D09EFE /* ScriptStuff */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CCE9D2720F327F9F00AAFE39 /* Build configuration list for PBXNativeTarget "ScriptStuff" */;
+			buildPhases = (
+				CC93E18C066ECBC400D09EFE /* Headers */,
+				CC93E191066ECBC400D09EFE /* Resources */,
+				CC93E194066ECBC400D09EFE /* Sources */,
+				CC93E199066ECBC400D09EFE /* Frameworks */,
+				CC136984072D496300434FEB /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = ScriptStuff;
+			productName = HTMLExport;
+			productReference = CC136959072D473700434FEB /* ScriptStuff.vpplugin */;
+			productType = "com.apple.product-type.bundle";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		089C1669FE841209C02AAC07 /* Project object */ = {
+			isa = PBXProject;
+			buildConfigurationList = CCE9D2710F327F9F00AAFE39 /* Build configuration list for PBXProject "ScriptStuff" */;
+			compatibilityVersion = "Xcode 3.1";
+			hasScannedForEncodings = 1;
+			mainGroup = 089C166AFE841209C02AAC07 /* voodoopadplugins */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				CC93E18B066ECBC400D09EFE /* ScriptStuff */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		CC93E191066ECBC400D09EFE /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CC1369A4072D6D5300434FEB /* py2html.py in Resources */,
+				CC1369A5072D6D5300434FEB /* PyFontify.py in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		CC136984072D496300434FEB /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "cd \"$TARGET_BUILD_DIR\"\n/Developer/Tools/SetFile -a B *.vpplugin";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		CC93E194066ECBC400D09EFE /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CC136980072D487100434FEB /* ScriptStuffPlugin.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		CCE9D26B0F327F9F00AAFE39 /* Development */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+			};
+			name = Development;
+		};
+		CCE9D26C0F327F9F00AAFE39 /* Deployment */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
+				GCC_VERSION = com.apple.compilers.llvmgcc42;
+			};
+			name = Deployment;
+		};
+		CCE9D26D0F327F9F00AAFE39 /* Default */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+			};
+			name = Default;
+		};
+		CCE9D26E0F327F9F00AAFE39 /* Development */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COPY_PHASE_STRIP = NO;
+				DEBUGGING_SYMBOLS = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					/Volumes/srv/Users/gus/Projects/svn_voodoopad/plugin/build,
+					"\"$(SRCROOT)/../../../../svn_voodoopad/plugin/build/Deployment\"",
+				);
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_FIX_AND_CONTINUE = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/AppKit.framework/Headers/AppKit.h";
+				GCC_WARN_FOUR_CHARACTER_CONSTANTS = NO;
+				GCC_WARN_UNKNOWN_PRAGMAS = NO;
+				INFOPLIST_FILE = Info.plist;
+				INSTALL_PATH = "@executable_path/../PlugIns";
+				OTHER_CFLAGS = "-DDEBUG";
+				OTHER_LDFLAGS = (
+					"-framework",
+					Foundation,
+					"-framework",
+					AppKit,
+				);
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = ScriptStuff;
+				SECTORDER_FLAGS = "";
+				WARNING_CFLAGS = "-Wmost";
+				WRAPPER_EXTENSION = vpplugin;
+				ZERO_LINK = YES;
+			};
+			name = Development;
+		};
+		CCE9D26F0F327F9F00AAFE39 /* Deployment */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COPY_PHASE_STRIP = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					/Volumes/srv/Users/gus/Projects/svn_voodoopad/plugin/build,
+					"\"$(SRCROOT)/../../../../svn_voodoopad/plugin/build/Deployment\"",
+				);
+				GCC_ENABLE_FIX_AND_CONTINUE = NO;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/AppKit.framework/Headers/AppKit.h";
+				GCC_WARN_FOUR_CHARACTER_CONSTANTS = NO;
+				GCC_WARN_UNKNOWN_PRAGMAS = NO;
+				INFOPLIST_FILE = Info.plist;
+				INSTALL_PATH = "@executable_path/../PlugIns";
+				OTHER_CFLAGS = "";
+				OTHER_LDFLAGS = (
+					"-framework",
+					Foundation,
+					"-framework",
+					AppKit,
+				);
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = ScriptStuff;
+				SECTORDER_FLAGS = "";
+				WARNING_CFLAGS = "-Wmost";
+				WRAPPER_EXTENSION = vpplugin;
+				ZERO_LINK = NO;
+			};
+			name = Deployment;
+		};
+		CCE9D2700F327F9F00AAFE39 /* Default */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					/Volumes/srv/Users/gus/Projects/svn_voodoopad/plugin/build,
+					"\"$(SRCROOT)/../../../../svn_voodoopad/plugin/build/Deployment\"",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/AppKit.framework/Headers/AppKit.h";
+				GCC_WARN_FOUR_CHARACTER_CONSTANTS = NO;
+				GCC_WARN_UNKNOWN_PRAGMAS = NO;
+				INFOPLIST_FILE = Info.plist;
+				INSTALL_PATH = "@executable_path/../PlugIns";
+				OTHER_CFLAGS = "";
+				OTHER_LDFLAGS = (
+					"-framework",
+					Foundation,
+					"-framework",
+					AppKit,
+				);
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = ScriptStuff;
+				SECTORDER_FLAGS = "";
+				WARNING_CFLAGS = "-Wmost";
+				WRAPPER_EXTENSION = vpplugin;
+			};
+			name = Default;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		CCE9D2710F327F9F00AAFE39 /* Build configuration list for PBXProject "ScriptStuff" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CCE9D26B0F327F9F00AAFE39 /* Development */,
+				CCE9D26C0F327F9F00AAFE39 /* Deployment */,
+				CCE9D26D0F327F9F00AAFE39 /* Default */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Default;
+		};
+		CCE9D2720F327F9F00AAFE39 /* Build configuration list for PBXNativeTarget "ScriptStuff" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CCE9D26E0F327F9F00AAFE39 /* Development */,
+				CCE9D26F0F327F9F00AAFE39 /* Deployment */,
+				CCE9D2700F327F9F00AAFE39 /* Default */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Default;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 089C1669FE841209C02AAC07 /* Project object */;
+}
