@@ -13,6 +13,8 @@
     
     CFMessagePortRef messagePort;
     
+    NSConnection *_conn;
+    
 }
 
 + (void) listen;

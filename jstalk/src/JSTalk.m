@@ -11,13 +11,14 @@
 #import "JSTScanner.h"
 #import <ScriptingBridge/ScriptingBridge.h>
 #include "mach_inject_bundle.h"
+#import "JSTPreprocessor.h"
 
 @implementation JSTalk
 @synthesize T=_T;
 @synthesize printController=_printController;
 
 + (void) load {
-    debug(@"%s:%d", __FUNCTION__, __LINE__);
+    //debug(@"%s:%d", __FUNCTION__, __LINE__);
 }
 
 - (void)dealloc {
@@ -187,6 +188,7 @@
 
 - (void) executeString:(NSString*) str {
     
+    str = [JSTPreprocessor preprocessCode:str];
     
     JSTScanner *scanner = [JSTScanner scannerWithString:str];
     
@@ -308,8 +310,40 @@
         [_printController print:s];
     }
     else {
-        NSLog(@"%@", s);
+        printf("%s\n", [s UTF8String]);
     }
+}
+
+
+
+
+- (id) proxyForApp:(NSString*)app {
+    
+    NSString *appPath = [[NSWorkspace sharedWorkspace] fullPathForApplication:app];
+    
+    if (!appPath) {
+        NSLog(@"Could not find application '%@'", app);
+        return [NSNumber numberWithBool:NO];
+    }
+    
+    NSBundle *appBundle = [NSBundle bundleWithPath:appPath];
+    NSString *bundleId  = [appBundle bundleIdentifier];
+    
+    // make sure it's running
+    [[NSWorkspace sharedWorkspace] launchAppWithBundleIdentifier:bundleId
+                                                         options:NSWorkspaceLaunchWithoutActivation | NSWorkspaceLaunchAsync
+                                  additionalEventParamDescriptor:nil
+                                                launchIdentifier:nil];
+    
+    NSString *port = [NSString stringWithFormat:@"%@.JSTalkc", bundleId];
+    
+    NSConnection *conn = [NSConnection connectionWithRegisteredName:port host:nil];
+    
+    
+    
+    return [conn rootProxy];
+    
+    
 }
 
 @end

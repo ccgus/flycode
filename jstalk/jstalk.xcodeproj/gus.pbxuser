@@ -2,9 +2,11 @@
 {
 	2A37F4A9FDCFA73011CA2CEA /* Project object */ = {
 		activeBuildConfigurationName = Debug;
-		activeExecutable = CC9298870F1EFA280009C7FB /* JSTalk Editor */;
-		activeTarget = 8D15AC270486D014006FF6A4 /* JSTalk Editor */;
+		activeExecutable = CC5FB7C30F1FDCCC00F4ECC2 /* jstalk command line */;
+		activeTarget = CC5FB7C10F1FDCCC00F4ECC2 /* jstalk command line */;
 		addToTargets = (
+			CC4143190F25254200E46669 /* JSTalk Framework */,
+			CC5FB7C10F1FDCCC00F4ECC2 /* jstalk command line */,
 		);
 		breakpoints = (
 			CC0EC3A00F2278850094F69D /* 'write' */,
@@ -13,6 +15,7 @@
 			CC0EC3AA0F2278B70094F69D /* 'write$NOCANCEL$UNIX2003' */,
 			CC0EC4610F228AEF0094F69D /* JSCocoaFFIArgument.m:425 */,
 			CC13254E0F250B300032FEB8 /* mach_inject_bundle.c:51 */,
+			CC975BAF0F47C14F00097108 /* objc_exception_throw */,
 		);
 		codeSenseManager = CC9298960F1EFA2C0009C7FB /* Code sense */;
 		executables = (
@@ -88,29 +91,12 @@
 					PBXFileDataSource_Warnings_ColumnID,
 				);
 			};
-			PBXPerProjectTemplateStateSaveDate = 254092536;
-			PBXWorkspaceStateSaveDate = 254092536;
+			PBXPerProjectTemplateStateSaveDate = 256272774;
+			PBXWorkspaceStateSaveDate = 256272774;
 		};
 		perUserProjectItems = {
-			CC41436B0F2527F200E46669 /* PlistBookmark */ = CC41436B0F2527F200E46669 /* PlistBookmark */;
-			CC41436C0F2527F200E46669 /* PBXTextBookmark */ = CC41436C0F2527F200E46669 /* PBXTextBookmark */;
-			CC41436D0F2527F200E46669 /* PBXBookmark */ = CC41436D0F2527F200E46669 /* PBXBookmark */;
-			CC41436E0F2527F200E46669 /* PlistBookmark */ = CC41436E0F2527F200E46669 /* PlistBookmark */;
-			CC41436F0F2527F200E46669 /* PBXTextBookmark */ = CC41436F0F2527F200E46669 /* PBXTextBookmark */;
-			CC4143700F2527F200E46669 /* PBXTextBookmark */ = CC4143700F2527F200E46669 /* PBXTextBookmark */;
-			CC41437F0F2527FC00E46669 /* PBXTextBookmark */ = CC41437F0F2527FC00E46669 /* PBXTextBookmark */;
-			CC4143850F25282500E46669 /* PBXTextBookmark */ = CC4143850F25282500E46669 /* PBXTextBookmark */;
-			CC4143960F2528C600E46669 /* PBXTextBookmark */ = CC4143960F2528C600E46669 /* PBXTextBookmark */;
-			CC4143BF0F2529E400E46669 /* PBXTextBookmark */ = CC4143BF0F2529E400E46669 /* PBXTextBookmark */;
-			CC4143C60F252A0A00E46669 /* PBXTextBookmark */ = CC4143C60F252A0A00E46669 /* PBXTextBookmark */;
-			CC4143CA0F252A3600E46669 /* PBXTextBookmark */ = CC4143CA0F252A3600E46669 /* PBXTextBookmark */;
-			CC4143EB0F252B2A00E46669 /* PlistBookmark */ = CC4143EB0F252B2A00E46669 /* PlistBookmark */;
-			CC4143EC0F252B2A00E46669 /* PBXBookmark */ = CC4143EC0F252B2A00E46669 /* PBXBookmark */;
-			CC4143ED0F252B2A00E46669 /* PlistBookmark */ = CC4143ED0F252B2A00E46669 /* PlistBookmark */;
-			CC4143EE0F252B2A00E46669 /* PBXTextBookmark */ = CC4143EE0F252B2A00E46669 /* PBXTextBookmark */;
-			CC41440A0F252CD800E46669 /* PBXTextBookmark */ = CC41440A0F252CD800E46669 /* PBXTextBookmark */;
-			CC4144120F252D1F00E46669 /* PBXTextBookmark */ = CC4144120F252D1F00E46669 /* PBXTextBookmark */;
-			CCC5BB690F1F2CD300126722 = CCC5BB690F1F2CD300126722 /* PlistBookmark */;
+			CC975CF20F47EB0C00097108 /* PBXTextBookmark */ = CC975CF20F47EB0C00097108 /* PBXTextBookmark */;
+			CC975CF40F47EB1300097108 /* PBXTextBookmark */ = CC975CF40F47EB1300097108 /* PBXTextBookmark */;
 		};
 		sourceControlManager = CC9298950F1EFA2C0009C7FB /* Source Control */;
 		userBuildSettings = {
@@ -131,9 +117,9 @@
 	};
 	CC0EC0F60F2170A10094F69D /* JSTScanner.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1189, 3094}}";
+			sepNavIntBoundsRect = "{{0, 0}, {1263, 3094}}";
 			sepNavSelRange = "{787, 0}";
-			sepNavVisRange = "{0, 1976}";
+			sepNavVisRange = "{1892, 1475}";
 		};
 	};
 	CC0EC3A00F2278850094F69D /* 'write' */ = {
@@ -147,7 +133,7 @@
 		hitCount = 0;
 		ignoreCount = 0;
 		location = libSystem.B.dylib;
-		modificationTime = 254093500.741783;
+		modificationTime = 256372180.93229;
 		state = 2;
 		symbolName = "'write'";
 	};
@@ -162,7 +148,7 @@
 		hitCount = 0;
 		ignoreCount = 0;
 		location = libSystem.B.dylib;
-		modificationTime = 254093500.741791;
+		modificationTime = 256372180.933413;
 		state = 2;
 		symbolName = fprintf;
 	};
@@ -177,7 +163,7 @@
 		hitCount = 0;
 		ignoreCount = 0;
 		location = libSystem.B.dylib;
-		modificationTime = 254093500.741795;
+		modificationTime = 256372180.934767;
 		state = 2;
 		symbolName = "'write$UNIX2003'";
 	};
@@ -192,7 +178,7 @@
 		hitCount = 0;
 		ignoreCount = 0;
 		location = libSystem.B.dylib;
-		modificationTime = 254093500.741799;
+		modificationTime = 256372180.936567;
 		state = 2;
 		symbolName = "'write$NOCANCEL$UNIX2003'";
 	};
@@ -209,9 +195,9 @@
 		hitCount = 0;
 		ignoreCount = 0;
 		lineNumber = 425;
-		location = JSTalk;
-		modificationTime = 254093500.74163;
-		state = 1;
+		location = jstalk;
+		modificationTime = 256372181.671997;
+		state = 0;
 	};
 	CC1322FD0F23F3C10032FEB8 /* JSTTextView.h */ = {
 		uiCtxt = {
@@ -289,195 +275,12 @@
 		hitCount = 0;
 		ignoreCount = 0;
 		lineNumber = 51;
-		location = JSTalk;
-		modificationTime = 254093501.66831;
-		state = 1;
+		location = jstalk;
+		modificationTime = 256372181.756489;
+		state = 0;
 	};
 	CC4143190F25254200E46669 /* JSTalk Framework */ = {
 		activeExec = 0;
-	};
-	CC41431B0F25254200E46669 /* JSTalkFramework-Info.plist */ = {
-		isa = PBXFileReference;
-		lastKnownFileType = text.plist.xml;
-		name = "JSTalkFramework-Info.plist";
-		path = "/Volumes/srv/Users/gus/Projects/flycode/jstalk/JSTalkFramework-Info.plist";
-		sourceTree = "<absolute>";
-	};
-	CC41436B0F2527F200E46669 /* PlistBookmark */ = {
-		isa = PlistBookmark;
-		fRef = CC41431B0F25254200E46669 /* JSTalkFramework-Info.plist */;
-		fallbackIsa = PBXBookmark;
-		isK = 0;
-		kPath = (
-			CFBundleInfoDictionaryVersion,
-		);
-		name = "/Volumes/srv/Users/gus/Projects/flycode/jstalk/JSTalk-Info.plist";
-		rLen = 0;
-		rLoc = 2147483647;
-	};
-	CC41436C0F2527F200E46669 /* PBXTextBookmark */ = {
-		isa = PBXTextBookmark;
-		fRef = CC5FB7D60F1FDDE900F4ECC2 /* JSTalk.h */;
-		name = "JSTalk.h: 24";
-		rLen = 0;
-		rLoc = 728;
-		rType = 0;
-		vrLen = 651;
-		vrLoc = 0;
-	};
-	CC41436D0F2527F200E46669 /* PBXBookmark */ = {
-		isa = PBXBookmark;
-		fRef = CCC5BA930F1F209F00126722 /* class.js */;
-	};
-	CC41436E0F2527F200E46669 /* PlistBookmark */ = {
-		isa = PlistBookmark;
-		fRef = CC41431B0F25254200E46669 /* JSTalkFramework-Info.plist */;
-		fallbackIsa = PBXBookmark;
-		isK = 0;
-		kPath = (
-			CFBundleInfoDictionaryVersion,
-		);
-		name = "/Volumes/srv/Users/gus/Projects/flycode/jstalk/JSTalk-Info.plist";
-		rLen = 0;
-		rLoc = 2147483647;
-	};
-	CC41436F0F2527F200E46669 /* PBXTextBookmark */ = {
-		isa = PBXTextBookmark;
-		fRef = CC5FB7D60F1FDDE900F4ECC2 /* JSTalk.h */;
-		name = "JSTalk.h: 24";
-		rLen = 0;
-		rLoc = 728;
-		rType = 0;
-		vrLen = 651;
-		vrLoc = 0;
-	};
-	CC4143700F2527F200E46669 /* PBXTextBookmark */ = {
-		isa = PBXTextBookmark;
-		fRef = CCC5BA930F1F209F00126722 /* class.js */;
-		name = "class.js: 1";
-		rLen = 0;
-		rLoc = 0;
-		rType = 0;
-		vrLen = 727;
-		vrLoc = 0;
-	};
-	CC41437F0F2527FC00E46669 /* PBXTextBookmark */ = {
-		isa = PBXTextBookmark;
-		fRef = CCC5BA930F1F209F00126722 /* class.js */;
-		name = "class.js: 1";
-		rLen = 0;
-		rLoc = 0;
-		rType = 0;
-		vrLen = 727;
-		vrLoc = 0;
-	};
-	CC4143850F25282500E46669 /* PBXTextBookmark */ = {
-		isa = PBXTextBookmark;
-		fRef = CCC5BA930F1F209F00126722 /* class.js */;
-		name = "class.js: 1";
-		rLen = 0;
-		rLoc = 0;
-		rType = 0;
-		vrLen = 727;
-		vrLoc = 0;
-	};
-	CC4143960F2528C600E46669 /* PBXTextBookmark */ = {
-		isa = PBXTextBookmark;
-		fRef = CCC5BA930F1F209F00126722 /* class.js */;
-		name = "class.js: 1";
-		rLen = 0;
-		rLoc = 0;
-		rType = 0;
-		vrLen = 727;
-		vrLoc = 0;
-	};
-	CC4143BF0F2529E400E46669 /* PBXTextBookmark */ = {
-		isa = PBXTextBookmark;
-		fRef = CC5FB7D60F1FDDE900F4ECC2 /* JSTalk.h */;
-		name = "JSTalk.h: 24";
-		rLen = 0;
-		rLoc = 728;
-		rType = 0;
-		vrLen = 651;
-		vrLoc = 0;
-	};
-	CC4143C60F252A0A00E46669 /* PBXTextBookmark */ = {
-		isa = PBXTextBookmark;
-		fRef = CC5FB7D60F1FDDE900F4ECC2 /* JSTalk.h */;
-		name = "JSTalk.h: 24";
-		rLen = 0;
-		rLoc = 728;
-		rType = 0;
-		vrLen = 651;
-		vrLoc = 0;
-	};
-	CC4143CA0F252A3600E46669 /* PBXTextBookmark */ = {
-		isa = PBXTextBookmark;
-		fRef = CC5FB7D60F1FDDE900F4ECC2 /* JSTalk.h */;
-		name = "JSTalk.h: 24";
-		rLen = 0;
-		rLoc = 728;
-		rType = 0;
-		vrLen = 651;
-		vrLoc = 0;
-	};
-	CC4143EB0F252B2A00E46669 /* PlistBookmark */ = {
-		isa = PlistBookmark;
-		fRef = CC41431B0F25254200E46669 /* JSTalkFramework-Info.plist */;
-		fallbackIsa = PBXBookmark;
-		isK = 0;
-		kPath = (
-			CFBundleInfoDictionaryVersion,
-		);
-		name = "/Volumes/srv/Users/gus/Projects/flycode/jstalk/JSTalk-Info.plist";
-		rLen = 0;
-		rLoc = 2147483647;
-	};
-	CC4143EC0F252B2A00E46669 /* PBXBookmark */ = {
-		isa = PBXBookmark;
-		fRef = CC5FB7D60F1FDDE900F4ECC2 /* JSTalk.h */;
-	};
-	CC4143ED0F252B2A00E46669 /* PlistBookmark */ = {
-		isa = PlistBookmark;
-		fRef = CC41431B0F25254200E46669 /* JSTalkFramework-Info.plist */;
-		fallbackIsa = PBXBookmark;
-		isK = 0;
-		kPath = (
-			CFBundleInfoDictionaryVersion,
-		);
-		name = "/Volumes/srv/Users/gus/Projects/flycode/jstalk/JSTalk-Info.plist";
-		rLen = 0;
-		rLoc = 2147483647;
-	};
-	CC4143EE0F252B2A00E46669 /* PBXTextBookmark */ = {
-		isa = PBXTextBookmark;
-		fRef = CC5FB7D60F1FDDE900F4ECC2 /* JSTalk.h */;
-		name = "JSTalk.h: 25";
-		rLen = 16;
-		rLoc = 711;
-		rType = 0;
-		vrLen = 669;
-		vrLoc = 0;
-	};
-	CC41440A0F252CD800E46669 /* PBXTextBookmark */ = {
-		isa = PBXTextBookmark;
-		fRef = CC5FB7D60F1FDDE900F4ECC2 /* JSTalk.h */;
-		name = "JSTalk.h: 28";
-		rLen = 16;
-		rLoc = 711;
-		rType = 0;
-		vrLen = 734;
-		vrLoc = 0;
-	};
-	CC4144120F252D1F00E46669 /* PBXTextBookmark */ = {
-		isa = PBXTextBookmark;
-		fRef = CC5FB7D60F1FDDE900F4ECC2 /* JSTalk.h */;
-		name = "JSTalk.h: 28";
-		rLen = 16;
-		rLoc = 711;
-		rType = 0;
-		vrLen = 734;
-		vrLoc = 0;
 	};
 	CC5FB7C10F1FDCCC00F4ECC2 /* jstalk command line */ = {
 		activeExec = 0;
@@ -488,8 +291,10 @@
 	CC5FB7C30F1FDCCC00F4ECC2 /* jstalk command line */ = {
 		isa = PBXExecutable;
 		activeArgIndices = (
+			YES,
 		);
 		argumentStrings = (
+			/Volumes/srv/Users/gus/Desktop/foo.jstalk,
 		);
 		autoAttachOnCrash = 1;
 		breakpointsEnabled = 0;
@@ -515,9 +320,9 @@
 	};
 	CC5FB7C70F1FDD0B00F4ECC2 /* jstalkmain.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1098, 983}}";
-			sepNavSelRange = "{507, 0}";
-			sepNavVisRange = "{0, 650}";
+			sepNavIntBoundsRect = "{{0, 0}, {1134, 938}}";
+			sepNavSelRange = "{606, 0}";
+			sepNavVisRange = "{0, 825}";
 		};
 	};
 	CC5FB7D60F1FDDE900F4ECC2 /* JSTalk.h */ = {
@@ -529,9 +334,9 @@
 	};
 	CC5FB7D70F1FDDE900F4ECC2 /* JSTalk.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1044, 4354}}";
-			sepNavSelRange = "{9143, 0}";
-			sepNavVisRange = "{8875, 1969}";
+			sepNavIntBoundsRect = "{{0, 0}, {1226, 4914}}";
+			sepNavSelRange = "{10742, 0}";
+			sepNavVisRange = "{9790, 1982}";
 		};
 	};
 	CC9298870F1EFA280009C7FB /* JSTalk Editor */ = {
@@ -573,6 +378,80 @@
 		isa = PBXCodeSenseManager;
 		indexTemplatePath = "";
 	};
+	CC975BAF0F47C14F00097108 /* objc_exception_throw */ = {
+		isa = PBXSymbolicBreakpoint;
+		actions = (
+		);
+		breakpointStyle = 1;
+		continueAfterActions = 0;
+		countType = 0;
+		delayBeforeContinue = 0;
+		hitCount = 0;
+		ignoreCount = 0;
+		location = libobjc.A.dylib;
+		modificationTime = 256372180.93794;
+		state = 1;
+		symbolName = objc_exception_throw;
+	};
+	CC975BC60F47E5BD00097108 /* JSTPreprocessor.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1243, 981}}";
+			sepNavSelRange = "{367, 0}";
+			sepNavVisRange = "{0, 624}";
+		};
+	};
+	CC975BC70F47E5BD00097108 /* JSTPreprocessor.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1243, 3108}}";
+			sepNavSelRange = "{988, 0}";
+			sepNavVisRange = "{0, 2212}";
+		};
+	};
+	CC975BE50F47E69D00097108 /* TDToken.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1243, 1918}}";
+			sepNavSelRange = "{1538, 12}";
+			sepNavVisRange = "{792, 2609}";
+		};
+	};
+	CC975BED0F47E69D00097108 /* TDTokenizer.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1263, 2660}}";
+			sepNavSelRange = "{504, 28}";
+			sepNavVisRange = "{0, 2992}";
+		};
+	};
+	CC975BFD0F47E69D00097108 /* TDTokenizer.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1263, 1932}}";
+			sepNavSelRange = "{2422, 14}";
+			sepNavVisRange = "{0, 2894}";
+		};
+	};
+	CC975C380F47E69D00097108 /* TDToken.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1243, 3178}}";
+			sepNavSelRange = "{1926, 24}";
+			sepNavVisRange = "{1815, 1633}";
+		};
+	};
+	CC975CF20F47EB0C00097108 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = CCC5B9300F1EFB6700126722 /* JSCocoaController.m */;
+		rLen = 9;
+		rLoc = 83127;
+		rType = 0;
+	};
+	CC975CF40F47EB1300097108 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = CCC5B9300F1EFB6700126722 /* JSCocoaController.m */;
+		name = "JSCocoaController.m: 2389";
+		rLen = 9;
+		rLoc = 83127;
+		rType = 0;
+		vrLen = 940;
+		vrLoc = 82765;
+	};
 	CCC5B8B00F1EFA9700126722 /* Info.plist */ = {
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {1123, 1023}}";
@@ -596,16 +475,16 @@
 	};
 	CCC5B8CE0F1EFABA00126722 /* JSTDocument.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1044, 1652}}";
-			sepNavSelRange = "{2184, 0}";
-			sepNavVisRange = "{928, 2002}";
+			sepNavIntBoundsRect = "{{0, 0}, {1140, 2996}}";
+			sepNavSelRange = "{263, 0}";
+			sepNavVisRange = "{598, 1622}";
 		};
 	};
 	CCC5B8CF0F1EFABA00126722 /* JSTDocument.h */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1389, 918}}";
-			sepNavSelRange = "{427, 0}";
-			sepNavVisRange = "{0, 469}";
+			sepNavIntBoundsRect = "{{0, 0}, {1263, 1014}}";
+			sepNavSelRange = "{164, 33}";
+			sepNavVisRange = "{0, 611}";
 		};
 	};
 	CCC5B92E0F1EFB6700126722 /* BridgeSupportController.m */ = {
@@ -617,9 +496,9 @@
 	};
 	CCC5B9300F1EFB6700126722 /* JSCocoaController.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {809, 38878}}";
-			sepNavSelRange = "{33827, 0}";
-			sepNavVisRange = "{32244, 1911}";
+			sepNavIntBoundsRect = "{{0, 0}, {990, 38878}}";
+			sepNavSelRange = "{83127, 9}";
+			sepNavVisRange = "{82765, 940}";
 		};
 	};
 	CCC5B9310F1EFB6700126722 /* JSCocoaController.h */ = {
@@ -666,16 +545,16 @@
 	};
 	CCC5B95A0F1EFCFE00126722 /* JSTListener.h */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1060, 1021}}";
-			sepNavSelRange = "{264, 0}";
-			sepNavVisRange = "{0, 270}";
+			sepNavIntBoundsRect = "{{0, 0}, {1177, 878}}";
+			sepNavSelRange = "{268, 0}";
+			sepNavVisRange = "{0, 300}";
 		};
 	};
 	CCC5B95B0F1EFCFE00126722 /* JSTListener.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {922, 1358}}";
-			sepNavSelRange = "{0, 0}";
-			sepNavVisRange = "{0, 192}";
+			sepNavIntBoundsRect = "{{0, 0}, {1177, 1442}}";
+			sepNavSelRange = "{2762, 0}";
+			sepNavVisRange = "{870, 1951}";
 		};
 	};
 	CCC5BA930F1F209F00126722 /* class.js */ = {
@@ -684,20 +563,5 @@
 			sepNavSelRange = "{0, 0}";
 			sepNavVisRange = "{0, 727}";
 		};
-	};
-	CCC5BB690F1F2CD300126722 /* PlistBookmark */ = {
-		isa = PlistBookmark;
-		fRef = CCC5BB6A0F1F2CD300126722;
-		fallbackIsa = PBXBookmark;
-		isK = 0;
-		kPath = (
-		);
-		rLen = 0;
-		rLoc = 2147483647;
-	};
-	CCC5BB6A0F1F2CD300126722 = {
-		isa = PBXFileReference;
-		lastKnownFileType = folder;
-		sourceTree = "<group>";
 	};
 }

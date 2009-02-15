@@ -8,6 +8,7 @@
 
 
 #import <Cocoa/Cocoa.h>
+#import <TDParseKit/TDParseKit.h>
 #import "MarkerLineNumberView.h"
 #import "JSTTextView.h"
 
@@ -18,8 +19,16 @@
     
     
 	NoodleLineNumberView	*lineNumberView;
+    TDTokenizer *_tokenizer;
 }
 
+@property (retain) TDTokenizer *tokenizer;
+
 - (void) executeScript:(id)sender;
+- (void) parseCode:(id)sender;
 
 @end
+
+
+
+

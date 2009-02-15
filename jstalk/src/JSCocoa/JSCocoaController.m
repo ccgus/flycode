@@ -2386,8 +2386,9 @@ static JSValueRef _jsCocoaObject_callAsFunction(JSContextRef ctx, JSObjectRef fu
 		callingObjC	= YES;
 		callee		= [thisPrivateObject object];
 		methodName	= superSelector ? superSelector : [NSMutableString stringWithString:privateObject.methodName];
-//		NSLog(@"calling %@.%@", callee, methodName);
-
+		//NSLog(@"calling %@.%@", callee, methodName);
+        //NSLog(@"class: %@", NSStringFromClass([callee class]));
+        
 		// Instance call
 		if ([callee class] == callee && [methodName isEqualToString:@"instance"])
 		{
@@ -2415,6 +2416,14 @@ static JSValueRef _jsCocoaObject_callAsFunction(JSContextRef ctx, JSObjectRef fu
 				}
 			}
 		}
+        
+        
+        if ([callee class] == [NSDistantObject class]) {
+            NSLog(@"dist object!");
+            [callee performSelector:NSSelectorFromString(methodName) withObject:nil];
+        }
+        
+        
 		Method method = class_getInstanceMethod([callee class], NSSelectorFromString(methodName));
 		if (!method)	method = class_getClassMethod([callee class], NSSelectorFromString(methodName));
 
