@@ -23,31 +23,33 @@
     tokenizer.commentState.reportsCommentTokens = YES;
     
     TDToken *eof                    = [TDToken EOFToken];
-    TDToken *tok                    = nil;
-    NSString *lastTokenStr          = nil;
+    TDToken *tok                    = 0x00;
+    TDToken *nextToken              = 0x00;
     
     while ((tok = [tokenizer nextToken]) != eof) {
         
-        if (tok.quotedString && [lastTokenStr isEqualToString:@"@"]) {
-            [buffer deleteCharactersInRange:NSMakeRange([buffer length] - 1 , 1)];
-            [buffer appendFormat:@"[NSString stringWithString:%@]", [tok stringValue]];
+        if (tok.isSymbol && [[tok stringValue] isEqualToString:@"@"]) {
+            
+            // woo, it's special objc stuff.
+            
+            nextToken = [tokenizer nextToken];
+            if (nextToken.quotedString) {
+                [buffer appendFormat:@"[NSString stringWithString:%@]", [nextToken stringValue]];
+            }
+            else {
+                [buffer appendString:[tok stringValue]];
+                [buffer appendString:[nextToken stringValue]];
+            }
         }
         else {
             [buffer appendString:[tok stringValue]];
         }
-        
-        lastTokenStr = [tok stringValue];
     }
     
     return buffer;
-    
 }
 
-+ (NSString*) preprocessCode:(NSString*)sourceString {
-    
-    sourceString = [self preprocessForObjCStrings:sourceString];
-    
-    debug(@"sourceString: %@", sourceString);
++ (NSString*) preprocessForObjCMessagesToJS:(NSString*)sourceString {
     
     NSMutableString *buffer = [NSMutableString string];
     TDTokenizer *tokenizer  = [TDTokenizer tokenizerWithString:sourceString];
@@ -61,8 +63,6 @@
     BOOL lastWasWord                = NO;
     NSUInteger bracketCount         = 0;
     JSTPObjcCall *currentObjcCall   = 0x00;
-    
-    
     
     while ((tok = [tokenizer nextToken]) != eof) {
         
@@ -108,16 +108,16 @@
     }
     
     return buffer;
-    
 }
 
 
-
-
-
-
-
-
++ (NSString*) preprocessCode:(NSString*)sourceString {
+    
+    sourceString = [self preprocessForObjCStrings:sourceString];
+    sourceString = [self preprocessForObjCMessagesToJS:sourceString];
+    
+    return sourceString;
+}
 
 @end
 

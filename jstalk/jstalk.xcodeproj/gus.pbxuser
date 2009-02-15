@@ -117,9 +117,9 @@
 	};
 	CC0EC0F60F2170A10094F69D /* JSTScanner.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1263, 3094}}";
-			sepNavSelRange = "{787, 0}";
-			sepNavVisRange = "{1892, 1475}";
+			sepNavIntBoundsRect = "{{0, 0}, {1243, 3136}}";
+			sepNavSelRange = "{2205, 20}";
+			sepNavVisRange = "{1298, 1708}";
 		};
 	};
 	CC0EC3A00F2278850094F69D /* 'write' */ = {
@@ -334,9 +334,9 @@
 	};
 	CC5FB7D70F1FDDE900F4ECC2 /* JSTalk.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1226, 4914}}";
-			sepNavSelRange = "{10742, 0}";
-			sepNavVisRange = "{9790, 1982}";
+			sepNavIntBoundsRect = "{{0, 0}, {1226, 4900}}";
+			sepNavSelRange = "{10707, 0}";
+			sepNavVisRange = "{0, 1558}";
 		};
 	};
 	CC9298870F1EFA280009C7FB /* JSTalk Editor */ = {
@@ -402,9 +402,9 @@
 	};
 	CC975BC70F47E5BD00097108 /* JSTPreprocessor.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1243, 3108}}";
-			sepNavSelRange = "{988, 0}";
-			sepNavVisRange = "{0, 2212}";
+			sepNavIntBoundsRect = "{{0, 0}, {1243, 2912}}";
+			sepNavSelRange = "{930, 0}";
+			sepNavVisRange = "{25, 2171}";
 		};
 	};
 	CC975BE50F47E69D00097108 /* TDToken.h */ = {
@@ -416,9 +416,9 @@
 	};
 	CC975BED0F47E69D00097108 /* TDTokenizer.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1263, 2660}}";
-			sepNavSelRange = "{504, 28}";
-			sepNavVisRange = "{0, 2992}";
+			sepNavIntBoundsRect = "{{0, 0}, {1243, 2912}}";
+			sepNavSelRange = "{3594, 25}";
+			sepNavVisRange = "{4847, 1909}";
 		};
 	};
 	CC975BFD0F47E69D00097108 /* TDTokenizer.h */ = {
@@ -431,8 +431,8 @@
 	CC975C380F47E69D00097108 /* TDToken.m */ = {
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {1243, 3178}}";
-			sepNavSelRange = "{1926, 24}";
-			sepNavVisRange = "{1815, 1633}";
+			sepNavSelRange = "{1951, 24}";
+			sepNavVisRange = "{0, 1214}";
 		};
 	};
 	CC975CF20F47EB0C00097108 /* PBXTextBookmark */ = {
