@@ -6,12 +6,12 @@
 //  Copyright 2008 Todd Ditchendorf. All rights reserved.
 //
 
-#import <TDParseKit/TDCommentState.h>
-#import <TDParseKit/TDToken.h>
-#import <TDParseKit/TDReader.h>
-#import <TDParseKit/TDSymbolRootNode.h>
-#import <TDParseKit/TDSingleLineCommentState.h>
-#import <TDParseKit/TDMultiLineCommentState.h>
+#import "TDCommentState.h"
+#import "TDToken.h"
+#import "TDReader.h"
+#import "TDSymbolRootNode.h"
+#import "TDSingleLineCommentState.h"
+#import "TDMultiLineCommentState.h"
 
 @interface TDCommentState ()
 @property (nonatomic, retain) TDSymbolRootNode *rootNode;

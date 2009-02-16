@@ -7,7 +7,7 @@
 //
 
 #import "TDScientificNumberState.h"
-#import <TDParseKit/TDReader.h>
+#import "TDReader.h"
 
 @interface TDTokenizerState ()
 - (void)append:(NSInteger)c;

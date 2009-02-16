@@ -6,9 +6,9 @@
 //  Copyright 2008 Todd Ditchendorf. All rights reserved.
 //
 
-#import <TDParseKit/TDTokenAssembly.h>
-#import <TDParseKit/TDTokenizer.h>
-#import <TDParseKit/TDToken.h>
+#import "TDTokenAssembly.h"
+#import "TDTokenizer.h"
+#import "TDToken.h"
 
 @interface TDTokenAssembly ()
 - (id)initWithString:(NSString *)s tokenzier:(TDTokenizer *)t tokenArray:(NSArray *)a;

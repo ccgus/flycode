@@ -6,11 +6,11 @@
 //  Copyright 2008 Todd Ditchendorf. All rights reserved.
 //
 
-#import <TDParseKit/TDSymbolState.h>
-#import <TDParseKit/TDToken.h>
-#import <TDParseKit/TDSymbolRootNode.h>
-#import <TDParseKit/TDReader.h>
-#import <TDParseKit/TDTokenizer.h>
+#import "TDSymbolState.h"
+#import "TDToken.h"
+#import "TDSymbolRootNode.h"
+#import "TDReader.h"
+#import "TDTokenizer.h"
 
 @interface TDSymbolState ()
 @property (nonatomic, retain) TDSymbolRootNode *rootNode;

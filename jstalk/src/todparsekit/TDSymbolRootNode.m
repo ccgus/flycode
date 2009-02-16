@@ -6,8 +6,8 @@
 //  Copyright 2008 Todd Ditchendorf. All rights reserved.
 //
 
-#import <TDParseKit/TDSymbolRootNode.h>
-#import <TDParseKit/TDReader.h>
+#import "TDSymbolRootNode.h"
+#import "TDReader.h"
 
 @interface TDSymbolNode ()
 @property (nonatomic, retain) NSMutableDictionary *children;

@@ -7,8 +7,8 @@
 //
 
 #import <Foundation/Foundation.h>
-#import <TDParseKit/TDWhitespaceState.h>
-#import <TDParseKit/TDToken.h>
+#import "TDWhitespaceState.h"
+#import "TDToken.h"
 
 // NOTE: this class is not currently in use or included in the Framework. It is an example of how to add a new token type
 

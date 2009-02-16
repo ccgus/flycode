@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-#import <TDParseKit/TDTokenizerState.h>
+#import "TDTokenizerState.h"
 
 @interface TDSingleLineCommentState : TDTokenizerState {
     NSMutableArray *startSymbols;

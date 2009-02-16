@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-#import <TDParseKit/TDTerminal.h>
+#import "TDTerminal.h"
 
 @class TDToken;
 

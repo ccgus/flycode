@@ -6,10 +6,10 @@
 //  Copyright 2008 Todd Ditchendorf. All rights reserved.
 //
 
-#import <TDParseKit/TDSignificantWhitespaceState.h>
-#import <TDParseKit/TDReader.h>
-#import <TDParseKit/TDTokenizer.h>
-#import <TDParseKit/TDToken.h>
+#import "TDSignificantWhitespaceState.h"
+#import "TDReader.h"
+#import "TDTokenizer.h"
+#import "TDToken.h"
 
 @interface TDTokenizerState ()
 - (void)reset;

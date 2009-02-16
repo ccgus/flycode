@@ -6,8 +6,8 @@
 //  Copyright 2008 Todd Ditchendorf. All rights reserved.
 //
 
-#import <TDParseKit/TDSymbolNode.h>
-#import <TDParseKit/TDSymbolRootNode.h>
+#import "TDSymbolNode.h"
+#import "TDSymbolRootNode.h"
 
 @interface TDSymbolNode ()
 @property (nonatomic, readwrite, retain) NSString *ancestry;

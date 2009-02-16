@@ -6,8 +6,8 @@
 //  Copyright 2008 Todd Ditchendorf. All rights reserved.
 //
 
-#import <TDParseKit/TDQuotedString.h>
-#import <TDParseKit/TDToken.h>
+#import "TDQuotedString.h"
+#import "TDToken.h"
 
 @implementation TDQuotedString
 

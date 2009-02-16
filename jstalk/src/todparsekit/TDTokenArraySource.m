@@ -6,9 +6,9 @@
 //  Copyright 2008 Todd Ditchendorf. All rights reserved.
 //
 
-#import <TDParseKit/TDTokenArraySource.h>
-#import <TDParseKit/TDToken.h>
-#import <TDParseKit/TDTokenizer.h>
+#import "TDTokenArraySource.h"
+#import "TDToken.h"
+#import "TDTokenizer.h"
 
 @interface TDTokenArraySource ()
 @property (nonatomic, retain) TDTokenizer *tokenizer;

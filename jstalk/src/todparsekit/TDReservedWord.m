@@ -6,8 +6,8 @@
 //  Copyright 2008 Todd Ditchendorf. All rights reserved.
 //
 
-#import <TDParseKit/TDReservedWord.h>
-#import <TDParseKit/TDToken.h>
+#import "TDReservedWord.h"
+#import "TDToken.h"
 
 static NSArray *sTDReservedWords = nil;
 

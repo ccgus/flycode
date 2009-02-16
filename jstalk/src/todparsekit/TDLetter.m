@@ -6,7 +6,7 @@
 //  Copyright 2008 Todd Ditchendorf. All rights reserved.
 //
 
-#import <TDParseKit/TDLetter.h>
+#import "TDLetter.h"
 
 @implementation TDLetter
 

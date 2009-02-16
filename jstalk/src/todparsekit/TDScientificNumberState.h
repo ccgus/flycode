@@ -6,7 +6,7 @@
 //  Copyright 2008 Todd Ditchendorf. All rights reserved.
 //
 
-#import <TDParseKit/TDNumberState.h>
+#import "TDNumberState.h"
 
 /*!
     @class      TDScientificNumberState 

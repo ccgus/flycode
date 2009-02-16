@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-#import <TDParseKit/TDCollectionParser.h>
+#import "TDCollectionParser.h"
 
 /*!
     @class      TDAlternation

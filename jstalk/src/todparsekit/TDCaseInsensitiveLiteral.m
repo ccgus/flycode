@@ -6,8 +6,8 @@
 //  Copyright 2008 Todd Ditchendorf. All rights reserved.
 //
 
-#import <TDParseKit/TDCaseInsensitiveLiteral.h>
-#import <TDParseKit/TDToken.h>
+#import "TDCaseInsensitiveLiteral.h"
+#import "TDToken.h"
 
 @implementation TDCaseInsensitiveLiteral
 

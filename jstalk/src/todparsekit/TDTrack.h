@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-#import <TDParseKit/TDSequence.h>
+#import "TDSequence.h"
 
 /*!
     @class      TDTrack

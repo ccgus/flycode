@@ -6,12 +6,12 @@
 //  Copyright 2008 Todd Ditchendorf. All rights reserved.
 //
 
-#import <TDParseKit/TDMultiLineCommentState.h>
-#import <TDParseKit/TDCommentState.h>
-#import <TDParseKit/TDReader.h>
-#import <TDParseKit/TDTokenizer.h>
-#import <TDParseKit/TDToken.h>
-#import <TDParseKit/TDSymbolRootNode.h>
+#import "TDMultiLineCommentState.h"
+#import "TDCommentState.h"
+#import "TDReader.h"
+#import "TDTokenizer.h"
+#import "TDToken.h"
+#import "TDSymbolRootNode.h"
 
 @interface TDTokenizerState ()
 - (void)reset;

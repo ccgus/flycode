@@ -6,9 +6,9 @@
 //  Copyright 2008 Todd Ditchendorf. All rights reserved.
 //
 
-#import <TDParseKit/TDNonReservedWord.h>
-#import <TDParseKit/TDReservedWord.h>
-#import <TDParseKit/TDToken.h>
+#import "TDNonReservedWord.h"
+#import "TDReservedWord.h"
+#import "TDToken.h"
 
 @interface TDReservedWord ()
 + (NSArray *)reservedWords;

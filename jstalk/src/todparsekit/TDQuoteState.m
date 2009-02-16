@@ -6,9 +6,9 @@
 //  Copyright 2008 Todd Ditchendorf. All rights reserved.
 //
 
-#import <TDParseKit/TDQuoteState.h>
-#import <TDParseKit/TDReader.h>
-#import <TDParseKit/TDToken.h>
+#import "TDQuoteState.h"
+#import "TDReader.h"
+#import "TDToken.h"
 
 @interface TDTokenizerState ()
 - (void)reset;

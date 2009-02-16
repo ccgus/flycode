@@ -6,7 +6,7 @@
 //  Copyright 2008 Todd Ditchendorf. All rights reserved.
 //
 
-#import <TDParseKit/TDTokenizerState.h>
+#import "TDTokenizerState.h"
 
 @interface TDTokenizerState ()
 - (void)reset;

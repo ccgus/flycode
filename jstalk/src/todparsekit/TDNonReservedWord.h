@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-#import <TDParseKit/TDWord.h>
+#import "TDWord.h"
 
 @interface TDNonReservedWord : TDWord {
 

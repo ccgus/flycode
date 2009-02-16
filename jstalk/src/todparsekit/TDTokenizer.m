@@ -6,8 +6,8 @@
 //  Copyright 2008 Todd Ditchendorf. All rights reserved.
 //
 
-#import <TDParseKit/TDTokenizer.h>
-#import <TDParseKit/TDParseKit.h>
+#import "TDTokenizer.h"
+#import "TDParseKit.h"
 
 @interface TDTokenizer ()
 - (void)addTokenizerState:(TDTokenizerState *)state from:(NSInteger)start to:(NSInteger)end;

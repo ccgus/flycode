@@ -6,8 +6,8 @@
 //  Copyright 2008 Todd Ditchendorf. All rights reserved.
 //
 
-#import <TDParseKit/TDAlternation.h>
-#import <TDParseKit/TDAssembly.h>
+#import "TDAlternation.h"
+#import "TDAssembly.h"
 
 @interface TDParser ()
 - (NSSet *)matchAndAssemble:(NSSet *)inAssemblies;

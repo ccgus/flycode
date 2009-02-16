@@ -6,7 +6,7 @@
 //  Copyright 2008 Todd Ditchendorf. All rights reserved.
 //
 
-#import <TDParseKit/TDCollectionParser.h>
+#import "TDCollectionParser.h"
 
 @interface TDCollectionParser ()
 @property (nonatomic, readwrite, retain) NSMutableArray *subparsers;

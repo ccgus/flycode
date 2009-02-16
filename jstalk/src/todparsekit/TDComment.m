@@ -6,8 +6,8 @@
 //  Copyright 2008 Todd Ditchendorf. All rights reserved.
 //
 
-#import <TDParseKit/TDComment.h>
-#import <TDParseKit/TDToken.h>
+#import "TDComment.h"
+#import "TDToken.h"
 
 @implementation TDComment
 

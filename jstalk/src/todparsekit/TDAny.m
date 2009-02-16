@@ -6,8 +6,8 @@
 //  Copyright 2008 Todd Ditchendorf. All rights reserved.
 //
 
-#import <TDParseKit/TDAny.h>
-#import <TDParseKit/TDToken.h>
+#import "TDAny.h"
+#import "TDToken.h"
 
 @implementation TDAny
 

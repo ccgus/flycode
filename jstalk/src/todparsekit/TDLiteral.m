@@ -6,8 +6,8 @@
 //  Copyright 2008 Todd Ditchendorf. All rights reserved.
 //
 
-#import <TDParseKit/TDLiteral.h>
-#import <TDParseKit/TDToken.h>
+#import "TDLiteral.h"
+#import "TDToken.h"
 
 @interface TDLiteral ()
 @property (nonatomic, retain) TDToken *literal;

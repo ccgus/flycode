@@ -6,8 +6,8 @@
 //  Copyright 2008 Todd Ditchendorf. All rights reserved.
 //
 
-#import <TDParseKit/TDLowercaseWord.h>
-#import <TDParseKit/TDToken.h>
+#import "TDLowercaseWord.h"
+#import "TDToken.h"
 
 @implementation TDLowercaseWord
 

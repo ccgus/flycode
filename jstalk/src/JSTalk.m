@@ -175,7 +175,7 @@
 - (void) executeString:(NSString*) str {
     
     str = [JSTPreprocessor preprocessCode:str];
-    
+    /*
     JSTScanner *scanner = [JSTScanner scannerWithString:str];
     
     [scanner scan];
@@ -206,9 +206,10 @@
     
     [newSource replaceOccurrencesOfString:@"JSApp(\"" withString:@"JSTalk.bridgeApp(\"" options:0 range:NSMakeRange(0, [newSource length])];
     [newSource replaceOccurrencesOfString:@"JSTalk." withString:@"JSTalkx." options:0 range:NSMakeRange(0, [newSource length])];
+    */
     
     JSCocoaController *jsController = [JSCocoaController sharedController];
-    
+    /*
     if (!_T) {
         self.T = [NSMutableDictionary dictionary];
     }
@@ -218,11 +219,14 @@
     [self pushObject:NSApp withName:@"Application" inController:jsController];
     [self pushObject:self withName:@"JSTalkx" inController:jsController];
     [self pushObject:jsController withName:@"jsc" inController:jsController];
+    */
+    
+    [self pushObject:self withName:@"jstalk" inController:jsController];
     
     @try {
         [jsController setUseAutoCall:NO];
-        [jsController evalJSString:@"function print(s) { JSTalkx.print(s); }"];
-        [jsController evalJSString:newSource];
+        [jsController evalJSString:@"function print(s) { jstalk.print_(s); }"];
+        [jsController evalJSString:str];
     }
     @catch (NSException * e) {
         NSLog(@"Exception: %@", e);
@@ -303,7 +307,7 @@
 
 
 
-- (id) proxyForApp:(NSString*)app {
++ (id) proxyForApp:(NSString*)app {
     
     NSString *appPath = [[NSWorkspace sharedWorkspace] fullPathForApplication:app];
     

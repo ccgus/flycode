@@ -6,11 +6,11 @@
 //  Copyright 2008 Todd Ditchendorf. All rights reserved.
 //
 
-#import <TDParseKit/TDNumberState.h>
-#import <TDParseKit/TDReader.h>
-#import <TDParseKit/TDToken.h>
-#import <TDParseKit/TDTokenizer.h>
-#import <TDParseKit/TDSymbolState.h>
+#import "TDNumberState.h"
+#import "TDReader.h"
+#import "TDToken.h"
+#import "TDTokenizer.h"
+#import "TDSymbolState.h"
 
 @interface TDTokenizerState ()
 - (void)reset;
