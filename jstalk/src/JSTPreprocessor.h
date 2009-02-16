@@ -23,18 +23,19 @@
 
 @interface JSTPObjcCall : NSObject {
     
-    NSMutableArray *_subs;
+    NSMutableArray *_args;
     
     JSTPObjcCall *_parent;
     
-    NSString *_iName;
+    NSString *_target;
     NSString *_lastString;
     NSMutableString *_selector;
 }
 
-@property (retain) NSMutableArray *subs;
+@property (retain) NSMutableArray *args;
 @property (retain) NSMutableString *selector;
-
+@property (retain) NSString *target;
+@property (retain) NSString *lastString;
 
 - (void) addSymbol:(id)whatever;
 - (id) push;

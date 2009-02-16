@@ -491,14 +491,12 @@
 							<key>PBXSmartGroupTreeModuleOutlineStateSelectionKey</key>
 							<array>
 								<array>
-									<integer>3</integer>
-									<integer>2</integer>
-									<integer>1</integer>
-									<integer>0</integer>
+									<integer>148</integer>
+									<integer>146</integer>
 								</array>
 							</array>
 							<key>PBXSmartGroupTreeModuleOutlineStateVisibleRectKey</key>
-							<string>{{0, 0}, {329, 971}}</string>
+							<string>{{0, 1785}, {329, 971}}</string>
 						</dict>
 						<key>PBXTopSmartGroupGIDs</key>
 						<array/>
@@ -554,7 +552,7 @@
 	<key>StatusbarIsVisible</key>
 	<true/>
 	<key>TimeStamp</key>
-	<real>256509995.91356</real>
+	<real>256511942.86611101</real>
 	<key>ToolbarDisplayMode</key>
 	<integer>2</integer>
 	<key>ToolbarIsVisible</key>
@@ -575,6 +573,9 @@
 		<string>1CD10A99069EF8BA00B06720</string>
 		<string>CC3F6B6E0F257001004B3AEC</string>
 		<string>1C78EAAD065D492600B07095</string>
+		<string>CC1C800F0F4A09AD007A2941</string>
+		<string>CC1C80100F4A09AD007A2941</string>
+		<string>CC1C80290F4A0FC6007A2941</string>
 		<string>/Volumes/srv/Users/gus/Projects/flycode/jstalk/jstalk.xcodeproj</string>
 	</array>
 	<key>WindowString</key>
@@ -608,7 +609,7 @@
 								<key>Frame</key>
 								<string>{{0, 0}, {1546, 0}}</string>
 								<key>RubberWindowFrame</key>
-								<string>215 170 1546 767 0 0 1920 1178 </string>
+								<string>32 183 1546 767 0 0 1920 1178 </string>
 							</dict>
 							<key>Module</key>
 							<string>PBXNavigatorGroup</string>
@@ -636,7 +637,7 @@
 								<key>Frame</key>
 								<string>{{0, 5}, {1546, 721}}</string>
 								<key>RubberWindowFrame</key>
-								<string>215 170 1546 767 0 0 1920 1178 </string>
+								<string>32 183 1546 767 0 0 1920 1178 </string>
 							</dict>
 							<key>Module</key>
 							<string>PBXBuildResultsModule</string>
@@ -666,7 +667,7 @@
 			<key>ToolbarConfiguration</key>
 			<string>xcode.toolbar.config.buildV3</string>
 			<key>WindowString</key>
-			<string>215 170 1546 767 0 0 1920 1178 </string>
+			<string>32 183 1546 767 0 0 1920 1178 </string>
 			<key>WindowToolGUID</key>
 			<string>CC3F6B6E0F257001004B3AEC</string>
 			<key>WindowToolIsVisible</key>

@@ -1,9 +1,9 @@
 // !$*UTF8*$!
 {
 	2A37F4A9FDCFA73011CA2CEA /* Project object */ = {
-		activeBuildConfigurationName = Debug;
-		activeExecutable = CC9298870F1EFA280009C7FB /* JSTalk Editor */;
-		activeTarget = 8D15AC270486D014006FF6A4 /* JSTalk Editor */;
+		activeBuildConfigurationName = Release;
+		activeExecutable = CC5FB7C30F1FDCCC00F4ECC2 /* jstalk command line */;
+		activeTarget = CC5FB7C10F1FDCCC00F4ECC2 /* jstalk command line */;
 		addToTargets = (
 			8D15AC270486D014006FF6A4 /* JSTalk Editor */,
 		);
@@ -258,6 +258,21 @@
 			CC1C80090F4A0817007A2941 /* PBXTextBookmark */ = CC1C80090F4A0817007A2941 /* PBXTextBookmark */;
 			CC1C800A0F4A0818007A2941 /* PBXTextBookmark */ = CC1C800A0F4A0818007A2941 /* PBXTextBookmark */;
 			CC1C800B0F4A0818007A2941 /* PBXTextBookmark */ = CC1C800B0F4A0818007A2941 /* PBXTextBookmark */;
+			CC1C80120F4A0C33007A2941 /* PBXTextBookmark */ = CC1C80120F4A0C33007A2941 /* PBXTextBookmark */;
+			CC1C80130F4A0C33007A2941 /* PBXTextBookmark */ = CC1C80130F4A0C33007A2941 /* PBXTextBookmark */;
+			CC1C80140F4A0C33007A2941 /* PBXTextBookmark */ = CC1C80140F4A0C33007A2941 /* PBXTextBookmark */;
+			CC1C80160F4A0C8C007A2941 /* PBXTextBookmark */ = CC1C80160F4A0C8C007A2941 /* PBXTextBookmark */;
+			CC1C80170F4A0C8C007A2941 /* PBXTextBookmark */ = CC1C80170F4A0C8C007A2941 /* PBXTextBookmark */;
+			CC1C80180F4A0C8C007A2941 /* PBXTextBookmark */ = CC1C80180F4A0C8C007A2941 /* PBXTextBookmark */;
+			CC1C801A0F4A0C94007A2941 /* PBXTextBookmark */ = CC1C801A0F4A0C94007A2941 /* PBXTextBookmark */;
+			CC1C801B0F4A0C94007A2941 /* PBXTextBookmark */ = CC1C801B0F4A0C94007A2941 /* PBXTextBookmark */;
+			CC1C801C0F4A0C94007A2941 /* PBXTextBookmark */ = CC1C801C0F4A0C94007A2941 /* PBXTextBookmark */;
+			CC1C80220F4A0FC1007A2941 /* PBXTextBookmark */ = CC1C80220F4A0FC1007A2941 /* PBXTextBookmark */;
+			CC1C80230F4A0FC1007A2941 /* PBXTextBookmark */ = CC1C80230F4A0FC1007A2941 /* PBXTextBookmark */;
+			CC1C80240F4A0FC1007A2941 /* PBXTextBookmark */ = CC1C80240F4A0FC1007A2941 /* PBXTextBookmark */;
+			CC1C80260F4A0FC4007A2941 /* PBXTextBookmark */ = CC1C80260F4A0FC4007A2941 /* PBXTextBookmark */;
+			CC1C80270F4A0FC5007A2941 /* PBXTextBookmark */ = CC1C80270F4A0FC5007A2941 /* PBXTextBookmark */;
+			CC1C80280F4A0FC5007A2941 /* PBXTextBookmark */ = CC1C80280F4A0FC5007A2941 /* PBXTextBookmark */;
 		};
 		sourceControlManager = CC9298950F1EFA2C0009C7FB /* Source Control */;
 		userBuildSettings = {
@@ -2305,14 +2320,164 @@
 		vrLen = 1252;
 		vrLoc = 76;
 	};
+	CC1C80120F4A0C33007A2941 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = CCC5B9300F1EFB6700126722 /* JSCocoaController.m */;
+		name = "JSCocoaController.m: 20";
+		rLen = 18;
+		rLoc = 493;
+		rType = 0;
+		vrLen = 1252;
+		vrLoc = 76;
+	};
+	CC1C80130F4A0C33007A2941 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = CCC5B9300F1EFB6700126722 /* JSCocoaController.m */;
+		name = "JSCocoaController.m: 20";
+		rLen = 18;
+		rLoc = 493;
+		rType = 0;
+		vrLen = 1252;
+		vrLoc = 76;
+	};
+	CC1C80140F4A0C33007A2941 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = CCC5B9300F1EFB6700126722 /* JSCocoaController.m */;
+		name = "JSCocoaController.m: 20";
+		rLen = 18;
+		rLoc = 493;
+		rType = 0;
+		vrLen = 1252;
+		vrLoc = 76;
+	};
+	CC1C80160F4A0C8C007A2941 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = CCC5B9300F1EFB6700126722 /* JSCocoaController.m */;
+		name = "JSCocoaController.m: 20";
+		rLen = 18;
+		rLoc = 493;
+		rType = 0;
+		vrLen = 1252;
+		vrLoc = 76;
+	};
+	CC1C80170F4A0C8C007A2941 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = CCC5B9300F1EFB6700126722 /* JSCocoaController.m */;
+		name = "JSCocoaController.m: 20";
+		rLen = 18;
+		rLoc = 493;
+		rType = 0;
+		vrLen = 1252;
+		vrLoc = 76;
+	};
+	CC1C80180F4A0C8C007A2941 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = CCC5B9300F1EFB6700126722 /* JSCocoaController.m */;
+		name = "JSCocoaController.m: 20";
+		rLen = 18;
+		rLoc = 493;
+		rType = 0;
+		vrLen = 1252;
+		vrLoc = 76;
+	};
+	CC1C801A0F4A0C94007A2941 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = CCC5B9300F1EFB6700126722 /* JSCocoaController.m */;
+		name = "JSCocoaController.m: 20";
+		rLen = 18;
+		rLoc = 493;
+		rType = 0;
+		vrLen = 1252;
+		vrLoc = 76;
+	};
+	CC1C801B0F4A0C94007A2941 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = CCC5B9300F1EFB6700126722 /* JSCocoaController.m */;
+		name = "JSCocoaController.m: 20";
+		rLen = 18;
+		rLoc = 493;
+		rType = 0;
+		vrLen = 1252;
+		vrLoc = 76;
+	};
+	CC1C801C0F4A0C94007A2941 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = CCC5B9300F1EFB6700126722 /* JSCocoaController.m */;
+		name = "JSCocoaController.m: 20";
+		rLen = 18;
+		rLoc = 493;
+		rType = 0;
+		vrLen = 1252;
+		vrLoc = 76;
+	};
+	CC1C80220F4A0FC1007A2941 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = CCC5B9300F1EFB6700126722 /* JSCocoaController.m */;
+		name = "JSCocoaController.m: 20";
+		rLen = 18;
+		rLoc = 493;
+		rType = 0;
+		vrLen = 1252;
+		vrLoc = 76;
+	};
+	CC1C80230F4A0FC1007A2941 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = CCC5B9300F1EFB6700126722 /* JSCocoaController.m */;
+		name = "JSCocoaController.m: 20";
+		rLen = 18;
+		rLoc = 493;
+		rType = 0;
+		vrLen = 1252;
+		vrLoc = 76;
+	};
+	CC1C80240F4A0FC1007A2941 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = CCC5B9300F1EFB6700126722 /* JSCocoaController.m */;
+		name = "JSCocoaController.m: 20";
+		rLen = 18;
+		rLoc = 493;
+		rType = 0;
+		vrLen = 1252;
+		vrLoc = 76;
+	};
+	CC1C80260F4A0FC4007A2941 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = CCC5B9300F1EFB6700126722 /* JSCocoaController.m */;
+		name = "JSCocoaController.m: 20";
+		rLen = 18;
+		rLoc = 493;
+		rType = 0;
+		vrLen = 1252;
+		vrLoc = 76;
+	};
+	CC1C80270F4A0FC5007A2941 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = CCC5B9300F1EFB6700126722 /* JSCocoaController.m */;
+		name = "JSCocoaController.m: 20";
+		rLen = 18;
+		rLoc = 493;
+		rType = 0;
+		vrLen = 1252;
+		vrLoc = 76;
+	};
+	CC1C80280F4A0FC5007A2941 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = CCC5B9300F1EFB6700126722 /* JSCocoaController.m */;
+		name = "JSCocoaController.m: 20";
+		rLen = 18;
+		rLoc = 493;
+		rType = 0;
+		vrLen = 1252;
+		vrLoc = 76;
+	};
 	CC4143190F25254200E46669 /* JSTalk Framework */ = {
 		activeExec = 0;
 	};
 	CC4143C00F2529F200E46669 /* JSTExtras.m */ = {
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {1381, 1414}}";
-			sepNavSelRange = "{1129, 0}";
-			sepNavVisRange = "{771, 1073}";
+			sepNavSelRange = "{1368, 13}";
+			sepNavVisRange = "{769, 1075}";
 		};
 	};
 	CC5FB7C10F1FDCCC00F4ECC2 /* jstalk command line */ = {
@@ -2367,9 +2532,9 @@
 	};
 	CC5FB7D70F1FDDE900F4ECC2 /* JSTalk.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {885, 4760}}";
-			sepNavSelRange = "{672, 0}";
-			sepNavVisRange = "{0, 2257}";
+			sepNavIntBoundsRect = "{{0, 0}, {1381, 4704}}";
+			sepNavSelRange = "{3593, 5}";
+			sepNavVisRange = "{2402, 2820}";
 		};
 	};
 	CC9298870F1EFA280009C7FB /* JSTalk Editor */ = {
@@ -2428,16 +2593,16 @@
 	};
 	CC975BC60F47E5BD00097108 /* JSTPreprocessor.h */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1243, 981}}";
-			sepNavSelRange = "{367, 0}";
-			sepNavVisRange = "{0, 624}";
+			sepNavIntBoundsRect = "{{0, 0}, {1381, 994}}";
+			sepNavSelRange = "{633, 0}";
+			sepNavVisRange = "{0, 702}";
 		};
 	};
 	CC975BC70F47E5BD00097108 /* JSTPreprocessor.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1381, 2870}}";
-			sepNavSelRange = "{214, 30}";
-			sepNavVisRange = "{0, 2302}";
+			sepNavIntBoundsRect = "{{0, 0}, {1381, 3150}}";
+			sepNavSelRange = "{4347, 0}";
+			sepNavVisRange = "{3610, 1389}";
 		};
 	};
 	CCC5B8B00F1EFA9700126722 /* Info.plist */ = {
@@ -2449,9 +2614,9 @@
 	};
 	CCC5B8CB0F1EFAAA00126722 /* JSTalk_Prefix.pch */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1389, 918}}";
-			sepNavSelRange = "{236, 0}";
-			sepNavVisRange = "{0, 243}";
+			sepNavIntBoundsRect = "{{0, 0}, {1381, 994}}";
+			sepNavSelRange = "{228, 0}";
+			sepNavVisRange = "{0, 235}";
 		};
 	};
 	CCC5B8CC0F1EFAAA00126722 /* main.m */ = {
@@ -2484,7 +2649,7 @@
 	};
 	CCC5B9300F1EFB6700126722 /* JSCocoaController.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {990, 39718}}";
+			sepNavIntBoundsRect = "{{0, 0}, {990, 39746}}";
 			sepNavSelRange = "{493, 18}";
 			sepNavVisRange = "{76, 1252}";
 		};

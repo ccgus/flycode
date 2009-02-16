@@ -125,56 +125,59 @@
 
 
 @implementation JSTPObjcCall
-@synthesize subs=_subs;
+@synthesize args=_args;
 @synthesize selector=_selector;
+@synthesize target=_target;
+@synthesize lastString=_lastString;
 
 - (void)dealloc {
-    [_subs release];
+    [_args release];
     [_selector release];
+    [_target release];
+    [_lastString release];
     [super dealloc];
 }
 
 
-- (void) addSymbol:(id)whatever {
+- (void) addSymbol:(id)aSymbol {
     
-    if (!_iName) {
-        _iName = whatever;
+    if (!_target) {
+        self.target = aSymbol;
         return;
     }
     
     if (!_selector) {
-        self.selector = [NSMutableString stringWithString:whatever];
+        self.selector = [NSMutableString stringWithString:aSymbol];
         return;
     }
     
-    if ([whatever isKindOfClass:[NSString class]] && [whatever isEqualToString:@":"]) {
+    if ([aSymbol isKindOfClass:[NSString class]] && [aSymbol isEqualToString:@":"]) {
         
         if (_lastString) {
             [self.selector appendString:_lastString];
-            _lastString = 0x00;
-            [_subs removeLastObject];
+            self.lastString = 0x00;
+            [_args removeLastObject];
         }
         
-        [self.selector appendString:whatever];
+        [self.selector appendString:aSymbol];
         
         return;
     }
     
-    if ([whatever isKindOfClass:[NSString class]] && [whatever isEqualToString:@","]) {
+    if ([aSymbol isKindOfClass:[NSString class]] && [aSymbol isEqualToString:@","]) {
         // vargs, meh.
         return;
     }
     
-    if ([whatever isKindOfClass:[NSString class]]) {
-        _lastString = whatever;
+    if ([aSymbol isKindOfClass:[NSString class]]) {
+        self.lastString = aSymbol;
     }
     
-    
-    if (!_subs) {
-        self.subs = [NSMutableArray array];
+    if (!_args) {
+        self.args = [NSMutableArray array];
     }
     
-    [_subs addObject:whatever];
+    [_args addObject:aSymbol];
 }
 
 - (id) push {
@@ -200,14 +203,14 @@
     
     NSString *method = [self.selector stringByReplacingOccurrencesOfString:@":" withString:@"_"];
     
-    [ret appendFormat:@"%@.%@(", _iName, method];
+    [ret appendFormat:@"%@.%@(", _target, method];
     
-    for (id foo in _subs) {
+    for (id foo in _args) {
         [ret appendFormat:@"%@, ", [foo description]];
     }
     
     // get rid of the last comma
-    if ([_subs count]) {
+    if ([_args count]) {
         [ret deleteCharactersInRange:NSMakeRange([ret length] - 2 , 2)];
     }
     
