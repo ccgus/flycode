@@ -22,12 +22,17 @@
     if (self) {
         self.tokenizer = [[[TDTokenizer alloc] init] autorelease];
         
-        self.keywords = [NSDictionary dictionaryWithObjectsAndKeys:[NSColor blueColor], @"for",
-                                                                   [NSColor blueColor], @"print",
-                                                                   [NSColor blueColor], @"var",
-                                                                   [NSColor blueColor], @"function",
-                                                                   [NSColor blueColor], @"return",
-                                                                   nil];
+        self.keywords = [NSDictionary dictionaryWithObjectsAndKeys:
+                         [NSColor blueColor], @"for",
+                         [NSColor blueColor], @"print",
+                         [NSColor blueColor], @"var",
+                         [NSColor blueColor], @"function",
+                         [NSColor blueColor], @"return",
+                         [NSColor blueColor], @"if",
+                         [NSColor blueColor], @"null",
+                         [NSColor blueColor], @"nil",
+                         [NSColor blueColor], @"class",
+                         nil];
     }
     
     return self;

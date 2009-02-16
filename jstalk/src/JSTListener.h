@@ -15,7 +15,12 @@
     
     NSConnection *_conn;
     
+    id _rootObject;
+    
 }
+
+@property (assign) id rootObject;
+
 
 + (void) listen;
 

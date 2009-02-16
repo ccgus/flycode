@@ -207,6 +207,16 @@
 		CCC5B94E0F1EFC4500126722 /* JSTAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CCC5B94D0F1EFC4500126722 /* JSTAppDelegate.m */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		CC5064E50F4A164D00F4A952 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2A37F4A9FDCFA73011CA2CEA /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = CC4143190F25254200E46669 /* JSTalk Framework */;
+			remoteInfo = "JSTalk Framework";
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXCopyFilesBuildPhase section */
 		CC41437B0F2527F200E46669 /* Copy Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
@@ -440,6 +450,7 @@
 			isa = PBXGroup;
 			children = (
 				CC0EC3380F2274730094F69D /* JSTalk */,
+				CC5064DE0F4A155000F4A952 /* UIWidgets */,
 				2A37F4ABFDCFA73011CA2CEA /* App Classes */,
 				2A37F4AFFDCFA73011CA2CEA /* Other Sources */,
 				2A37F4B8FDCFA73011CA2CEA /* Resources */,
@@ -456,14 +467,6 @@
 				CCC5B94D0F1EFC4500126722 /* JSTAppDelegate.m */,
 				CCC5B8CF0F1EFABA00126722 /* JSTDocument.h */,
 				CCC5B8CE0F1EFABA00126722 /* JSTDocument.m */,
-				CC1322FD0F23F3C10032FEB8 /* JSTTextView.h */,
-				CC1322FE0F23F3C10032FEB8 /* JSTTextView.m */,
-				CC1322E20F23F2380032FEB8 /* MarkerLineNumberView.h */,
-				CC1322E40F23F2380032FEB8 /* MarkerLineNumberView.m */,
-				CC1322E30F23F2380032FEB8 /* NoodleLineNumberMarker.h */,
-				CC1322E60F23F2380032FEB8 /* NoodleLineNumberMarker.m */,
-				CC1322E70F23F2380032FEB8 /* NoodleLineNumberView.h */,
-				CC1322E50F23F2380032FEB8 /* NoodleLineNumberView.m */,
 			);
 			name = "App Classes";
 			sourceTree = "<group>";
@@ -630,6 +633,21 @@
 			name = images;
 			sourceTree = "<group>";
 		};
+		CC5064DE0F4A155000F4A952 /* UIWidgets */ = {
+			isa = PBXGroup;
+			children = (
+				CC1322FD0F23F3C10032FEB8 /* JSTTextView.h */,
+				CC1322FE0F23F3C10032FEB8 /* JSTTextView.m */,
+				CC1322E20F23F2380032FEB8 /* MarkerLineNumberView.h */,
+				CC1322E40F23F2380032FEB8 /* MarkerLineNumberView.m */,
+				CC1322E30F23F2380032FEB8 /* NoodleLineNumberMarker.h */,
+				CC1322E60F23F2380032FEB8 /* NoodleLineNumberMarker.m */,
+				CC1322E70F23F2380032FEB8 /* NoodleLineNumberView.h */,
+				CC1322E50F23F2380032FEB8 /* NoodleLineNumberView.m */,
+			);
+			name = UIWidgets;
+			sourceTree = "<group>";
+		};
 		CCC5B92C0F1EFB5900126722 /* JSCocoa */ = {
 			isa = PBXGroup;
 			children = (
@@ -733,6 +751,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				CC5064E60F4A164D00F4A952 /* PBXTargetDependency */,
 			);
 			name = "JSTalk Editor";
 			productInstallPath = "$(HOME)/Applications";
@@ -960,6 +979,14 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		CC5064E60F4A164D00F4A952 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = CC4143190F25254200E46669 /* JSTalk Framework */;
+			targetProxy = CC5064E50F4A164D00F4A952 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin PBXVariantGroup section */
 		CCC5B8BA0F1EFA9700126722 /* JSTDocument.xib */ = {
 			isa = PBXVariantGroup;
@@ -1033,7 +1060,7 @@
 		C05733CC08A9546B00998B17 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				ARCHS = "$(NATIVE_ARCH)";
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
@@ -1047,7 +1074,7 @@
 		C05733CD08A9546B00998B17 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(NATIVE_ARCH)";
+				ARCHS = i386;
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
