@@ -160,6 +160,11 @@
         return;
     }
     
+    if ([whatever isKindOfClass:[NSString class]] && [whatever isEqualToString:@","]) {
+        // vargs, meh.
+        return;
+    }
+    
     if ([whatever isKindOfClass:[NSString class]]) {
         _lastString = whatever;
     }

@@ -7,7 +7,7 @@
 //
 
 #import "JSTExtras.h"
-
+#import <ScriptingBridge/ScriptingBridge.h>
 
 @implementation NSApplication (JSTExtras)
 
@@ -53,7 +53,6 @@
 @end
 
 
-
 @implementation NSData (JSTExtras)
 
 - (BOOL) writeToFile:(NSString*)path {
@@ -62,3 +61,40 @@
 }
 
 @end
+
+@implementation NSObject (JSTExtras)
+
+- (Class) ojbcClass {
+    return [self class];
+}
+
+@end
+
+
+@implementation SBApplication (JSTExtras)
+
++ (id) app:(NSString*)appName {
+    
+    NSString *appPath = [[NSWorkspace sharedWorkspace] fullPathForApplication:appName];
+    
+    if (!appPath) {
+        NSLog(@"Could not find application '%@'", appName);
+        return nil;
+    }
+    
+    NSBundle *appBundle = [NSBundle bundleWithPath:appPath];
+    NSString *bundleId  = [appBundle bundleIdentifier];
+    
+    return [SBApplication applicationWithBundleIdentifier:bundleId];
+}
+
+@end
+
+
+
+
+
+
+
+
+

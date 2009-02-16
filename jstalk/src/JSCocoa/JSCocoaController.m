@@ -57,6 +57,7 @@ const JSClassDefinition kJSClassDefinitionEmpty = { 0, 0,
 
 @implementation JSCocoaController
 @synthesize useAutoCall, isSpeaking, logAllExceptions;
+@synthesize exceptionHandler;
 
 
 //
@@ -872,6 +873,50 @@ void blah(id a, SEL b)
 	return [NSString stringWithFormat:@"%@ on line %@ of %@", b, line, sourceURL];
 }
 
+- (void) callExceptionHandlerForException:(JSValueRef)exception {
+    if (!exceptionHandler) {
+        
+		NSLog(@"JSException in %@ : %@", @"js string", [self formatJSException:exception]);
+        
+        return;
+    }
+    
+    JSStringRef resultStringJS = JSValueToStringCopy(ctx, exception, NULL);
+	NSString* b = (NSString*)JSStringCopyCFString(kCFAllocatorDefault, resultStringJS);
+	JSStringRelease(resultStringJS);
+	[NSMakeCollectable(b) autorelease];
+    
+	if (JSValueGetType(ctx, exception) != kJSTypeObject) {
+        [exceptionHandler scriptHadError:b onLineNumber:0];
+    }
+    
+	// Iterate over all properties of the exception
+	JSObjectRef jsObject = JSValueToObject(ctx, exception, NULL);
+	JSPropertyNameArrayRef jsNames = JSObjectCopyPropertyNames(ctx, jsObject);
+	int i, nameCount = JSPropertyNameArrayGetCount(jsNames);
+	id line = nil, sourceURL = nil;
+	for (i=0; i<nameCount; i++)
+	{
+		JSStringRef jsName = JSPropertyNameArrayGetNameAtIndex(jsNames, i);
+		id name = (id)JSStringCopyCFString(kCFAllocatorDefault, jsName);
+        
+		JSValueRef	jsValueRef = JSObjectGetProperty(ctx, jsObject, jsName, NULL);
+		JSStringRef	valueJS = JSValueToStringCopy(ctx, jsValueRef, NULL);
+		NSString* value = (NSString*)JSStringCopyCFString(kCFAllocatorDefault, valueJS);
+		JSStringRelease(valueJS);
+		
+		if ([name isEqualToString:@"line"])			line = value;
+		if ([name isEqualToString:@"sourceURL"])	sourceURL = value;
+		[NSMakeCollectable(name) release];
+		// Autorelease because we assigned it to line / sourceURL
+		[NSMakeCollectable(value) autorelease];
+	}
+	JSPropertyNameArrayRelease(jsNames);
+    
+    NSLog(@"line: %d", line);
+    
+    [exceptionHandler scriptHadError:b onLineNumber:[line intValue]];
+}
 
 #pragma mark Script evaluation
 
@@ -928,7 +973,7 @@ void blah(id a, SEL b)
 	v.value = JSValueMakeNull(ctx);
     if (exception) 
 	{
-		NSLog(@"JSException in %@ : %@", @"js string", [self formatJSException:exception]);
+        [self callExceptionHandlerForException:exception];
 		return	v;
     }
 	
@@ -2419,8 +2464,44 @@ static JSValueRef _jsCocoaObject_callAsFunction(JSContextRef ctx, JSObjectRef fu
         
         
         if ([callee class] == [NSDistantObject class]) {
-            NSLog(@"dist object!");
-            [callee performSelector:NSSelectorFromString(methodName) withObject:nil];
+            
+            SEL selector = NSSelectorFromString(methodName);
+            NSMethodSignature *signature = [callee methodSignatureForSelector:selector];
+            NSInvocation *invocation = [NSInvocation invocationWithMethodSignature:signature];
+            [invocation setSelector:selector];
+            
+            NSUInteger argIndex = 0;
+            while (argIndex < argumentCount) {
+                
+                id arg = 0x00;
+                
+                [JSCocoaFFIArgument unboxJSValueRef:arguments[argIndex] toObject:&arg inContext:ctx];
+                
+                [invocation setArgument:&arg atIndex:argIndex + 2];
+                
+                argIndex++;
+            }
+            
+            
+            [invocation invokeWithTarget:callee];
+            
+            id result = 0x00;
+            
+            const char *type = [signature methodReturnType];
+            
+            if (strcmp(type, @encode(id)) == 0) {
+                [invocation getReturnValue:&result];
+            }
+            
+            if (!result) {
+                return JSValueMakeNull(ctx);
+            }
+            
+            JSValueRef	jsReturnValue = NULL;
+            
+            [JSCocoaFFIArgument boxObject:result toJSValueRef:&jsReturnValue inContext:ctx];
+            
+            return	jsReturnValue;
         }
         
         

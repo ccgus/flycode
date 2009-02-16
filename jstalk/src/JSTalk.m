@@ -9,13 +9,13 @@
 #import "JSTalk.h"
 #import "JSTListener.h"
 #import "JSTScanner.h"
-#import <ScriptingBridge/ScriptingBridge.h>
-#include "mach_inject_bundle.h"
 #import "JSTPreprocessor.h"
+#import <ScriptingBridge/ScriptingBridge.h>
 
 @implementation JSTalk
 @synthesize T=_T;
 @synthesize printController=_printController;
+@synthesize errorController=_errorController;
 
 + (void) load {
     //debug(@"%s:%d", __FUNCTION__, __LINE__);
@@ -38,20 +38,6 @@
 }
 */
 
-- (id) bridgeApp:(NSString*)appName {
-    NSString *appPath = [[NSWorkspace sharedWorkspace] fullPathForApplication:appName];
-    
-    if (!appPath) {
-        NSLog(@"Could not find application '%@'", appName);
-        return nil;
-    }
-    
-    NSBundle *appBundle = [NSBundle bundleWithPath:appPath];
-    NSString *bundleId  = [appBundle bundleIdentifier];
-    
-    return [SBApplication applicationWithBundleIdentifier:bundleId];
-}
-
 
 - (id) callApp:(NSString*)app withSource:(NSString*)source shouldInject:(BOOL)inject {
     
@@ -72,7 +58,7 @@
                                                 launchIdentifier:nil];
     
     NSString *port = [NSString stringWithFormat:@"%@.JSTalk", bundleId];
-    
+    /*
     inject = NO; // alright, this isn't working at all.
     if (inject) {
         
@@ -108,7 +94,7 @@
             }
         }
     }
-    
+    */
     
     CFMessagePortRef remotePort = 0x00;
     

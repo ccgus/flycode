@@ -86,17 +86,11 @@ CFDataRef receivedJSTalkMessage(CFMessagePortRef local, SInt32 msgid, CFDataRef 
     CFRunLoopSourceRef source = CFMessagePortCreateRunLoopSource(NULL, local, 0);
     CFRunLoopAddSource(CFRunLoopGetCurrent(), source, kCFRunLoopDefaultMode);
     
-    
-    
-    
     NSString *connName = [NSString stringWithFormat:@"%@.JSTalkc", myBundleId];
     
     _conn = [[NSConnection alloc] init];
     [_conn setRootObject:NSApp];
     [_conn registerName:connName];
-    
-    
-    
 }
 
 @end

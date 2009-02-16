@@ -58,11 +58,15 @@ typedef struct	JSValueRefAndContextRef JSValueRefAndContextRef;
 	BOOL	logAllExceptions;
 	// Is speaking when throwing exceptions
 	BOOL	isSpeaking;
+    
+    id exceptionHandler;
 }
 
 @property BOOL useAutoCall;
 @property BOOL isSpeaking;
 @property BOOL logAllExceptions;
+@property (assign) id exceptionHandler;
+
 
 + (id)sharedController;
 + (BOOL)hasSharedController;
@@ -169,4 +173,13 @@ id	NSStringFromJSValue(JSValueRef value, JSContextRef ctx);
 #else
 #   error "Unsupported MACOSX platform"
 #endif
+
+
+
+@interface NSObject (JSCocoaControllerExtras)
+- (void) scriptHadError:(NSString*)error onLineNumber:(NSInteger)lineNumber;
+@end
+
+
+
 
