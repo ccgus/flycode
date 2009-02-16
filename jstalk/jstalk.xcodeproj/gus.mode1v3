@@ -485,18 +485,20 @@
 								<string>1058C7A8FEA54F5311CA2CBB</string>
 								<string>19C28FB0FE9D524F11CA2CBB</string>
 								<string>1C37FBAC04509CD000000102</string>
+								<string>CC1C80440F4A104F007A2941</string>
+								<string>CC1C80450F4A104F007A2941</string>
 								<string>1C37FAAC04509CD000000102</string>
 								<string>1C37FABC05509CD000000102</string>
 							</array>
 							<key>PBXSmartGroupTreeModuleOutlineStateSelectionKey</key>
 							<array>
 								<array>
-									<integer>148</integer>
+									<integer>147</integer>
 									<integer>146</integer>
 								</array>
 							</array>
 							<key>PBXSmartGroupTreeModuleOutlineStateVisibleRectKey</key>
-							<string>{{0, 1785}, {329, 971}}</string>
+							<string>{{0, 1819}, {329, 971}}</string>
 						</dict>
 						<key>PBXTopSmartGroupGIDs</key>
 						<array/>
@@ -517,7 +519,7 @@
 							<real>307</real>
 						</array>
 						<key>RubberWindowFrame</key>
-						<string>1471 146 346 1030 0 0 1920 1178 </string>
+						<string>1471 145 346 1030 0 0 1920 1178 </string>
 					</dict>
 					<key>Module</key>
 					<string>PBXSmartGroupTreeModule</string>
@@ -552,7 +554,7 @@
 	<key>StatusbarIsVisible</key>
 	<true/>
 	<key>TimeStamp</key>
-	<real>256511942.86611101</real>
+	<real>256512104.20800301</real>
 	<key>ToolbarDisplayMode</key>
 	<integer>2</integer>
 	<key>ToolbarIsVisible</key>
@@ -579,7 +581,7 @@
 		<string>/Volumes/srv/Users/gus/Projects/flycode/jstalk/jstalk.xcodeproj</string>
 	</array>
 	<key>WindowString</key>
-	<string>1471 146 346 1030 0 0 1920 1178 </string>
+	<string>1471 145 346 1030 0 0 1920 1178 </string>
 	<key>WindowToolsV3</key>
 	<array>
 		<dict>
