@@ -9,19 +9,11 @@
 /* Begin PBXBuildFile section */
 		8D5B49B0048680CD000E48DA /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 089C167DFE841241C02AAC07 /* InfoPlist.strings */; };
 		8D5B49B4048680CD000E48DA /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7ADFEA557BF11CA2CBB /* Cocoa.framework */; };
-		CC0EC5D10F22A2020094F69D /* JSTExtras.m in Sources */ = {isa = PBXBuildFile; fileRef = CC0EC5CA0F22A2020094F69D /* JSTExtras.m */; };
-		CC0EC5D20F22A2020094F69D /* JSTListener.m in Sources */ = {isa = PBXBuildFile; fileRef = CC0EC5CD0F22A2020094F69D /* JSTListener.m */; };
-		CC0EC5D30F22A2020094F69D /* JSTScanner.m in Sources */ = {isa = PBXBuildFile; fileRef = CC0EC5CE0F22A2020094F69D /* JSTScanner.m */; };
-		CC0EC5D40F22A2020094F69D /* JSTalk.m in Sources */ = {isa = PBXBuildFile; fileRef = CC0EC5CF0F22A2020094F69D /* JSTalk.m */; };
 		CC0EC5DA0F22A21A0094F69D /* ScriptingBridge.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CC0EC5D90F22A21A0094F69D /* ScriptingBridge.framework */; };
 		CC2FDC9F0EB68C40005267D1 /* JavaScriptCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CC2FDC9E0EB68C40005267D1 /* JavaScriptCore.framework */; };
 		CC2FDCB00EB68CF4005267D1 /* libffi.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = CC2FDCAF0EB68CF4005267D1 /* libffi.dylib */; };
+		CC4143D00F252A9200E46669 /* JSTalk.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CC4143CF0F252A9200E46669 /* JSTalk.framework */; };
 		CC726D6C0F1568BC00EB02AF /* JSEnablerPlugIn.m in Sources */ = {isa = PBXBuildFile; fileRef = CC726D6B0F1568BC00EB02AF /* JSEnablerPlugIn.m */; };
-		CC726DA50F1569FA00EB02AF /* BridgeSupportController.m in Sources */ = {isa = PBXBuildFile; fileRef = CC726D9C0F1569FA00EB02AF /* BridgeSupportController.m */; };
-		CC726DA60F1569FA00EB02AF /* JSCocoaController.m in Sources */ = {isa = PBXBuildFile; fileRef = CC726D9E0F1569FA00EB02AF /* JSCocoaController.m */; };
-		CC726DA70F1569FA00EB02AF /* JSCocoaFFIArgument.m in Sources */ = {isa = PBXBuildFile; fileRef = CC726DA00F1569FA00EB02AF /* JSCocoaFFIArgument.m */; };
-		CC726DA80F1569FA00EB02AF /* JSCocoaFFIClosure.m in Sources */ = {isa = PBXBuildFile; fileRef = CC726DA20F1569FA00EB02AF /* JSCocoaFFIClosure.m */; };
-		CC726DA90F1569FA00EB02AF /* JSCocoaPrivateObject.m in Sources */ = {isa = PBXBuildFile; fileRef = CC726DA40F1569FA00EB02AF /* JSCocoaPrivateObject.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -31,30 +23,13 @@
 		1058C7ADFEA557BF11CA2CBB /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = /System/Library/Frameworks/Cocoa.framework; sourceTree = "<absolute>"; };
 		8D5B49B6048680CD000E48DA /* JSEnabler.acplugin */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = JSEnabler.acplugin; sourceTree = BUILT_PRODUCTS_DIR; };
 		8D5B49B7048680CD000E48DA /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		CC0EC5C90F22A2020094F69D /* JSTalk.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JSTalk.h; path = ../../jstalk/src/JSTalk.h; sourceTree = SOURCE_ROOT; };
-		CC0EC5CA0F22A2020094F69D /* JSTExtras.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JSTExtras.m; path = ../../jstalk/src/JSTExtras.m; sourceTree = SOURCE_ROOT; };
-		CC0EC5CB0F22A2020094F69D /* JSTScanner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JSTScanner.h; path = ../../jstalk/src/JSTScanner.h; sourceTree = SOURCE_ROOT; };
-		CC0EC5CC0F22A2020094F69D /* JSTListener.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JSTListener.h; path = ../../jstalk/src/JSTListener.h; sourceTree = SOURCE_ROOT; };
-		CC0EC5CD0F22A2020094F69D /* JSTListener.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JSTListener.m; path = ../../jstalk/src/JSTListener.m; sourceTree = SOURCE_ROOT; };
-		CC0EC5CE0F22A2020094F69D /* JSTScanner.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JSTScanner.m; path = ../../jstalk/src/JSTScanner.m; sourceTree = SOURCE_ROOT; };
-		CC0EC5CF0F22A2020094F69D /* JSTalk.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JSTalk.m; path = ../../jstalk/src/JSTalk.m; sourceTree = SOURCE_ROOT; };
-		CC0EC5D00F22A2020094F69D /* JSTExtras.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JSTExtras.h; path = ../../jstalk/src/JSTExtras.h; sourceTree = SOURCE_ROOT; };
 		CC0EC5D90F22A21A0094F69D /* ScriptingBridge.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ScriptingBridge.framework; path = /System/Library/Frameworks/ScriptingBridge.framework; sourceTree = "<absolute>"; };
 		CC2FDC9E0EB68C40005267D1 /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = /System/Library/Frameworks/JavaScriptCore.framework; sourceTree = "<absolute>"; };
 		CC2FDCAF0EB68CF4005267D1 /* libffi.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libffi.dylib; path = usr/lib/libffi.dylib; sourceTree = SDKROOT; };
+		CC4143CF0F252A9200E46669 /* JSTalk.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JSTalk.framework; path = ../../../../builds/Debug/JSTalk.framework; sourceTree = SOURCE_ROOT; };
 		CC726D6A0F1568BC00EB02AF /* JSEnablerPlugIn.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSEnablerPlugIn.h; sourceTree = "<group>"; };
 		CC726D6B0F1568BC00EB02AF /* JSEnablerPlugIn.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSEnablerPlugIn.m; sourceTree = "<group>"; };
 		CC726D6D0F1568C700EB02AF /* jsenabler_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = jsenabler_Prefix.pch; sourceTree = "<group>"; };
-		CC726D9B0F1569FA00EB02AF /* BridgeSupportController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BridgeSupportController.h; sourceTree = "<group>"; };
-		CC726D9C0F1569FA00EB02AF /* BridgeSupportController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BridgeSupportController.m; sourceTree = "<group>"; };
-		CC726D9D0F1569FA00EB02AF /* JSCocoaController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSCocoaController.h; sourceTree = "<group>"; };
-		CC726D9E0F1569FA00EB02AF /* JSCocoaController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSCocoaController.m; sourceTree = "<group>"; };
-		CC726D9F0F1569FA00EB02AF /* JSCocoaFFIArgument.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSCocoaFFIArgument.h; sourceTree = "<group>"; };
-		CC726DA00F1569FA00EB02AF /* JSCocoaFFIArgument.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSCocoaFFIArgument.m; sourceTree = "<group>"; };
-		CC726DA10F1569FA00EB02AF /* JSCocoaFFIClosure.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSCocoaFFIClosure.h; sourceTree = "<group>"; };
-		CC726DA20F1569FA00EB02AF /* JSCocoaFFIClosure.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSCocoaFFIClosure.m; sourceTree = "<group>"; };
-		CC726DA30F1569FA00EB02AF /* JSCocoaPrivateObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSCocoaPrivateObject.h; sourceTree = "<group>"; };
-		CC726DA40F1569FA00EB02AF /* JSCocoaPrivateObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSCocoaPrivateObject.m; sourceTree = "<group>"; };
 		CC726DF80F156BE500EB02AF /* ACPlugin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ACPlugin.h; sourceTree = "<group>"; };
 		D2F7E65807B2D6F200F64583 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = /System/Library/Frameworks/CoreData.framework; sourceTree = "<absolute>"; };
 /* End PBXFileReference section */
@@ -68,6 +43,7 @@
 				CC2FDC9F0EB68C40005267D1 /* JavaScriptCore.framework in Frameworks */,
 				CC2FDCB00EB68CF4005267D1 /* libffi.dylib in Frameworks */,
 				CC0EC5DA0F22A21A0094F69D /* ScriptingBridge.framework in Frameworks */,
+				CC4143D00F252A9200E46669 /* JSTalk.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -77,7 +53,6 @@
 		089C166AFE841209C02AAC07 /* Capitalize */ = {
 			isa = PBXGroup;
 			children = (
-				CC726D9A0F1569FA00EB02AF /* JSCocoa */,
 				08FB77AFFE84173DC02AAC07 /* Classes */,
 				32C88E010371C26100C91783 /* Other Sources */,
 				089C167CFE841241C02AAC07 /* Resources */,
@@ -90,6 +65,7 @@
 		089C1671FE841209C02AAC07 /* Frameworks and Libraries */ = {
 			isa = PBXGroup;
 			children = (
+				CC4143CF0F252A9200E46669 /* JSTalk.framework */,
 				1058C7ACFEA557BF11CA2CBB /* Linked Frameworks */,
 				1058C7AEFEA557BF11CA2CBB /* Other Frameworks */,
 			);
@@ -110,14 +86,6 @@
 			children = (
 				CC726D6A0F1568BC00EB02AF /* JSEnablerPlugIn.h */,
 				CC726D6B0F1568BC00EB02AF /* JSEnablerPlugIn.m */,
-				CC0EC5C90F22A2020094F69D /* JSTalk.h */,
-				CC0EC5CF0F22A2020094F69D /* JSTalk.m */,
-				CC0EC5D00F22A2020094F69D /* JSTExtras.h */,
-				CC0EC5CA0F22A2020094F69D /* JSTExtras.m */,
-				CC0EC5CC0F22A2020094F69D /* JSTListener.h */,
-				CC0EC5CD0F22A2020094F69D /* JSTListener.m */,
-				CC0EC5CB0F22A2020094F69D /* JSTScanner.h */,
-				CC0EC5CE0F22A2020094F69D /* JSTScanner.m */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -158,23 +126,6 @@
 				CC726D6D0F1568C700EB02AF /* jsenabler_Prefix.pch */,
 			);
 			name = "Other Sources";
-			sourceTree = "<group>";
-		};
-		CC726D9A0F1569FA00EB02AF /* JSCocoa */ = {
-			isa = PBXGroup;
-			children = (
-				CC726D9B0F1569FA00EB02AF /* BridgeSupportController.h */,
-				CC726D9C0F1569FA00EB02AF /* BridgeSupportController.m */,
-				CC726D9D0F1569FA00EB02AF /* JSCocoaController.h */,
-				CC726D9E0F1569FA00EB02AF /* JSCocoaController.m */,
-				CC726D9F0F1569FA00EB02AF /* JSCocoaFFIArgument.h */,
-				CC726DA00F1569FA00EB02AF /* JSCocoaFFIArgument.m */,
-				CC726DA10F1569FA00EB02AF /* JSCocoaFFIClosure.h */,
-				CC726DA20F1569FA00EB02AF /* JSCocoaFFIClosure.m */,
-				CC726DA30F1569FA00EB02AF /* JSCocoaPrivateObject.h */,
-				CC726DA40F1569FA00EB02AF /* JSCocoaPrivateObject.m */,
-			);
-			path = JSCocoa;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -232,15 +183,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				CC726D6C0F1568BC00EB02AF /* JSEnablerPlugIn.m in Sources */,
-				CC726DA50F1569FA00EB02AF /* BridgeSupportController.m in Sources */,
-				CC726DA60F1569FA00EB02AF /* JSCocoaController.m in Sources */,
-				CC726DA70F1569FA00EB02AF /* JSCocoaFFIArgument.m in Sources */,
-				CC726DA80F1569FA00EB02AF /* JSCocoaFFIClosure.m in Sources */,
-				CC726DA90F1569FA00EB02AF /* JSCocoaPrivateObject.m in Sources */,
-				CC0EC5D10F22A2020094F69D /* JSTExtras.m in Sources */,
-				CC0EC5D20F22A2020094F69D /* JSTListener.m in Sources */,
-				CC0EC5D30F22A2020094F69D /* JSTScanner.m in Sources */,
-				CC0EC5D40F22A2020094F69D /* JSTalk.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -264,6 +206,11 @@
 				COPY_PHASE_STRIP = NO;
 				DEPLOYMENT_LOCATION = NO;
 				DSTROOT = "$(HOME)/Library/Application Support/Acorn/Plug-Ins";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/../../../../builds/Debug\"",
+				);
+				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_ENABLE_FIX_AND_CONTINUE = YES;
 				GCC_MODEL_TUNING = G5;
@@ -290,6 +237,11 @@
 				);
 				DEPLOYMENT_LOCATION = NO;
 				DSTROOT = "$(HOME)/Library/Application Support/Acorn/Plug-Ins";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/../../../../builds/Debug\"",
+				);
+				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
 				GCC_MODEL_TUNING = G5;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;

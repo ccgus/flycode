@@ -33,7 +33,7 @@
 				PBXFileTableDataSourceColumnSortingKey = PBXFileDataSource_Filename_ColumnID;
 				PBXFileTableDataSourceColumnWidthsKey = (
 					20,
-					386,
+					10,
 					20,
 					48,
 					43,
@@ -50,8 +50,8 @@
 					PBXFileDataSource_Target_ColumnID,
 				);
 			};
-			PBXPerProjectTemplateStateSaveDate = 254009390;
-			PBXWorkspaceStateSaveDate = 254009390;
+			PBXPerProjectTemplateStateSaveDate = 256513842;
+			PBXWorkspaceStateSaveDate = 256513842;
 		};
 		sourceControlManager = CCC7E60A0ECA3C50001F3E02 /* Source Control */;
 		userBuildSettings = {
@@ -60,39 +60,18 @@
 	8D5B49AC048680CD000E48DA /* JSEnabler */ = {
 		activeExec = 0;
 	};
-	CC0EC5C90F22A2020094F69D /* JSTalk.h */ = {
-		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1066, 947}}";
-			sepNavSelRange = "{274, 0}";
-			sepNavVisRange = "{0, 382}";
-		};
-	};
-	CC0EC5CD0F22A2020094F69D /* JSTListener.m */ = {
-		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {925, 938}}";
-			sepNavSelRange = "{211, 0}";
-			sepNavVisRange = "{0, 1209}";
-		};
-	};
-	CC0EC5CF0F22A2020094F69D /* JSTalk.m */ = {
-		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {969, 3290}}";
-			sepNavSelRange = "{3188, 0}";
-			sepNavVisRange = "{1741, 362}";
-		};
-	};
 	CC726D6A0F1568BC00EB02AF /* JSEnablerPlugIn.h */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1263, 833}}";
+			sepNavIntBoundsRect = "{{0, 0}, {1044, 949}}";
 			sepNavSelRange = "{71, 0}";
 			sepNavVisRange = "{0, 78}";
 		};
 	};
 	CC726D6B0F1568BC00EB02AF /* JSEnablerPlugIn.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {925, 2030}}";
-			sepNavSelRange = "{506, 0}";
-			sepNavVisRange = "{0, 1659}";
+			sepNavIntBoundsRect = "{{0, 0}, {885, 1960}}";
+			sepNavSelRange = "{589, 0}";
+			sepNavVisRange = "{1664, 2918}";
 		};
 	};
 	CC726D6D0F1568C700EB02AF /* jsenabler_Prefix.pch */ = {
@@ -102,62 +81,11 @@
 			sepNavVisRange = "{0, 244}";
 		};
 	};
-	CC726D9D0F1569FA00EB02AF /* JSCocoaController.h */ = {
-		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1381, 1708}}";
-			sepNavSelRange = "{1491, 29}";
-			sepNavVisRange = "{474, 1292}";
-		};
-	};
-	CC726D9E0F1569FA00EB02AF /* JSCocoaController.m */ = {
-		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {996, 29470}}";
-			sepNavSelRange = "{54623, 18}";
-			sepNavVisRange = "{54289, 554}";
-		};
-	};
-	CC726D9F0F1569FA00EB02AF /* JSCocoaFFIArgument.h */ = {
-		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1381, 1078}}";
-			sepNavSelRange = "{2501, 15}";
-			sepNavVisRange = "{367, 2239}";
-		};
-	};
-	CC726DA00F1569FA00EB02AF /* JSCocoaFFIArgument.m */ = {
-		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1381, 14014}}";
-			sepNavSelRange = "{23501, 86}";
-			sepNavVisRange = "{22645, 1150}";
-		};
-	};
-	CC726DA20F1569FA00EB02AF /* JSCocoaFFIClosure.m */ = {
-		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {950, 2422}}";
-			sepNavSelRange = "{1991, 70}";
-			sepNavVisRange = "{1880, 1755}";
-		};
-	};
-	CC726DA30F1569FA00EB02AF /* JSCocoaPrivateObject.h */ = {
-		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {950, 882}}";
-			sepNavSelRange = "{0, 0}";
-			sepNavVisRange = "{42, 1092}";
-		};
-	};
-	CC726DA40F1569FA00EB02AF /* JSCocoaPrivateObject.m */ = {
-		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {950, 1666}}";
-			sepNavSelRange = "{949, 24}";
-			sepNavVisRange = "{1075, 683}";
-		};
-	};
 	CC726DCF0F156B2500EB02AF /* Acorn */ = {
 		isa = PBXExecutable;
 		activeArgIndices = (
-			YES,
 		);
 		argumentStrings = (
-			"-plugin /Volumes/srv/Users/gus/builds/Debug/JSEnabler.acplugin",
 		);
 		autoAttachOnCrash = 1;
 		breakpointsEnabled = 0;
