@@ -207,16 +207,6 @@
 		CCC5B94E0F1EFC4500126722 /* JSTAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CCC5B94D0F1EFC4500126722 /* JSTAppDelegate.m */; };
 /* End PBXBuildFile section */
 
-/* Begin PBXContainerItemProxy section */
-		CC1C80350F4A1031007A2941 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 2A37F4A9FDCFA73011CA2CEA /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = CC4143190F25254200E46669 /* JSTalk Framework */;
-			remoteInfo = "JSTalk Framework";
-		};
-/* End PBXContainerItemProxy section */
-
 /* Begin PBXCopyFilesBuildPhase section */
 		CC41437B0F2527F200E46669 /* Copy Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
@@ -743,7 +733,6 @@
 			buildRules = (
 			);
 			dependencies = (
-				CC1C80360F4A1031007A2941 /* PBXTargetDependency */,
 			);
 			name = "JSTalk Editor";
 			productInstallPath = "$(HOME)/Applications";
@@ -971,14 +960,6 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
-/* Begin PBXTargetDependency section */
-		CC1C80360F4A1031007A2941 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = CC4143190F25254200E46669 /* JSTalk Framework */;
-			targetProxy = CC1C80350F4A1031007A2941 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
-
 /* Begin PBXVariantGroup section */
 		CCC5B8BA0F1EFA9700126722 /* JSTDocument.xib */ = {
 			isa = PBXVariantGroup;
@@ -1090,7 +1071,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = src/JSTalk_Prefix.pch;
 				INFOPLIST_FILE = "res/JSTalkFramework-Info.plist";
-				INSTALL_PATH = "@bundle_loader/../Frameworks";
+				INSTALL_PATH = "@loader_path/../Frameworks";
 				OTHER_LDFLAGS = (
 					"-framework",
 					Foundation,
@@ -1117,7 +1098,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = src/JSTalk_Prefix.pch;
 				INFOPLIST_FILE = "res/JSTalkFramework-Info.plist";
-				INSTALL_PATH = "@bundle_loader/../Frameworks";
+				INSTALL_PATH = "@loader_path/../Frameworks";
 				OTHER_LDFLAGS = (
 					"-framework",
 					Foundation,
