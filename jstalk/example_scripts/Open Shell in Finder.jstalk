@@ -6,8 +6,7 @@ if ([windows count] > 0) {
     
     [terminal activate];
     
-    var cmd = "cd '" + [[windows objectAtIndex:0] name] + "'";
+    var cmd = "cd '" + windows[0].name() + "'";
     
     [terminal doScript:cmd in:nil];
 }
-
