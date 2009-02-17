@@ -32,6 +32,12 @@
                          [NSColor blueColor], @"null",
                          [NSColor blueColor], @"nil",
                          [NSColor blueColor], @"class",
+                         [NSColor blueColor], @"true",
+                         [NSColor blueColor], @"false",
+                         [NSColor blueColor], @"short",
+                         [NSColor blueColor], @"static",
+                         [NSColor blueColor], @"super",
+                         [NSColor blueColor], @"new",
                          nil];
     }
     

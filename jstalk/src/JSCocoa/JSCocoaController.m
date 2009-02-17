@@ -24,6 +24,7 @@ static	bool		jsCocoaObject_deleteProperty(JSContextRef, JSObjectRef, JSStringRef
 static	void		jsCocoaObject_getPropertyNames(JSContextRef, JSObjectRef, JSPropertyNameAccumulatorRef);
 static	JSObjectRef jsCocoaObject_callAsConstructor(JSContextRef, JSObjectRef, size_t, const JSValueRef [], JSValueRef*);
 static	JSValueRef	jsCocoaObject_convertToType(JSContextRef ctx, JSObjectRef object, JSType type, JSValueRef* exception);
+static JSValueRef _jsCocoaObject_callUsingNSInvocation(JSContextRef ctx, id callee, NSString *methodName, size_t argumentCount, JSValueRef arguments[]);
 
 // valueOf() is called by Javascript on objects, eg someObject + ' someString'
 static	JSValueRef	valueOfCallback(JSContextRef ctx, JSObjectRef function, JSObjectRef thisObject, size_t argumentCount, const JSValueRef arguments[], JSValueRef *exception);
@@ -2128,7 +2129,14 @@ static bool GC_jsCocoaObject_setProperty(JSContextRef ctx, JSObjectRef object, J
 		{
 			Method method = class_getInstanceMethod([callee class], sel);
 			if (!method)	method = class_getClassMethod([callee class], sel);
-
+            
+            
+            if (!method && [callee methodSignatureForSelector:NSSelectorFromString(setterName)]) {
+                return _jsCocoaObject_callUsingNSInvocation(ctx, callee, setterName, 0, nil);
+            }
+            
+            
+            
 			// Extract arguments
 			const char* typeEncoding = method_getTypeEncoding(method);
 			id argumentEncodings = [JSCocoaController parseObjCMethodEncoding:typeEncoding];
@@ -2395,6 +2403,48 @@ static JSValueRef GC_jsCocoaObject_callAsFunction(JSContextRef ctx, JSObjectRef 
 	return	jsReturnValue;
 }
 
+
+static JSValueRef _jsCocoaObject_callUsingNSInvocation(JSContextRef ctx, id callee, NSString *methodName, size_t argumentCount, JSValueRef arguments[]) {
+    
+    SEL selector = NSSelectorFromString(methodName);
+    NSMethodSignature *signature = [callee methodSignatureForSelector:selector];
+    NSInvocation *invocation = [NSInvocation invocationWithMethodSignature:signature];
+    [invocation setSelector:selector];
+    
+    NSUInteger argIndex = 0;
+    while (argIndex < argumentCount) {
+        
+        id arg = 0x00;
+        
+        [JSCocoaFFIArgument unboxJSValueRef:arguments[argIndex] toObject:&arg inContext:ctx];
+        
+        [invocation setArgument:&arg atIndex:argIndex + 2];
+        
+        argIndex++;
+    }
+    
+    
+    [invocation invokeWithTarget:callee];
+    
+    id result = 0x00;
+    
+    const char *type = [signature methodReturnType];
+    
+    if (strcmp(type, @encode(id)) == 0) {
+        [invocation getReturnValue:&result];
+    }
+    
+    if (!result) {
+        return JSValueMakeNull(ctx);
+    }
+    
+    JSValueRef	jsReturnValue = NULL;
+    
+    [JSCocoaFFIArgument boxObject:result toJSValueRef:&jsReturnValue inContext:ctx];
+    
+    return	jsReturnValue;
+}
+
 //
 // That's where the actual calling happens.
 //
@@ -2464,50 +2514,21 @@ static JSValueRef _jsCocoaObject_callAsFunction(JSContextRef ctx, JSObjectRef fu
         
         
         if ([callee class] == [NSDistantObject class]) {
-            
-            SEL selector = NSSelectorFromString(methodName);
-            NSMethodSignature *signature = [callee methodSignatureForSelector:selector];
-            NSInvocation *invocation = [NSInvocation invocationWithMethodSignature:signature];
-            [invocation setSelector:selector];
-            
-            NSUInteger argIndex = 0;
-            while (argIndex < argumentCount) {
-                
-                id arg = 0x00;
-                
-                [JSCocoaFFIArgument unboxJSValueRef:arguments[argIndex] toObject:&arg inContext:ctx];
-                
-                [invocation setArgument:&arg atIndex:argIndex + 2];
-                
-                argIndex++;
-            }
-            
-            
-            [invocation invokeWithTarget:callee];
-            
-            id result = 0x00;
-            
-            const char *type = [signature methodReturnType];
-            
-            if (strcmp(type, @encode(id)) == 0) {
-                [invocation getReturnValue:&result];
-            }
-            
-            if (!result) {
-                return JSValueMakeNull(ctx);
-            }
-            
-            JSValueRef	jsReturnValue = NULL;
-            
-            [JSCocoaFFIArgument boxObject:result toJSValueRef:&jsReturnValue inContext:ctx];
-            
-            return	jsReturnValue;
+            return _jsCocoaObject_callUsingNSInvocation(ctx, callee, methodName, argumentCount, arguments);
         }
         
         
 		Method method = class_getInstanceMethod([callee class], NSSelectorFromString(methodName));
 		if (!method)	method = class_getClassMethod([callee class], NSSelectorFromString(methodName));
-
+        
+        
+        // maybe it's a property?
+        if (!method && [callee methodSignatureForSelector:NSSelectorFromString(methodName)]) {
+            return _jsCocoaObject_callUsingNSInvocation(ctx, callee, methodName, argumentCount, arguments);
+        }
+        
+        
+        
 		// Bail if we can't find a suitable method
 		if (!method)	
 		{

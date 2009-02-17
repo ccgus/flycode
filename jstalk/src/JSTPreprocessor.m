@@ -66,8 +66,6 @@
     
     while ((tok = [tokenizer nextToken]) != eof) {
         
-        NSLog(@"[tok stringValue]: %@", [tok stringValue]);
-        
         if (tok.isSymbol && !lastWasWord && [tok.stringValue isEqualToString:@"["]) {
             
             tokenizer.whitespaceState.reportsWhitespaceTokens = NO;

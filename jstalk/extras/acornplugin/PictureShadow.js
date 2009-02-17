@@ -1,8 +1,8 @@
 
 function main(image) {
     
-    nsimg  = image.NSImage();
-    extent = image.extent();
+    nsimg  = [image NSImage];
+    extent = [image extent];
     
     xOffset = 5;
     yOffset = 35;
@@ -11,15 +11,15 @@ function main(image) {
     
     newSize = NSMakeSize(extent.size.width, extent.size.height + imageYOffset);
     
-    newImage = NSImage.alloc.initWithSize(newSize).autorelease()
+    newImage = [[[NSImage alloc] initWithSize:newSize] autorelease];
     
-    newImage.lockFocus()
+    [newImage lockFocus]
     
     // save the current state, so we don't have the shadow when
     // we draw the image below
-    NSGraphicsContext.saveGraphicsState()
+    [NSGraphicsContext saveGraphicsState]
     
-    shadow = NSShadow.alloc().init().autorelease()
+    shadow = [[[NSShadow alloc] init] autorelease];
     shadow.setShadowColor_(NSColor.blackColor().colorWithAlphaComponent_(.6))
     shadow.setShadowOffset_(NSMakeSize(0, -(yOffset + 5)))
     shadow.setShadowBlurRadius_(5)
@@ -40,10 +40,10 @@ function main(image) {
                                                          NSMakePoint(newSize.width *.25, curveHeight + yOffset),
                                                          NSMakePoint(xOffset, 10 + yOffset))
     
-    bezierPath.fill()
+    [bezierPath fill];
     
     // get rid of our shadow
-    NSGraphicsContext.restoreGraphicsState()
+    [NSGraphicsContext restoreGraphicsState];
     
     
     nsimg.drawAtPoint_fromRect_operation_fraction_(NSMakePoint(0, imageYOffset), NSMakeRect(0, 0, extent.size.width, extent.size.height), NSCompositeCopy, 1)
@@ -54,7 +54,7 @@ function main(image) {
     NSBezierPath.bezierPathWithRect_(NSMakeRect(.5, imageYOffset + .5, extent.size.width - 1, extent.size.height - 1)).stroke()
     
     // we're done drawing to the image.
-    newImage.unlockFocus()
+    [newImage unlockFocus]
     
     NSDocumentController.sharedDocumentController().newDocumentWithImageData_(newImage.TIFFRepresentation())
     

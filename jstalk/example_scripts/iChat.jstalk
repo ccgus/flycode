@@ -1,0 +1,2 @@
+
+[[SBApplication app:"iChat"] setStatusMessage:"JSTalk wooo"];
