@@ -1,5 +1,10 @@
 var twr = [SBApplication app:"Twitterrific"];
 
+// WHAT DO I NEED TO DO TO MAKE THIS WORK I DON'T KNOW I NEED A NEW CHOCKLOCK
+var postMessage = [[[twr classForScriptingClass:"update"] alloc] init];
+
+print(postMessage)
+
 //print(twr)
 //print([[twr selection] userUrl]);
 // post update "posting an update with Twitterrific AppleScript support"

@@ -26,7 +26,7 @@ function main(image) {
     shadow.set()
     
     // make a curved path, at the bottom of our image.
-    bezierPath = NSBezierPath.bezierPath()
+    bezierPath = [NSBezierPath bezierPath]
     
     bezierPath.moveToPoint(NSMakePoint(xOffset, 40 + yOffset))
     bezierPath.lineToPoint(NSMakePoint(extent.size.width - xOffset, 40+ yOffset))
@@ -49,7 +49,7 @@ function main(image) {
     nsimg.drawAtPoint_fromRect_operation_fraction_(NSMakePoint(0, imageYOffset), NSMakeRect(0, 0, extent.size.width, extent.size.height), NSCompositeCopy, 1)
     
     // draw our border
-    NSColor.lightGrayColor().set()
+    [[NSColor lightGrayColor] set];
     NSGraphicsContext.currentContext().setCompositingOperation_(NSCompositePlusDarker)
     NSBezierPath.bezierPathWithRect_(NSMakeRect(.5, imageYOffset + .5, extent.size.width - 1, extent.size.height - 1)).stroke()
     

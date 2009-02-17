@@ -51,7 +51,7 @@
 - (void) executeString:(NSString*) str {
     
     str = [JSTPreprocessor preprocessCode:str];
-        
+    
     JSCocoaController *jsController = [JSCocoaController sharedController];
     
     [self pushObject:self withName:@"jstalk" inController:jsController];
