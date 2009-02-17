@@ -1,0 +1,25 @@
+// proxyForApp: gets an object from Acorn over DO
+var acorn = [JSTalk proxyForApp:"Acorn"];
+var outPath = "/tmp/jimi.png";
+var firstDoc = [[acorn orderedDocuments] objectAtIndex:0];
+
+for (i = 0; i < 10; i++) {
+    [[firstDoc windowController] callFilterWithName:"CIGaussianBlur"];
+    [NSThread sleepForTimeInterval:0.2];
+}
+
+[[firstDoc dataRepresentationOfType:"public.png"] writeToFile:outPath];
+
+[[firstDoc undoManager] undo];
+
+var qt = [SBApplication app:"QuickTime Player"];
+
+print(qt);
+
+[qt open:[NSURL fileURLWithPath: outPath]];
+[qt activate];
+
+print("Hurray!")
+// stuff like [[firstDoc windowController] callFilterWithName:"CIGaussianBlur"];
+// is sent to JS like so:
+// firstDoc.windowController().callFilterWithName_("CIGaussianBlur");

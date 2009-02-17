@@ -1,0 +1,13 @@
+var windows  = [[SBApplication app:"Finder"] windows];
+
+if ([windows count] > 0) {
+    
+    var terminal = [SBApplication app:"Terminal"];
+    
+    [terminal activate];
+    
+    var cmd = "cd '" + [[windows objectAtIndex:0] name] + "'";
+    
+    [terminal doScript:cmd in:nil];
+}
+

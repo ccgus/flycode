@@ -1,0 +1,5 @@
+var twr = [SBApplication app:"Twitterrific"];
+
+//print(twr)
+//print([[twr selection] userUrl]);
+// post update "posting an update with Twitterrific AppleScript support"
