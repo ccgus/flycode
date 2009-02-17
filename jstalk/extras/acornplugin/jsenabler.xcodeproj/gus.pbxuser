@@ -69,9 +69,9 @@
 	};
 	CC726D6B0F1568BC00EB02AF /* JSEnablerPlugIn.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1381, 1848}}";
-			sepNavSelRange = "{74, 0}";
-			sepNavVisRange = "{0, 2513}";
+			sepNavIntBoundsRect = "{{0, 0}, {1104, 1372}}";
+			sepNavSelRange = "{489, 0}";
+			sepNavVisRange = "{0, 2012}";
 		};
 	};
 	CC726D6D0F1568C700EB02AF /* jsenabler_Prefix.pch */ = {

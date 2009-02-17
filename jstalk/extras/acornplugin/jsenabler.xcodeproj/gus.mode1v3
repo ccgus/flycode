@@ -489,7 +489,8 @@
 							<key>PBXSmartGroupTreeModuleOutlineStateSelectionKey</key>
 							<array>
 								<array>
-									<integer>10</integer>
+									<integer>3</integer>
+									<integer>1</integer>
 									<integer>0</integer>
 								</array>
 							</array>
@@ -550,7 +551,7 @@
 	<key>StatusbarIsVisible</key>
 	<true/>
 	<key>TimeStamp</key>
-	<real>256520421.701067</real>
+	<real>256522776.50168601</real>
 	<key>ToolbarDisplayMode</key>
 	<integer>2</integer>
 	<key>ToolbarIsVisible</key>
@@ -565,10 +566,14 @@
 	<integer>5</integer>
 	<key>WindowOrderList</key>
 	<array>
-		<string>1C78EAAD065D492600B07095</string>
+		<string>CC5067470F4A3A1800F4A952</string>
+		<string>CC5067480F4A3A1800F4A952</string>
 		<string>1CD10A99069EF8BA00B06720</string>
 		<string>CCC7E6100ECA3D78001F3E02</string>
+		<string>1C78EAAD065D492600B07095</string>
+		<string>CC5067490F4A3A1800F4A952</string>
 		<string>/Volumes/srv/Users/gus/Projects/flycode/jstalk/extras/acornplugin/jsenabler.xcodeproj</string>
+		<string>CC50674A0F4A3A1800F4A952</string>
 	</array>
 	<key>WindowString</key>
 	<string>1260 333 300 838 0 0 1920 1178 </string>
@@ -895,6 +900,8 @@
 					<key>Dock</key>
 					<array>
 						<dict>
+							<key>BecomeActive</key>
+							<true/>
 							<key>ContentConfiguration</key>
 							<dict>
 								<key>PBXProjectModuleGUID</key>
@@ -905,18 +912,18 @@
 							<key>GeometryConfiguration</key>
 							<dict>
 								<key>Frame</key>
-								<string>{{0, 0}, {1286, 500}}</string>
+								<string>{{0, 0}, {1407, 981}}</string>
 								<key>RubberWindowFrame</key>
-								<string>-1556 652 1286 541 -1600 0 1600 1200 </string>
+								<string>-1554 139 1407 1022 -1600 0 1600 1200 </string>
 							</dict>
 							<key>Module</key>
 							<string>PBXDebugCLIModule</string>
 							<key>Proportion</key>
-							<string>500pt</string>
+							<string>981pt</string>
 						</dict>
 					</array>
 					<key>Proportion</key>
-					<string>500pt</string>
+					<string>981pt</string>
 				</dict>
 			</array>
 			<key>Name</key>
@@ -936,11 +943,11 @@
 			<key>ToolbarConfiguration</key>
 			<string>xcode.toolbar.config.consoleV3</string>
 			<key>WindowString</key>
-			<string>-1556 652 1286 541 -1600 0 1600 1200 </string>
+			<string>-1554 139 1407 1022 -1600 0 1600 1200 </string>
 			<key>WindowToolGUID</key>
 			<string>1C78EAAD065D492600B07095</string>
 			<key>WindowToolIsVisible</key>
-			<false/>
+			<true/>
 		</dict>
 		<dict>
 			<key>Identifier</key>
