@@ -1093,6 +1093,7 @@
 				GCC_PREFIX_HEADER = src/JSTalk_Prefix.pch;
 				INFOPLIST_FILE = "res/JSTalkFramework-Info.plist";
 				INSTALL_PATH = "@loader_path/../Frameworks";
+				OTHER_CFLAGS = "-DDEBUG";
 				OTHER_LDFLAGS = (
 					"-framework",
 					Foundation,

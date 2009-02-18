@@ -19,6 +19,7 @@
 @implementation JSTalk
 @synthesize printController=_printController;
 @synthesize errorController=_errorController;
+@synthesize jsController=_jsController;
 
 + (void) load {
     //debug(@"%s:%d", __FUNCTION__, __LINE__);
@@ -28,8 +29,23 @@
     [JSTListener listen];
 }
 
+- (id) init {
+	self = [super init];
+	if (self != nil) {
+        debug(@"making new controller.");
+        self.jsController = [[[JSCocoaController alloc] init] autorelease];
+        
+	}
+    
+	return self;
+}
+
+
 - (void)dealloc {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
+    
+    [_jsController release];
+    _jsController = 0x00;
     
     [super dealloc];
 }
@@ -51,14 +67,12 @@
 - (void) executeString:(NSString*) str {
     
     str = [JSTPreprocessor preprocessCode:str];
-    
-    JSCocoaController *jsController = [JSCocoaController sharedController];
-    
-    [self pushObject:self withName:@"jstalk" inController:jsController];
+        
+    [self pushObject:self withName:@"jstalk" inController:_jsController];
     
     @try {
-        [jsController setUseAutoCall:NO];
-        [jsController evalJSString:[NSString stringWithFormat:@"function print(s) { jstalk.print_(s); } var nil=null; %@", str]];
+        [_jsController setUseAutoCall:NO];
+        [_jsController evalJSString:[NSString stringWithFormat:@"function print(s) { jstalk.print_(s); } var nil=null; %@", str]];
     }
     @catch (NSException * e) {
         NSLog(@"Exception: %@", e);
@@ -67,11 +81,6 @@
     @finally {
         //
     }
-}
-
-- (JSCocoaController*) jsController {
-    // right now we just return a shared one.
-    return [JSCocoaController sharedController];
 }
 
 - (id) callFunctionNamed:(NSString*)name withArguments:(NSArray*)args {

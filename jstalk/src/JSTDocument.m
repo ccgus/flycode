@@ -41,6 +41,12 @@
                          nil];
     }
     
+    NSString *someContent = @"Hello World!";
+    NSString *path = @"/tmp/foo.txt";
+    [[someContent dataUsingEncoding:NSUTF8StringEncoding] writeToFile:path atomically:YES];
+    
+    
+    
     return self;
 }
 
@@ -135,7 +141,7 @@
     [[[outputTextView textStorage] mutableString] appendFormat:@"%@\n", s];
 }
 
-- (void) scriptHadError:(NSString*)error onLineNumber:(NSInteger)lineNumber {
+- (void) jscontroller:(JSCocoaController*)controller hadError:(NSString*)error onLineNumber:(NSInteger)lineNumber {
     
     lineNumber -= 1;
     
@@ -170,6 +176,7 @@
     
     JSCocoaController *jsController = [jstalk jsController];
     
+    #warning fixme
     jsController.exceptionHandler = self;
     
     [jstalk pushObject:self withName:@"_jstDocument" inController:jsController];

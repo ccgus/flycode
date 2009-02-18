@@ -404,9 +404,9 @@
 			</array>
 			<key>TableOfContents</key>
 			<array>
-				<string>CC50666F0F4A2CDF00F4A952</string>
+				<string>CC94E0680F4B538000208BE0</string>
 				<string>1CE0B1FE06471DED0097A5F4</string>
-				<string>CC5066700F4A2CDF00F4A952</string>
+				<string>CC94E0690F4B538000208BE0</string>
 				<string>1CE0B20306471E060097A5F4</string>
 				<string>1CE0B20506471E060097A5F4</string>
 			</array>
@@ -514,7 +514,7 @@
 							<real>261</real>
 						</array>
 						<key>RubberWindowFrame</key>
-						<string>1260 333 300 838 0 0 1920 1178 </string>
+						<string>1356 281 300 838 0 0 1920 1178 </string>
 					</dict>
 					<key>Module</key>
 					<string>PBXSmartGroupTreeModule</string>
@@ -549,7 +549,7 @@
 	<key>StatusbarIsVisible</key>
 	<true/>
 	<key>TimeStamp</key>
-	<real>256529911.07099599</real>
+	<real>256594816.58587101</real>
 	<key>ToolbarDisplayMode</key>
 	<integer>2</integer>
 	<key>ToolbarIsVisible</key>
@@ -564,11 +564,15 @@
 	<integer>5</integer>
 	<key>WindowOrderList</key>
 	<array>
+		<string>1CD10A99069EF8BA00B06720</string>
 		<string>CCC7E6100ECA3D78001F3E02</string>
+		<string>CC94E06A0F4B538000208BE0</string>
+		<string>1C78EAAD065D492600B07095</string>
 		<string>/Volumes/srv/Users/gus/Projects/flycode/jstalk/extras/acornplugin/jsenabler.xcodeproj</string>
+		<string>CC94E06B0F4B538000208BE0</string>
 	</array>
 	<key>WindowString</key>
-	<string>1260 333 300 838 0 0 1920 1178 </string>
+	<string>1356 281 300 838 0 0 1920 1178 </string>
 	<key>WindowToolsV3</key>
 	<array>
 		<dict>
@@ -767,13 +771,13 @@
 			<key>TableOfContents</key>
 			<array>
 				<string>1CD10A99069EF8BA00B06720</string>
-				<string>CC5066920F4A2EBD00F4A952</string>
+				<string>CC94DFC70F4A56FB00208BE0</string>
 				<string>1C162984064C10D400B95A72</string>
-				<string>CC5066930F4A2EBD00F4A952</string>
-				<string>CC5066940F4A2EBD00F4A952</string>
-				<string>CC5066950F4A2EBD00F4A952</string>
-				<string>CC5066960F4A2EBD00F4A952</string>
-				<string>CC5066970F4A2EBD00F4A952</string>
+				<string>CC94DFC80F4A56FB00208BE0</string>
+				<string>CC94DFC90F4A56FB00208BE0</string>
+				<string>CC94DFCA0F4A56FB00208BE0</string>
+				<string>CC94DFCB0F4A56FB00208BE0</string>
+				<string>CC94DFCC0F4A56FB00208BE0</string>
 			</array>
 			<key>ToolbarConfiguration</key>
 			<string>xcode.toolbar.config.debugV3</string>
@@ -904,18 +908,18 @@
 							<key>GeometryConfiguration</key>
 							<dict>
 								<key>Frame</key>
-								<string>{{0, 0}, {1407, 981}}</string>
+								<string>{{0, 0}, {1256, 546}}</string>
 								<key>RubberWindowFrame</key>
-								<string>-1554 139 1407 1022 -1600 0 1600 1200 </string>
+								<string>-1554 574 1256 587 -1600 0 1600 1200 </string>
 							</dict>
 							<key>Module</key>
 							<string>PBXDebugCLIModule</string>
 							<key>Proportion</key>
-							<string>981pt</string>
+							<string>546pt</string>
 						</dict>
 					</array>
 					<key>Proportion</key>
-					<string>981pt</string>
+					<string>546pt</string>
 				</dict>
 			</array>
 			<key>Name</key>
@@ -929,13 +933,13 @@
 			<key>TableOfContents</key>
 			<array>
 				<string>1C78EAAD065D492600B07095</string>
-				<string>CC5066980F4A2EBD00F4A952</string>
+				<string>CC94DFCD0F4A56FB00208BE0</string>
 				<string>1C78EAAC065D492600B07095</string>
 			</array>
 			<key>ToolbarConfiguration</key>
 			<string>xcode.toolbar.config.consoleV3</string>
 			<key>WindowString</key>
-			<string>-1554 139 1407 1022 -1600 0 1600 1200 </string>
+			<string>-1554 574 1256 587 -1600 0 1600 1200 </string>
 			<key>WindowToolGUID</key>
 			<string>1C78EAAD065D492600B07095</string>
 			<key>WindowToolIsVisible</key>

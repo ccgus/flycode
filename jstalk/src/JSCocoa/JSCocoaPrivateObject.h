@@ -6,7 +6,7 @@
 //  Copyright 2008 __MyCompanyName__. All rights reserved.
 //
 
-#ifndef JSCocoa_iPhone
+#if !TARGET_IPHONE_SIMULATOR && !TARGET_OS_IPHONE
 #import <Cocoa/Cocoa.h>
 #import <JavascriptCore/JavascriptCore.h>
 #endif
@@ -15,6 +15,16 @@
 //#import <objc/objc-class.h>
 #import <objc/runtime.h>
 #import <objc/message.h>
+
+//
+// Boxing object
+//	type
+//	@			ObjC object
+//	struct		C struct
+//	method		ObjC method name
+//	rawPointer	raw C pointer (_C_PTR)
+//	function	Javascript function
+//
 
 @interface JSCocoaPrivateObject : NSObject {
 
@@ -49,6 +59,7 @@
 //- (void*)ptr;
 
 - (void)setObject:(id)o;
+- (void)setObjectNoRetain:(id)o;
 - (id)object;
 
 - (void)setMethod:(Method)m;
@@ -59,8 +70,5 @@
 
 - (void*)rawPointer;
 - (void)setRawPointer:(void*)rp;
-
-- (void)setObjectNoRetain:(id)o;
-
 
 @end

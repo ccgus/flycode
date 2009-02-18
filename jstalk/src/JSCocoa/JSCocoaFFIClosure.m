@@ -18,24 +18,18 @@
 //
 void closure_function(ffi_cif* cif, void* resp, void** args, void* userdata)
 {
-#ifdef __OBJC_GC__
-//[[NSGarbageCollector defaultCollector] disable];
-#endif
 	[(id)userdata calledByClosureWithArgs:args returnValue:resp];
-#ifdef __OBJC_GC__
-//[[NSGarbageCollector defaultCollector] enable];
-#endif
 }
 
 - (id)init
 {
-	id o	= [super init];
+	self	= [super init];
 
 	argTypes		= NULL;
 	encodings		= NULL;
 	jsFunction		= NULL;
 
-	return	o;
+	return	self;
 }
 
 //
@@ -124,7 +118,6 @@ void closure_function(ffi_cif* cif, void* resp, void** args, void* userdata)
 	
 	// Protect function from GC
 	JSValueProtect(ctx, jsFunction);
-//	[[NSGarbageCollector defaultCollector] disableCollectorForPointer:jsFunction];
 	[JSCocoaController upJSValueProtectCount];
 	
 	return	(IMP)closure;
@@ -178,12 +171,15 @@ void closure_function(ffi_cif* cif, void* resp, void** args, void* userdata)
 	// Create 'this'
 	if (isObjC)
 	{
+/*	
 		jsThis = [JSCocoaController jsCocoaPrivateObjectInContext:ctx];
 		id this = *(void**)closureArgs[0];
 		JSCocoaPrivateObject* private = JSObjectGetPrivate(jsThis);
 		private.type = @"@";
 		// If we've overloaded retain, we'll be calling ourselves until the stack dies
-		[private setObjectNoRetain:this];
+		[private setObject:this];
+*/
+		jsThis = [JSCocoaController boxedJSObject:*(void**)closureArgs[0] inContext:ctx];
 	}
 
 	// Call !
@@ -209,7 +205,7 @@ void closure_function(ffi_cif* cif, void* resp, void** args, void* userdata)
 	}
 
 	if (effectiveArgumentCount)	free(args);
-	if (exception)	NSLog(@"%@", [[JSCocoaController sharedController] formatJSException:exception]);
+	if (exception)	NSLog(@"%@", [[JSCocoaController controllerFromContext:ctx] formatJSException:exception]);
 }
 
 

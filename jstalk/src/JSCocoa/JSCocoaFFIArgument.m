@@ -12,7 +12,7 @@
 #import <objc/runtime.h>
 
 
-#ifdef JSCocoa_iPhone
+#if TARGET_IPHONE_SIMULATOR || TARGET_OS_IPHONE
 #import "GDataDefines.h"
 #import "GDataXMLNode.h"
 #endif
@@ -21,7 +21,7 @@
 
 - (id)init
 {
-	id o	= [super init];
+	self	= [super init];
 
 	ptr				= NULL;
 	typeEncoding	= 0;
@@ -31,16 +31,20 @@
 	structureTypeEncoding	= nil;
 	structureType.elements	= NULL;
 	
+	pointerTypeEncoding		= nil;
+	
 	// Used to store string data while converting JSStrings to char*
 	customData		= nil;
 	
-	return	o;
+	return	self;
 }
 
 - (void)cleanUp
 {
-	if (ptr && ownsStorage)	free(ptr);
-	if (customData)			[customData release];
+	if (structureTypeEncoding)	[structureTypeEncoding release];
+	if (pointerTypeEncoding)	[pointerTypeEncoding release];
+	if (ptr && ownsStorage)		free(ptr);
+	if (customData)				[customData release];
 
 	if (structureType.elements)	free(structureType.elements);
 	ptr = NULL;
@@ -48,13 +52,11 @@
 
 - (void)dealloc
 {
-	if (structureTypeEncoding) [structureTypeEncoding release];
 	[self cleanUp];
 	[super dealloc];
 }
 - (void)finalize
 {
-	if (structureTypeEncoding) [structureTypeEncoding release];
 	[self cleanUp];
 	[super finalize];
 }
@@ -105,6 +107,7 @@
 {
 	typeEncoding = '{';
 	structureTypeEncoding = [[NSString alloc] initWithString:encoding];
+	
 	if (storagePtr)
 	{
 		ownsStorage		= NO;
@@ -132,12 +135,26 @@
 	structureType.elements[elementCount] = NULL;
 }
 
+//
+// type o handling
+//	(pointers passed as arguments to a function, function writes values to these arguments)
+//
+- (void)setPointerTypeEncoding:(NSString*)encoding
+{
+	typeEncoding = '^';
+	pointerTypeEncoding = [[NSString alloc] initWithString:encoding];
+}
 
+- (id)pointerTypeEncoding
+{
+	return	pointerTypeEncoding;
+}
 
 
 - (ffi_type*)ffi_type
 {
 	if (!typeEncoding)	return	NULL;
+	if (pointerTypeEncoding)	return	&ffi_type_pointer;
 
 	if (typeEncoding == '{')	return	&structureType;
 
@@ -150,47 +167,72 @@
 - (void*)allocateStorage
 {
 	if (!typeEncoding)	return	NULL;
-	
-	[self cleanUp];
+
+	// NO ! will destroy structureTypeEncoding
+//	[self cleanUp];
 	// Special case for structs
 	if (typeEncoding == '{')
 	{
 //		NSLog(@"allocateStorage: Allocating struct");
 		// Some front padding for alignment and tail padding for structure
-		// (http://developer.apple.com/documentation/DeveloperTools/Conceptual/LowLevelABI/Articles/IA32.html)
+		// ( http://developer.apple.com/documentation/DeveloperTools/Conceptual/LowLevelABI/Articles/IA32.html )
 		// Structures are tail-padded to 32-bit multiples.
 		
 		//	+16 for alignment
 		//	+4 for tail padding
-		ptr = malloc([JSCocoaFFIArgument sizeOfStructure:structureTypeEncoding] + 16 + 4); 
+//		ptr = malloc([JSCocoaFFIArgument sizeOfStructure:structureTypeEncoding] + 16 + 4); 
+		ptr = malloc([JSCocoaFFIArgument sizeOfStructure:structureTypeEncoding] + 4); 
 		return	ptr;
 	}
 	
 	int size = [JSCocoaFFIArgument sizeOfTypeEncoding:typeEncoding];
 
 	// Bail if we can't handle our type
-	if (size == -1)	return	NULL;
+	if (size == -1)	return	NSLog(@"Can't handle type %c", typeEncoding), NULL;
 	if (size >= 0)	
 	{
 		int	minimalReturnSize = sizeof(long);
 		if (isReturnValue && size < minimalReturnSize)	size = minimalReturnSize;
 		ptr = malloc(size);
-		memset(ptr, size, 1);
 	}
 //	NSLog(@"Allocated size=%d %x for object %@", size, ptr, self);
 	return	ptr;
+}
+
+// type o : out arguments (eg fn(int* pointerToIntResult))
+- (void*)allocatePointerStorage
+{
+	typeEncoding = [pointerTypeEncoding UTF8String][1];
+	if (typeEncoding == '{')
+	{
+		structureTypeEncoding = [pointerTypeEncoding substringFromIndex:1];
+		[structureTypeEncoding retain];
+	}
+	[self allocateStorage];
+	return ptr;
 }
 
 - (void**)storage
 {
 	if (typeEncoding == '{')
 	{
+/*	
 		int alignOnSize = 16;
 		
 		int address = (int)ptr;
 		if ((address % alignOnSize) != 0)
 			address = (address+alignOnSize) & ~(alignOnSize-1);
-		return (void**)address;
+			
+		if (pointerTypeEncoding)	NSLog(@"THERE");
+*/		
+		if (pointerTypeEncoding)	return &ptr;
+//		return (void**)address;
+	}
+	
+	// Type o : return writable address
+	if (pointerTypeEncoding)
+	{
+		return &ptr;
 	}
 
 	return ptr;
@@ -366,6 +408,7 @@
 		}
 	}
 #endif	
+//	if (typeEncoding == '{')	p = [self storage];
 	BOOL r = [JSCocoaFFIArgument toJSValueRef:value inContext:ctx withTypeEncoding:typeEncoding withStructureTypeEncoding:structureTypeEncoding fromStorage:p];
 	if (!r)	NSLog(@"toJSValueRef FAILED");
 	return	r;
@@ -525,9 +568,8 @@
 		{
 			char* c2 = c+1;
 			while (c2 && *c2 != '"') c2++;
-			id propertyName = [[[NSString alloc] initWithBytes:c+1 length:(c2-c-1) encoding:NSASCIIStringEncoding] autorelease];
+			id propertyName = [[[NSString alloc] initWithBytes:c+1 length:(c2-c-1) encoding:NSUTF8StringEncoding] autorelease];
 			c = c2;
-			
 			// Skip '"'
 			c++;
 			char encoding = *c;
@@ -540,7 +582,7 @@
 			}
 			else
 			{
-				// If a pointer to raw C structure data is given, convert its members to JS values
+				// Given a pointer to raw C structure data, convert its members to JS values
 				if (ptr)
 				{
 					// Align 
@@ -551,7 +593,7 @@
 					[JSCocoaFFIArgument advancePtr:ptr accordingToEncoding:encoding];
 				}
 				else
-				// No pointer ? Get values from initialValues array. If not present, create undefined values
+				// Given no pointer, get values from initialValues array. If not present, create undefined values
 				{
 					if (!convertedValueCount)	return 0;
 					if (initialValues && initialValueCount && *convertedValueCount < initialValueCount)	valueJS = initialValues[*convertedValueCount];
@@ -590,7 +632,7 @@
 		{
 			char* c2 = c+1;
 			while (c2 && *c2 != '"') c2++;
-			id propertyName = [[[NSString alloc] initWithBytes:c+1 length:(c2-c-1) encoding:NSASCIIStringEncoding] autorelease];
+			id propertyName = [[[NSString alloc] initWithBytes:c+1 length:(c2-c-1) encoding:NSUTF8StringEncoding] autorelease];
 			c = c2;
 			
 			// Skip '"'
@@ -660,7 +702,6 @@
 }
 
 /*
-
 	__alignOf__ returns 8 for double, but its struct align is 4
 
 	use dummy structures to get struct alignment, each having a byte as first element
@@ -730,17 +771,16 @@ typedef	struct { char a; BOOL b;		} struct_C_BOOL;
 	return	NULL;
 }
 
+
+#pragma mark Structure encoding, size
+
 /*
 	From
 		{_NSRect={_NSPoint=ff}{_NSSize=ff}}
 		
 	Return
 		{_NSRect="origin"{_NSPoint="x"f"y"f}"size"{_NSSize="width"f"height"f}}
-
 */
-
-#pragma mark Structure encoding, size
-
 + (NSString*)structureNameFromStructureTypeEncoding:(NSString*)encoding
 {
 	// Extract structure name
@@ -750,7 +790,7 @@ typedef	struct { char a; BOOL b;		} struct_C_BOOL;
 	if (*c == '_')	c++;
 	char*	c2 = c;
 	while (*c2 && *c2 != '=') c2++;
-	return [[[NSString alloc] initWithBytes:c length:(c2-c) encoding:NSASCIIStringEncoding] autorelease];
+	return [[[NSString alloc] initWithBytes:c length:(c2-c) encoding:NSUTF8StringEncoding] autorelease];
 }
 
 + (NSMutableArray*)encodingsFromStructureTypeEncoding:(NSString*)encoding
@@ -880,11 +920,16 @@ typedef	struct { char a; BOOL b;		} struct_C_BOOL;
 	}
 	
 	// Else, box the object
+/*	
 	JSObjectRef jsObject = [JSCocoaController jsCocoaPrivateObjectInContext:ctx];
 	JSCocoaPrivateObject* private = JSObjectGetPrivate(jsObject);
 	private.type = @"@";
 	[private setObject:objcObject];
 	*value = jsObject;
+*/
+	// Use a global boxing function to always return the same Javascript object 
+	//	when requesting multiple boxings of the same ObjC object
+	*value = [JSCocoaController boxedJSObject:objcObject inContext:ctx];
 	return	YES;
 }
 
@@ -914,6 +959,7 @@ typedef	struct { char a; BOOL b;		} struct_C_BOOL;
 	{
 		JSStringRef resultStringJS = JSValueToStringCopy(ctx, value, NULL);
 		NSString* resultString = (NSString*)JSStringCopyCFString(kCFAllocatorDefault, resultStringJS);
+//		NSLog(@"unboxed=%@", resultString);
 		JSStringRelease(resultStringJS);
 		[NSMakeCollectable(resultString) autorelease];
 		*(id*)o = resultString;
@@ -948,7 +994,7 @@ typedef	struct { char a; BOOL b;		} struct_C_BOOL;
 		return	YES;
 	}
 
-	// number
+	// bool
 	if (JSValueIsBoolean(ctx, value))
 	{
 		bool v = JSValueToBoolean(ctx, value);
@@ -957,15 +1003,15 @@ typedef	struct { char a; BOOL b;		} struct_C_BOOL;
 		return	YES;
 	}
 
+	// From here we must have a Javascript object (Array, Hash) or a boxed Cocoa object
 	if (!JSValueIsObject(ctx, value))	
-	{
 		return	NO;
-	}
-	[JSCocoaController ensureJSValueIsObjectAfterInstanceAutocall:value inContext:ctx];
+
+//	[JSCocoaController ensureJSValueIsObjectAfterInstanceAutocall:value inContext:ctx];
 	
 	JSObjectRef jsObject = JSValueToObject(ctx, value, NULL);
 	JSCocoaPrivateObject* private = JSObjectGetPrivate(jsObject);
-	// Pure js hashes and arrays should be converted to NSArray and NSDictionary. ##Later.
+	// Pure js hashes and arrays are converted to NSArray and NSDictionary
 	if (!private)
 	{
 		// Use an anonymous function to test if object is Array or Object (hash)
@@ -1049,12 +1095,6 @@ typedef	struct { char a; BOOL b;		} struct_C_BOOL;
 	*o = hash;
 	return	YES;
 }
-
-
-
-	/*
-		javascript:alert([].constructor==Array.prototype.constructor)		
-	*/
 
 
 

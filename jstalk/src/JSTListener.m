@@ -34,7 +34,6 @@
 
 
 - (void) setupListener {
-    
     NSString *myBundleId    = [[NSBundle mainBundle] bundleIdentifier];
     NSString *port          = [NSString stringWithFormat:@"%@.JSTalk", myBundleId];
     

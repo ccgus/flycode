@@ -26,13 +26,13 @@
 
 - (id)init
 {
-	id r = [super init];
+	self = [super init];
 	
 	paths			= [[NSMutableArray alloc] init];
 	xmlDocuments	= [[NSMutableArray alloc] init];
 	hash			= [[NSMutableDictionary alloc] init];
 	
-	return	r;
+	return	self;
 }
 
 - (void)dealloc
@@ -44,10 +44,12 @@
 	[super dealloc];
 }
 
+//
+// Load a bridgeSupport file into a hash as { name : xmlTagString } 
+//
 - (BOOL)loadBridgeSupport:(NSString*)path
 {
 	NSError*	error = nil;
-
 	/*
 		Adhoc parser
 			NSXMLDocument is too slow
