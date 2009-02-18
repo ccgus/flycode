@@ -5,12 +5,14 @@ JSTalk is how I imagine AppleScript would be done today, if it was written by a 
 
 JSTalk's goal is not to kill off or replace AppleScript, but to provide a compelling alternative by blending together existing technologies.
 
+JSTalk comes with a command line tool (jstalk), an editor (JSTalk Editor), and a framework that programmers can include in their application to add scripting support with a single line of code.
+
 
 
 How does JSTalk work?
 ---------------------
 
-JSTalk is built on top of Apple's JavaScriptCore, the same JavaScript engine that powers Safari.  So when you write in JSTalk, you are writing JavaScript.
+JSTalk is built on top of Apple's JavaScriptCore, the same JavaScript engine that powers Safari.  So when you write in JSTalk, you are also writing JavaScript.
 
 JSTalk also includes a "bridge" which lets you access Apple's Cocoa frameworks from JavaScript.  This means you have a ton wonderful classes and functions you can use in addition to the standard JavaScript library.
 
