@@ -21,24 +21,30 @@
     self = [super init];
     if (self) {
         self.tokenizer = [[[TDTokenizer alloc] init] autorelease];
+        /*
+var s = "break case catch continue default delete do else finally for function if in instanceof new return switch this throw try typeof var void while with abstract boolean byte char class const debugger double enum export extends final float goto implements import int interface long native package private protected public short static super synchronized throws transient volatile null true false nil"
+
+words = s.split(" ")
+var i = 0;
+list = ""
+while (i < words.length) {
+    list = list + '@"' + words[i] + '", ';
+    i++
+}
+
+print("NSArray *blueWords = [NSArray arrayWithObjects:" + list + " nil];")
+        */
         
-        self.keywords = [NSDictionary dictionaryWithObjectsAndKeys:
-                         [NSColor blueColor], @"for",
-                         [NSColor blueColor], @"print",
-                         [NSColor blueColor], @"var",
-                         [NSColor blueColor], @"function",
-                         [NSColor blueColor], @"return",
-                         [NSColor blueColor], @"if",
-                         [NSColor blueColor], @"null",
-                         [NSColor blueColor], @"nil",
-                         [NSColor blueColor], @"class",
-                         [NSColor blueColor], @"true",
-                         [NSColor blueColor], @"false",
-                         [NSColor blueColor], @"short",
-                         [NSColor blueColor], @"static",
-                         [NSColor blueColor], @"super",
-                         [NSColor blueColor], @"new",
-                         nil];
+        NSArray *blueWords = [NSArray arrayWithObjects:@"break", @"case", @"catch", @"continue", @"default", @"delete", @"do", @"else", @"finally", @"for", @"function", @"if", @"in", @"instanceof", @"new", @"return", @"switch", @"this", @"throw", @"try", @"typeof", @"var", @"void", @"while", @"with", @"abstract", @"boolean", @"byte", @"char", @"class", @"const", @"debugger", @"double", @"enum", @"export", @"extends", @"final", @"float", @"goto", @"implements", @"import", @"int", @"interface", @"long", @"native", @"package", @"private", @"protected", @"public", @"short", @"static", @"super", @"synchronized", @"throws", @"transient", @"volatile", @"null", @"true", @"false", @"nil",  nil];
+        
+        NSMutableDictionary *keywords = [NSMutableDictionary dictionary];
+        
+        for (NSString *word in blueWords) {
+            [keywords setObject:[NSColor blueColor] forKey:word];
+        }
+        
+        self.keywords = keywords;
+        
     }
     
     NSString *someContent = @"Hello World!";
@@ -176,14 +182,15 @@
     
     JSCocoaController *jsController = [jstalk jsController];
     
-    #warning fixme
     jsController.exceptionHandler = self;
-    
-    [jstalk pushObject:self withName:@"_jstDocument" inController:jsController];
     
     jstalk.printController = self;
     
     [errorLabel setStringValue:@""];
+    
+    if ([JSTPrefs boolForKey:@"clearConsoleOnRun"]) {
+        [self clearConsole:nil];
+    }
     
     [jstalk executeString:s];
 }
@@ -218,7 +225,7 @@
     
     NSString *code = [JSTPreprocessor preprocessCode:[[jsTextView textStorage] string]];
     
-    debug(@"code: %@", code);
+    [[[outputTextView textStorage] mutableString] setString:code];
 }
 
 - (void) parseCode:(id)sender {
@@ -270,6 +277,56 @@
     
 }
 
+- (void)savePanelDidEndForApplicationSave:(NSSavePanel *)sheet returnCode:(int)returnCode contextInfo:(void *)contextInfo {
+    
+    NSString *fileName = [sheet filename];
+    if (!fileName) {
+        return;
+    }
+    
+    if ([[NSFileManager defaultManager] fileExistsAtPath:fileName]) {
+        if (![[NSFileManager defaultManager] removeFileAtPath:fileName handler:nil]) {
+            NSRunAlertPanel(@"Could not remove file", @"Sorry, but I could not remove the old file in order to save your application.", @"OK", nil, nil);
+            NSBeep();
+            return;
+        }
+    }
+    
+    NSString *runnerPath = [[NSBundle mainBundle] pathForResource:@"JSTalkRunner" ofType:@"app"];
+    
+    if (![[NSFileManager defaultManager] copyPath:runnerPath toPath:fileName handler:nil]) {
+        NSRunAlertPanel(@"Could not save", @"Sorry, but I could not save the application to the folder", @"OK", nil, nil);
+        return;
+    }
+    
+    NSString *sourcePath = [[[fileName stringByAppendingPathComponent:@"Contents"]
+                                      stringByAppendingPathComponent:@"Resources"]
+                                      stringByAppendingPathComponent:@"main.jstalk"];
+    
+    NSURL *sourceURL = [NSURL fileURLWithPath:sourcePath];
+    NSError *err = 0x00;
+    [[[jsTextView textStorage] string] writeToURL:sourceURL atomically:NO encoding:NSUTF8StringEncoding error:&err];
+    
+    if (err) {
+        NSLog(@"err: %@", err);
+    }
+}
+
+- (void) saveAsApplication:(id)sender {
+    
+    NSSavePanel *savePanel = [NSSavePanel savePanel];
+    
+    NSString *appName = @"";
+    
+    if ([self lastComponentOfFileName]) {
+        appName = [NSString stringWithFormat:@"%@.app", [[self lastComponentOfFileName] stringByDeletingPathExtension]];
+    }
+    
+    [savePanel setAllowedFileTypes:[NSArray arrayWithObject:@"app"]];
+    
+    [savePanel beginSheetForDirectory:nil file:appName modalForWindow:[splitView window] modalDelegate:self didEndSelector:@selector(savePanelDidEndForApplicationSave:returnCode:contextInfo:) contextInfo:nil];
+    
+}
 
 
 

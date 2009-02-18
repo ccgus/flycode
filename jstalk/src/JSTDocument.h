@@ -32,6 +32,7 @@
 
 - (void) executeScript:(id)sender;
 - (void) parseCode:(id)sender;
+- (void) clearConsole:(id)sender;
 
 @end
 

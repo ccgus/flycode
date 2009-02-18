@@ -34,6 +34,30 @@
     SetFrontProcess( &xpsn );
 }
 
+- (NSInteger) displayDialog:(NSString*)msg withTitle:(NSString*) title {
+    
+    NSAlert *alert = [NSAlert alertWithMessageText:title defaultButton:nil alternateButton:nil otherButton:nil informativeTextWithFormat:msg];
+    
+    NSInteger button = [alert runModal];
+    
+    debug(@"button: %d", button);
+    
+    return button;
+}
+
+- (NSInteger) displayDialog:(NSString*)msg {
+    
+    NSString *title = [[[NSBundle mainBundle] infoDictionary] objectForKey:(id)kCFBundleNameKey];
+    
+    if (!title) {
+        title = @"Unknown Application";
+    }
+    
+    return [self displayDialog:msg withTitle:title];
+}
+
+
+
 @end
 
 
@@ -87,6 +111,7 @@
     
     return [SBApplication applicationWithBundleIdentifier:bundleId];
 }
+
 
 @end
 

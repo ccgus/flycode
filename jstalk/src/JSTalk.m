@@ -32,9 +32,7 @@
 - (id) init {
 	self = [super init];
 	if (self != nil) {
-        debug(@"making new controller.");
         self.jsController = [[[JSCocoaController alloc] init] autorelease];
-        
 	}
     
 	return self;

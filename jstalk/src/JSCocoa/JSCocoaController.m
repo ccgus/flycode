@@ -2825,6 +2825,36 @@ static JSValueRef _jsCocoaObject_callUsingNSInvocation(JSContextRef ctx, id call
     if (strcmp(type, @encode(id)) == 0) {
         [invocation getReturnValue:&result];
     }
+    else if (strcmp(type, @encode(long)) == 0) {
+        long foo;
+        [invocation getReturnValue:&foo];
+        return JSValueMakeNumber(ctx, foo);
+    }
+    else if (strcmp(type, @encode(unsigned long)) == 0) {
+        unsigned long foo;
+        [invocation getReturnValue:&foo];
+        return JSValueMakeNumber(ctx, foo);
+    }
+    else if (strcmp(type, @encode(int)) == 0) {
+        int foo;
+        [invocation getReturnValue:&foo];
+        return JSValueMakeNumber(ctx, foo);
+    }
+    else if (strcmp(type, @encode(unsigned int)) == 0) {
+        unsigned int foo;
+        [invocation getReturnValue:&foo];
+        return JSValueMakeNumber(ctx, foo);
+    }
+    else if (strcmp(type, @encode(float)) == 0) {
+        float foo;
+        [invocation getReturnValue:&foo];
+        return JSValueMakeNumber(ctx, foo);
+    }
+    else if (strcmp(type, @encode(double)) == 0) {
+        double foo;
+        [invocation getReturnValue:&foo];
+        return JSValueMakeNumber(ctx, foo);
+    }
     
     if (!result) {
         return JSValueMakeNull(ctx);

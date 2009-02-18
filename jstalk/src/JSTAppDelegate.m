@@ -15,14 +15,39 @@
 - (void) saveWorkspace;
 @end
 
-
 @implementation JSTAppDelegate
 
++ (void) initialize {
+    
+    
+	NSMutableDictionary *defaultValues 	= [NSMutableDictionary dictionary];
+    NSUserDefaults      *defaults 	 	= [NSUserDefaults standardUserDefaults];
+    
+    [defaultValues setObject:[NSNumber numberWithBool:YES] forKey:@"rememberWorkspace"];
+    [defaultValues setObject:[NSNumber numberWithBool:YES] forKey:@"clearConsoleOnRun"];
+    
+    [defaults registerDefaults: defaultValues];
+    [[NSUserDefaultsController sharedUserDefaultsController] setInitialValues:defaultValues];
+}
+
+
 - (void)awakeFromNib {
-    [self restoreWorkspace];
+    
+    if ([JSTPrefs boolForKey:@"rememberWorkspace"]) {
+        [self restoreWorkspace];
+    }
+    
     [JSTListener listen];
 }
 
+- (IBAction) showPrefs:(id)sender {
+    
+    if (![prefsWindow isVisible]) {
+        [prefsWindow center];
+    }
+    
+    [prefsWindow makeKeyAndOrderFront:self];
+}
 
 - (void)applicationWillTerminate:(NSNotification *)aNotification {
     [self saveWorkspace];

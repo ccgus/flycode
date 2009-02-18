@@ -11,3 +11,5 @@
 #else
     #define debug(...)
 #endif
+
+#define JSTPrefs [NSUserDefaults standardUserDefaults]

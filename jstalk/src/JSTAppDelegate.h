@@ -10,7 +10,7 @@
 
 
 @interface JSTAppDelegate : NSObject {
-    
+    IBOutlet NSPanel *prefsWindow;
 }
 
 @end
