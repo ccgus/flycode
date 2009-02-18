@@ -4,7 +4,7 @@
 
 startDate=`/bin/date`
 revision=""
-upload=0
+upload=1
 ql=1
 
 while [ "$#" -gt 0 ]

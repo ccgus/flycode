@@ -20,5 +20,7 @@
 	<string>JSTRunnerApplication</string>
 	<key>LSUIElement</key>
 	<true/>
+	<key>LSMinimumSystemVersion</key>
+    <string>10.5</string>
 </dict>
 </plist>
