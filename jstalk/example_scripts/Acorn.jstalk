@@ -1,3 +1,6 @@
+// Note, this requires the Acorn JSEnabler plugin to be installed.
+// http://code.google.com/p/flycode/source/browse/trunk/jstalk/extras/acornplugin/
+
 // proxyForApp: gets an object from Acorn over DO
 var acorn = [JSTalk proxyForApp:"Acorn"];
 var outPath = "/tmp/jimi.png";
@@ -20,6 +23,3 @@ print(qt);
 [qt activate];
 
 print("Hurray!")
-// stuff like [[firstDoc windowController] callFilterWithName:"CIGaussianBlur"];
-// is sent to JS like so:
-// firstDoc.windowController().callFilterWithName_("CIGaussianBlur");

@@ -97,14 +97,25 @@ if [ ! -d  ~/cvsbuilds ]; then
     mkdir ~/cvsbuilds
 fi
 
-mv /tmp/jstalk/build/Release/JSTalk\ Editor.app ~/cvsbuilds/.
+cd /tmp/jstalk/build/Release/
+
+mkdir JSTalkFoo
+
+mv jstalk JSTalkFoo/.
+mv "JSTalk Editor.app" JSTalkFoo/.
+mv JSTalk.framework JSTalkFoo/.
+cp -r /tmp/jstalk/README.txt JSTalkFoo/.
+cp -r /tmp/jstalk/example_scripts JSTalkFoo/examples
+
+mv JSTalkFoo JSTalk
+
+ditto -c -k --sequesterRsrc --keepParent JSTalk JSTalk.zip
+
+mv JSTalk.zip ~/cvsbuilds/.
 
 cd ~/cvsbuilds/
 
-ditto -c -k --sequesterRsrc --keepParent JSTalk\ Editor.app JSTalkEditor.app.zip
-cp JSTalkEditor.app.zip $v-JSTalkEditor.app.zip
-rm -rf JSTalk\ Editor.app
-
+cp JSTalk.zip $v-JSTalk.zip
 
 #/tmp/jstalk/bin/makesparkle.py $v
 
@@ -113,9 +124,9 @@ if [ $upload == 1 ]; then
     
     downloadDir=private
     
-    scp ~/cvsbuilds/JSTalk.app.zip gus@elvis.mu.org:~/fm/download/$downloadDir/JSTalkPreview.zip
-    scp /tmp/jstalk/res/jstalkupdate.xml gus@elvis.mu.org:~/fm/download/$downloadDir/.
-    scp /tmp/jstalk/res/shortnotes.html gus@elvis:~/fm/download/$downloadDir/jstalkshortnotes.html
+    scp ~/cvsbuilds/JSTalk.zip gus@elvis.mu.org:~/fm/download/$downloadDir/JSTalkPreview.zip
+    #scp /tmp/jstalk/res/jstalkupdate.xml gus@elvis.mu.org:~/fm/download/$downloadDir/.
+    #scp /tmp/jstalk/res/shortnotes.html gus@elvis:~/fm/download/$downloadDir/jstalkshortnotes.html
 fi
 
 
