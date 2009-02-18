@@ -7,6 +7,8 @@ JSTalk's goal is not to kill off or replace AppleScript, but to provide a compel
 
 JSTalk comes with a command line tool (jstalk), an editor (JSTalk Editor), and a framework that programmers can include in their application to add scripting support with a single line of code.
 
+And finally, JSTalk is open source.  So if there is something wrong, or it's not running the way you expect it, you get the chance to peek under the covers and understand what's going on.
+
 
 
 How does JSTalk work?

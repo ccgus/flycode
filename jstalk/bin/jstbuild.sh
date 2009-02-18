@@ -80,8 +80,8 @@ function buildTarget {
     $xcodebuild -target "$1" -configuration Release OBJROOT=/tmp/jstalk/build SYMROOT=/tmp/jstalk/build OTHER_CFLAGS=""
     
     if [ $? != 0 ]; then
-        echo "Bad build for $1"
-        say bad build abort
+        echo "****** Bad build for $1 ********"
+        say "Bad build for $1"
         exit
     fi
 }
@@ -89,7 +89,9 @@ function buildTarget {
 
 buildTarget "JSTalk Framework"
 buildTarget "jstalk command line"
+buildTarget "JSTalkRunner"
 buildTarget "JSTalk Editor"
+
 
 if [ ! -d  ~/cvsbuilds ]; then
     mkdir ~/cvsbuilds
