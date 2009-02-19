@@ -275,6 +275,7 @@
 		CC1322FD0F23F3C10032FEB8 /* JSTTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JSTTextView.h; path = src/JSTTextView.h; sourceTree = "<group>"; };
 		CC1322FE0F23F3C10032FEB8 /* JSTTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JSTTextView.m; path = src/JSTTextView.m; sourceTree = "<group>"; };
 		CC1323840F24FF9D0032FEB8 /* Carbon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Carbon.framework; path = /System/Library/Frameworks/Carbon.framework; sourceTree = "<absolute>"; };
+		CC172FB20F4CF3CB00A808C9 /* README.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.txt; sourceTree = "<group>"; };
 		CC1C7D210F48BB2C007A2941 /* TDAlternation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TDAlternation.h; sourceTree = "<group>"; };
 		CC1C7D220F48BB2C007A2941 /* TDAlternation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TDAlternation.m; sourceTree = "<group>"; };
 		CC1C7D230F48BB2C007A2941 /* TDAny.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TDAny.h; sourceTree = "<group>"; };
@@ -513,6 +514,7 @@
 		2A37F4B8FDCFA73011CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				CC172FB20F4CF3CB00A808C9 /* README.txt */,
 				CC43C11D0F4BBDF40044BA41 /* main.jstalk */,
 				CC1C7E3E0F48C2F3007A2941 /* images */,
 				CC41440F0F252D0700E46669 /* JSTalkFramework-Info.plist */,

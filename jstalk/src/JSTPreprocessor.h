@@ -30,16 +30,17 @@
     NSString *_target;
     NSString *_lastString;
     NSMutableString *_selector;
+    NSMutableString *_currentArgument;
 }
 
 @property (retain) NSMutableArray *args;
 @property (retain) NSMutableString *selector;
 @property (retain) NSString *target;
 @property (retain) NSString *lastString;
+@property (retain) NSMutableString *currentArgument;
+@property (assign) JSTPObjcCall *parent;
 
 - (void) addSymbol:(id)whatever;
-- (id) push;
-- (id) pop;
 
 @end
 

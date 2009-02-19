@@ -6,16 +6,14 @@ if ([windows count] > 0) {
     // get() "Forces evaluation of the receiver, causing the real object to be returned immediately."
     var win = windows[0].get()
     var target = win.target().get()
-    var url = target.URL()
-    
-    // get rid of the file://localhost/ prefix
-    url = url.substr(16);
+    var url = [NSURL URLWithString:[target URL]];
     
     var terminal = [SBApplication app:"Terminal"];
     
     [terminal activate];
     
-    var cmd = "cd '" + url + "'";
-    
-    [terminal doScript:cmd in:nil];
+    [terminal doScript:"cd '" + [url path] + "'" in:nil];
+}
+else {
+    print("There's no window open")
 }

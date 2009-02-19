@@ -40,8 +40,6 @@
     
     NSInteger button = [alert runModal];
     
-    debug(@"button: %d", button);
-    
     return button;
 }
 
@@ -117,7 +115,13 @@
 
 
 
+@implementation NSString (JSTExtras)
 
+- (NSURL*) fileURL {
+    return [NSURL fileURLWithPath:self];
+}
+
+@end
 
 
 
