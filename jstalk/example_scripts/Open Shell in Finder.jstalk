@@ -2,6 +2,7 @@ var windows  = [[SBApplication app:"Finder"] windows];
 
 if ([windows count] > 0) {
     
+    // from SBObject:
     // get() "Forces evaluation of the receiver, causing the real object to be returned immediately."
     var win = windows[0].get()
     var target = win.target().get()
