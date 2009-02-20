@@ -70,9 +70,6 @@ sed -e "s/BUILDID/$v/g"  res/Info.plist > res/Info.plist.tmp
 mv res/Info.plist.tmp res/Info.plist
 
 
-
-
-
 function buildTarget {
     
     echo Building "$1"
@@ -129,6 +126,7 @@ if [ $upload == 1 ]; then
     #scp /tmp/jstalk/res/shortnotes.html gus@elvis:~/fm/download/$downloadDir/jstalkshortnotes.html
 fi
 
+rm -rf /tmp/jstalk
 
 say "done building"
 
