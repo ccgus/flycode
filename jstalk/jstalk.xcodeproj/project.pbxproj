@@ -208,6 +208,7 @@
 		CCC5B8CD0F1EFAAA00126722 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CCC5B8CC0F1EFAAA00126722 /* main.m */; };
 		CCC5B8D00F1EFABA00126722 /* JSTDocument.m in Sources */ = {isa = PBXBuildFile; fileRef = CCC5B8CE0F1EFABA00126722 /* JSTDocument.m */; };
 		CCC5B94E0F1EFC4500126722 /* JSTAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CCC5B94D0F1EFC4500126722 /* JSTAppDelegate.m */; };
+		CCF68F1E0F4E3E4F00925FCA /* JSTalkDocument.icns in Resources */ = {isa = PBXBuildFile; fileRef = CCF68F1D0F4E3E4F00925FCA /* JSTalkDocument.icns */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -411,6 +412,7 @@
 		CCC5B95A0F1EFCFE00126722 /* JSTListener.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JSTListener.h; path = src/JSTListener.h; sourceTree = "<group>"; };
 		CCC5B95B0F1EFCFE00126722 /* JSTListener.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JSTListener.m; path = src/JSTListener.m; sourceTree = "<group>"; };
 		CCC5BA930F1F209F00126722 /* class.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; name = class.js; path = src/JSCocoa/class.js; sourceTree = "<group>"; };
+		CCF68F1D0F4E3E4F00925FCA /* JSTalkDocument.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; name = JSTalkDocument.icns; path = res/images/JSTalkDocument.icns; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -658,6 +660,7 @@
 		CC1C7E3E0F48C2F3007A2941 /* images */ = {
 			isa = PBXGroup;
 			children = (
+				CCF68F1D0F4E3E4F00925FCA /* JSTalkDocument.icns */,
 				CC94E0510F4A616300208BE0 /* JSTalk.icns */,
 				CC1C7E570F48C76B007A2941 /* Clear.tiff */,
 				CC1C7E3F0F48C34D007A2941 /* Play.tiff */,
@@ -897,6 +900,7 @@
 				CC1C7E400F48C34D007A2941 /* Play.tiff in Resources */,
 				CC1C7E580F48C76B007A2941 /* Clear.tiff in Resources */,
 				CC94E0520F4A616300208BE0 /* JSTalk.icns in Resources */,
+				CCF68F1E0F4E3E4F00925FCA /* JSTalkDocument.icns in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

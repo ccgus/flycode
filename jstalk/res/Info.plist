@@ -12,7 +12,7 @@
 				<string>jstalk</string>
 			</array>
 			<key>CFBundleTypeIconFile</key>
-			<string></string>
+			<string>JSTalkDocument.icns</string>
 			<key>CFBundleTypeName</key>
 			<string>DocumentType</string>
 			<key>CFBundleTypeOSTypes</key>
@@ -46,6 +46,6 @@
 	<key>NSPrincipalClass</key>
 	<string>NSApplication</string>
 	<key>LSMinimumSystemVersion</key>
-    <string>10.5</string>
+	<string>10.5</string>
 </dict>
 </plist>

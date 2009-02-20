@@ -84,6 +84,7 @@ Credits:
 
 As said earlier, JSTalk is a blend of existing technologies, and has very little original code in it.  Here's what it uses:
 
+JSTalk Icon, from Brad Ellis.
 JavaScriptCore, from Apple and the WebKit team.
 JSCocoa, from Patrick Geiller: http://inexdo.com/JSCocoa
 TDParseKit, from Todd Ditchendorf: http://ditchnet.org/tdparsekit/
