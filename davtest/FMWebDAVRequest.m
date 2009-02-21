@@ -59,6 +59,21 @@
 
 - (void) sendRequest:(NSMutableURLRequest *)req {
     
+    
+    // defaults write com.flyingmeat.VoodooPad_Pro FMWebDAVRequestDebug 1
+    // defaults delete com.flyingmeat.VoodooPad_Pro FMWebDAVRequestDebug
+    
+    if ([[NSUserDefaults standardUserDefaults] boolForKey:@"FMWebDAVRequestDebug"]) {
+        NSData *d = [req HTTPBody];
+        
+        if (d) {
+            NSString *junk = [[[NSString alloc] initWithData:d encoding:NSUTF8StringEncoding] autorelease];
+            NSLog(@"%@", junk);
+        }
+    }
+    
+    
+    
     if (_synchronous) {
         NSURLResponse *response = 0x00;
         
@@ -92,7 +107,11 @@
     
     [req setHTTPMethod:@"MKCOL"];
     
-    [req setValue:@"application/xml" forHTTPHeaderField:@"Content-Type"];
+    // defaults write com.flyingmeat.VoodooPad_Pro skipMKCOLContentType 1
+    // defaults delete com.flyingmeat.VoodooPad_Pro skipMKCOLContentType
+    if (![[NSUserDefaults standardUserDefaults] boolForKey:@"skipMKCOLContentType"]) {
+        [req setValue:@"application/xml" forHTTPHeaderField:@"Content-Type"];
+    }
     
     [self sendRequest:req];
     
