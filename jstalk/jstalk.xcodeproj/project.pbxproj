@@ -1336,6 +1336,7 @@
 				GCC_PREFIX_HEADER = src/JSTalk_Prefix.pch;
 				INSTALL_PATH = /usr/local/bin;
 				OTHER_LDFLAGS = (
+					"-lexpat",
 					"-lffi",
 					"-framework",
 					Foundation,
