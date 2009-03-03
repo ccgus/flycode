@@ -1,6 +1,6 @@
 import JSTalk
 
-vp = JSTalk.proxyForApp("VoodooPad Pro")
+vp = JSTalk.application("VoodooPad Pro")
 
 print(vp)
 

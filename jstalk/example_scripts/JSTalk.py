@@ -2,7 +2,7 @@ from Foundation import *
 from AppKit import *
 import time
 
-def proxyForApp(appName):
+def application(appName):
     appPath = NSWorkspace.sharedWorkspace().fullPathForApplication_(appName);
     
     if (not appPath):
@@ -35,4 +35,5 @@ def proxyForApp(appName):
     return conn.rootProxy()
         
 
-
+def proxyForApp(appName):
+    return application(appName)

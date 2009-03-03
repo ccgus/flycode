@@ -228,6 +228,37 @@ print("NSArray *blueWords = [NSArray arrayWithObjects:" + list + " nil];")
     [[[outputTextView textStorage] mutableString] setString:code];
 }
 
+- (void) jslintAction:(id)sender {
+    NSString *code = [JSTPreprocessor preprocessCode:[[jsTextView textStorage] string]];
+    
+    
+    
+    JSTalk *jstalk = [[[JSTalk alloc] init] autorelease];
+    JSCocoaController *jsController = [jstalk jsController];
+    
+    jsController.exceptionHandler = self;
+    
+    jstalk.printController = self;
+    
+    [errorLabel setStringValue:@""];
+    
+    if ([JSTPrefs boolForKey:@"clearConsoleOnRun"]) {
+        [self clearConsole:nil];
+    }
+    
+    NSString *jslintPath = [[NSBundle mainBundle] pathForResource:@"fulljslint" ofType:@"js"];
+    
+    debug(@"jslintPath: %@", jslintPath);
+    
+    NSString *jslintSrc = [NSString stringWithContentsOfFile:jslintPath encoding:NSUTF8StringEncoding error:nil];
+    
+    [jsController evalJSString:jslintSrc];
+    
+    //[jstalk executeString:s];
+    
+    
+}
+
 - (void) parseCode:(id)sender {
     
     // we should really do substrings...

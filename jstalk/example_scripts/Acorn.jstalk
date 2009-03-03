@@ -1,8 +1,8 @@
 // Note, this requires the Acorn JSEnabler plugin to be installed.
 // http://code.google.com/p/flycode/source/browse/trunk/jstalk/extras/acornplugin/
 
-// proxyForApp: gets an object from Acorn over DO
-var acorn = [JSTalk proxyForApp:"Acorn"];
+// application: gets an object from Acorn over DO
+var acorn = [JSTalk application:"Acorn"];
 var outPath = "/tmp/jimi.png";
 var firstDoc = [[acorn orderedDocuments] objectAtIndex:0];
 
@@ -15,11 +15,11 @@ for (i = 0; i < 10; i++) {
 
 [[firstDoc undoManager] undo];
 
-var qt = [SBApplication app:"QuickTime Player"];
+var qt = [SBApplication application:"QuickTime Player"];
 
 print(qt);
 
 [qt open:[NSURL fileURLWithPath: outPath]];
 [qt activate];
 
-print("Hurray!")
+print("Hurray!");

@@ -54,7 +54,9 @@
     return [self displayDialog:msg withTitle:title];
 }
 
-
+- (id) sharedDocumentController {
+    return [NSDocumentController sharedDocumentController];
+}
 
 @end
 
@@ -95,7 +97,7 @@
 
 @implementation SBApplication (JSTExtras)
 
-+ (id) app:(NSString*)appName {
++ (id) application:(NSString*)appName {
     
     NSString *appPath = [[NSWorkspace sharedWorkspace] fullPathForApplication:appName];
     

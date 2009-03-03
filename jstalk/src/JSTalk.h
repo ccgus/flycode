@@ -27,4 +27,6 @@
 
 + (void) listen;
 
++ (id) application:(NSString*)app;
+
 @end

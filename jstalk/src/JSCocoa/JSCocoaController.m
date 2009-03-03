@@ -1212,6 +1212,11 @@ static id JSCocoaSingleton = NULL;
 	// Box the ObjC object in a JSObjectRef
 	JSObjectRef jsObject = [self jsCocoaPrivateObjectInContext:ctx];
 	JSCocoaPrivateObject* private = JSObjectGetPrivate(jsObject);
+    
+    if (!private) {
+        return nil;
+    }
+    
 	private.type = @"@";
 	[private setObject:o];
 	
@@ -2569,7 +2574,7 @@ static JSValueRef _jsCocoaObject_callAsFunction(JSContextRef ctx, JSObjectRef fu
 		callingObjC	= YES;
 		callee		= [thisPrivateObject object];
 		methodName	= superSelector ? superSelector : [NSMutableString stringWithString:privateObject.methodName];
-        debug(@"calling %@.%@", callee, methodName);
+        //debug(@"calling %@.%@", callee, methodName);
 
 		// Instance call
 		if ([callee class] == callee && [methodName isEqualToString:@"instance"]) {
@@ -2581,6 +2586,7 @@ static JSValueRef _jsCocoaObject_callAsFunction(JSContextRef ctx, JSObjectRef fu
 			return [callee instanceWithContext:ctx argumentCount:argumentCount arguments:arguments exception:exception];
 		}
         
+        /*
         #warning why two if statements that are the same?
 		// Check selector
 		if (![callee respondsToSelector:NSSelectorFromString(methodName)])
@@ -2607,6 +2613,7 @@ static JSValueRef _jsCocoaObject_callAsFunction(JSContextRef ctx, JSObjectRef fu
 				}
 			}
 		}
+        */
         
 		// NSDistantObject
         if ([callee isKindOfClass:[NSDistantObject class]]) {

@@ -113,9 +113,7 @@
 }
 
 
-
-
-+ (id) proxyForApp:(NSString*)app {
++ (id) application:(NSString*)app {
     
     NSString *appPath = [[NSWorkspace sharedWorkspace] fullPathForApplication:app];
     
@@ -155,5 +153,11 @@
     return [conn rootProxy];
     
 }
+
+
++ (id) proxyForApp:(NSString*)app {
+    return [self application:app];
+}
+
 
 @end
