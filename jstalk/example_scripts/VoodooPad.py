@@ -1,11 +1,6 @@
-from Foundation import *
-import AppKit
+import JSTalk
 
-port = "com.flyingmeat.VoodooPad_Pro.JSTalk"
-
-conn = NSConnection.connectionWithRegisteredName_host_(port, None)
-
-vp = conn.rootProxy()
+vp = JSTalk.proxyForApp("VoodooPad Pro")
 
 print(vp)
 
@@ -20,6 +15,4 @@ for pageKey in firstDoc.keys():
         pageText = page.dataAsAttributedString().string()
         print(pageText)
     
-
-
 
