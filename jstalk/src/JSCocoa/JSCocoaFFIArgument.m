@@ -808,6 +808,7 @@ typedef	struct { char a; BOOL b;		} struct_C_BOOL;
 {
 	// Fetch structure type encoding from BridgeSupport
 //	id xml = [[BridgeSupportController sharedController] query:structureName withType:@"struct"];
+    debug(@"structureName: %@", structureName);
 	id xml = [[BridgeSupportController sharedController] queryName:structureName type:@"struct"];
 
 	if (xml == nil)

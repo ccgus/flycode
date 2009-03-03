@@ -25,7 +25,7 @@
 //	rawPointer	raw C pointer (_C_PTR)
 //	function	Javascript function
 //
-
+@class JSBridgeType;
 @interface JSCocoaPrivateObject : NSObject {
 
 	NSString*	type;
@@ -46,6 +46,8 @@
 	
 	BOOL		isAutoCall;
 	BOOL		retainObject;
+    
+    JSBridgeType *bridgeType;
 }
 
 @property (copy) NSString*	type;
@@ -54,7 +56,8 @@
 @property (copy) NSString*	structureName;
 @property (copy) NSString*	declaredType;
 @property BOOL	isAutoCall;
-
+@property (assign) JSBridgeType *bridgeType;
+ 
 //- (void)setPtr:(void*)ptrValue;
 //- (void*)ptr;
 

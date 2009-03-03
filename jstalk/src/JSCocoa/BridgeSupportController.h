@@ -10,13 +10,18 @@
 #import <Cocoa/Cocoa.h>
 #endif
 
-@interface BridgeSupportController : NSObject {
+@class JSBridgeType;
 
+@interface BridgeSupportController : NSObject {
 
 	NSMutableArray*			paths;
 	NSMutableArray*			xmlDocuments;
 
 	NSMutableDictionary*	hash;
+    
+    NSMutableDictionary*    ghash;
+    
+    JSBridgeType* currentBridgeType;
 }
 
 + (id)sharedController;
@@ -32,5 +37,29 @@
 - (NSString*)queryName:(NSString*)name;
 - (NSString*)queryName:(NSString*)name type:(NSString*)type;
 
+- (JSBridgeType*) typeForName:(NSString*)name;
+
+@end
+
+extern NSString *JSBridgeTypeConstant;
+extern NSString *JSBridgeTypeEnum;
+extern NSString *JSBridgeTypeFunction;
+
+@interface JSBridgeType : NSObject {
+    NSString *_type;
+    NSString *_name;
+    NSString *_ctype;
+    NSInteger _evalue;
+    
+    NSArray *_args;
+    NSDictionary *_retval;
+}
+
+@property (retain) NSString *type;
+@property (retain) NSString *name;
+@property (retain) NSString *ctype;
+@property (assign) NSInteger evalue;
+@property (retain) NSArray *args;
+@property (retain) NSDictionary *retval;
 
 @end

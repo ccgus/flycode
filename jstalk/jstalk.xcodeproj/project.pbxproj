@@ -1209,6 +1209,7 @@
 					Foundation,
 					"-framework",
 					AppKit,
+					"-lexpat",
 					"-lffi",
 				);
 				PREBINDING = NO;
@@ -1236,6 +1237,7 @@
 					Foundation,
 					"-framework",
 					AppKit,
+					"-lexpat",
 					"-lffi",
 				);
 				PREBINDING = NO;

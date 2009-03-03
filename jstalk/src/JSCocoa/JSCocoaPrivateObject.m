@@ -11,7 +11,7 @@
 
 @implementation JSCocoaPrivateObject
 
-@synthesize type, xml, declaredType, methodName, structureName, isAutoCall;
+@synthesize type, xml, declaredType, methodName, structureName, isAutoCall, bridgeType;
 
 
 - (id)init

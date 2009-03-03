@@ -752,6 +752,53 @@ static id JSCocoaSingleton = NULL;
 }
 
 
++ (void) addArgumentToArray:(NSMutableArray*)argumentEncodings fromDictionary:(NSDictionary*)d {
+    
+    
+    // fixme: check for type64?
+    NSString *type = [d objectForKey:@"type"];
+    
+    char typeEncodingChar = [type UTF8String][0];
+    
+    JSCocoaFFIArgument *argumentEncoding = [[JSCocoaFFIArgument alloc] init];
+    
+    if (typeEncodingChar == '{') {
+        [argumentEncoding setStructureTypeEncoding:type];
+    }	
+    else if (typeEncodingChar == '^') {
+        [argumentEncoding setPointerTypeEncoding:type];
+    }
+    else {
+        [argumentEncoding setTypeEncoding:typeEncodingChar];
+    }
+    
+    if (![argumentEncodings count]) {
+        [argumentEncoding setIsReturnValue:YES];
+    }
+    
+    [argumentEncodings addObject:argumentEncoding];
+    [argumentEncoding release];
+    
+    
+    
+}
+
++ (NSMutableArray*)CFunctionEncodingFromPrivateObject:(JSCocoaPrivateObject*)object {
+    
+	NSMutableArray *argumentEncodings = [NSMutableArray array];
+    
+    JSBridgeType *bridgeType = object.bridgeType;
+    
+    [self addArgumentToArray:argumentEncodings fromDictionary:bridgeType.retval];
+    
+    for (NSDictionary *info in bridgeType.args) {
+        [self addArgumentToArray:argumentEncodings fromDictionary:info];
+    }
+    
+	return argumentEncodings;
+}
+
+
 
 
 #pragma mark Class Creation
@@ -1095,6 +1142,8 @@ static id JSCocoaSingleton = NULL;
 #pragma mark Variadic call
 - (BOOL)isMethodVariadic:(id)methodName class:(id)class
 {
+    debug(@"class %@", class);
+    
 	id className = [class description];
 	id xml = [[BridgeSupportController sharedController] queryName:className];
 
@@ -1658,11 +1707,56 @@ JSValueRef OSXObject_getProperty(JSContextRef ctx, JSObjectRef object, JSStringR
 		return	[JSCocoaController boxedJSObject:objCClass inContext:ctx];
 	}
 
-	id xml;
-	id type = nil;
+	//id xml;
+	//id type = nil;
 	//
 	// Query BridgeSupport for property
 	//
+    debug(@"propertyName: %@", propertyName);
+    JSBridgeType *bt = [[BridgeSupportController sharedController] typeForName:propertyName];
+    
+    if (bt) {
+        
+        if (bt.type == JSBridgeTypeConstant) {
+            
+            if (!([bt.ctype isEqualToString:@"@"] ||
+                  [bt.ctype isEqualToString:@"NSString*"] ||
+                  [bt.ctype isEqualToString:@"^{__CFString=}"]))
+            {
+                NSLog(@"OSX_getPropertyCallback: Don't know how to deal with the type '%@'", bt.ctype);
+                return nil;
+            }
+            
+            // Grab symbol
+			void* symbol = dlsym(RTLD_DEFAULT, [propertyName UTF8String]);
+			if (!symbol) {
+                return	NSLog(@"(OSX_getPropertyCallback) symbol %@ not found", propertyName), NULL;
+            }
+            
+			NSString* str = *(NSString**)symbol;
+            
+            // Return symbol as a Javascript string
+			JSStringRef jsName = JSStringCreateWithUTF8CString([str UTF8String]);
+			JSValueRef jsString = JSValueMakeString(ctx, jsName);
+			JSStringRelease(jsName);
+			return	jsString;
+        }
+		else if (bt.type == JSBridgeTypeEnum) {
+			return	JSValueMakeNumber(ctx, bt.evalue);
+		}
+		else if (bt.type == JSBridgeTypeFunction) {
+			JSObjectRef o = [JSCocoaController jsCocoaPrivateObjectInContext:ctx];
+			JSCocoaPrivateObject* private = JSObjectGetPrivate(o);
+            private.bridgeType = bt;
+			return	o;
+		}
+        
+        #warning need struct... right? do we?
+        
+        return nil;
+    }
+    
+    /*
 	xml = [[BridgeSupportController sharedController] queryName:propertyName];
 	if (xml)
 	{
@@ -1743,6 +1837,7 @@ JSValueRef OSXObject_getProperty(JSContextRef ctx, JSObjectRef object, JSStringR
 			return	JSValueMakeNumber(ctx, doubleValue);
 		}
 	}
+    */
 	return	NULL;
 }
 
@@ -2437,12 +2532,18 @@ static void jsCocoaObject_getPropertyNames(JSContextRef ctx, JSObjectRef object,
 // That's where the actual calling happens.
 static JSValueRef _jsCocoaObject_callAsFunction(JSContextRef ctx, JSObjectRef function, JSObjectRef thisObject, size_t argumentCount, JSValueRef arguments[], JSValueRef* exception, NSString* superSelector, Class superSelectorClass, JSValueRef** argumentsToFree)
 {
+    debug(@"_jsCocoaObject_callAsFunction");
+    
 	JSCocoaPrivateObject* privateObject		= JSObjectGetPrivate(function);
 	JSCocoaPrivateObject* thisPrivateObject = JSObjectGetPrivate(thisObject);
-
+    
 	// Return an exception if calling on NULL
-	if ([thisPrivateObject object] == NULL && !privateObject.xml)	return	throwException(ctx, exception, @"jsCocoaObject_callAsFunction : call with null object"), NULL;
-
+	if ([thisPrivateObject object] == NULL && !privateObject.bridgeType) {
+        debug(@"There's no bridge type!");
+        throwException(ctx, exception, @"jsCocoaObject_callAsFunction : call with null object");
+        return nil;
+    }
+    
 	// Call setup : calling ObjC or C requires
 	// Function address
 	void* callAddress = NULL;
@@ -2463,20 +2564,24 @@ static JSValueRef _jsCocoaObject_callAsFunction(JSContextRef ctx, JSObjectRef fu
 	// ObjC setup
 	//
 	id callee = NULL, methodName = NULL, functionName = NULL;
-	if ([privateObject.type isEqualToString:@"method"] && [thisPrivateObject.type isEqualToString:@"@"])
-	{
+	if ([privateObject.type isEqualToString:@"method"] && [thisPrivateObject.type isEqualToString:@"@"]) {
+        
 		callingObjC	= YES;
 		callee		= [thisPrivateObject object];
 		methodName	= superSelector ? superSelector : [NSMutableString stringWithString:privateObject.methodName];
-//		NSLog(@"calling %@.%@", callee, methodName);
+        debug(@"calling %@.%@", callee, methodName);
 
 		// Instance call
-		if ([callee class] == callee && [methodName isEqualToString:@"instance"])
-		{
-			if (argumentCount > 1)	return	throwException(ctx, exception, @"Invalid argument count in instance call : must be 0 or 1"), NULL;
-			return	[callee instanceWithContext:ctx argumentCount:argumentCount arguments:arguments exception:exception];
+		if ([callee class] == callee && [methodName isEqualToString:@"instance"]) {
+			if (argumentCount > 1) {
+                throwException(ctx, exception, @"Invalid argument count in instance call : must be 0 or 1");
+                return nil;
+            }
+            
+			return [callee instanceWithContext:ctx argumentCount:argumentCount arguments:arguments exception:exception];
 		}
-
+        
+        #warning why two if statements that are the same?
 		// Check selector
 		if (![callee respondsToSelector:NSSelectorFromString(methodName)])
 		{
@@ -2487,50 +2592,52 @@ static JSValueRef _jsCocoaObject_callAsFunction(JSContextRef ctx, JSObjectRef fu
 			//
 			if (![callee respondsToSelector:NSSelectorFromString(methodName)])
 			{
-				id			splitMethodName		= privateObject.methodName;
+				id	splitMethodName	= privateObject.methodName;
 				id class = [callee class];
-				if (callee == class)
-					class = objc_getMetaClass(object_getClassName(class));
+				if (callee == class) {
+                    class = objc_getMetaClass(object_getClassName(class));
+                }
+					
 				BOOL isSplitCall = [JSCocoaController trySplitCall:&splitMethodName class:class argumentCount:&argumentCount arguments:&arguments ctx:ctx];
-				if (isSplitCall)		
-				{
+                
+				if (isSplitCall) {
 					methodName = splitMethodName;
 					// trySplitCall returned new arguments that we'll need to free later on
 					*argumentsToFree = arguments;
 				}
 			}
 		}
-
+        
 		// NSDistantObject
-        if ([callee class] == [NSDistantObject class]) {
+        if ([callee isKindOfClass:[NSDistantObject class]]) {
             return _jsCocoaObject_callUsingNSInvocation(ctx, callee, methodName, argumentCount, arguments);
         }
 		
 		// Get method pointer
 		Method method = class_getInstanceMethod([callee class], NSSelectorFromString(methodName));
-		if (!method)	method = class_getClassMethod([callee class], NSSelectorFromString(methodName));
-
-        // NSDistantObject : maybe it's a property?
+		if (!method) {
+            method = class_getClassMethod([callee class], NSSelectorFromString(methodName));
+        }
+        
+        // maybe it's a property?
         if (!method && [callee methodSignatureForSelector:NSSelectorFromString(methodName)]) {
             return _jsCocoaObject_callUsingNSInvocation(ctx, callee, methodName, argumentCount, arguments);
         }
 
 		// Bail if we can't find a suitable method
-		if (!method)	
-		{
+		if (!method) {
 			// Last chance before exception : try treating callee as string
-			if ([callee isKindOfClass:[NSString class]])
-			{
+			if ([callee isKindOfClass:[NSString class]]) {
 				id script = [NSString stringWithFormat:@"String.prototype.%@", methodName];
 				JSStringRef	jsScript = JSStringCreateWithUTF8CString([script UTF8String]);
 				JSValueRef result = JSEvaluateScript(ctx, jsScript, NULL, NULL, 1, NULL);
 				JSStringRelease(jsScript);
-				if (result && JSValueGetType(ctx, result) == kJSTypeObject)
-				{
+                
+				if (result && JSValueGetType(ctx, result) == kJSTypeObject) {
 					JSStringRef string = JSStringCreateWithCFString((CFStringRef)callee);
 					JSValueRef stringValue = JSValueMakeString(ctx, string);
 					JSStringRelease(string);
-
+                    
 					JSObjectRef functionObject = JSValueToObject(ctx, result, NULL);
 					JSObjectRef jsThisObject = JSValueToObject(ctx, stringValue, NULL);
 					JSValueRef r =	JSObjectCallAsFunction(ctx, functionObject, jsThisObject, argumentCount, arguments, NULL);
@@ -2543,34 +2650,57 @@ static JSValueRef _jsCocoaObject_callAsFunction(JSContextRef ctx, JSObjectRef fu
 		
 		// Extract arguments
 		const char* typeEncoding = method_getTypeEncoding(method);
-//		NSLog(@"method %@ encoding=%s", methodName, typeEncoding);
+		NSLog(@"method %@ encoding=%s", methodName, typeEncoding);
 		argumentEncodings = [JSCocoaController parseObjCMethodEncoding:typeEncoding];
 		// Function arguments is all arguments minus return value and [instance, selector] params to objc_send
-		callAddressArgumentCount = [argumentEncodings count]-3;
+		callAddressArgumentCount = [argumentEncodings count] - 3;
 
 		// Get call address
 		callAddress = objc_msgSend;
-
+        
 		//
 		// From PyObjC : when to call objc_msgSendStret, for structure return
 		//		Depending on structure size & architecture, structures are returned as function first argument (done transparently by ffi) or via registers
 		//
-		BOOL	usingStret = isUsingStret(argumentEncodings);
-		if (usingStret)	callAddress = objc_msgSend_stret;
+		BOOL usingStret = isUsingStret(argumentEncodings);
+        
+		if (usingStret)	{
+            callAddress = objc_msgSend_stret;
+        }
 	}
-
+    
 	//
 	// C setup
 	//
 	if (!callingObjC)
 	{
-		if (!privateObject.xml)	return	throwException(ctx, exception, @"jsCocoaObject_callAsFunction : no xml in object = nothing to call") , NULL;
-		argumentEncodings = [JSCocoaController parseCFunctionEncoding:privateObject.xml functionName:&functionName];
-		// Grab symbol
-		callAddress = dlsym(RTLD_DEFAULT, [functionName UTF8String]);
-		if (!callAddress)	return	throwException(ctx, exception, [NSString stringWithFormat:@"Function %@ not found", functionName]), NULL;
-		// Function arguments is all arguments minus return value
-		callAddressArgumentCount = [argumentEncodings count]-1;
+        if (privateObject.bridgeType) {
+            functionName = privateObject.bridgeType.name;
+            argumentEncodings = [JSCocoaController CFunctionEncodingFromPrivateObject:privateObject];
+            
+            callAddress = dlsym(RTLD_DEFAULT, [functionName UTF8String]);
+            
+            if (!callAddress) {
+                throwException(ctx, exception, [NSString stringWithFormat:@"Function %@ not found", functionName]);
+                return nil;
+            }
+            
+            // Function arguments is all arguments minus return value
+            callAddressArgumentCount = [argumentEncodings count] - 1;
+        }
+        
+        /*
+        else {
+            if (!privateObject.xml)	return	throwException(ctx, exception, @"jsCocoaObject_callAsFunction : no xml in object = nothing to call") , NULL;
+            argumentEncodings = [JSCocoaController parseCFunctionEncoding:privateObject.xml functionName:&functionName];
+            debug(@"argumentEncodings: %@", argumentEncodings);
+            // Grab symbol
+            callAddress = dlsym(RTLD_DEFAULT, [functionName UTF8String]);
+            if (!callAddress)	return	throwException(ctx, exception, [NSString stringWithFormat:@"Function %@ not found", functionName]), NULL;
+            // Function arguments is all arguments minus return value
+            callAddressArgumentCount = [argumentEncodings count]-1;
+        }
+        */
 	}
 	
 	// If argument count doesn't match, check if it's a variadic call

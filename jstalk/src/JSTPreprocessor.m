@@ -12,6 +12,8 @@
 #import "TDWhitespaceState.h"
 #import "TDCommentState.h"
 
+#warning var name = [NSFullUserName() lowercaseString]; fails
+
 @implementation JSTPreprocessor
 
 + (NSString*) preprocessForObjCStrings:(NSString*)sourceString {
