@@ -1,7 +1,11 @@
 TODO:
 Zip, nada, zilch.  Got any ideas?
 
-2000.01.02
+2009.03.03
+Added (int)changes; to FMDatabase.  From the sqlite docs: "This function returns the number of database rows that were changed (or inserted or deleted) by the most recent SQL statement."
+Patch contributed by Tracy Harton
+
+2009.01.02
 HAPPY NEW YEAR WOOOO!
 Added dataNoCopyForColumn: and dataNoCopyForColumnIndex: to FMResultSet.
 If you are going to use this data after you iterate over the next row, or after you close the

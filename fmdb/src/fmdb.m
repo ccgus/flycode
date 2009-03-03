@@ -270,9 +270,6 @@ int main (int argc, const char * argv[]) {
         	NSLog(@"%@", statement);
         }
     }
-    
-    
-    
     NSLog(@"That was version %@ of sqlite", [FMDatabase sqliteLibVersion]);
     
     

@@ -640,6 +640,10 @@
 }
 
 
+- (int)changes {
+    return(sqlite3_changes(db));
+}
+
 @end
 
 
@@ -694,8 +698,6 @@
         useCount = value;
     }
 }
-
-
 
 - (NSString*) description {
     return [NSString stringWithFormat:@"%@ %d hit(s) for query %@", [super description], useCount, query];

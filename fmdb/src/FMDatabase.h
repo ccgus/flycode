@@ -83,6 +83,7 @@
 + (NSString*) sqliteLibVersion;
 
 
+- (int)changes;
 
 @end
 
@@ -104,7 +105,6 @@
 
 - (long)useCount;
 - (void)setUseCount:(long)value;
-
 
 
 @end
