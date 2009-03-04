@@ -481,17 +481,14 @@
 								<string>1058C7ACFEA557BF11CA2CBB</string>
 								<string>19C28FB8FE9D52D311CA2CBB</string>
 								<string>1C37FBAC04509CD000000102</string>
-								<string>CC9BB7EB0F5CD8DD00CB9478</string>
-								<string>CC9BB7EC0F5CD8DD00CB9478</string>
 								<string>1C37FAAC04509CD000000102</string>
 								<string>1C37FABC05509CD000000102</string>
 							</array>
 							<key>PBXSmartGroupTreeModuleOutlineStateSelectionKey</key>
 							<array>
 								<array>
-									<integer>18</integer>
-									<integer>17</integer>
-									<integer>0</integer>
+									<integer>20</integer>
+									<integer>19</integer>
 								</array>
 							</array>
 							<key>PBXSmartGroupTreeModuleOutlineStateVisibleRectKey</key>
@@ -516,7 +513,7 @@
 							<real>261</real>
 						</array>
 						<key>RubberWindowFrame</key>
-						<string>809 257 300 838 0 0 1920 1178 </string>
+						<string>1141 289 300 838 0 0 1920 1178 </string>
 					</dict>
 					<key>Module</key>
 					<string>PBXSmartGroupTreeModule</string>
@@ -535,7 +532,7 @@
 			</array>
 			<key>TableOfContents</key>
 			<array>
-				<string>CC9BB7D60F5CD8A000CB9478</string>
+				<string>CC41A1A90F5E16540055DBC7</string>
 				<string>11E0B1FE06471DED0097A5F4</string>
 			</array>
 			<key>ToolbarConfiguration</key>
@@ -551,7 +548,7 @@
 	<key>StatusbarIsVisible</key>
 	<true/>
 	<key>TimeStamp</key>
-	<real>257743739.45043501</real>
+	<real>257824340.585536</real>
 	<key>ToolbarDisplayMode</key>
 	<integer>2</integer>
 	<key>ToolbarIsVisible</key>
@@ -570,7 +567,7 @@
 		<string>/Volumes/srv/Users/gus/Projects/flycode/jstalk/extras/acornplugin/jsenabler.xcodeproj</string>
 	</array>
 	<key>WindowString</key>
-	<string>809 257 300 838 0 0 1920 1178 </string>
+	<string>1141 289 300 838 0 0 1920 1178 </string>
 	<key>WindowToolsV3</key>
 	<array>
 		<dict>
@@ -649,7 +646,7 @@
 			<key>TableOfContents</key>
 			<array>
 				<string>CCC7E6100ECA3D78001F3E02</string>
-				<string>CC9BB7E90F5CD8CC00CB9478</string>
+				<string>CC41A1A80F5E16510055DBC7</string>
 				<string>1CD0528F0623707200166675</string>
 				<string>XCMainBuildResultsModuleGUID</string>
 			</array>

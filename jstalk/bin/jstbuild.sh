@@ -90,6 +90,31 @@ buildTarget "JSTalkRunner"
 buildTarget "JSTalk Editor"
 
 
+
+
+cd /tmp/jstalk/extras/acornplugin
+xcodebuild -configuration Release OBJROOT=/tmp/jstalk/build SYMROOT=/tmp/jstalk/build OTHER_CFLAGS=""
+if [ $? != 0 ]; then
+    echo "****** Bad build for acorn plugin ********"
+    exit
+fi
+
+cd /tmp/jstalk/extras/voodoopadplugin
+xcodebuild -configuration Release OBJROOT=/tmp/jstalk/build SYMROOT=/tmp/jstalk/build OTHER_CFLAGS=""
+if [ $? != 0 ]; then
+    echo "****** Bad build for vp plugin ********"
+    exit
+fi
+
+
+open /tmp/jstalk/build/Release/
+
+exit 
+
+
+
+
+
 if [ ! -d  ~/cvsbuilds ]; then
     mkdir ~/cvsbuilds
 fi
@@ -114,7 +139,6 @@ cd ~/cvsbuilds/
 
 cp JSTalk.zip $v-JSTalk.zip
 
-#/tmp/jstalk/bin/makesparkle.py $v
 
 if [ $upload == 1 ]; then
     echo uploading to server...

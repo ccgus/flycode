@@ -3,9 +3,9 @@
 	089C1669FE841209C02AAC07 /* Project object */ = {
 		activeBuildConfigurationName = Debug;
 		activeExecutable = CC726DCF0F156B2500EB02AF /* Acorn */;
-		activeTarget = 8D5B49AC048680CD000E48DA /* JSEnabler */;
+		activeTarget = 8D5B49AC048680CD000E48DA /* JSTalk */;
 		addToTargets = (
-			8D5B49AC048680CD000E48DA /* JSEnabler */,
+			8D5B49AC048680CD000E48DA /* JSTalk */,
 		);
 		breakpoints = (
 		);
@@ -50,14 +50,14 @@
 					PBXFileDataSource_Target_ColumnID,
 				);
 			};
-			PBXPerProjectTemplateStateSaveDate = 257743003;
-			PBXWorkspaceStateSaveDate = 257743003;
+			PBXPerProjectTemplateStateSaveDate = 257824303;
+			PBXWorkspaceStateSaveDate = 257824303;
 		};
 		sourceControlManager = CCC7E60A0ECA3C50001F3E02 /* Source Control */;
 		userBuildSettings = {
 		};
 	};
-	8D5B49AC048680CD000E48DA /* JSEnabler */ = {
+	8D5B49AC048680CD000E48DA /* JSTalk */ = {
 		activeExec = 0;
 	};
 	CC726D6A0F1568BC00EB02AF /* JSEnablerPlugIn.h */ = {
