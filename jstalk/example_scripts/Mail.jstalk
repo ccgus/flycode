@@ -1,4 +1,4 @@
-var mail = [SBApplication app:"Mail"];
+var mail = [SBApplication application:"Mail"];
 
 var to = "someone@somewhere.com";
 var from = "someone@somewhere.com";

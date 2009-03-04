@@ -1,10 +1,7 @@
 var acorn = [JSTalk application:"Acorn"];
 var doc = [[acorn orderedDocuments] objectAtIndex:0];
-var image = [doc imageUsingVisibleLayers];
+var image = [[[NSImage alloc] initWithData:[doc dataRepresentationOfType:"public.png"]] autorelease];
 var bitmap = [image bestRepresentationForDevice:nil];
-
-// we have to copy over our image, and make it again locally, otherwise we're drawing it in Acorn's Graphics context
-image = [[[NSImage alloc] initWithData:[bitmap TIFFRepresentation]] autorelease];
 
 var extent = NSMakeRect(0, 0, [bitmap pixelsWide], [bitmap pixelsHigh]);
 var xOffset = 5;

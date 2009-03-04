@@ -1,4 +1,4 @@
-var twr = [SBApplication app:"Twitterrific"];
+var twr = [SBApplication application:"Twitterrific"];
 
 // WHAT DO I NEED TO DO TO MAKE THIS WORK I DON'T KNOW I NEED A NEW CHOCKLOCK
 var postMessage = [[[twr classForScriptingClass:"update"] alloc] init];

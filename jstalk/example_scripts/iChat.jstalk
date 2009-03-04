@@ -1,2 +1,2 @@
 
-[[SBApplication app:"iChat"] setStatusMessage:"Happy (funball)"];
+[[SBApplication application:"iChat"] setStatusMessage:"Happy (funball)"];

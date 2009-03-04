@@ -1,4 +1,4 @@
-var jst = [JSTalk proxyForApp:"JSTalk Editor"];
+var jst = [JSTalk application:"JSTalk Editor"];
 
 if ([jst displayDialog:"Hello" withTitle:@"What?"] == NSOKButton) {
     print("woo");

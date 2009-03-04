@@ -1717,7 +1717,7 @@ JSValueRef OSXObject_getProperty(JSContextRef ctx, JSObjectRef object, JSStringR
 	//
 	// Query BridgeSupport for property
 	//
-    debug(@"propertyName: %@", propertyName);
+    
     JSBridgeType *bt = [[BridgeSupportController sharedController] typeForName:propertyName];
     
     if (bt) {
@@ -1756,7 +1756,7 @@ JSValueRef OSXObject_getProperty(JSContextRef ctx, JSObjectRef object, JSStringR
 			return	o;
 		}
         
-        #warning need struct... right? do we?
+        //#warning need struct... right? do we?  Let's just wait and see.
         
         return nil;
     }

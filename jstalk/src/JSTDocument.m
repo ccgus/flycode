@@ -229,8 +229,6 @@ print("NSArray *blueWords = [NSArray arrayWithObjects:" + list + " nil];")
 }
 
 - (void) jslintAction:(id)sender {
-    NSString *code = [JSTPreprocessor preprocessCode:[[jsTextView textStorage] string]];
-    
     
     
     JSTalk *jstalk = [[[JSTalk alloc] init] autorelease];
@@ -246,6 +244,9 @@ print("NSArray *blueWords = [NSArray arrayWithObjects:" + list + " nil];")
         [self clearConsole:nil];
     }
     
+    [[[outputTextView textStorage] mutableString] setString:@"This actually crashes right now... so it's disabled"];
+    
+    /*
     NSString *jslintPath = [[NSBundle mainBundle] pathForResource:@"fulljslint" ofType:@"js"];
     
     debug(@"jslintPath: %@", jslintPath);
@@ -254,7 +255,9 @@ print("NSArray *blueWords = [NSArray arrayWithObjects:" + list + " nil];")
     
     [jsController evalJSString:jslintSrc];
     
-    //[jstalk executeString:s];
+    NSString *code = [JSTPreprocessor preprocessCode:[[jsTextView textStorage] string]];
+    
+    */
     
     
 }
