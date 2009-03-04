@@ -7,8 +7,10 @@ JSTalk's goal is not to kill off or replace AppleScript, but to provide a compel
 
 JSTalk comes with a command line tool (jstalk), an editor (JSTalk Editor), and a framework that programmers can include in their application to add scripting support with a single line of code.
 
-And finally, JSTalk is open source.  So if there is something wrong, or it's not running the way you expect it, you get the chance to peek under the covers and understand what's going on.  http://flycode.googlecode.com/svn/trunk/jstalk/
+And finally, JSTalk is open source.  So if there is something wrong, or it's not running the way you expect it, you get the chance to peek under the covers and understand what's going on.  Here's the subversion repository: http://flycode.googlecode.com/svn/trunk/jstalk/
 
+You can also download JSTalk binaries:
+http://www.flyingmeat.com/download/private/JSTalkPreview.zip
 
 How does JSTalk work?
 ---------------------
@@ -76,6 +78,7 @@ Nicer editing features.
 An "Edit in External Editor" command, so you can use BBEdit or whatever to edit your script.
 The loading of ".jstalkextra" bundles.  This would be a collection of classes that JSTalk would load, which adds additional functionality to the standard Cocoa classes.  Classes and Categories.
 A debugger would be killer.
+JSLint built into it.
 
 
 
