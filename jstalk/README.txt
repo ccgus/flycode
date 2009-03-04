@@ -12,10 +12,33 @@ And finally, JSTalk is open source.  So if there is something wrong, or it's not
 You can also download JSTalk binaries:
 http://www.flyingmeat.com/download/private/JSTalkPreview.zip
 
-How does JSTalk work?
----------------------
 
-JSTalk is built on top of Apple's JavaScriptCore, the same JavaScript engine that powers Safari.  So when you write in JSTalk, you are also writing JavaScript.
+
+
+
+A sane object model for programmers, using Distributed Objects.
+-----------------------------------------------------------------------
+
+Adding AppleScript support to your Cocoa application is a PITA, to put it bluntly.  Sure, it's easy to do simple tasks, but once you move away from sample code territory, you are on your own and in many cases, in a world of hurt.
+
+Why not do something more modern?  Why not add scripting support the Cocoa way?  Here's how to make your app scriptable via JSTalk:
+
+a) Come up with an object model for your application, using standard Cocoa classes.  In many cases this is already done, by virtue of writing a maintainable application.
+
+b) Expose a "root" object to JSTalk, via Distributed Objects.  In most cases, this will just be NSApplication.  If choose to use the JSTalk framework, it's just one line of code:  [JSTalk listen];
+
+c) Document what methods, properties, and objects you support.  There's no magic xml files to fill out!
+
+Exposing your model this way lets your app be scripted from Cocoa, Python, Ruby, and JavaScript- any language that can reach over to Cocoa.  And no magic.  Did I mention that part yet?
+
+
+
+
+
+How does JSTalk (the language) work?
+------------------------------------
+
+JSTalk is built on top of Apple's JavaScriptCore, the same JavaScript engine that powers Safari.  So when you write in JSTalk, you are really writing JavaScript.
 
 JSTalk also includes a bridge which lets you access Apple's Cocoa frameworks from JavaScript.  This means you have a ton wonderful classes and functions you can use in addition to the standard JavaScript library.
 
@@ -37,21 +60,7 @@ var someContent = @"Hello World!"
 var path = @"/tmp/foo.txt"
 [[someContent dataUsingEncoding:NSUTF8StringEncoding] writeToFile:path atomically:true]
 
-I guess you could call this JavaScript derivative "JSObjC".
 
-
-A sane object model for programmers, using Cocoa's Distributed Objects.
------------------------------------------------------------------------
-
-Adding AppleScript support to your Cocoa application is a PITA, to put it bluntly.  Sure, it's easy to do simple tasks, but once you move away from sample code territory, you are on your own and in many cases, in a world of hurt.
-
-Why not do something more modern?  Why not add scripting support the Cocoa way?  Here's how to make your app scriptable via JSTalk:
-
-a) Come up with an object model for your application, using standard Cocoa classes.  In many cases this is already done, by virtue of writing a maintainable application.
-
-b) Expose a "root" object to JSTalk, via Distrubuted Objects.  In most cases, this will just be NSApplication.  If choose to use the JSTalk framework, it's just one line of code:  [JSTalk listen];
-
-c) Document what methods, properties, and objects you support.  There's no magic xml files to fill out!
 
 
 
@@ -62,6 +71,9 @@ Applications can also be scripted using Cocoa's Script Bridge class, SBApplicati
 
 [[SBApplication application:"iChat"] setStatusMessage:"Happy (funball)"];
 
+Although this is great to have, it's not the same as an application natively support JSTalk over DO.  Anything more than simple tasks using SBApplication tends to be a little more than difficult.
+
+
 
 
 But it doesn't do X:
@@ -71,14 +83,18 @@ Let us know by sending an email to gus@flyingmeat.com.
 
 
 
-Todo:
+
+
+TODO:
 -----
 
 Nicer editing features.
 An "Edit in External Editor" command, so you can use BBEdit or whatever to edit your script.
-The loading of ".jstalkextra" bundles.  This would be a collection of classes that JSTalk would load, which adds additional functionality to the standard Cocoa classes.  Classes and Categories.
+The loading of ".jstalkextra" bundles.  This would be a collection of classes that JSTalk would load, which adds additional functionality to the standard Cocoa classes.  Think helper classes and categories.
 A debugger would be killer.
 JSLint built into it.
+
+
 
 
 
