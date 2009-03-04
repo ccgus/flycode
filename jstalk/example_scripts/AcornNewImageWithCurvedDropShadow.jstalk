@@ -57,6 +57,9 @@ NSBezierPath.bezierPathWithRect_(NSMakeRect(0, imageYOffset, newSize.width, exte
 NSColor.lightGrayColor().set()
 NSBezierPath.bezierPathWithRect_(NSMakeRect(.5, imageYOffset + .5 , newSize.width - 1, (extent.size.height - 1) + (whiteBorderWidth * 2))).stroke()
 
+// NSImage takes into account dpi of the image.  So we force it's size, to avoid small images.
+[image setSize: extent.size];
+
 // draw our image
 image.drawAtPoint_fromRect_operation_fraction_(NSMakePoint(whiteBorderWidth, imageYOffset + whiteBorderWidth), NSMakeRect(0, 0, extent.size.width, extent.size.height), NSCompositeCopy, 1)
 

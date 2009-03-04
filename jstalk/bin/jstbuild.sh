@@ -118,9 +118,11 @@ mkdir JSTalkFoo
 
 mv jstalk JSTalkFoo/.
 mv "JSTalk Editor.app" JSTalkFoo/.
-mv JSTalk.framework JSTalkFoo/.
-cp -r /tmp/jstalk/README.txt JSTalkFoo/.
-cp -r /tmp/jstalk/example_scripts JSTalkFoo/examples
+
+# I do a cp here, since I rely on this framework being here for other builds...
+cp -R JSTalk.framework JSTalkFoo/.
+cp -R /tmp/jstalk/README.txt JSTalkFoo/.
+cp -R /tmp/jstalk/example_scripts JSTalkFoo/examples
 
 mkdir JSTalkFoo/extras
 mv JSTalk.acplugin JSTalkFoo/extras/.
@@ -130,6 +132,8 @@ mv JSTalk.vpplugin JSTalkFoo/extras/.
 mv JSTalkFoo JSTalk
 
 ditto -c -k --sequesterRsrc --keepParent JSTalk JSTalk.zip
+
+rm -rf JSTalk
 
 mv JSTalk.zip ~/cvsbuilds/.
 
@@ -147,8 +151,6 @@ if [ $upload == 1 ]; then
     #scp /tmp/jstalk/res/jstalkupdate.xml gus@elvis.mu.org:~/fm/download/$downloadDir/.
     #scp /tmp/jstalk/res/shortnotes.html gus@elvis:~/fm/download/$downloadDir/jstalkshortnotes.html
 fi
-
-rm -rf /tmp/jstalk
 
 say "done building"
 
