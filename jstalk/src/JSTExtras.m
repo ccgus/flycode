@@ -58,6 +58,10 @@
     return [NSDocumentController sharedDocumentController];
 }
 
+- (id) sharedDefaults {
+    return [NSUserDefaults standardUserDefaults];
+}
+
 @end
 
 
