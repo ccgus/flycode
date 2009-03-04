@@ -8,6 +8,7 @@
 		<string key="IBDocument.HIToolboxVersion">353.00</string>
 		<object class="NSMutableArray" key="IBDocument.EditedObjectIDs">
 			<bool key="EncodedWithXMLCoder">YES</bool>
+			<integer value="100039"/>
 		</object>
 		<object class="NSArray" key="IBDocument.PluginDependencies">
 			<bool key="EncodedWithXMLCoder">YES</bool>
@@ -41,7 +42,7 @@
 				<string key="NSWindowContentMaxSize">{3.40282e+38, 3.40282e+38}</string>
 				<string key="NSWindowContentMinSize">{94, 86}</string>
 				<object class="NSView" key="NSWindowView" id="568628114">
-					<nil key="NSNextResponder"/>
+					<reference key="NSNextResponder"/>
 					<int key="NSvFlags">256</int>
 					<object class="NSMutableArray" key="NSSubviews">
 						<bool key="EncodedWithXMLCoder">YES</bool>
@@ -94,7 +95,7 @@
 																<object class="NSMutableString" key="NSString">
 																	<bytes key="NS.bytes">Ly8gVGhpcyBpcyBzb21lIHNhbXBsZSBjb2RlIHlvdSdsbCB3YW50IHRvIGRlbGV0ZSBhZnRlciB5b3Ug
 cnVuIGl0IGF0IGxlYXN0IG9uY2UhCgp2YXIgcyA9ICJIZWxsbyBXb3JsZCEiCgpwcmludChzKQoKW1tK
-U1RhbGsgcHJveHlGb3JBcHA6IkpTVGFsayBFZGl0b3IiXSBkaXNwbGF5RGlhbG9nOnNdCgo</bytes>
+U1RhbGsgYXBwbGljYXRpb246IkpTVGFsayBFZGl0b3IiXSBkaXNwbGF5RGlhbG9nOnNdCgo</bytes>
 																</object>
 																<object class="NSDictionary" key="NSAttributes">
 																	<bool key="EncodedWithXMLCoder">YES</bool>
@@ -401,6 +402,7 @@ U1RhbGsgcHJveHlGb3JBcHA6IkpTVGFsayBFZGl0b3IiXSBkaXNwbGF5RGlhbG9nOnNdCgo</bytes>
 						</object>
 					</object>
 					<string key="NSFrameSize">{583, 444}</string>
+					<reference key="NSSuperview"/>
 				</object>
 				<string key="NSScreenRect">{{0, 0}, {1920, 1178}}</string>
 				<string key="NSMinSize">{94, 108}</string>

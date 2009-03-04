@@ -58,7 +58,7 @@ But no apps out there currently support JSTalk!
 
 Applications can also be scripted using Cocoa's Script Bridge class, SBApplication.  Here's an example:
 
-[[SBApplication app:"iChat"] setStatusMessage:"Happy (funball)"];
+[[SBApplication application:"iChat"] setStatusMessage:"Happy (funball)"];
 
 
 
