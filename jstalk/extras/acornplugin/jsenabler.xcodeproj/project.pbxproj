@@ -278,7 +278,7 @@
 					"-framework",
 					JSTalk,
 				);
-				PRODUCT_NAME = JSEnabler;
+				PRODUCT_NAME = JSTalk;
 				SKIP_INSTALL = NO;
 				WRAPPER_EXTENSION = acplugin;
 				ZERO_LINK = NO;

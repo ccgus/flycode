@@ -513,7 +513,7 @@
 							<real>261</real>
 						</array>
 						<key>RubberWindowFrame</key>
-						<string>1141 289 300 838 0 0 1920 1178 </string>
+						<string>1311 292 300 838 0 0 1920 1178 </string>
 					</dict>
 					<key>Module</key>
 					<string>PBXSmartGroupTreeModule</string>
@@ -548,7 +548,7 @@
 	<key>StatusbarIsVisible</key>
 	<true/>
 	<key>TimeStamp</key>
-	<real>257824340.585536</real>
+	<real>257824803.10173199</real>
 	<key>ToolbarDisplayMode</key>
 	<integer>2</integer>
 	<key>ToolbarIsVisible</key>
@@ -567,7 +567,7 @@
 		<string>/Volumes/srv/Users/gus/Projects/flycode/jstalk/extras/acornplugin/jsenabler.xcodeproj</string>
 	</array>
 	<key>WindowString</key>
-	<string>1141 289 300 838 0 0 1920 1178 </string>
+	<string>1311 292 300 838 0 0 1920 1178 </string>
 	<key>WindowToolsV3</key>
 	<array>
 		<dict>

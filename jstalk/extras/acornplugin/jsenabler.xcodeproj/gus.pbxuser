@@ -1,7 +1,7 @@
 // !$*UTF8*$!
 {
 	089C1669FE841209C02AAC07 /* Project object */ = {
-		activeBuildConfigurationName = Debug;
+		activeBuildConfigurationName = Release;
 		activeExecutable = CC726DCF0F156B2500EB02AF /* Acorn */;
 		activeTarget = 8D5B49AC048680CD000E48DA /* JSTalk */;
 		addToTargets = (
