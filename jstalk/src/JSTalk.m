@@ -22,7 +22,7 @@
 @synthesize jsController=_jsController;
 
 + (void) load {
-    //debug(@"%s:%d", __FUNCTION__, __LINE__);
+    debug(@"%s:%d", __FUNCTION__, __LINE__);
 }
 
 + (void) listen {
@@ -112,6 +112,28 @@
     }
 }
 
++ (id) applicationOnPort:(NSString*)port {
+    
+    NSConnection *conn  = 0x00;
+    NSUInteger tries    = 0;
+    
+    while (!conn && tries < 10) {
+        
+        conn = [NSConnection connectionWithRegisteredName:port host:nil];
+        tries++;
+        if (!conn) {
+            debug(@"Sleeping, waiting for %@ to open", port);
+            sleep(1);
+        }
+    }
+    
+    if (!conn) {
+        NSBeep();
+        NSLog(@"Could not find a JSTalk connection to %@", port);
+    }
+    
+    return [conn rootProxy];
+}
 
 + (id) application:(NSString*)app {
     
@@ -131,27 +153,7 @@
                                   additionalEventParamDescriptor:nil
                                                 launchIdentifier:nil];
     
-    NSString *port      = [NSString stringWithFormat:@"%@.JSTalk", bundleId];
-    NSConnection *conn  = 0x00;
-    NSUInteger tries    = 0;
-    
-    while (!conn && tries < 10) {
-        
-        conn = [NSConnection connectionWithRegisteredName:port host:nil];
-        tries++;
-        if (!conn) {
-            debug(@"Sleeping, waiting for %@ to open its port", app);
-            sleep(1);
-        }
-    }
-    
-    if (!conn) {
-        NSBeep();
-        NSLog(@"Could not find a JSTalk connection to %@", app);
-    }
-    
-    return [conn rootProxy];
-    
+    return [self applicationOnPort:[NSString stringWithFormat:@"%@.JSTalk", bundleId]];
 }
 
 

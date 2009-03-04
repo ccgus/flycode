@@ -39,7 +39,15 @@
     
     _conn = [[NSConnection alloc] init];
     [_conn setRootObject:_rootObject ? _rootObject : NSApp];
-    [_conn registerName:port];
+    
+    if ([_conn registerName:port]) {
+        NSLog(@"JSTalk listening on port %@", port);
+    }
+    else {
+        NSLog(@"Could not listen on port %@", port);
+        [_conn release];
+        _conn = 0x00;
+    }
 }
 
 @end
