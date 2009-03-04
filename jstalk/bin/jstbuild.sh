@@ -107,13 +107,6 @@ if [ $? != 0 ]; then
 fi
 
 
-open /tmp/jstalk/build/Release/
-
-exit 
-
-
-
-
 
 if [ ! -d  ~/cvsbuilds ]; then
     mkdir ~/cvsbuilds
@@ -128,6 +121,11 @@ mv "JSTalk Editor.app" JSTalkFoo/.
 mv JSTalk.framework JSTalkFoo/.
 cp -r /tmp/jstalk/README.txt JSTalkFoo/.
 cp -r /tmp/jstalk/example_scripts JSTalkFoo/examples
+
+mkdir JSTalkFoo/extras
+mv JSTalk.acplugin JSTalkFoo/extras/.
+mv JSTalk.vpplugin JSTalkFoo/extras/.
+
 
 mv JSTalkFoo JSTalk
 
