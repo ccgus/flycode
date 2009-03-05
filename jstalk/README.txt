@@ -1,3 +1,16 @@
+JSTALK HAS MOVED TO:
+http://github.com/ccgus/jstalk/tree/master
+
+SORRY ABOUT THAT BUT WOLF MADE ME DO IT.
+
+.
+.
+.
+.
+.
+.
+
+
 What is JSTalk?
 ---------------
 
@@ -7,7 +20,8 @@ JSTalk's goal is not to kill off or replace AppleScript, but to provide a compel
 
 JSTalk comes with a command line tool (jstalk), an editor (JSTalk Editor), and a framework that programmers can include in their application to add scripting support with a single line of code.
 
-And finally, JSTalk is open source.  So if there is something wrong, or it's not running the way you expect it, you get the chance to peek under the covers and understand what's going on.  Here's the subversion repository: http://flycode.googlecode.com/svn/trunk/jstalk/
+And finally, JSTalk is open source.  So if there is something wrong, or it's not running the way you expect it, you get the chance to peek under the covers and understand what's going on.  Here's the git repository:
+http://github.com/ccgus/jstalk/tree/master
 
 You can also download JSTalk binaries:
 http://www.flyingmeat.com/download/private/JSTalkPreview.zip
@@ -80,6 +94,34 @@ But it doesn't do X:
 --------------------
 
 Let us know by sending an email to gus@flyingmeat.com.
+
+
+
+
+
+Mailing list and bug reporting:
+-------------------------------
+
+Developer mailing list:
+http://groups.google.com/group/jstalk-dev
+
+Bug reporting:
+http://jstalk.lighthouseapp.com/projects/26692-jstalk/
+
+A user mailing list will pop up at some point, but we're not there yet.
+
+
+
+
+
+Here's what is currently being worked on, what's broken:
+--------------------------------------------------------
+
+- Memory leaks.  Alloc'ing big images never get released for instance.
+- JSLint crashes JSCocoa.
+- Need to add "Edit in X" feature, which uses FSEvents or something similar to watch updates on the file, for reloading it in the editor.
+- For some reason, the textview wants to scroll left and right occasionally, which is annoying.
+- NSPoints do not seem to be going across DO.  Is this just a limitation of DO?
 
 
 
