@@ -43,6 +43,8 @@ bezierPath.curveToPoint_controlPoint1_controlPoint2_(NSMakePoint(xOffset, 10 + y
                                                      NSMakePoint(newSize.width *.25, curveHeight + yOffset),
                                                      NSMakePoint(xOffset, 10 + yOffset))
 
+print(bezierPath);
+
 bezierPath.fill()
 
 // get rid of our shadow
