@@ -1,6 +1,9 @@
 TODO:
 Zip, nada, zilch.  Got any ideas?
 
+2009.03.11
+Now importing unistd.h, which the absence of was causing some problems on the iPhone.  Reported by multiple people, but Hal Mueller actually got me to make the change.
+
 2009.03.03
 Added (int)changes; to FMDatabase.  From the sqlite docs: "This function returns the number of database rows that were changed (or inserted or deleted) by the most recent SQL statement."
 Patch contributed by Tracy Harton
