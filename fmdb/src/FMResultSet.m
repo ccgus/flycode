@@ -278,10 +278,15 @@
         return nil;
     }
     
-    return [NSDate dateWithTimeIntervalSince1970:[self doubleForColumn:columnName]];
+    return [self dateForColumnIndex:columnIdx];
 }
 
 - (NSDate*) dateForColumnIndex:(int)columnIdx {
+    
+    if(sqlite3_column_type(statement.statement, columnIdx) == SQLITE_NULL) {
+		return nil;
+	}
+    
     return [NSDate dateWithTimeIntervalSince1970:[self doubleForColumnIndex:columnIdx]];
 }
 

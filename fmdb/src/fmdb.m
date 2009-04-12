@@ -260,6 +260,61 @@ int main (int argc, const char * argv[]) {
         }
     }
     
+    
+    
+    
+    
+    
+    // null dates
+    
+    NSDate *date = [NSDate date];
+    [db executeUpdate:@"create table datetest (a double, b double, c double)"];
+    [db executeUpdate:@"insert into datetest (a, b, c) values (?, ?, 0)" , [NSNull null], date];
+    
+    rs = [db executeQuery:@"select * from datetest"];
+    
+    while ([rs next]) {
+        
+        NSDate *a = [rs dateForColumnIndex:0];
+        NSDate *b = [rs dateForColumnIndex:1];
+        NSDate *c = [rs dateForColumnIndex:2];
+        
+        if (a) {
+            NSLog(@"Oh crap, the null date insert didn't work!");
+            return 12;
+        }
+        
+        if (!c) {
+            NSLog(@"Oh crap, the 0 date insert didn't work!");
+            return 12;
+        }
+        
+        NSTimeInterval dti = fabs([b timeIntervalSinceDate:date]);
+        
+        if (floor(dti) > 0.0) {
+            NSLog(@"Date matches didn't really happen... time difference of %f", dti);
+            return 13;
+        }
+        
+        
+        dti = fabs([c timeIntervalSinceDate:[NSDate dateWithTimeIntervalSince1970:0]]);
+        
+        if (floor(dti) > 0.0) {
+            NSLog(@"Date matches didn't really happen... time difference of %f", dti);
+            return 13;
+        }
+    }
+    
+    
+    
+    // just for fun.
+    rs = [db executeQuery:@"PRAGMA database_list"];
+    while ([rs next]) {
+        NSString *file = [rs stringForColumn:@"file"];
+        NSLog(@"database_list: %@", file);
+    }
+    
+    
     // print out some stats if we are using cached statements.
     if ([db shouldCacheStatements]) {
         
