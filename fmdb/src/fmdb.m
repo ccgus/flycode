@@ -73,6 +73,14 @@ int main (int argc, const char * argv[]) {
               [rs dateForColumn:@"d"],
               [rs doubleForColumn:@"d"],
               [rs doubleForColumn:@"e"]);
+        
+        
+        if (!([[rs columnNameForIndex:0] isEqualToString:@"rowid"] &&
+              [[rs columnNameForIndex:1] isEqualToString:@"a"])
+              ) {
+            NSLog(@"WHOA THERE BUDDY, columnNameForIndex ISN'T WORKING!");
+            return 7;
+        }
     }
     // close the result set.
     // it'll also close when it's dealloc'd, but we're closing the database before

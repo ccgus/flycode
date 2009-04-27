@@ -28,6 +28,9 @@
 
 - (BOOL) next;
 
+- (int) columnIndexForName:(NSString*)columnName;
+- (NSString*) columnNameForIndex:(int)index;
+
 - (int) intForColumn:(NSString*)columnName;
 - (int) intForColumnIndex:(int)columnIdx;
 

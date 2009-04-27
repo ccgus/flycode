@@ -344,9 +344,10 @@
     return data;
 }
 
-
-
-
+// returns autoreleased NSString containing the name of the column in the result set
+- (NSString*) columnNameForIndex:(int)index {
+	return [NSString stringWithUTF8String: sqlite3_column_name(statement.statement, index)];
+}
 
 - (void)setParentDB:(FMDatabase *)newDb {
     parentDB = newDb;
