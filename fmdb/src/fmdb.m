@@ -368,6 +368,9 @@ int main (int argc, const char * argv[]) {
             FMDBQuickCheck([rs columnIndexIsNull:4]);
             FMDBQuickCheck([rs columnIndexIsNull:5]);
             
+            
+            FMDBQuickCheck(![rs dataForColumn:@"d"]);
+            
         }
         
         
