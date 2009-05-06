@@ -2,6 +2,8 @@
 #import "FMDatabase.h"
 #import "FMDatabaseAdditions.h"
 
+#define FMDBQuickCheck(SomeBool) { if (!(SomeBool)) { NSLog(@"Failure on line %d", __LINE__); return 123; } }
+
 int main (int argc, const char * argv[]) {
     NSAutoreleasePool * pool = [[NSAutoreleasePool alloc] init];
     
@@ -92,21 +94,21 @@ int main (int argc, const char * argv[]) {
     [db executeUpdate:@"create table blobTable (a text, b blob)"];
     
     // let's read in an image from safari's app bundle.
-    NSData *d = [NSData dataWithContentsOfFile:@"/Applications/Safari.app/Contents/Resources/compass.icns"];
-    if (d) {
-        [db executeUpdate:@"insert into blobTable (a, b) values (?,?)", @"safari's compass", d];
+    NSData *safariCompass = [NSData dataWithContentsOfFile:@"/Applications/Safari.app/Contents/Resources/compass.icns"];
+    if (safariCompass) {
+        [db executeUpdate:@"insert into blobTable (a, b) values (?,?)", @"safari's compass", safariCompass];
         
         rs = [db executeQuery:@"select b from blobTable where a = ?", @"safari's compass"];
         if ([rs next]) {
-            d = [rs dataForColumn:@"b"];
-            [d writeToFile:@"/tmp/compass.icns" atomically:NO];
+            safariCompass = [rs dataForColumn:@"b"];
+            [safariCompass writeToFile:@"/tmp/compass.icns" atomically:NO];
             
             // let's look at our fancy image that we just wrote out..
             system("/usr/bin/open /tmp/compass.icns");
             
             // ye shall read the header for this function, or suffer the consequences.
-            d = [rs dataNoCopyForColumn:@"b"];
-            [d writeToFile:@"/tmp/compass_data_no_copy.icns" atomically:NO];
+            safariCompass = [rs dataNoCopyForColumn:@"b"];
+            [safariCompass writeToFile:@"/tmp/compass_data_no_copy.icns" atomically:NO];
             system("/usr/bin/open /tmp/compass_data_no_copy.icns");
         }
         else {
@@ -312,6 +314,69 @@ int main (int argc, const char * argv[]) {
             return 13;
         }
     }
+    
+    
+    
+    
+    
+    
+    
+    [db executeUpdate:@"create table nulltest2 (s text, d data, i integer, f double, b integer)"];
+    
+    [db executeUpdate:@"insert into nulltest2 (s, d, i, f, b) values (?, ?, ?, ?, ?)" , @"Hi", safariCompass, [NSNumber numberWithInt:12], [NSNumber numberWithFloat:4.4], [NSNumber numberWithBool:YES]];
+    [db executeUpdate:@"insert into nulltest2 (s, d, i, f, b) values (?, ?, ?, ?, ?)" , nil, nil, nil, nil, [NSNull null]];
+    
+    rs = [db executeQuery:@"select * from nulltest2"];
+    
+    while ([rs next]) {
+        
+        int i = [rs intForColumnIndex:2];
+        
+        if (i == 12) {
+            // it's the first row we inserted.
+            FMDBQuickCheck(![rs columnIndexIsNull:0]);
+            FMDBQuickCheck(![rs columnIndexIsNull:1]);
+            FMDBQuickCheck(![rs columnIndexIsNull:2]);
+            FMDBQuickCheck(![rs columnIndexIsNull:3]);
+            FMDBQuickCheck(![rs columnIndexIsNull:4]);
+            FMDBQuickCheck( [rs columnIndexIsNull:5]);
+            
+            FMDBQuickCheck([[rs dataForColumn:@"d"] length] == [safariCompass length]);
+            FMDBQuickCheck(![rs dataForColumn:@"notthere"]);
+            FMDBQuickCheck(![rs stringForColumnIndex:-2]);
+            FMDBQuickCheck([rs boolForColumnIndex:4]);
+            FMDBQuickCheck([rs boolForColumn:@"b"]);
+            
+            FMDBQuickCheck(fabs(4.4 - [rs doubleForColumn:@"f"]) < 0.0000001);
+            
+            FMDBQuickCheck(12 == [rs intForColumn:@"i"]);
+            FMDBQuickCheck(12 == [rs intForColumnIndex:2]);
+            
+            FMDBQuickCheck(0 == [rs intForColumnIndex:12]); // there is no 12
+            FMDBQuickCheck(0 == [rs intForColumn:@"notthere"]);
+            
+            FMDBQuickCheck(12 == [rs longForColumn:@"i"]);
+            FMDBQuickCheck(12 == [rs longLongIntForColumn:@"i"]);
+        }
+        else {
+            // let's test various null things.
+            
+            FMDBQuickCheck([rs columnIndexIsNull:0]);
+            FMDBQuickCheck([rs columnIndexIsNull:1]);
+            FMDBQuickCheck([rs columnIndexIsNull:2]);
+            FMDBQuickCheck([rs columnIndexIsNull:3]);
+            FMDBQuickCheck([rs columnIndexIsNull:4]);
+            FMDBQuickCheck([rs columnIndexIsNull:5]);
+            
+        }
+        
+        
+    }
+    
+    
+    
+    
+    
     
     
     

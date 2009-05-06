@@ -1,11 +1,20 @@
 TODO:
 Zip, nada, zilch.  Got any ideas?
 
+2009.05.05
+    stringForColumnIndex, stringForColumn, dataForColumnIndex, dataForColumn, dataNoCopyForColumnIndex, and dataNoCopyForColumn now return nil if a null value was inserted into its table row.  dateForColumnIndex already did this.
+    
+    Also added the following methods to test if a column is null or not:
+        - (BOOL) columnIndexIsNull:(int)columnIdx
+        - (BOOL) columnIsNull:(NSString*)columnName
+    
+    And finally, just general code cleanup + refactoring.  Happy Cinco de Mayo!
+    
 2009.04.27
     added columnNameForIndex: to FMResultSet which returns the column name for the given index.
 
 2009.04.12
-    dateForColumnIndex: now returns null, if a null value was inserted into it's table row.  Patch by Robbie Hanson.
+    dateForColumnIndex: now returns null, if a null value was inserted into its table row.  Patch by Robbie Hanson.
 
 2009.03.11
 Now importing unistd.h, which the absence of was causing some problems on the iPhone.  Reported by multiple people, but Hal Mueller actually got me to make the change.
