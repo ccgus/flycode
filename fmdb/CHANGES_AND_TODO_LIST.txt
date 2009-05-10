@@ -1,6 +1,11 @@
 TODO:
 Zip, nada, zilch.  Got any ideas?
 
+2009.05.10
+    replaced sqlite3_prepare calls with sqlite3_prepare_v2, since it's shiny and new.
+    Now making sure not to call any assembly if on the iphone (asm{ trap }).
+    Tested on 10.6.  It works.  Not that I didn't expect it not to- but you never know…
+
 2009.05.05
     stringForColumnIndex, stringForColumn, dataForColumnIndex, dataForColumn, dataNoCopyForColumnIndex, and dataNoCopyForColumn now return nil if a null value was inserted into its table row.  dateForColumnIndex already did this.
     
