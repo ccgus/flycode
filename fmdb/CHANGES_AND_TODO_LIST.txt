@@ -1,6 +1,20 @@
 TODO:
 Zip, nada, zilch.  Got any ideas?
 
+2009.05.23
+    Added:
+    - (id)executeQuery:(NSString *)sql withArgumentsInArray:(NSArray *)arguments;
+    - (BOOL) executeUpdate:(NSString*)sql withArgumentsInArray:(NSArray *)arguments;    
+    thanks to code from Phong Long.
+    
+    
+    Fix to FMResultSet's - (BOOL) hadError, as it was returning true for SQLITE_ROW & SQLITE_DONE, which aren't actually errors.
+    Added:
+    - (BOOL) hasAnotherRow; which lets you know if there is another row waiting in the result set.
+    
+    Thanks to code from Dave DeLong.
+    
+
 2009.05.10
     replaced sqlite3_prepare calls with sqlite3_prepare_v2, since it's shiny and new.
     Now making sure not to call any assembly if on the iphone (asm{ trap }).

@@ -23,6 +23,9 @@ int main (int argc, const char * argv[]) {
     
     // create a bad statement, just to test the error code.
     [db executeUpdate:@"blah blah blah"];
+    
+    FMDBQuickCheck([db hadError]);
+    
     if ([db hadError]) {
         NSLog(@"Err %d: %@", [db lastErrorCode], [db lastErrorMessage]);
     }
@@ -372,10 +375,34 @@ int main (int argc, const char * argv[]) {
             FMDBQuickCheck(![rs dataForColumn:@"d"]);
             
         }
-        
-        
     }
     
+    
+    
+    {
+        [db executeUpdate:@"create table testOneHundredTwelvePointTwo (a text, b integer)"];
+        [db executeUpdate:@"insert into testOneHundredTwelvePointTwo values (?, ?)" withArgumentsInArray:[NSArray arrayWithObjects:@"one", [NSNumber numberWithInteger:2], nil]];
+        [db executeUpdate:@"insert into testOneHundredTwelvePointTwo values (?, ?)" withArgumentsInArray:[NSArray arrayWithObjects:@"one", [NSNumber numberWithInteger:3], nil]];
+        
+        
+        rs = [db executeQuery:@"select * from testOneHundredTwelvePointTwo where b > ?" withArgumentsInArray:[NSArray arrayWithObject:[NSNumber numberWithInteger:1]]];
+        
+        FMDBQuickCheck([rs next]);
+        
+        FMDBQuickCheck([rs hasAnotherRow]);
+        FMDBQuickCheck(![db hadError]);
+        
+        FMDBQuickCheck([[rs stringForColumnIndex:0] isEqualToString:@"one"]);
+        FMDBQuickCheck([rs intForColumnIndex:1] == 2);
+        
+        FMDBQuickCheck([rs next]);
+        
+        FMDBQuickCheck([rs intForColumnIndex:1] == 3);
+        
+        FMDBQuickCheck(![rs next]);
+        FMDBQuickCheck(![rs hasAnotherRow]);
+        
+    }
     
     
     

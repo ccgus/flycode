@@ -27,6 +27,7 @@
 - (void)setParentDB:(FMDatabase *)newDb;
 
 - (BOOL) next;
+- (BOOL) hasAnotherRow;
 
 - (int) columnIndexForName:(NSString*)columnName;
 - (NSString*) columnNameForIndex:(int)index;

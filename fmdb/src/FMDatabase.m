@@ -171,7 +171,9 @@
 }
 
 - (BOOL) hadError {
-    return ([self lastErrorCode] != SQLITE_OK);
+    int lastErrCode = [self lastErrorCode];
+    
+    return (lastErrCode > SQLITE_OK && lastErrCode < SQLITE_ROW);
 }
 
 - (int) lastErrorCode {

@@ -127,6 +127,10 @@
     return (rc == SQLITE_ROW);
 }
 
+- (BOOL) hasAnotherRow {
+    return sqlite3_errcode([parentDB sqliteHandle]) == SQLITE_ROW;
+}
+
 - (int) columnIndexForName:(NSString*)columnName {
     
     if (!columnNamesSetup) {
