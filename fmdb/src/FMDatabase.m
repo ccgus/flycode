@@ -4,7 +4,7 @@
 @implementation FMDatabase
 
 + (id)databaseWithPath:(NSString*)aPath {
-    return [[[FMDatabase alloc] initWithPath:aPath] autorelease];
+    return [[[self alloc] initWithPath:aPath] autorelease];
 }
 
 - (id)initWithPath:(NSString*)aPath {
