@@ -85,6 +85,8 @@ enum {
 
 // maybe I went a little overboard with the whole return self thing?  Probably.
 
++ (NSDate*) parseDateString:(NSString*)dateString;
+
 @end
 
 

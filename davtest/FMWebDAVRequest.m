@@ -7,6 +7,7 @@
 //
 
 #import "FMWebDAVRequest.h"
+#import "ISO8601DateFormatter.h"
 
 @implementation FMWebDAVRequest
 
@@ -399,9 +400,73 @@
             _xmlBucket = [[NSMutableDictionary dictionary] retain];
         }
         // ...
-    } 
+    }
+}
+
++ (NSDate*) parseDateString:(NSString*)dateString {
     
     
+    ISO8601DateFormatter *formatter = [[[ISO8601DateFormatter alloc] init] autorelease];
+    
+    NSDate *date = [formatter dateFromString:dateString];
+    
+    if (!date) {
+        NSLog(@"Could not parse %@", dateString);
+    }
+    
+    return date;
+    
+    /*
+    
+    NSLog(@"dateString: %@", dateString);
+    
+    static NSDateFormatter* formatterA = nil;
+    if (!formatterA) {
+        formatterA = [[NSDateFormatter alloc] init];
+        [formatterA setTimeStyle:NSDateFormatterFullStyle];
+        [formatterA setDateFormat:@"yyyy-MM-dd'T'HH:mm:ssZZZ"];    // NOTE: problem! (but I'm not sure what that problem would be)
+    }
+    static NSDateFormatter* formatterB = nil;
+    if (!formatterB) {
+        formatterB = [[NSDateFormatter alloc] init];
+        [formatterB setTimeStyle:NSDateFormatterFullStyle];
+        [formatterB setDateFormat:@"yyyy-MM-dd'T'HH:mm:ss'Z'"];    // NOTE: problem! (but I'm not sure what that problem would be)
+    }
+    
+    
+    NSArray *formatters = [NSArray arrayWithObjects:formatterA, formatterB, nil];
+    
+    for (NSDateFormatter *formatter in formatters) {
+        
+        NSString *stringToWorkOn = dateString;
+        
+        if ([stringToWorkOn hasSuffix:@"Z"]) {
+            NSLog(@"stripping the z");
+            stringToWorkOn = [[stringToWorkOn substringToIndex:(dateString.length-1)] stringByAppendingString:@"GMT"];
+        }
+        
+        NSDate *d = [formatter dateFromString:stringToWorkOn];
+        
+        if (!d) {
+            // 2009-06-30T02:46:53GM
+            NSLog(@"Initial parse failed");
+        }
+        
+        if (!d && ![stringToWorkOn hasSuffix:@"GMT"]) {
+            stringToWorkOn = [stringToWorkOn stringByAppendingString:@"GMT"];
+            d = [formatter dateFromString:stringToWorkOn];
+        }
+        
+        if (d) {
+            return d;
+        }
+    }
+    
+    
+    NSLog(@"Could not parse %@", dateString);
+    
+    return nil;
+    */
 }
 
 - (void)parser:(NSXMLParser *)parser didEndElement:(NSString *)elementName namespaceURI:(NSString *)namespaceURI qualifiedName:(NSString *)qName {
@@ -428,31 +493,14 @@
         }
         else if ([elementName hasSuffix:@":creationdate"] || [elementName hasSuffix:@":modificationdate"]) {
             
+            // 2009-06-30T02:46:53GMT
             // '2008-10-30T02:52:47Z'
             // 1997-12-01T17:42:21-08:00
             // date-time = full-date "T" full-time, aka ISO-8601
             
             // stolen from http://www.cocoabuilder.com/archive/message/cocoa/2008/3/18/201578
             
-            NSString *dateString = _xmlChars;
-            
-            static NSDateFormatter* sISO8601 = nil;
-            if (!sISO8601) {
-                sISO8601 = [[NSDateFormatter alloc] init];
-                [sISO8601 setTimeStyle:NSDateFormatterFullStyle];
-                [sISO8601 setDateFormat:@"yyyy-MM-dd'T'HH:mm:ssZZZ"];    // NOTE: problem! (but I'm not sure what that problem would be)
-            }
-            
-            if ([dateString hasSuffix:@"Z"]) {
-                dateString = [[dateString substringToIndex:(dateString.length-1)] stringByAppendingString:@"GMT"];
-            }
-            
-            NSDate *d = [sISO8601 dateFromString:dateString];
-            
-            if (!d && ![dateString hasSuffix:@"GMT"]) {
-                dateString = [dateString stringByAppendingString:@"GMT"];
-                d = [sISO8601 dateFromString:dateString];
-            }
+            NSDate *d = [[self class] parseDateString:_xmlChars];
             
             if (d) {
                 
@@ -461,7 +509,7 @@
                 [_xmlBucket setObject:d forKey:[elementName substringFromIndex:colIdx + 1]];
             }
             else {
-                NSLog(@"Could not parse date string '%@' for '%@'", dateString, elementName);
+                NSLog(@"Could not parse date string '%@' for '%@'", _xmlChars, elementName);
             }
             
         }
