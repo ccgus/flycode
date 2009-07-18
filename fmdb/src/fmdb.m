@@ -404,8 +404,22 @@ int main (int argc, const char * argv[]) {
         
     }
     
-    
-    
+    {
+        
+        FMDBQuickCheck([db executeUpdate:@"create table t4 (a text, b text)"]);
+        FMDBQuickCheck(([db executeUpdate:@"insert into t4 (a, b) values (?, ?)", @"one", @"two"]));
+        
+        rs = [db executeQuery:@"select t4.a as 't4.a', t4.b from t4;"];
+        
+        FMDBQuickCheck((rs != nil));
+        
+        [rs next];
+        
+        FMDBQuickCheck([[rs stringForColumn:@"t4.a"] isEqualToString:@"one"]);
+        FMDBQuickCheck([[rs stringForColumn:@"b"] isEqualToString:@"two"]);
+        
+        FMDBQuickCheck(strcmp((const char*)[rs UTF8StringForColumnName:@"b"], "two") == 0);
+    }
     
     
     

@@ -1,6 +1,12 @@
 TODO:
 Zip, nada, zilch.  Got any ideas?
 
+2009.07.17
+    Added:
+    - (const unsigned char *) UTF8StringForColumnIndex:(int)columnIdx;
+    - (const unsigned char *) UTF8StringForColumnName:(NSString*)columnName;
+    to FMResultSet, patch from Nathan Stitt.
+
 2009.05.23
     Added:
     - (id)executeQuery:(NSString *)sql withArgumentsInArray:(NSArray *)arguments;

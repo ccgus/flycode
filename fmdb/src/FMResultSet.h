@@ -56,6 +56,9 @@
 - (NSData*) dataForColumn:(NSString*)columnName;
 - (NSData*) dataForColumnIndex:(int)columnIdx;
 
+- (const unsigned char *) UTF8StringForColumnIndex:(int)columnIdx;
+- (const unsigned char *) UTF8StringForColumnName:(NSString*)columnName;
+
 /*
 If you are going to use this data after you iterate over the next row, or after you close the
 result set, make sure to make a copy of the data first (or just use dataForColumn:/dataForColumnIndex:)

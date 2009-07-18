@@ -50,8 +50,11 @@
     
     int columnCount = sqlite3_column_count(statement.statement);
     
+    NSLog(@"columnCount: %d", columnCount);
+    
     int columnIdx = 0;
     for (columnIdx = 0; columnIdx < columnCount; columnIdx++) {
+        NSLog(@"%d / %@", columnIdx, [[NSString stringWithUTF8String:sqlite3_column_name(statement.statement, columnIdx)] lowercaseString]);
         [columnNameToIndexMap setObject:[NSNumber numberWithInt:columnIdx]
                                  forKey:[[NSString stringWithUTF8String:sqlite3_column_name(statement.statement, columnIdx)] lowercaseString]];
     }
@@ -270,6 +273,19 @@
 
 - (BOOL) columnIsNull:(NSString*)columnName {
     return [self columnIndexIsNull:[self columnIndexForName:columnName]];
+}
+
+- (const unsigned char *) UTF8StringForColumnIndex:(int)columnIdx {
+    
+    if (sqlite3_column_type(statement.statement, columnIdx) == SQLITE_NULL || (columnIdx < 0)) {
+		return nil;
+	}
+    
+    return sqlite3_column_text(statement.statement, columnIdx);
+}
+
+- (const unsigned char *) UTF8StringForColumnName:(NSString*)columnName {
+	return [self UTF8StringForColumnIndex:[self columnIndexForName:columnName]];
 }
 
 
