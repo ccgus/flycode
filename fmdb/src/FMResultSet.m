@@ -50,11 +50,8 @@
     
     int columnCount = sqlite3_column_count(statement.statement);
     
-    NSLog(@"columnCount: %d", columnCount);
-    
     int columnIdx = 0;
     for (columnIdx = 0; columnIdx < columnCount; columnIdx++) {
-        NSLog(@"%d / %@", columnIdx, [[NSString stringWithUTF8String:sqlite3_column_name(statement.statement, columnIdx)] lowercaseString]);
         [columnNameToIndexMap setObject:[NSNumber numberWithInt:columnIdx]
                                  forKey:[[NSString stringWithUTF8String:sqlite3_column_name(statement.statement, columnIdx)] lowercaseString]];
     }
