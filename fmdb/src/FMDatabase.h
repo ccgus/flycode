@@ -22,6 +22,9 @@
 - (id)initWithPath:(NSString*)inPath;
 
 - (BOOL) open;
+#if SQLITE_VERSION_NUMBER >= 3005000
+- (BOOL) openWithFlags:(int)flags;
+#endif
 - (void) close;
 - (BOOL) goodConnection;
 - (void) clearCachedStatements;

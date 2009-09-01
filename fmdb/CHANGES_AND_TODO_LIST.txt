@@ -1,6 +1,13 @@
 TODO:
 Zip, nada, zilch.  Got any ideas?
 
+2009.09.1
+    Added:
+    - (BOOL) openWithFlags:(int)flags;
+    To FMDatabase, which allows you to open up the database with certain flags for sqlite 3.5+
+    
+    Thanks to Dan Wright for the addition.
+    
 2009.07.17
     Added:
     - (const unsigned char *) UTF8StringForColumnIndex:(int)columnIdx;

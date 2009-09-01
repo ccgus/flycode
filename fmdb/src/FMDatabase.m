@@ -43,7 +43,7 @@
 }
 
 - (BOOL) open {
-	int err = sqlite3_open( [databasePath fileSystemRepresentation], &db );
+	int err = sqlite3_open([databasePath fileSystemRepresentation], &db );
 	if(err != SQLITE_OK) {
         NSLog(@"error opening!: %d", err);
 		return NO;
@@ -51,6 +51,18 @@
 	
 	return YES;
 }
+
+#if SQLITE_VERSION_NUMBER >= 3005000
+- (BOOL) openWithFlags:(int)flags {
+    int err = sqlite3_open_v2([databasePath fileSystemRepresentation], &db, flags, NULL /* Name of VFS module to use */);
+	if(err != SQLITE_OK) {
+		NSLog(@"error opening!: %d", err);
+		return NO;
+	}
+	return YES;
+}
+#endif
+
 
 - (void) close {
     
@@ -285,9 +297,9 @@
                     NSLog(@"DB Error: %d \"%@\"", [self lastErrorCode], [self lastErrorMessage]);
                     NSLog(@"DB Query: %@", sql);
                     if (crashOnErrors) {
-#if defined(__BIG_ENDIAN__) && !TARGET_IPHONE_SIMULATOR
-                        asm{ trap };
-#endif
+//#if defined(__BIG_ENDIAN__) && !TARGET_IPHONE_SIMULATOR
+//                        asm{ trap };
+//#endif
                         NSAssert2(false, @"DB Error: %d \"%@\"", [self lastErrorCode], [self lastErrorMessage]);
                     }
                 }
@@ -408,9 +420,9 @@
                     NSLog(@"DB Error: %d \"%@\"", [self lastErrorCode], [self lastErrorMessage]);
                     NSLog(@"DB Query: %@", sql);
                     if (crashOnErrors) {
-#if defined(__BIG_ENDIAN__) && !TARGET_IPHONE_SIMULATOR
-                        asm{ trap };
-#endif
+//#if defined(__BIG_ENDIAN__) && !TARGET_IPHONE_SIMULATOR
+//                        asm{ trap };
+//#endif
                         NSAssert2(false, @"DB Error: %d \"%@\"", [self lastErrorCode], [self lastErrorMessage]);
                     }
                 }
