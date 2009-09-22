@@ -8,7 +8,15 @@ Zip, nada, zilch.  Got any ideas?
         - (BOOL) executeUpdate:(NSString*)sql withArgumentsInArray:(NSArray *)arguments;
     
     Since they crash, I just print out a warning now.  Got a patch to fix it?  Send it to gus@flyingmeat.com
-
+    
+    
+    Added:
+        - (BOOL) tableExists:(NSString*)tableName;
+        - (FMResultSet*) getDataBaseSchema:(NSString*)tableName;
+    
+    to FMDatabaseAdditions.  Patch from OZLB
+    
+    
 2009.09.1
     Added:
     - (BOOL) openWithFlags:(int)flags;

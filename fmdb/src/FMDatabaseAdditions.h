@@ -24,4 +24,7 @@
 - (id)executeQuery:(NSString *)sql withArgumentsInArray:(NSArray *)arguments;
 - (BOOL) executeUpdate:(NSString*)sql withArgumentsInArray:(NSArray *)arguments;
 
+- (BOOL) tableExists:(NSString*)tableName;
+- (FMResultSet*) getDataBaseSchema:(NSString*)tableName;
+
 @end

@@ -424,6 +424,22 @@ int main (int argc, const char * argv[]) {
     
     
     
+    {
+        FMDBQuickCheck([db tableExists:@"t4"]);
+        FMDBQuickCheck(![db tableExists:@"thisdoesntexist"]);
+        
+        rs = [db getDataBaseSchema:@"t4"];
+        while ([rs next]) {
+            FMDBQuickCheck([[rs stringForColumn:@"type"] isEqualToString:@"table"]);
+        }
+        
+        
+    }
+    
+    
+    
+    
+    
     // just for fun.
     rs = [db executeQuery:@"PRAGMA database_list"];
     while ([rs next]) {

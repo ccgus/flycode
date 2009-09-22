@@ -112,6 +112,32 @@ return ret;
 }
 
 
+//check if table exist in database (patch from OZLB)
+- (BOOL) tableExists:(NSString*)tableName {
+    
+    BOOL returnBool;
+    //lower case table name
+    tableName = [tableName lowercaseString];
+    //search in sqlite_master table if table exists
+    FMResultSet *rs = [self executeQuery:@"select [sql] from sqlite_master where [type] = 'table' and lower(name) = ?", tableName];
+    //if at least one next exists, table exists
+    returnBool = [rs next];
+    //close and free object
+    [rs close];
+    
+    return returnBool;
+}
 
+//get table with list of tables: result colums: type[STRING], name[STRING],tbl_name[STRING],rootpage[INTEGER],sql[STRING]
+//check if table exist in database  (patch from OZLB)
+- (FMResultSet*) getDataBaseSchema:(NSString*)tableName {
+    
+    //lower case table name
+    tableName = [tableName lowercaseString];
+    //result colums: type[STRING], name[STRING],tbl_name[STRING],rootpage[INTEGER],sql[STRING]
+    FMResultSet *rs = [self executeQuery:@"SELECT type, name, tbl_name, rootpage, sql FROM (SELECT * FROM sqlite_master UNION ALL SELECT * FROM sqlite_temp_master) WHERE type != 'meta' AND name NOT LIKE 'sqlite_%' ORDER BY tbl_name, type DESC, name"];
+    
+    return rs;
+}
 
 @end
