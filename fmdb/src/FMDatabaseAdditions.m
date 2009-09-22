@@ -59,7 +59,15 @@ return ret;
 //http://cocoawithlove.com/2009/05/variable-argument-lists-in-cocoa.html
 
 - (id)executeQuery:(NSString *)sql withArgumentsInArray:(NSArray *)arguments {
-
+    
+#ifdef __LP64__
+    
+    NSLog(@"executeQuery:withArgumentsInArray: does not work when compiled as 64 bit");
+    // got a patch?  send it gus@flyingmeat.com
+    
+    return 0x00;
+    
+#else
 	id returnObject;
 	
 	//also need make sure that everything in arguments is an Obj-C object
@@ -73,9 +81,19 @@ return ret;
 	free(argList);
 	
 	return returnObject;
+#endif
 }
 
 - (BOOL) executeUpdate:(NSString*)sql withArgumentsInArray:(NSArray *)arguments {
+    
+#ifdef __LP64__
+    
+    NSLog(@"executeUpdate:withArgumentsInArray: does not work when compiled as 64 bit");
+    // got a patch?  send it gus@flyingmeat.com
+    
+    return 0x00;
+    
+#else
     
     BOOL returnBool;
 	
@@ -90,7 +108,7 @@ return ret;
 	free(argList);
 	
 	return returnBool;
-    
+#endif
 }
 
 
