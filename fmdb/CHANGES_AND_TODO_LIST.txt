@@ -1,8 +1,27 @@
 TODO:
 Zip, nada, zilch.  Got any ideas?
 
+2009.10.14:
+    
+    Reworked:
+        - (id)executeQuery:(NSString *)sql withArgumentsInArray:(NSArray *)arguments;
+        - (BOOL) executeUpdate:(NSString*)sql withArgumentsInArray:(NSArray *)arguments;
+        
+        These two methods now point to:
+        - (id) executeQuery:(NSString*)sql withArgumentsInArray:(NSArray*)arrayArgs orVAList:(va_list)args;
+        - (BOOL) executeUpdate:(NSString*)sql withArgumentsInArray:(NSArray*)arrayArgs orVAList:(va_list)args;
+        
+        because the vargs were causing headaches in 64bit land, and on the iphone, and it's fragile n' stuff.
+
+    
+    Added:
+        - (FMResultSet*) getTableSchema:(NSString*)tableName;
+        - (BOOL) columnExists:(NSString*)tableName columnName:(NSString*)columnName;
+    
+    to FMDatabaseAdditions.  Patch from OZLB
+    
 2009.09.22
-    Disabled the following FMDatabaseAdditions when comiled as 64 bit:
+    Disabled the following FMDatabaseAdditions when compiled as 64 bit:
         - (id)executeQuery:(NSString *)sql withArgumentsInArray:(NSArray *)arguments;
         and
         - (BOOL) executeUpdate:(NSString*)sql withArgumentsInArray:(NSArray *)arguments;
@@ -85,7 +104,7 @@ Some changes to make Clang's static analysis happy (http://clang.llvm.org/Static
 Added longLongIntForColumn: and longLongIntForColumnIndex: to FMResultSet. (patch provided by Will Cosgrove)
 
 2008.11.20
-Added a check for NSNull in bindObject, which works just like passing nil does (patch provded by Robert Tolar Haining)
+Added a check for NSNull in bindObject, which works just like passing nil does (patch provided by Robert Tolar Haining)
 
 2008.11.02
 Removed the block keeping you from performing updates or selects while going through a result set.

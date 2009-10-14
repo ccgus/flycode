@@ -246,7 +246,7 @@
     }
 }
 
-- (id) executeQuery:(NSString *)sql arguments:(va_list)args {
+- (id) executeQuery:(NSString *)sql withArgumentsInArray:(NSArray*)arrayArgs orVAList:(va_list)args {
     
     if (inUse) {
         [self compainAboutInUse];
@@ -318,7 +318,13 @@
     int queryCount = sqlite3_bind_parameter_count(pStmt); // pointed out by Dominic Yu (thanks!)
     
     while (idx < queryCount) {
-        obj = va_arg(args, id);
+        
+        if (arrayArgs) {
+            obj = [arrayArgs objectAtIndex:idx];
+        }
+        else {
+            obj = va_arg(args, id);
+        }
         
         if (traceExecution) {
             NSLog(@"obj: %@", obj);
@@ -364,14 +370,17 @@
     va_list args;
     va_start(args, sql);
     
-    id result = [self executeQuery:sql arguments:args];
+    id result = [self executeQuery:sql withArgumentsInArray:nil orVAList:args];
     
     va_end(args);
     return result;
 }
 
+- (id) executeQuery:(NSString *)sql withArgumentsInArray:(NSArray *)arguments {
+    return [self executeQuery:sql withArgumentsInArray:arguments orVAList:nil];
+}
 
-- (BOOL) executeUpdate:(NSString*)sql arguments:(va_list)args {
+- (BOOL) executeUpdate:(NSString*)sql withArgumentsInArray:(NSArray*)arrayArgs orVAList:(va_list)args {
     
     if (inUse) {
         [self compainAboutInUse];
@@ -443,7 +452,13 @@
     
     while (idx < queryCount) {
         
-        obj = va_arg(args, id);
+        if (arrayArgs) {
+            obj = [arrayArgs objectAtIndex:idx];
+        }
+        else {
+            obj = va_arg(args, id);
+        }
+        
         
         if (traceExecution) {
             NSLog(@"obj: %@", obj);
@@ -530,17 +545,28 @@
     return (rc == SQLITE_OK);
 }
 
+
 - (BOOL) executeUpdate:(NSString*)sql, ... {
     va_list args;
     va_start(args, sql);
     
-    BOOL result = [self executeUpdate:sql arguments:args];
+    BOOL result = [self executeUpdate:sql withArgumentsInArray:nil orVAList:args];
     
     va_end(args);
     return result;
 }
 
 
+
+- (BOOL) executeUpdate:(NSString*)sql withArgumentsInArray:(NSArray *)arguments {
+    return [self executeUpdate:sql withArgumentsInArray:arguments orVAList:nil];
+}
+
+/*
+- (id) executeUpdate:(NSString *)sql arguments:(va_list)args {
+    
+}
+*/
 
 - (BOOL) rollback {
     BOOL b = [self executeUpdate:@"ROLLBACK TRANSACTION;"];

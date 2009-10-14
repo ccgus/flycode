@@ -419,6 +419,32 @@ int main (int argc, const char * argv[]) {
         FMDBQuickCheck([[rs stringForColumn:@"b"] isEqualToString:@"two"]);
         
         FMDBQuickCheck(strcmp((const char*)[rs UTF8StringForColumnName:@"b"], "two") == 0);
+        
+        [rs close];
+        
+        // let's try these again, with the withArgumentsInArray: variation
+        FMDBQuickCheck([db executeUpdate:@"drop table t4;" withArgumentsInArray:[NSArray array]]);
+        FMDBQuickCheck([db executeUpdate:@"create table t4 (a text, b text)" withArgumentsInArray:[NSArray array]]);
+        FMDBQuickCheck(([db executeUpdate:@"insert into t4 (a, b) values (?, ?)" withArgumentsInArray:[NSArray arrayWithObjects:@"one", @"two", nil]]));
+        
+        rs = [db executeQuery:@"select t4.a as 't4.a', t4.b from t4;" withArgumentsInArray:[NSArray array]];
+        
+        FMDBQuickCheck((rs != nil));
+        
+        [rs next];
+        
+        FMDBQuickCheck([[rs stringForColumn:@"t4.a"] isEqualToString:@"one"]);
+        FMDBQuickCheck([[rs stringForColumn:@"b"] isEqualToString:@"two"]);
+        
+        FMDBQuickCheck(strcmp((const char*)[rs UTF8StringForColumnName:@"b"], "two") == 0);
+        
+        [rs close];
+        
+        
+        
+        
+        
+        
     }
     
     
