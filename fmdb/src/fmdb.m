@@ -454,7 +454,7 @@ int main (int argc, const char * argv[]) {
         FMDBQuickCheck([db tableExists:@"t4"]);
         FMDBQuickCheck(![db tableExists:@"thisdoesntexist"]);
         
-        rs = [db getDataBaseSchema:@"t4"];
+        rs = [db getSchema];
         while ([rs next]) {
             FMDBQuickCheck([[rs stringForColumn:@"type"] isEqualToString:@"table"]);
         }

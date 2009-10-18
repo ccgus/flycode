@@ -23,7 +23,7 @@
 
 
 - (BOOL) tableExists:(NSString*)tableName;
-- (FMResultSet*) getDataBaseSchema:(NSString*)tableName;
+- (FMResultSet*) getSchema;
 - (FMResultSet*) getTableSchema:(NSString*)tableName;
 - (BOOL) columnExists:(NSString*)tableName columnName:(NSString*)columnName;
 

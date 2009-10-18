@@ -65,10 +65,8 @@ return ret;
 
 //get table with list of tables: result colums: type[STRING], name[STRING],tbl_name[STRING],rootpage[INTEGER],sql[STRING]
 //check if table exist in database  (patch from OZLB)
-- (FMResultSet*) getDataBaseSchema:(NSString*)tableName {
+- (FMResultSet*) getSchema {
     
-    //lower case table name
-    tableName = [tableName lowercaseString];
     //result colums: type[STRING], name[STRING],tbl_name[STRING],rootpage[INTEGER],sql[STRING]
     FMResultSet *rs = [self executeQuery:@"SELECT type, name, tbl_name, rootpage, sql FROM (SELECT * FROM sqlite_master UNION ALL SELECT * FROM sqlite_temp_master) WHERE type != 'meta' AND name NOT LIKE 'sqlite_%' ORDER BY tbl_name, type DESC, name"];
     

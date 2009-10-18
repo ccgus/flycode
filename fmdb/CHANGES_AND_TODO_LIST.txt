@@ -1,6 +1,19 @@
 TODO:
 Zip, nada, zilch.  Got any ideas?
 
+2009.10.18:
+    
+    Added:
+        FMDB now checks for longLongValue in NSNumbers passed for selects or updates, and binds that value to an sqlite int64
+        
+    Thanks for the patch from Brian Stern!
+
+    Changed:
+        renamed getDataBaseSchema: to getSchema.  It didn't actually use the param.  whooops.
+
+
+
+
 2009.10.14:
     
     Reworked:

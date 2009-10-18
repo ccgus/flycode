@@ -30,7 +30,7 @@
 - (BOOL) hasAnotherRow;
 
 - (int) columnIndexForName:(NSString*)columnName;
-- (NSString*) columnNameForIndex:(int)index;
+- (NSString*) columnNameForIndex:(int)columnIdx;
 
 - (int) intForColumn:(NSString*)columnName;
 - (int) intForColumnIndex:(int)columnIdx;
