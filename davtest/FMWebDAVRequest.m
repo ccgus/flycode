@@ -252,9 +252,18 @@
 }
 
 - (FMWebDAVRequest*) fetchDirectoryListingWithDepth:(NSUInteger)depth {
+    return [self fetchDirectoryListingWithDepth:depth extraToPropfind:@""];
+}
+
+// <D:prop><D:creationdate/></D:prop>
+- (FMWebDAVRequest*) fetchDirectoryListingWithDepth:(NSUInteger)depth extraToPropfind:(NSString*)extra {
     
     if (!_endSelector) {
         _endSelector = @selector(requestDidFetchDirectoryListing:);
+    }
+    
+    if (!extra) {
+        extra = @"";
     }
     
     NSMutableURLRequest *req = [NSMutableURLRequest requestWithURL:_url];
@@ -267,7 +276,7 @@
     
     [req setHTTPMethod:@"PROPFIND"];
     
-    NSString *xml = @"<?xml version=\"1.0\" encoding=\"utf-8\" ?>\n<D:propfind xmlns:D=\"DAV:\"><D:allprop/></D:propfind>";
+    NSString *xml = [NSString stringWithFormat:@"<?xml version=\"1.0\" encoding=\"utf-8\" ?>\n<D:propfind xmlns:D=\"DAV:\"><D:allprop/>%@</D:propfind>", extra];
     
     if (depth > 1) {
         // http://tools.ietf.org/html/rfc2518#section-9.2

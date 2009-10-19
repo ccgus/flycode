@@ -65,6 +65,7 @@ enum {
 + (id) requestToURL:(NSURL*)url;
 + (id) requestToURL:(NSURL*)url delegate:(id)del endSelector:(SEL)anEndSelector contextInfo:(id)context;
 
+- (FMWebDAVRequest*) fetchDirectoryListingWithDepth:(NSUInteger)depth extraToPropfind:(NSString*)extra;
 - (FMWebDAVRequest*) fetchDirectoryListingWithDepth:(NSUInteger)depth;
 - (FMWebDAVRequest*) fetchDirectoryListing;
 - (NSArray*) directoryListing;
