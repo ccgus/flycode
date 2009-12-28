@@ -26,6 +26,7 @@ enum {
     FMWebDAVNotFoundStatusCode = 404,
     FMWebDAVMethodNotAllowedStatusCode = 405,
     FMWebDAVConflictStatusCode = 409,
+    FMHTTPNotImplementedErrorCode = 501,
 };
 
 

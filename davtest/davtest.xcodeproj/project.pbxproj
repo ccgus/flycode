@@ -13,6 +13,8 @@
 		8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */; };
 		CC1719920E4AC6F7000302F8 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CC1719910E4AC6F7000302F8 /* AppDelegate.m */; };
 		CC171A130E4B6624000302F8 /* FMWebDAVRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = CC171A120E4B6624000302F8 /* FMWebDAVRequest.m */; };
+		CCD79F9510E96DE8002B6C6B /* FMFileDAVRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = CCD79F9410E96DE8002B6C6B /* FMFileDAVRequest.m */; };
+		CCD79FA510E970B6002B6C6B /* ISO8601DateFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = CCD79FA410E970B6002B6C6B /* ISO8601DateFormatter.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +32,10 @@
 		CC1719910E4AC6F7000302F8 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		CC171A110E4B6624000302F8 /* FMWebDAVRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMWebDAVRequest.h; sourceTree = "<group>"; };
 		CC171A120E4B6624000302F8 /* FMWebDAVRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMWebDAVRequest.m; sourceTree = "<group>"; };
+		CCD79F9310E96DE8002B6C6B /* FMFileDAVRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMFileDAVRequest.h; sourceTree = "<group>"; };
+		CCD79F9410E96DE8002B6C6B /* FMFileDAVRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMFileDAVRequest.m; sourceTree = "<group>"; };
+		CCD79FA310E970B6002B6C6B /* ISO8601DateFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISO8601DateFormatter.h; sourceTree = "<group>"; };
+		CCD79FA410E970B6002B6C6B /* ISO8601DateFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ISO8601DateFormatter.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,6 +57,10 @@
 				CC1719910E4AC6F7000302F8 /* AppDelegate.m */,
 				CC171A110E4B6624000302F8 /* FMWebDAVRequest.h */,
 				CC171A120E4B6624000302F8 /* FMWebDAVRequest.m */,
+				CCD79F9310E96DE8002B6C6B /* FMFileDAVRequest.h */,
+				CCD79F9410E96DE8002B6C6B /* FMFileDAVRequest.m */,
+				CCD79FA310E970B6002B6C6B /* ISO8601DateFormatter.h */,
+				CCD79FA410E970B6002B6C6B /* ISO8601DateFormatter.m */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -179,6 +189,8 @@
 				8D11072D0486CEB800E47090 /* main.m in Sources */,
 				CC1719920E4AC6F7000302F8 /* AppDelegate.m in Sources */,
 				CC171A130E4B6624000302F8 /* FMWebDAVRequest.m in Sources */,
+				CCD79F9510E96DE8002B6C6B /* FMFileDAVRequest.m in Sources */,
+				CCD79FA510E970B6002B6C6B /* ISO8601DateFormatter.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

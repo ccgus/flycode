@@ -11,12 +11,7 @@
 
 @implementation AppDelegate
 
-- (void)awakeFromNib {
-	
-    waitingOnAuthentication = YES;
-    
-    NSString *baseURL = @"http://srv.local/webdav/";
-    
+- (void) testURL:(NSString*)baseURL {
     [[FMWebDAVRequest requestToURL:NSStringToURL(baseURL)
                           delegate:self
                        endSelector:@selector(requestDidFetchDirectoryListingAndTestAuthenticationDidFinish:)
@@ -29,8 +24,9 @@
     
     
     NSString *dirURL = [baseURL stringByAppendingFormat:@"newdir-%d/", (int)[NSDate timeIntervalSinceReferenceDate]];
-    [[FMWebDAVRequest requestToURL:NSStringToURL(dirURL) delegate:self endSelector:nil contextInfo:nil] createDirectory];
+    FMWebDAVRequest *createDir = [[[FMWebDAVRequest requestToURL:NSStringToURL(dirURL) delegate:self endSelector:nil contextInfo:nil] synchronous] createDirectory];
     
+    assert([createDir responseStatusCode] == 201);
     
     NSString *putURL    = [baseURL stringByAppendingString:@"Compass.icns"];
     NSData *data        = [NSData dataWithContentsOfFile:@"/Applications/Safari.app/Contents/Resources/compass.icns"];
@@ -48,8 +44,23 @@
     [data writeToFile:@"/tmp/compass.icns" atomically:YES];
     system("open /tmp/compass.icns");
     
-    [[FMWebDAVRequest requestToURL:NSStringToURL(putURL)] delete];
+    FMWebDAVRequest *deleteReq = [[[FMWebDAVRequest requestToURL:NSStringToURL(putURL)] synchronous] delete];
+    
+    assert([deleteReq responseStatusCode] == 204);
+    
     [[FMWebDAVRequest requestToURL:NSStringToURL(copyToURL)] delete];
+}
+
+- (void)awakeFromNib {
+	
+    waitingOnAuthentication = YES;
+    
+    [self testURL:@"http://127.0.0.1/webdav/"];
+    
+    system("mkdir /tmp/webdav");
+    
+    [self testURL:@"file:///tmp/webdav/"];
+    
 }
 
 - (void) requestDidFetchDirectoryListingAndTestAuthenticationDidFinish:(FMWebDAVRequest*)req {

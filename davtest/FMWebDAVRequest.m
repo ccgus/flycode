@@ -7,6 +7,7 @@
 //
 
 #import "FMWebDAVRequest.h"
+#import "FMFileDAVRequest.h"
 #import "ISO8601DateFormatter.h"
 
 @implementation FMWebDAVRequest
@@ -21,7 +22,8 @@
 @synthesize error=_error;
 
 + (id) requestToURL:(NSURL*)url {
-    FMWebDAVRequest *request = [[FMWebDAVRequest alloc] init];
+    
+    FMWebDAVRequest *request = [url isFileURL] ? [[FMFileDAVRequest alloc] init] : [[FMWebDAVRequest alloc] init];;
     
     [request setUrl:url];
     
@@ -30,7 +32,7 @@
 
 + (id) requestToURL:(NSURL*)url delegate:(id)del endSelector:(SEL)anEndSelector contextInfo:(id)context {
     
-    FMWebDAVRequest *request = [[FMWebDAVRequest alloc] init];
+    FMWebDAVRequest *request = [url isFileURL] ? [[FMFileDAVRequest alloc] init] : [[FMWebDAVRequest alloc] init];;
     
     [request setUrl:url];
     [request setDelegate:del];
