@@ -43,7 +43,13 @@
     
     NSFileManager *fileManager = [[NSFileManager alloc] init];
     
-    self.responseStatusCode = [fileManager createDirectoryAtPath:[self filePath] attributes:nil] ? FMWebDAVCreatedStatusCode : FMHTTPNotImplementedErrorCode;
+    if (![fileManager fileExistsAtPath:[self filePath]]) {
+        self.responseStatusCode = [fileManager createDirectoryAtPath:[self filePath] attributes:nil] ? FMWebDAVCreatedStatusCode : FMHTTPNotImplementedErrorCode;
+    }
+    else {
+        self.responseStatusCode = FMWebDAVMethodNotAllowedStatusCode;
+    }
+    
     
     [fileManager release];
     
@@ -95,9 +101,8 @@
     
     self.responseData = [NSData dataWithContentsOfURL:_url];
     
-    if (_responseData) {
-        self.responseStatusCode = FMWebDAVOKStatusCode;
-    }
+    self.responseStatusCode = _responseData ? FMWebDAVOKStatusCode : FMWebDAVNotFoundStatusCode;
+    
     
     if (!_synchronous) {
         [self performSelector:@selector(callback) withObject:nil afterDelay:0];
@@ -133,8 +138,12 @@
         _endSelector = @selector(requestDidCopy:);
     }
 
-
+    
     NSFileManager *fileManager = [[NSFileManager alloc] init];
+    
+    if ([fileManager fileExistsAtPath:[dest path]] && ![fileManager removeItemAtPath:[dest path] error:nil]) {
+        NSLog(@"Could not delete item at %@", [dest path]);
+    }
     
     if ([fileManager moveItemAtPath:[self filePath] toPath:[dest path] error:nil]) {
         self.responseStatusCode = FMWebDAVOKStatusCode;
@@ -177,6 +186,10 @@
     if (!_endSelector) {
         _endSelector = @selector(requestDidFetchDirectoryListing:);
     }
+    
+    self.responseData = [NSData data]; // it wants to know that something was there.
+    
+    self.responseStatusCode = 207;
     
     if (!_synchronous) {
         [self performSelector:@selector(callback) withObject:nil afterDelay:0];
