@@ -224,9 +224,38 @@
 }
 
 - (NSArray*) directoryListingWithAttributes {
-    debug(@"unimplemented!!");
-    debug(@"%s:%d", __FUNCTION__, __LINE__);
-    return 0x00;
+    
+    NSFileManager *fileManager = [[[NSFileManager alloc] init] autorelease];
+    
+    NSString *directory = [self filePath];
+    NSArray *files = [fileManager contentsOfDirectoryAtPath:directory error:nil];
+    NSMutableArray *returnFiles = [NSMutableArray array];
+    NSEnumerator *e = [files objectEnumerator];
+    NSString *file;
+    
+    while ((file = [e nextObject])) {
+        
+        NSString *href = file;
+        
+        NSString *filePath = [directory stringByAppendingPathComponent:file];
+        NSError *err = 0x00;
+        NSDictionary *fileInfo = [fileManager attributesOfItemAtPath:filePath error:&err];
+        
+        
+        if ([[fileInfo objectForKey:NSFileType] isEqualToString:NSFileTypeDirectory]) {
+            href = [NSString stringWithFormat:@"%@/", file];
+        }
+        
+        NSDate *modDate = [fileInfo objectForKey:NSFileModificationDate];
+        NSDate *creDate = [fileInfo objectForKey:NSFileCreationDate];
+        
+        NSDictionary *ret = [NSDictionary dictionaryWithObjectsAndKeys:href, @"href", creDate, @"creationdate", modDate, @"modificationdate", nil];
+        
+        [returnFiles addObject:ret];
+    }
+    
+    return returnFiles;
+    
 }
 
 @end
