@@ -57,6 +57,8 @@
     
     startPage = [path stringByAppendingPathComponent:startPage];
     
+    debug(@"startPage: %@", startPage);
+    
     NSURLRequest *req = [NSURLRequest requestWithURL:[NSURL fileURLWithPath:startPage]];
     [webView loadRequest:req];
     
@@ -81,7 +83,17 @@
 - (void) goToIndex:(id)sender {
     debug(@"%s:%d", __FUNCTION__, __LINE__);
     // notice the space.  That's a special page in VP land.
-    NSString *indexPage = [_documentDirectory stringByAppendingPathComponent:@" index.html"];
+    
+    // VoodooPad 4.3 added this (maybe)
+    NSString *indexPage = [_documentDirectory stringByAppendingPathComponent:@" index.rtfd.zip"];
+    
+    debug(@"indexPage: %@", indexPage);
+    
+    if (![[NSFileManager defaultManager] fileExistsAtPath:indexPage]) {
+        indexPage = [_documentDirectory stringByAppendingPathComponent:@" index.html"];
+    }
+    
+    debug(@"indexPage: %@", indexPage);
     
     NSURLRequest *req = [NSURLRequest requestWithURL:[NSURL fileURLWithPath:indexPage]];
     [webView loadRequest:req];

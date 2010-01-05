@@ -14,7 +14,7 @@
 #import "ExceptionUtils.h"
 
 
-#if TARGET_OS_IPHONE && TARGET_OS_EMBEDDED
+#if TARGET_OS_IPHONE && !defined(__SEC_TYPES__)
 // SecureTransport.h is missing on iPhone, with its SSL constants:
 enum{
     errSSLClosedAbort 			= -9806,	/* connection closed via error */

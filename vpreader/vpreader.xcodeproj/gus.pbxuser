@@ -44,7 +44,7 @@
 	29B97313FDCFA39411CA2CEA /* Project object */ = {
 		activeBuildConfigurationName = Release;
 		activeExecutable = CC1C89BA0F182CED00E71072 /* vpreader */;
-		activeSDKPreference = iphonesimulator2.2;
+		activeSDKPreference = iphonesimulator3.0;
 		activeTarget = 1D6058900D05DD3D006BFB54 /* vpreader */;
 		addToTargets = (
 			1D6058900D05DD3D006BFB54 /* vpreader */,
@@ -59,7 +59,7 @@
 				PBXFileTableDataSourceColumnSortingKey = PBXFileDataSource_Filename_ColumnID;
 				PBXFileTableDataSourceColumnWidthsKey = (
 					20,
-					548,
+					10,
 					20,
 					48,
 					43,
@@ -98,8 +98,8 @@
 					PBXFileDataSource_Warnings_ColumnID,
 				);
 			};
-			PBXPerProjectTemplateStateSaveDate = 253406938;
-			PBXWorkspaceStateSaveDate = 253406938;
+			PBXPerProjectTemplateStateSaveDate = 284414872;
+			PBXWorkspaceStateSaveDate = 284414872;
 		};
 		sourceControlManager = CC1C89D40F182D2100E71072 /* Source Control */;
 		userBuildSettings = {
@@ -123,6 +123,9 @@
 		configStateDict = {
 		};
 		customDataFormattersEnabled = 1;
+		dataTipCustomDataFormattersEnabled = 1;
+		dataTipShowTypeColumn = 1;
+		dataTipSortType = 0;
 		debuggerPlugin = GDBDebugging;
 		disassemblyDisplayState = 0;
 		dylibVariantSuffix = "";
@@ -135,6 +138,7 @@
 		name = vpreader;
 		savedGlobals = {
 		};
+		showTypeColumn = 0;
 		sourceDirectories = (
 		);
 	};
@@ -143,6 +147,9 @@
 		fallbackIsa = XCSourceControlManager;
 		isSCMEnabled = 0;
 		scmConfiguration = {
+			repositoryNamesForRoots = {
+				"" = "";
+			};
 		};
 	};
 	CC1C89D50F182D2100E71072 /* Code sense */ = {
@@ -172,9 +179,9 @@
 	};
 	CCC14B690F184494004BD04E /* TCPConnection.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1123, 6244}}";
-			sepNavSelRange = "{2373, 0}";
-			sepNavVisRange = "{1511, 2292}";
+			sepNavIntBoundsRect = "{{0, 0}, {1011, 6915}}";
+			sepNavSelRange = "{295, 0}";
+			sepNavVisRange = "{3, 1533}";
 		};
 	};
 	CCC14B750F184494004BD04E /* BLIPConnection.h */ = {
@@ -235,9 +242,9 @@
 	};
 	CCC14E620F188A27004BD04E /* WebViewController.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1526, 1260}}";
-			sepNavSelRange = "{1651, 20}";
-			sepNavVisRange = "{588, 1835}";
+			sepNavIntBoundsRect = "{{0, 0}, {732, 1635}}";
+			sepNavSelRange = "{2585, 10}";
+			sepNavVisRange = "{2109, 402}";
 		};
 	};
 }
