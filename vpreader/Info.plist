@@ -11,7 +11,7 @@
 	<key>CFBundleIconFile</key>
 	<string>VPReader.png</string>
 	<key>CFBundleIdentifier</key>
-	<string>com.flyingmeat.${PRODUCT_NAME:identifier}</string>
+	<string>com.flyingmeat.vpreader</string>
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleName</key>

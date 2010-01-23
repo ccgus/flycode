@@ -590,7 +590,7 @@
 								<key>Frame</key>
 								<string>{{0, 0}, {972, 116}}</string>
 								<key>RubberWindowFrame</key>
-								<string>140 563 972 524 0 0 1920 1178 </string>
+								<string>137 551 972 524 0 0 1920 1178 </string>
 							</dict>
 							<key>Module</key>
 							<string>PBXNavigatorGroup</string>
@@ -616,7 +616,7 @@
 								<key>Frame</key>
 								<string>{{0, 121}, {972, 362}}</string>
 								<key>RubberWindowFrame</key>
-								<string>140 563 972 524 0 0 1920 1178 </string>
+								<string>137 551 972 524 0 0 1920 1178 </string>
 							</dict>
 							<key>Module</key>
 							<string>PBXBuildResultsModule</string>
@@ -646,7 +646,7 @@
 			<key>ToolbarConfiguration</key>
 			<string>xcode.toolbar.config.buildV3</string>
 			<key>WindowString</key>
-			<string>140 563 972 524 0 0 1920 1178 </string>
+			<string>137 551 972 524 0 0 1920 1178 </string>
 			<key>WindowToolGUID</key>
 			<string>CC1C89C60F182D2000E71072</string>
 			<key>WindowToolIsVisible</key>

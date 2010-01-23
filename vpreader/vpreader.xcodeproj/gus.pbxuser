@@ -9,8 +9,8 @@
 	};
 	1D3623250D0F684500981E51 /* VPReaderAppDelegate.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1441, 864}}";
-			sepNavSelRange = "{710, 14}";
+			sepNavIntBoundsRect = "{{0, 0}, {1451, 967}}";
+			sepNavSelRange = "{269, 34}";
 			sepNavVisRange = "{0, 1183}";
 		};
 	};
@@ -22,27 +22,27 @@
 	};
 	28A0AAE50D9B0CCF005BE974 /* vpreader_Prefix.pch */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1087, 829}}";
-			sepNavSelRange = "{201, 0}";
-			sepNavVisRange = "{0, 287}";
+			sepNavIntBoundsRect = "{{0, 0}, {732, 252}}";
+			sepNavSelRange = "{196, 5}";
+			sepNavVisRange = "{112, 169}";
 		};
 	};
 	28C286DF0D94DF7D0034E888 /* RootViewController.h */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1026, 898}}";
-			sepNavSelRange = "{355, 17}";
+			sepNavIntBoundsRect = "{{0, 0}, {1451, 967}}";
+			sepNavSelRange = "{656, 0}";
 			sepNavVisRange = "{0, 656}";
 		};
 	};
 	28C286E00D94DF7D0034E888 /* RootViewController.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1026, 2240}}";
-			sepNavSelRange = "{4253, 0}";
-			sepNavVisRange = "{2673, 2263}";
+			sepNavIntBoundsRect = "{{0, 0}, {1451, 2400}}";
+			sepNavSelRange = "{1154, 0}";
+			sepNavVisRange = "{41, 1971}";
 		};
 	};
 	29B97313FDCFA39411CA2CEA /* Project object */ = {
-		activeBuildConfigurationName = Release;
+		activeBuildConfigurationName = Debug;
 		activeExecutable = CC1C89BA0F182CED00E71072 /* vpreader */;
 		activeSDKPreference = iphonesimulator3.0;
 		activeTarget = 1D6058900D05DD3D006BFB54 /* vpreader */;
@@ -81,10 +81,10 @@
 				PBXFileTableDataSourceColumnSortingKey = PBXFileDataSource_Filename_ColumnID;
 				PBXFileTableDataSourceColumnWidthsKey = (
 					20,
-					508,
+					10,
 					60,
 					20,
-					48.16259765625,
+					48,
 					43,
 					43,
 				);
