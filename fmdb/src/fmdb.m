@@ -318,11 +318,13 @@ int main (int argc, const char * argv[]) {
         }
     }
     
-    
-    
-    
-    
-    
+    NSDate *foo = [db dateForQuery:@"select b from datetest where c = 0"];
+    assert(foo);
+    NSTimeInterval dti = fabs([foo timeIntervalSinceDate:date]);
+    if (floor(dti) > 0.0) {
+        NSLog(@"Date matches didn't really happen... time difference of %f", dti);
+        return 14;
+    }
     
     [db executeUpdate:@"create table nulltest2 (s text, d data, i integer, f double, b integer)"];
     

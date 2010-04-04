@@ -1,6 +1,10 @@
 TODO:
 Zip, nada, zilch.  Got any ideas?
 
+2010.04.04:
+    Added:
+        dateForQuery which works like the other fooForQuery methods.  Thanks to Matt Stevens for the patch!
+
 2009.10.18:
     
     Added:
