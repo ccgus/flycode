@@ -25,7 +25,7 @@
 #if SQLITE_VERSION_NUMBER >= 3005000
 - (BOOL) openWithFlags:(int)flags;
 #endif
-- (void) close;
+- (BOOL) close;
 - (BOOL) goodConnection;
 - (void) clearCachedStatements;
 

@@ -1,6 +1,13 @@
 TODO:
 Zip, nada, zilch.  Got any ideas?
 
+If you would like to contribute some code- awesome!  I just ask that you make it conform to the coding conventions already set in here, and to add a couple of tests for your new code to fmdb.m.  And of course, the code should be of general use to more than just a couple of folks.  Send your patches to gus@flyingmeat.com.
+
+2010.06.21:
+    
+    Changed up FMDatabase's close method to return a boolean, and fixed a compiler warning when compiling in 64bit land.  Thanks to Jens Alfke for the patches!
+
+
 2010.04.04:
     Added:
         dateForQuery which works like the other fooForQuery methods.  Thanks to Matt Stevens for the patch!
