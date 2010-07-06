@@ -11,12 +11,12 @@
 
 @implementation FMFileDAVRequest
 
-- (void) sendRequest:(NSMutableURLRequest *)req {
+- (void)endRequest:(NSMutableURLRequest *)req {
     // wait, what?
     
 }
 
-- (NSString*) filePath {
+- (NSString*)filePath {
     if (![_url isFileURL]) {
         [[NSException exceptionWithName:@"Invalid URL" reason:@"The URL passed is not a file URL" userInfo:nil] raise];
     }
@@ -24,7 +24,7 @@
     return [_url path];
 }
 
-- (void) callback {
+- (void)callback {
     
     // I feel this is ... ugly.
     
@@ -32,10 +32,14 @@
         [self.delegate performSelector:_endSelector withObject:self];
     }
     
+    if (_finishBlock) {
+        _finishBlock(self);
+    }
+    
     [self autorelease];
 }
 
-- (FMWebDAVRequest*) createDirectory {
+- (FMWebDAVRequest*)createDirectory {
     
     if (!_endSelector) {
         _endSelector = @selector(requestDidCreateDirectory:);
@@ -56,29 +60,41 @@
     if (!_synchronous) {
         [self performSelector:@selector(callback) withObject:nil afterDelay:0];
     }
+    else if (_finishBlock) {
+        _finishBlock(self);
+    }
     
     return self;
 }
 
-- (FMWebDAVRequest*) delete {
+- (FMWebDAVRequest*)delete {
     if (!_endSelector) {
         _endSelector = @selector(requestDidDelete:);
     }
     
     NSFileManager *fileManager = [[NSFileManager alloc] init];
     
-    self.responseStatusCode = [fileManager removeFileAtPath:[self filePath] handler:nil] ? FMWebDAVNoContentStatusCode : FMHTTPNotImplementedErrorCode;
+    NSError *err = 0x00;
+    
+    self.responseStatusCode = [fileManager removeItemAtPath:[self filePath] error:nil] ? FMWebDAVNoContentStatusCode : FMHTTPNotImplementedErrorCode;
+    
+    if (err) {
+        NSLog(@"err: %@", err);
+    }
     
     [fileManager release];
     
     if (!_synchronous) {
         [self performSelector:@selector(callback) withObject:nil afterDelay:0];
     }
+    else if (_finishBlock) {
+        _finishBlock(self);
+    }
     
     return self;
 }
 
-- (FMWebDAVRequest*) putData:(NSData*)data {
+- (FMWebDAVRequest*)putData:(NSData*)data {
     
     if (!_endSelector) {
         _endSelector = @selector(requestDidPutData:);
@@ -89,11 +105,14 @@
     if (!_synchronous) {
         [self performSelector:@selector(callback) withObject:nil afterDelay:0];
     }
+    else if (_finishBlock) {
+        _finishBlock(self);
+    }
     
     return self;
 }
 
-- (FMWebDAVRequest*) get {
+- (FMWebDAVRequest*)get {
     
     if (!_endSelector) {
         _endSelector = @selector(requestDidGet:);
@@ -107,11 +126,14 @@
     if (!_synchronous) {
         [self performSelector:@selector(callback) withObject:nil afterDelay:0];
     }
+    else if (_finishBlock) {
+        _finishBlock(self);
+    }
     
     return self;
 }
 
-- (FMWebDAVRequest*) copyToDestinationURL:(NSURL*)dest {
+- (FMWebDAVRequest*)copyToDestinationURL:(NSURL*)dest {
     
     if (!_endSelector) {
         _endSelector = @selector(requestDidCopy:);
@@ -128,11 +150,14 @@
     if (!_synchronous) {
         [self performSelector:@selector(callback) withObject:nil afterDelay:0];
     }
+    else if (_finishBlock) {
+        _finishBlock(self);
+    }
     
     return self;
 }
 
-- (FMWebDAVRequest*) moveToDestinationURL:(NSURL*)dest {
+- (FMWebDAVRequest*)moveToDestinationURL:(NSURL*)dest {
 
     if (!_endSelector) {
         _endSelector = @selector(requestDidCopy:);
@@ -154,17 +179,20 @@
     if (!_synchronous) {
         [self performSelector:@selector(callback) withObject:nil afterDelay:0];
     }
+    else if (_finishBlock) {
+        _finishBlock(self);
+    }
     
     return self;
 }
 
-- (FMWebDAVRequest*) head {
+- (FMWebDAVRequest*)head {
     debug(@"unimplemented!!");
     debug(@"%s:%d", __FUNCTION__, __LINE__);
     return self;
 }
 
-- (FMWebDAVRequest*) propfind {
+- (FMWebDAVRequest*)propfind {
     
     if (!_endSelector) {
         _endSelector = @selector(requestDidPropfind:);
@@ -173,15 +201,15 @@
     return [self fetchDirectoryListingWithDepth:0];
 }
 
-- (FMWebDAVRequest*) fetchDirectoryListing {
+- (FMWebDAVRequest*)fetchDirectoryListing {
     return [self fetchDirectoryListingWithDepth:1];
 }
 
-- (FMWebDAVRequest*) fetchDirectoryListingWithDepth:(NSUInteger)depth {
+- (FMWebDAVRequest*)fetchDirectoryListingWithDepth:(NSUInteger)depth {
     return [self fetchDirectoryListingWithDepth:depth extraToPropfind:@""];
 }
 
-- (FMWebDAVRequest*) fetchDirectoryListingWithDepth:(NSUInteger)depth extraToPropfind:(NSString*)extra {
+- (FMWebDAVRequest*)fetchDirectoryListingWithDepth:(NSUInteger)depth extraToPropfind:(NSString*)extra {
     
     if (!_endSelector) {
         _endSelector = @selector(requestDidFetchDirectoryListing:);
@@ -194,11 +222,14 @@
     if (!_synchronous) {
         [self performSelector:@selector(callback) withObject:nil afterDelay:0];
     }
+    else if (_finishBlock) {
+        _finishBlock(self);
+    }
     
     return self;
 }
 
-- (NSArray*) directoryListing {
+- (NSArray*)directoryListing {
     
     NSFileManager *fileManager = [[[NSFileManager alloc] init] autorelease];
     
@@ -223,7 +254,7 @@
     
 }
 
-- (NSArray*) directoryListingWithAttributes {
+- (NSArray*)directoryListingWithAttributes {
     
     NSFileManager *fileManager = [[[NSFileManager alloc] init] autorelease];
     
@@ -241,7 +272,6 @@
         NSError *err = 0x00;
         NSDictionary *fileInfo = [fileManager attributesOfItemAtPath:filePath error:&err];
         
-        
         if ([[fileInfo objectForKey:NSFileType] isEqualToString:NSFileTypeDirectory]) {
             href = [NSString stringWithFormat:@"%@/", file];
         }
@@ -249,7 +279,16 @@
         NSDate *modDate = [fileInfo objectForKey:NSFileModificationDate];
         NSDate *creDate = [fileInfo objectForKey:NSFileCreationDate];
         
-        NSDictionary *ret = [NSDictionary dictionaryWithObjectsAndKeys:href, @"href", creDate, @"creationdate", modDate, @"modificationdate", nil];
+        NSMutableDictionary *ret = [NSMutableDictionary dictionary];
+        
+        [ret setObject:href forKey:@"href"];
+        if (creDate) {
+            [ret setObject:creDate forKey:@"creationdate"];
+        }
+        if (modDate) {
+            [ret setObject:modDate forKey:@"modificationdate"];
+        }
+        
         
         [returnFiles addObject:ret];
     }

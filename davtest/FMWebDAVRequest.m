@@ -20,8 +20,10 @@
 @synthesize endSelector=_endSelector;
 @synthesize responseStatusCode=_responseStatusCode;
 @synthesize error=_error;
+@synthesize username=_username;
+@synthesize password=_password;
 
-+ (id) requestToURL:(NSURL*)url {
++ (id)requestToURL:(NSURL*)url {
     
     FMWebDAVRequest *request = [url isFileURL] ? [[FMFileDAVRequest alloc] init] : [[FMWebDAVRequest alloc] init];;
     
@@ -30,7 +32,7 @@
     return request;
 }
 
-+ (id) requestToURL:(NSURL*)url delegate:(id)del {
++ (id)requestToURL:(NSURL*)url delegate:(id)del {
     
     FMWebDAVRequest *request = [url isFileURL] ? [[FMFileDAVRequest alloc] init] : [[FMWebDAVRequest alloc] init];;
     
@@ -41,7 +43,7 @@
 }
 
 
-+ (id) requestToURL:(NSURL*)url delegate:(id)del endSelector:(SEL)anEndSelector contextInfo:(id)context {
++ (id)requestToURL:(NSURL*)url delegate:(id)del endSelector:(SEL)anEndSelector contextInfo:(id)context {
     
     FMWebDAVRequest *request = [url isFileURL] ? [[FMFileDAVRequest alloc] init] : [[FMWebDAVRequest alloc] init];;
     
@@ -62,25 +64,32 @@
     [_contextInfo release];
     [_xmlChars release];
     [_directoryBucket release];
-    
+    [_finishBlock release];
     [super dealloc];
 }
 
-- (FMWebDAVRequest*) synchronous {
+- (FMWebDAVRequest*)synchronous {
     _synchronous = YES;
     return [self autorelease];
 }
 
-- (FMWebDAVRequest*) rlsynchronous {
+- (FMWebDAVRequest*)rlsynchronous {
     _rlSynchronous = YES;
     return [self retain];
 }
 
-- (void) sendRequest:(NSMutableURLRequest *)req {
-    
+- (FMWebDAVRequest*)withFinishBlock:(void (^)(FMWebDAVRequest *))block {
+    [_finishBlock autorelease];
+    _finishBlock = [block copy];
+    return self;
+}
+
+- (void)sendRequest:(NSMutableURLRequest *)req {
     
     // defaults write com.flyingmeat.VoodooPad_Pro FMWebDAVRequestDebug 1
     // defaults delete com.flyingmeat.VoodooPad_Pro FMWebDAVRequestDebug
+    
+    [req setCachePolicy:NSURLRequestReloadIgnoringLocalCacheData];
     
     if ([[NSUserDefaults standardUserDefaults] boolForKey:@"FMWebDAVRequestDebug"]) {
         NSData *d = [req HTTPBody];
@@ -90,9 +99,6 @@
             NSLog(@"%@", junk);
         }
     }
-    
-    
-    
     
     if (_rlSynchronous) {
         
@@ -104,7 +110,7 @@
             // Empty
         }
         
-        [self autorelease];
+        //[self autorelease];
     }
     else if (_synchronous) {
         NSURLResponse *response = 0x00;
@@ -116,9 +122,14 @@
         if (![httpResponse isKindOfClass:[NSHTTPURLResponse class]]) {
             NSLog(@"%s:%d", __FUNCTION__, __LINE__);
             NSLog(@"FMWebDAVRequest Unknown response type: %@", httpResponse);
+            NSLog(@"Request method: %@", [req HTTPMethod]);
         }
         else {
             _responseStatusCode = [httpResponse statusCode];
+        }
+        
+        if (_finishBlock) {
+            _finishBlock(self);
         }
     }
     else {
@@ -126,7 +137,7 @@
     }
 }
 
-- (FMWebDAVRequest*) createDirectory {
+- (FMWebDAVRequest*)createDirectory {
     if (!_endSelector) {
         _endSelector = @selector(requestDidCreateDirectory:);
     }
@@ -149,7 +160,7 @@
     return self;
 }
 
-- (FMWebDAVRequest*) delete {
+- (FMWebDAVRequest*)delete {
     if (!_endSelector) {
         _endSelector = @selector(requestDidDelete:);
     }
@@ -168,7 +179,7 @@
     return self;
 }
 
-- (FMWebDAVRequest*) putData:(NSData*)data {
+- (FMWebDAVRequest*)putData:(NSData*)data {
     
     if (!_endSelector) {
         _endSelector = @selector(requestDidPutData:);
@@ -193,7 +204,7 @@
     return self;
 }
 
-- (FMWebDAVRequest*) get {
+- (FMWebDAVRequest*)get {
     
     if (!_endSelector) {
         _endSelector = @selector(requestDidGet:);
@@ -209,7 +220,7 @@
     return self;
 }
 
-- (FMWebDAVRequest*) copyToDestinationURL:(NSURL*)dest {
+- (FMWebDAVRequest*)copyToDestinationURL:(NSURL*)dest {
     
     if (!_endSelector) {
         _endSelector = @selector(requestDidCopy:);
@@ -229,7 +240,7 @@
     return self;
 }
 
-- (FMWebDAVRequest*) moveToDestinationURL:(NSURL*)dest {
+- (FMWebDAVRequest*)moveToDestinationURL:(NSURL*)dest {
     
     if (!_endSelector) {
         _endSelector = @selector(requestDidCopy:);
@@ -249,7 +260,7 @@
     return self;
 }
 
-- (FMWebDAVRequest*) head {
+- (FMWebDAVRequest*)head {
     
     if (!_endSelector) {
         _endSelector = @selector(requestDidHead:);
@@ -267,8 +278,8 @@
     return self;
 }
 
-- (FMWebDAVRequest*) propfind {
-    debug(@"%s:%d", __FUNCTION__, __LINE__);
+- (FMWebDAVRequest*)propfind {
+    
     
     if (!_endSelector) {
         _endSelector = @selector(requestDidPropfind:);
@@ -278,16 +289,16 @@
 }
 
 
-- (FMWebDAVRequest*) fetchDirectoryListing {
+- (FMWebDAVRequest*)fetchDirectoryListing {
     return [self fetchDirectoryListingWithDepth:1];
 }
 
-- (FMWebDAVRequest*) fetchDirectoryListingWithDepth:(NSUInteger)depth {
+- (FMWebDAVRequest*)fetchDirectoryListingWithDepth:(NSUInteger)depth {
     return [self fetchDirectoryListingWithDepth:depth extraToPropfind:@""];
 }
 
 // <D:prop><D:creationdate/></D:prop>
-- (FMWebDAVRequest*) fetchDirectoryListingWithDepth:(NSUInteger)depth extraToPropfind:(NSString*)extra {
+- (FMWebDAVRequest*)fetchDirectoryListingWithDepth:(NSUInteger)depth extraToPropfind:(NSString*)extra {
     
     if (!_endSelector) {
         _endSelector = @selector(requestDidFetchDirectoryListing:);
@@ -326,7 +337,7 @@
     return self;
 }
 
-- (NSArray*) directoryListing {
+- (NSArray*)directoryListing {
     
     NSMutableArray *ret = [NSMutableArray array];
     
@@ -340,7 +351,7 @@
     
 }
 
-- (NSArray*) directoryListingWithAttributes {
+- (NSArray*)directoryListingWithAttributes {
     
     if (!_responseData) {
         return nil;
@@ -356,7 +367,7 @@
     return _directoryBucket;
 }
 
-- (NSString*) responseString {
+- (NSString*)responseString {
     return [[[NSString alloc] initWithData:_responseData encoding:NSUTF8StringEncoding] autorelease];
 }
 
@@ -370,13 +381,34 @@
 }
 
 - (void)connection:(NSURLConnection *)connection didReceiveAuthenticationChallenge:(NSURLAuthenticationChallenge *)challenge {
-    debug(@"%s:%d", __FUNCTION__, __LINE__);
+    
+    if (!self.delegate || !(_username && _password)) {
+        NSLog(@"No delegate set, or password + username set for an auth challenge");
+    }
+    
     if (self.delegate && [self.delegate respondsToSelector:@selector(request:didReceiveAuthenticationChallenge:)]) {
         [self.delegate request:self didReceiveAuthenticationChallenge:challenge];
     }
+    
+    else if (_username && _password && ([challenge previousFailureCount] == 0)) {
+        
+        NSURLCredential *cred = [NSURLCredential credentialWithUser:_username
+                                                           password:_password
+                                                        persistence:NSURLCredentialPersistenceForSession];
+        
+        [[challenge sender] useCredential:cred forAuthenticationChallenge:challenge];
+        
+    }
+    else {
+        debug(@"The password didn't work!");
+        _rlSynchronous = NO;
+        self.responseStatusCode = FMWebDAVUnauthorized;
+    }
+    
 }
 
 - (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)URLresponse {
+    
     
     [_responseData setLength:0]; 
     
@@ -400,6 +432,8 @@
 
 
 - (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error {
+    
+    self.error = error;
     
     // hrm... do we really want to do this?
     if (self.delegate && [self.delegate respondsToSelector:@selector(connection:didFailWithError:)]) {
@@ -425,6 +459,10 @@
     
     _rlSynchronous = NO;
     
+    if (_finishBlock) {
+        _finishBlock(self);
+    }
+    
     [self autorelease];
 }
 
@@ -448,7 +486,7 @@
     }
 }
 
-+ (NSDate*) parseDateString:(NSString*)dateString {
++ (NSDate*)parseDateString:(NSString*)dateString {
     
     
     ISO8601DateFormatter *formatter = [[[ISO8601DateFormatter alloc] init] autorelease];
@@ -589,5 +627,10 @@
     [_xmlChars appendString:string];
 }
 
+
+- (BOOL)xrespondsToSelector:(SEL)aSelector {
+    debug(@"%@: %@", NSStringFromClass([self class]), NSStringFromSelector(aSelector));
+    return [super respondsToSelector:aSelector];
+}
 
 @end

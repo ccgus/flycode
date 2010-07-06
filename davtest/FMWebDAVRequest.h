@@ -22,6 +22,7 @@ enum {
     FMWebDAVOKStatusCode = 200,
     FMWebDAVCreatedStatusCode = 201,
     FMWebDAVNoContentStatusCode = 204,
+    FMWebDAVUnauthorized = 401,
     FMWebDAVForbiddenStatusCode = 403,
     FMWebDAVNotFoundStatusCode = 404,
     FMWebDAVMethodNotAllowedStatusCode = 405,
@@ -29,6 +30,7 @@ enum {
     FMHTTPNotImplementedErrorCode = 501,
 };
 
+@class FMWebDAVRequest;
 
 @interface FMWebDAVRequest : NSObject {
     
@@ -53,6 +55,11 @@ enum {
     BOOL _rlSynchronous;
     
     NSError *_error;
+    
+    NSString *_username;
+    NSString *_password;
+    
+    void (^_finishBlock)(FMWebDAVRequest *);
 }
 
 @property (retain) NSURLConnection *connection;
@@ -63,42 +70,46 @@ enum {
 @property (assign) SEL endSelector;
 @property (assign) NSInteger responseStatusCode;
 @property (retain) NSError *error;
+@property (retain) NSString *username;
+@property (retain) NSString *password;
 
-+ (id) requestToURL:(NSURL*)url;
-+ (id) requestToURL:(NSURL*)url delegate:(id)del;
-+ (id) requestToURL:(NSURL*)url delegate:(id)del endSelector:(SEL)anEndSelector contextInfo:(id)context;
++ (id)requestToURL:(NSURL*)url;
++ (id)requestToURL:(NSURL*)url delegate:(id)del;
++ (id)requestToURL:(NSURL*)url delegate:(id)del endSelector:(SEL)anEndSelector contextInfo:(id)context;
 
-- (FMWebDAVRequest*) fetchDirectoryListingWithDepth:(NSUInteger)depth extraToPropfind:(NSString*)extra;
-- (FMWebDAVRequest*) fetchDirectoryListingWithDepth:(NSUInteger)depth;
-- (FMWebDAVRequest*) fetchDirectoryListing;
-- (NSArray*) directoryListing;
-- (NSArray*) directoryListingWithAttributes;
-- (NSString*) responseString;
+- (FMWebDAVRequest*)fetchDirectoryListingWithDepth:(NSUInteger)depth extraToPropfind:(NSString*)extra;
+- (FMWebDAVRequest*)fetchDirectoryListingWithDepth:(NSUInteger)depth;
+- (FMWebDAVRequest*)fetchDirectoryListing;
+- (NSArray*)directoryListing;
+- (NSArray*)directoryListingWithAttributes;
+- (NSString*)responseString;
 
-- (FMWebDAVRequest*) createDirectory;
-- (FMWebDAVRequest*) delete;
-- (FMWebDAVRequest*) putData:(NSData*)data;
-- (FMWebDAVRequest*) get;
-- (FMWebDAVRequest*) head;
-- (FMWebDAVRequest*) copyToDestinationURL:(NSURL*)dest;
-- (FMWebDAVRequest*) moveToDestinationURL:(NSURL*)dest;
+- (FMWebDAVRequest*)createDirectory;
+- (FMWebDAVRequest*)delete;
+- (FMWebDAVRequest*)putData:(NSData*)data;
+- (FMWebDAVRequest*)get;
+- (FMWebDAVRequest*)head;
+- (FMWebDAVRequest*)copyToDestinationURL:(NSURL*)dest;
+- (FMWebDAVRequest*)moveToDestinationURL:(NSURL*)dest;
 
-- (FMWebDAVRequest*) synchronous;
-- (FMWebDAVRequest*) rlsynchronous;
+- (FMWebDAVRequest*)synchronous;
+- (FMWebDAVRequest*)rlsynchronous;
 
-- (FMWebDAVRequest*) propfind;
+- (FMWebDAVRequest*)propfind;
+
+- (FMWebDAVRequest*)withFinishBlock:(void (^)(FMWebDAVRequest *))block;
 
 // maybe I went a little overboard with the whole return self thing?  Probably.
 
-+ (NSDate*) parseDateString:(NSString*)dateString;
++ (NSDate*)parseDateString:(NSString*)dateString;
 
 @end
 
 
 @interface NSObject (VPRServiceRequestDelegate)
 
-- (void) request:(FMWebDAVRequest*)request didFailWithError:(NSError *)error;
-- (void) request:(FMWebDAVRequest*)request hadStatusCodeErrorWithResponse:(NSHTTPURLResponse *)httpResponse;
-- (void) request:(FMWebDAVRequest*)request didReceiveAuthenticationChallenge:(NSURLAuthenticationChallenge *)challenge;
+- (void)request:(FMWebDAVRequest*)request didFailWithError:(NSError *)error;
+- (void)request:(FMWebDAVRequest*)request hadStatusCodeErrorWithResponse:(NSHTTPURLResponse *)httpResponse;
+- (void)request:(FMWebDAVRequest*)request didReceiveAuthenticationChallenge:(NSURLAuthenticationChallenge *)challenge;
 
 @end
