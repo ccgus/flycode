@@ -30,6 +30,17 @@
     return request;
 }
 
++ (id) requestToURL:(NSURL*)url delegate:(id)del {
+    
+    FMWebDAVRequest *request = [url isFileURL] ? [[FMFileDAVRequest alloc] init] : [[FMWebDAVRequest alloc] init];;
+    
+    [request setUrl:url];
+    [request setDelegate:del];
+    
+    return request;
+}
+
+
 + (id) requestToURL:(NSURL*)url delegate:(id)del endSelector:(SEL)anEndSelector contextInfo:(id)context {
     
     FMWebDAVRequest *request = [url isFileURL] ? [[FMFileDAVRequest alloc] init] : [[FMWebDAVRequest alloc] init];;
@@ -60,6 +71,11 @@
     return [self autorelease];
 }
 
+- (FMWebDAVRequest*) rlsynchronous {
+    _rlSynchronous = YES;
+    return [self retain];
+}
+
 - (void) sendRequest:(NSMutableURLRequest *)req {
     
     
@@ -77,7 +93,20 @@
     
     
     
-    if (_synchronous) {
+    
+    if (_rlSynchronous) {
+        
+        self.connection = [NSURLConnection connectionWithRequest:req delegate:self];
+        // we do this so we get our delegate callbacks.
+        // just regular [foo syncronous] won't work for that.
+        NSRunLoop *currentRunLoop = [NSRunLoop currentRunLoop];
+        while (_rlSynchronous && [currentRunLoop runMode:NSDefaultRunLoopMode beforeDate:[NSDate distantFuture]]) {
+            // Empty
+        }
+        
+        [self autorelease];
+    }
+    else if (_synchronous) {
         NSURLResponse *response = 0x00;
         
         self.responseData = (NSMutableData*)[NSURLConnection sendSynchronousRequest:req returningResponse:&response error:&_error];
@@ -93,9 +122,8 @@
         }
     }
     else {
-        [NSURLConnection connectionWithRequest:req delegate:self];
+        self.connection  = [NSURLConnection connectionWithRequest:req delegate:self];
     }
-    
 }
 
 - (FMWebDAVRequest*) createDirectory {
@@ -240,6 +268,7 @@
 }
 
 - (FMWebDAVRequest*) propfind {
+    debug(@"%s:%d", __FUNCTION__, __LINE__);
     
     if (!_endSelector) {
         _endSelector = @selector(requestDidPropfind:);
@@ -341,6 +370,7 @@
 }
 
 - (void)connection:(NSURLConnection *)connection didReceiveAuthenticationChallenge:(NSURLAuthenticationChallenge *)challenge {
+    debug(@"%s:%d", __FUNCTION__, __LINE__);
     if (self.delegate && [self.delegate respondsToSelector:@selector(request:didReceiveAuthenticationChallenge:)]) {
         [self.delegate request:self didReceiveAuthenticationChallenge:challenge];
     }
@@ -381,6 +411,8 @@
         [self.delegate performSelector:_endSelector withObject:self];
     }
     
+    _rlSynchronous = NO;
+    
     [self autorelease];
 }
 
@@ -390,6 +422,8 @@
     if (self.delegate && [self.delegate respondsToSelector:_endSelector]) {
         [self.delegate performSelector:_endSelector withObject:self];
     }
+    
+    _rlSynchronous = NO;
     
     [self autorelease];
 }

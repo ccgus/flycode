@@ -50,6 +50,7 @@ enum {
     NSInteger _responseStatusCode;
     
     BOOL _synchronous;
+    BOOL _rlSynchronous;
     
     NSError *_error;
 }
@@ -64,6 +65,7 @@ enum {
 @property (retain) NSError *error;
 
 + (id) requestToURL:(NSURL*)url;
++ (id) requestToURL:(NSURL*)url delegate:(id)del;
 + (id) requestToURL:(NSURL*)url delegate:(id)del endSelector:(SEL)anEndSelector contextInfo:(id)context;
 
 - (FMWebDAVRequest*) fetchDirectoryListingWithDepth:(NSUInteger)depth extraToPropfind:(NSString*)extra;
@@ -82,6 +84,7 @@ enum {
 - (FMWebDAVRequest*) moveToDestinationURL:(NSURL*)dest;
 
 - (FMWebDAVRequest*) synchronous;
+- (FMWebDAVRequest*) rlsynchronous;
 
 - (FMWebDAVRequest*) propfind;
 
