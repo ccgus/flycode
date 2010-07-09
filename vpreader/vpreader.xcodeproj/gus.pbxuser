@@ -44,7 +44,7 @@
 	29B97313FDCFA39411CA2CEA /* Project object */ = {
 		activeBuildConfigurationName = Debug;
 		activeExecutable = CC1C89BA0F182CED00E71072 /* vpreader */;
-		activeSDKPreference = iphonesimulator3.0;
+		activeSDKPreference = iphonesimulator4.0;
 		activeTarget = 1D6058900D05DD3D006BFB54 /* vpreader */;
 		addToTargets = (
 			1D6058900D05DD3D006BFB54 /* vpreader */,
@@ -98,8 +98,8 @@
 					PBXFileDataSource_Warnings_ColumnID,
 				);
 			};
-			PBXPerProjectTemplateStateSaveDate = 284414872;
-			PBXWorkspaceStateSaveDate = 284414872;
+			PBXPerProjectTemplateStateSaveDate = 300397842;
+			PBXWorkspaceStateSaveDate = 300397842;
 		};
 		sourceControlManager = CC1C89D40F182D2100E71072 /* Source Control */;
 		userBuildSettings = {
@@ -179,9 +179,37 @@
 	};
 	CCC14B690F184494004BD04E /* TCPConnection.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1011, 6915}}";
-			sepNavSelRange = "{295, 0}";
-			sepNavVisRange = "{3, 1533}";
+			sepNavIntBoundsRect = "{{0, 0}, {923, 6975}}";
+			sepNavSelRange = "{4067, 0}";
+			sepNavVisRange = "{3908, 246}";
+		};
+	};
+	CCC14B6A0F184494004BD04E /* TCPEndpoint.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1474, 913}}";
+			sepNavSelRange = "{306, 0}";
+			sepNavVisRange = "{0, 1855}";
+		};
+	};
+	CCC14B6B0F184494004BD04E /* TCPEndpoint.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1474, 1515}}";
+			sepNavSelRange = "{351, 0}";
+			sepNavVisRange = "{0, 1458}";
+		};
+	};
+	CCC14B6C0F184494004BD04E /* TCPListener.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1474, 2145}}";
+			sepNavSelRange = "{217, 0}";
+			sepNavVisRange = "{0, 2119}";
+		};
+	};
+	CCC14B6D0F184494004BD04E /* TCPListener.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1474, 5865}}";
+			sepNavSelRange = "{1283, 0}";
+			sepNavVisRange = "{342, 1457}";
 		};
 	};
 	CCC14B750F184494004BD04E /* BLIPConnection.h */ = {

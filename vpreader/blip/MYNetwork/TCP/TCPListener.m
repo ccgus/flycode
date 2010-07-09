@@ -52,7 +52,7 @@ static void TCPListenerAcceptCallBack(CFSocketRef socket, CFSocketCallBackType t
 }
 
 
-@synthesize delegate=_delegate, port=_port, useIPv6=_useIPv6,
+@synthesize port=_port, useIPv6=_useIPv6,
             bonjourServiceType=_bonjourServiceType,
             bonjourPublished=_bonjourPublished, bonjourError=_bonjourError,
             bonjourService=_netService,

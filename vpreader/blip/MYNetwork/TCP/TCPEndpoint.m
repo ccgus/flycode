@@ -15,6 +15,7 @@ NSString* const kTCPPropertySSLClientSideAuthentication = @"kTCPPropertySSLClien
 
 
 @implementation TCPEndpoint
+@synthesize delegate=_delegate;
 
 
 - (void) dealloc

@@ -396,9 +396,9 @@
 			</array>
 			<key>TableOfContents</key>
 			<array>
-				<string>CC3A33CD10F3D39B007235D2</string>
+				<string>CCE014AE11E7B5AA001B64A5</string>
 				<string>1CE0B1FE06471DED0097A5F4</string>
-				<string>CC3A33CE10F3D39B007235D2</string>
+				<string>CCE014AF11E7B5AA001B64A5</string>
 				<string>1CE0B20306471E060097A5F4</string>
 				<string>1CE0B20506471E060097A5F4</string>
 			</array>
@@ -475,8 +475,6 @@
 							<key>PBXSmartGroupTreeModuleOutlineStateSelectionKey</key>
 							<array>
 								<array>
-									<integer>11</integer>
-									<integer>3</integer>
 									<integer>0</integer>
 								</array>
 							</array>
@@ -500,7 +498,7 @@
 							<real>283</real>
 						</array>
 						<key>RubberWindowFrame</key>
-						<string>27 270 300 894 0 0 1920 1178 </string>
+						<string>902 161 300 894 0 0 1920 1178 </string>
 					</dict>
 					<key>Module</key>
 					<string>PBXSmartGroupTreeModule</string>
@@ -519,7 +517,7 @@
 			</array>
 			<key>TableOfContents</key>
 			<array>
-				<string>CC3A33CF10F3D39B007235D2</string>
+				<string>CCE014B011E7B5AA001B64A5</string>
 				<string>11E0B1FE06471DED0097A5F4</string>
 			</array>
 			<key>ToolbarConfigUserDefaultsMinorVersion</key>
@@ -537,7 +535,7 @@
 	<key>StatusbarIsVisible</key>
 	<true/>
 	<key>TimeStamp</key>
-	<real>284415353.527421</real>
+	<real>300398404.68891901</real>
 	<key>ToolbarDisplayMode</key>
 	<integer>2</integer>
 	<key>ToolbarIsVisible</key>
@@ -553,14 +551,17 @@
 	<key>WindowOrderList</key>
 	<array>
 		<string>1CD10A99069EF8BA00B06720</string>
+		<string>CCE014BC11E7B5AA001B64A5</string>
+		<string>CCE014BA11E7B5AA001B64A5</string>
+		<string>CCE014BB11E7B5AA001B64A5</string>
+		<string>CCE014B911E7B5AA001B64A5</string>
+		<string>CCE014B811E7B5AA001B64A5</string>
 		<string>CC1C89C60F182D2000E71072</string>
-		<string>1C530D57069F1CE1000CFCEE</string>
-		<string>CC3A33E010F3D3D6007235D2</string>
 		<string>1C78EAAD065D492600B07095</string>
 		<string>/Volumes/srv/Users/gus/Projects/flycode/vpreader/vpreader.xcodeproj</string>
 	</array>
 	<key>WindowString</key>
-	<string>27 270 300 894 0 0 1920 1178 </string>
+	<string>902 161 300 894 0 0 1920 1178 </string>
 	<key>WindowToolsV3</key>
 	<array>
 		<dict>
@@ -581,7 +582,7 @@
 								<key>PBXProjectModuleGUID</key>
 								<string>1CD0528F0623707200166675</string>
 								<key>PBXProjectModuleLabel</key>
-								<string></string>
+								<string>TCPConnection.m</string>
 								<key>StatusBarVisibility</key>
 								<true/>
 							</dict>
@@ -639,7 +640,7 @@
 			<key>TableOfContents</key>
 			<array>
 				<string>CC1C89C60F182D2000E71072</string>
-				<string>CC3A33D010F3D39B007235D2</string>
+				<string>CCE0149311E7B514001B64A5</string>
 				<string>1CD0528F0623707200166675</string>
 				<string>XCMainBuildResultsModuleGUID</string>
 			</array>
@@ -759,13 +760,13 @@
 			<key>TableOfContents</key>
 			<array>
 				<string>1CD10A99069EF8BA00B06720</string>
-				<string>CC3A33D110F3D39B007235D2</string>
+				<string>CCE014B111E7B5AA001B64A5</string>
 				<string>1C162984064C10D400B95A72</string>
-				<string>CC3A33D210F3D39B007235D2</string>
-				<string>CC3A33D310F3D39B007235D2</string>
-				<string>CC3A33D410F3D39B007235D2</string>
-				<string>CC3A33D510F3D39B007235D2</string>
-				<string>CC3A33D610F3D39B007235D2</string>
+				<string>CCE014B211E7B5AA001B64A5</string>
+				<string>CCE014B311E7B5AA001B64A5</string>
+				<string>CCE014B411E7B5AA001B64A5</string>
+				<string>CCE014B511E7B5AA001B64A5</string>
+				<string>CCE014B611E7B5AA001B64A5</string>
 			</array>
 			<key>ToolbarConfiguration</key>
 			<string>xcode.toolbar.config.debugV3</string>
@@ -896,18 +897,18 @@
 							<key>GeometryConfiguration</key>
 							<dict>
 								<key>Frame</key>
-								<string>{{0, 0}, {1511, 255}}</string>
+								<string>{{0, 0}, {1881, 350}}</string>
 								<key>RubberWindowFrame</key>
-								<string>-1891 783 1511 296 -1920 0 1920 1200 </string>
+								<string>-1891 688 1881 391 -1920 0 1920 1200 </string>
 							</dict>
 							<key>Module</key>
 							<string>PBXDebugCLIModule</string>
 							<key>Proportion</key>
-							<string>255pt</string>
+							<string>350pt</string>
 						</dict>
 					</array>
 					<key>Proportion</key>
-					<string>255pt</string>
+					<string>350pt</string>
 				</dict>
 			</array>
 			<key>Name</key>
@@ -921,13 +922,13 @@
 			<key>TableOfContents</key>
 			<array>
 				<string>1C78EAAD065D492600B07095</string>
-				<string>CC3A33D710F3D39B007235D2</string>
+				<string>CCE014B711E7B5AA001B64A5</string>
 				<string>1C78EAAC065D492600B07095</string>
 			</array>
 			<key>ToolbarConfiguration</key>
 			<string>xcode.toolbar.config.consoleV3</string>
 			<key>WindowString</key>
-			<string>-1891 783 1511 296 -1920 0 1920 1200 </string>
+			<string>-1891 688 1881 391 -1920 0 1920 1200 </string>
 			<key>WindowToolGUID</key>
 			<string>1C78EAAD065D492600B07095</string>
 			<key>WindowToolIsVisible</key>

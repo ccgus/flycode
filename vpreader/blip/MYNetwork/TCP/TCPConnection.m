@@ -139,7 +139,7 @@ static NSMutableArray *sAllConnections;
 }
 
 
-@synthesize address=_address, isIncoming=_isIncoming, status=_status, delegate=_delegate,
+@synthesize address=_address, isIncoming=_isIncoming, status=_status,
             reader=_reader, writer=_writer, server=_server, openTimeout=_openTimeout;
 
 

@@ -12,7 +12,7 @@
 #else
 #import <CoreServices/CoreServices.h>
 #endif
-
+@protocol TCPListenerDelegate;
 
 // SSL properties:
 #define kTCPPropertySSLCertificates  ((NSString*)kCFStreamSSLCertificates)
@@ -41,6 +41,12 @@ typedef enum {
 /** Detailed SSL settings. This is the same as CFStream's kCFStreamPropertySSLSettings
     property. */
 @property (copy) NSMutableDictionary *SSLProperties;
+
+
+/** Delegate object that will be called when interesting things happen to the listener --
+ most importantly, when a new incoming connection is accepted. */
+@property (assign) id<TCPListenerDelegate> delegate;
+
 
 /** Shortcut to set a single SSL property. */
 - (void) setSSLProperty: (id)value 

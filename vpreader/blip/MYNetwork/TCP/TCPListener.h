@@ -46,9 +46,7 @@
 /** The subclass of TCPConnection that will be instantiated. */
 @property Class connectionClass;
 
-/** Delegate object that will be called when interesting things happen to the listener --
-    most importantly, when a new incoming connection is accepted. */
-@property (assign) id<TCPListenerDelegate> delegate;
+
 
 /** Should the server listen for IPv6 connections (on the same port number)? Defaults to NO. */
 @property BOOL useIPv6;
