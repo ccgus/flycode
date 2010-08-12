@@ -25,6 +25,8 @@ EventHandlerRef MySkankyGlobalFrontAppSwitchedHandlerRef;
 
 static OSStatus handleAppFrontSwitched(EventHandlerCallRef inHandlerCallRef, EventRef inEvent, void *inUserData) {
     
+    debug(@"%s:%d", __FUNCTION__, __LINE__);
+    
     NSWorkspace *workspace = [NSWorkspace sharedWorkspace];
     
     NSDictionary *activeAppDict = [workspace activeApplication];

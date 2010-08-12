@@ -1,0 +1,1 @@
+This is a total hack, and if you want to use it, you'll need to modify the extension so it runs on your copy of fogbugz.
