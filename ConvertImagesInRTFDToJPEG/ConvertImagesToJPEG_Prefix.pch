@@ -1,0 +1,7 @@
+//
+// Prefix header for all source files of the 'ConvertImagesToJPEG' target in the 'ConvertImagesToJPEG' project.
+//
+
+#ifdef __OBJC__
+    #import <Foundation/Foundation.h>
+#endif
