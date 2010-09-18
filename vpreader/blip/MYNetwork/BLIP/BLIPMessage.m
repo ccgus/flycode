@@ -39,6 +39,7 @@
             _body = body.copy;
             _properties = [[BLIPMutableProperties alloc] init];
             _propertiesAvailable = YES;
+            _complete = YES;
         } else {
             _encodedBody = body.mutableCopy;
         }

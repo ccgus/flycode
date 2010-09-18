@@ -22,7 +22,7 @@
 + (UniqueWindowController*) instanceWith: (id)model
 {
     for( NSWindow *window in OpenWindowsWithDelegateClass(self) ) {
-        UniqueWindowController *c = window.delegate;
+        UniqueWindowController *c = (id) window.delegate;
         if( [self isModel: c.model equalToModel: model] )
             return c;
     }

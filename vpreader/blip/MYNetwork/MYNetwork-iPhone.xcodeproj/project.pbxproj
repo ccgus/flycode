@@ -375,7 +375,6 @@
 				GCC_PREFIX_HEADER = iPhone/MYNetwork_iPhone_Prefix.pch;
 				INFOPLIST_FILE = iPhone/Info.plist;
 				PRODUCT_NAME = BLIPEcho;
-				PROVISIONING_PROFILE = "166C8314-D005-438F-841B-B20D42F71712";
 			};
 			name = Debug;
 		};
@@ -389,7 +388,6 @@
 				GCC_PREFIX_HEADER = iPhone/MYNetwork_iPhone_Prefix.pch;
 				INFOPLIST_FILE = iPhone/Info.plist;
 				PRODUCT_NAME = BLIPEcho;
-				PROVISIONING_PROFILE = "166C8314-D005-438F-841B-B20D42F71712";
 			};
 			name = Release;
 		};

@@ -57,7 +57,10 @@
     // Create a new string from the data in the memory buffer
     char * base64Pointer;
     long base64Length = BIO_get_mem_data(mem, &base64Pointer);
-    NSString * base64String = [NSString stringWithCString:base64Pointer length:base64Length];
+    NSString * base64String = [[[NSString alloc] initWithBytes: base64Pointer 
+                                                       length: base64Length
+                                                     encoding: NSASCIIStringEncoding]
+                               autorelease];
     
     // Clean up and go home
     BIO_free_all(mem);
@@ -101,7 +104,7 @@
     NSUInteger length = self.length;
     char out[2*length+1];
     char *dst = &out[0];
-    for( int i=0; i<length; i+=1 )
+    for( NSUInteger i=0; i<length; i+=1 )
         dst += sprintf(dst,"%02X",*(bytes++));
     return [[[NSString alloc] initWithBytes: out length: 2*length encoding: NSASCIIStringEncoding]
             autorelease];
@@ -120,7 +123,7 @@
     unsigned int size= [self length];
     const unsigned char *p = [self bytes];
     unsigned char c;
-    int n;
+    unsigned int n;
     char bytestr[4] = {0};
     char addrstr[10] = {0};
     char hexstr[ 16*3 + 5] = {0};

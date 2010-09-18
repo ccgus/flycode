@@ -19,10 +19,13 @@
 #import "Logging.h"
 #import "Test.h"
 
-#define HAVE_KEYCHAIN_FRAMEWORK 0
-#if HAVE_KEYCHAIN_FRAMEWORK
-#import <Keychain/Keychain.h>
-#endif
+#import <Security/Security.h>
+#import <SecurityInterface/SFChooseIdentityPanel.h>
+
+@interface TCPEndpoint ()
++ (NSString*) describeCert: (SecCertificateRef)cert;
++ (NSString*) describeIdentity: (SecIdentityRef)identity;
+@end
 
 
 #define kListenerHost               @"localhost"
@@ -31,20 +34,44 @@
 #define kNBatchedMessages           20
 #define kUseCompression             YES
 #define kUrgentEvery                4
-#define kClientRequiresSSL          NO
-#define kClientUsesSSLCert          NO
-#define kListenerRequiresSSL        NO
-#define kListenerRequiresClientCert NO
 #define kListenerCloseAfter         50
 #define kClientAcceptCloseRequest   YES
 
+#define kListenerUsesSSL            YES     // Does the listener (server) use an SSL connection?
+#define kListenerRequiresClientCert YES     // Does the listener require clients to have an SSL cert?
+#define kClientRequiresSSL          YES     // Does the client require the listener to use SSL?
+#define kClientUsesSSLCert          YES     // Does the client use an SSL cert?
+
+
+static SecIdentityRef ChooseIdentity( NSString *prompt ) {
+    NSMutableArray *identities = [NSMutableArray array];
+    SecKeychainRef kc;
+    SecKeychainCopyDefault(&kc);
+    SecIdentitySearchRef search;
+    SecIdentitySearchCreate(kc, CSSM_KEYUSE_ANY, &search);
+    SecIdentityRef identity;
+    while (SecIdentitySearchCopyNext(search, &identity) == noErr) {
+        [identities addObject: (id)identity];
+		CFRelease( identity );
+	}
+    CFRelease(search);
+    Log(@"Found %u identities -- prompting '%@'", identities.count, prompt);
+    if (identities.count > 0) {
+        SFChooseIdentityPanel *panel = [SFChooseIdentityPanel sharedChooseIdentityPanel];
+        if ([panel runModalForIdentities: identities message: prompt] == NSOKButton) {
+            Log(@"Using SSL identity: %@", panel.identity);
+            return panel.identity;
+        }
+    }
+    return NULL;
+}
 
 static SecIdentityRef GetClientIdentity(void) {
-    return NULL;    // Make this return a valid identity to test client-side certs
+    return ChooseIdentity(@"Choose an identity for the BLIP Client Test:");
 }
 
 static SecIdentityRef GetListenerIdentity(void) {
-    return NULL;    // Make this return a valid identity to test client-side certs
+    return ChooseIdentity(@"Choose an identity for the BLIP Listener Test:");
 }
 
 
@@ -69,21 +96,17 @@ static SecIdentityRef GetListenerIdentity(void) {
     if (self != nil) {
         Log(@"** INIT %@",self);
         _pending = [[NSMutableDictionary alloc] init];
-        IPAddress *addr = [[IPAddress alloc] initWithHostname: kListenerHost port: kListenerPort];
+        IPAddress *addr = [[[IPAddress alloc] initWithHostname: kListenerHost port: kListenerPort] autorelease];
         _conn = [[BLIPConnection alloc] initToAddress: addr];
         if( ! _conn ) {
             [self release];
             return nil;
         }
-        if( kClientRequiresSSL ) {
-            _conn.SSLProperties = $mdict({kTCPPropertySSLAllowsAnyRoot, $true});
-            if( kClientUsesSSLCert ) {
-                SecIdentityRef clientIdentity = GetClientIdentity();
-                if( clientIdentity ) {
-                    [_conn setSSLProperty: $array((id)clientIdentity)
-                                   forKey: kTCPPropertySSLCertificates];
-                }
-            }
+        if( kClientUsesSSLCert ) {
+            [_conn setPeerToPeerIdentity: GetClientIdentity()];
+        } else if( kClientRequiresSSL ) {
+            _conn.SSLProperties = $mdict({kTCPPropertySSLAllowsAnyRoot, $true},
+                                        {(id)kCFStreamSSLPeerName, [NSNull null]});
         }
         _conn.delegate = self;
         Log(@"** Opening connection...");
@@ -104,6 +127,18 @@ static SecIdentityRef GetListenerIdentity(void) {
 {
     if( _conn.status==kTCP_Open || _conn.status==kTCP_Opening ) {
         if(_pending.count<100) {
+            Log(@"** Sending a message that will fail to be handled...");
+            BLIPRequest *q = [_conn requestWithBody: nil
+                                         properties: $dict({@"Profile", @"BLIPTest/DontHandleMe"},
+                                                           {@"User-Agent", @"BLIPConnectionTester"},
+                                                           {@"Date", [[NSDate date] description]})];
+            BLIPResponse *response = [q send];
+            Assert(response);
+            Assert(q.number>0);
+            Assert(response.number==q.number);
+            [_pending setObject: [NSNull null] forKey: $object(q.number)];
+            response.onComplete = $target(self,responseArrived:);
+            
             Log(@"** Sending another %i messages...", kNBatchedMessages);
             for( int i=0; i<kNBatchedMessages; i++ ) {
                 size_t size = random() % 32768;
@@ -112,11 +147,12 @@ static SecIdentityRef GetListenerIdentity(void) {
                 for( size_t i=0; i<size; i++ )
                     bytes[i] = i % 256;
                 
-                BLIPRequest *q = [_conn requestWithBody: body
-                                             properties: $dict({@"Content-Type", @"application/octet-stream"},
-                                                               {@"User-Agent", @"BLIPConnectionTester"},
-                                                               {@"Date", [[NSDate date] description]},
-                                                               {@"Size",$sprintf(@"%u",size)})];
+                q = [_conn requestWithBody: body
+                                 properties: $dict({@"Profile", @"BLIPTest/EchoData"},
+                                                   {@"Content-Type", @"application/octet-stream"},
+                                                   {@"User-Agent", @"BLIPConnectionTester"},
+                                                   {@"Date", [[NSDate date] description]},
+                                                   {@"Size",$sprintf(@"%u",size)})];
                 Assert(q);
                 if( kUseCompression && (random()%2==1) )
                     q.compressed = YES;
@@ -148,49 +184,53 @@ static SecIdentityRef GetListenerIdentity(void) {
 }
 - (BOOL) connection: (TCPConnection*)connection authorizeSSLPeer: (SecCertificateRef)peerCert
 {
-#if HAVE_KEYCHAIN_FRAMEWORK
-    Certificate *cert = peerCert ?[Certificate certificateWithCertificateRef: peerCert] :nil;
-    Log(@"** %@ authorizeSSLPeer: %@",self,cert);
-#else
-    Log(@"** %@ authorizeSSLPeer: %@",self,peerCert);
-#endif
+    Log(@"** %@ authorizeSSLPeer: %@",self, [TCPEndpoint describeCert:peerCert]);
     return peerCert != nil;
 }
 - (void) connection: (TCPConnection*)connection failedToOpen: (NSError*)error
 {
-    Log(@"** %@ failedToOpen: %@",connection,error);
+    Warn(@"** %@ failedToOpen: %@",connection,error);
     CFRunLoopStop(CFRunLoopGetCurrent());
 }
 - (void) connectionDidClose: (TCPConnection*)connection
 {
-    Log(@"** %@ didClose",connection);
+    if (connection.error)
+        Warn(@"** %@ didClose: %@", connection,connection.error);
+    else
+        Log(@"** %@ didClose", connection);
     setObj(&_conn,nil);
     [NSObject cancelPreviousPerformRequestsWithTarget: self];
     CFRunLoopStop(CFRunLoopGetCurrent());
 }
-- (void) connection: (BLIPConnection*)connection receivedRequest: (BLIPRequest*)request
+- (BOOL) connection: (BLIPConnection*)connection receivedRequest: (BLIPRequest*)request
 {
     Log(@"***** %@ received %@",connection,request);
     [request respondWithData: request.body contentType: request.contentType];
+    return YES;
 }
 
 - (void) connection: (BLIPConnection*)connection receivedResponse: (BLIPResponse*)response
 {
     Log(@"********** %@ received %@",connection,response);
-    NSNumber *sizeObj = [_pending objectForKey: $object(response.number)];
-
-    if( response.error )
-        Warn(@"Got error response: %@",response.error);
-    else {
-        NSData *body = response.body;
-        size_t size = body.length;
-        Assert(size<32768);
-        const UInt8 *bytes = body.bytes;
-        for( size_t i=0; i<size; i++ )
-            AssertEq(bytes[i],i % 256);
-        AssertEq(size,sizeObj.intValue);
-    }
+    id sizeObj = [_pending objectForKey: $object(response.number)];
     Assert(sizeObj);
+    
+    if (sizeObj == [NSNull null]) {
+        AssertEqual(response.error.domain, BLIPErrorDomain);
+        AssertEq(response.error.code, kBLIPError_NotFound);
+    } else {
+        if( response.error )
+            Warn(@"Got error response: %@",response.error);
+        else {
+            NSData *body = response.body;
+            size_t size = body.length;
+            Assert(size<32768);
+            const UInt8 *bytes = body.bytes;
+            for( size_t i=0; i<size; i++ )
+                AssertEq(bytes[i],i % 256);
+            AssertEq(size,[sizeObj unsignedIntValue]);
+        }
+    }
     [_pending removeObjectForKey: $object(response.number)];
     Log(@"Now %u replies pending", _pending.count);
 }
@@ -207,9 +247,7 @@ static SecIdentityRef GetListenerIdentity(void) {
 
 
 TestCase(BLIPConnection) {
-#if HAVE_KEYCHAIN_FRAMEWORK
-    [Keychain setUserInteractionAllowed: YES];
-#endif
+    SecKeychainSetUserInteractionAllowed(true);
     BLIPConnectionTester *tester = [[BLIPConnectionTester alloc] init];
     CAssert(tester);
     
@@ -244,12 +282,11 @@ TestCase(BLIPConnection) {
         _listener.delegate = self;
         _listener.pickAvailablePort = YES;
         _listener.bonjourServiceType = @"_bliptest._tcp";
-        if( kListenerRequiresSSL ) {
-            SecIdentityRef listenerIdentity = GetListenerIdentity();
-            Assert(listenerIdentity);
-            _listener.SSLProperties = $mdict({kTCPPropertySSLCertificates, $array((id)listenerIdentity)},
-                                             {kTCPPropertySSLAllowsAnyRoot,$true},
-                            {kTCPPropertySSLClientSideAuthentication, $object(kTCPTryAuthenticate)});
+        if( kListenerUsesSSL ) {
+            [_listener setPeerToPeerIdentity: GetListenerIdentity()];
+            if (!kListenerRequiresClientCert)
+                [_listener setSSLProperty: $object(kTCPTryAuthenticate) 
+                                   forKey: kTCPPropertySSLClientSideAuthentication];
         }
         Assert( [_listener open] );
         Log(@"%@ is listening...",self);
@@ -293,12 +330,7 @@ TestCase(BLIPConnection) {
 }
 - (BOOL) connection: (TCPConnection*)connection authorizeSSLPeer: (SecCertificateRef)peerCert
 {
-#if HAVE_KEYCHAIN_FRAMEWORK
-    Certificate *cert = peerCert ?[Certificate certificateWithCertificateRef: peerCert] :nil;
-    Log(@"** %@ authorizeSSLPeer: %@",connection,cert);
-#else
-    Log(@"** %@ authorizeSSLPeer: %@",self,peerCert);
-#endif
+    Log(@"** %@ authorizeSSLPeer: %@",self, [TCPEndpoint describeCert:peerCert]);
     return peerCert != nil || ! kListenerRequiresClientCert;
 }
 - (void) connection: (TCPConnection*)connection failedToOpen: (NSError*)error
@@ -307,29 +339,41 @@ TestCase(BLIPConnection) {
 }
 - (void) connectionDidClose: (TCPConnection*)connection
 {
-    Log(@"** %@ didClose",connection);
+    if (connection.error)
+        Warn(@"** %@ didClose: %@", connection,connection.error);
+    else
+        Log(@"** %@ didClose", connection);
     [connection release];
 }
-- (void) connection: (BLIPConnection*)connection receivedRequest: (BLIPRequest*)request
+- (BOOL) connection: (BLIPConnection*)connection receivedRequest: (BLIPRequest*)request
 {
     Log(@"***** %@ received %@",connection,request);
-    NSData *body = request.body;
-    size_t size = body.length;
-    Assert(size<32768);
-    const UInt8 *bytes = body.bytes;
-    for( size_t i=0; i<size; i++ )
-        AssertEq(bytes[i],i % 256);
     
-    AssertEqual([request valueOfProperty: @"Content-Type"], @"application/octet-stream");
-    Assert([request valueOfProperty: @"User-Agent"] != nil);
-    AssertEq([[request valueOfProperty: @"Size"] intValue], size);
+    if ([request.profile isEqualToString: @"BLIPTest/EchoData"]) {
+        NSData *body = request.body;
+        size_t size = body.length;
+        Assert(size<32768);
+        const UInt8 *bytes = body.bytes;
+        for( size_t i=0; i<size; i++ )
+            AssertEq(bytes[i],i % 256);
+        
+        AssertEqual([request valueOfProperty: @"Content-Type"], @"application/octet-stream");
+        Assert([request valueOfProperty: @"User-Agent"] != nil);
+        AssertEq((size_t)[[request valueOfProperty: @"Size"] intValue], size);
 
-    [request respondWithData: body contentType: request.contentType];
+        [request respondWithData: body contentType: request.contentType];
+    } else if ([request.profile isEqualToString: @"BLIPTest/DontHandleMe"]) {
+        // Deliberately don't handle this, to test unhandled request handling.
+        return NO;
+    } else {
+        Assert(NO, @"Unknown profile in request %@", request);
+    }
     
     if( ++ _nReceived == kListenerCloseAfter ) {
         Log(@"********** Closing BLIPTestListener after %i requests",_nReceived);
         [connection close];
     }
+    return YES;
 }
 
 - (BOOL) connectionReceivedCloseRequest: (BLIPConnection*)connection;
@@ -351,9 +395,7 @@ TestCase(BLIPListener) {
     EnableLogTo(BLIP,YES);
     EnableLogTo(PortMapper,YES);
     EnableLogTo(Bonjour,YES);
-#if HAVE_KEYCHAIN_FRAMEWORK
-    [Keychain setUserInteractionAllowed: YES];
-#endif
+    SecKeychainSetUserInteractionAllowed(true);
     BLIPTestListener *listener = [[BLIPTestListener alloc] init];
     
     [[NSRunLoop currentRunLoop] run];

@@ -30,3 +30,8 @@
 - (void) _unclose;
 @end
 
+
+@interface TCPEndpoint ()
++ (NSString*) describeCert: (SecCertificateRef)cert;
++ (NSString*) describeIdentity: (SecIdentityRef)identity;
+@end

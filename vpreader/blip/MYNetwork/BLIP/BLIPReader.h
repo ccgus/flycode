@@ -14,6 +14,7 @@
 /** INTERNAL class that reads BLIP frames from the socket. */
 @interface BLIPReader : TCPReader
 {
+    @private
     BLIPFrameHeader _curHeader;
     UInt32 _curBytesRead;
     NSMutableData *_curBody;

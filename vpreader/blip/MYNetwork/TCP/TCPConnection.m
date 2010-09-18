@@ -8,6 +8,7 @@
 
 #import "TCP_Internal.h"
 #import "IPAddress.h"
+#import "MYBonjourService.h"
 
 #import "Logging.h"
 #import "Test.h"
@@ -74,10 +75,8 @@ static NSMutableArray *sAllConnections;
     // +getStreamsToHost: is missing for some stupid reason on iPhone. Grrrrrrrrrr.
     CFStreamCreatePairWithSocketToHost(NULL, (CFStringRef)address.hostname, address.port,
                                        (CFReadStreamRef*)&input, (CFWriteStreamRef*)&output);
-    if( input )
-        [(id)CFMakeCollectable(input) autorelease];
-    if( output )
-        [(id)CFMakeCollectable(output) autorelease];
+    if( input )  [NSMakeCollectable(input) autorelease];
+    if( output ) [NSMakeCollectable(output) autorelease];
 #else
     [NSStream getStreamsToHost: [NSHost hostWithAddress: address.ipv4name]
                           port: address.port 
@@ -103,6 +102,15 @@ static NSMutableArray *sAllConnections;
     return [self _initWithAddress: address inputStream: input outputStream: output];
 }
 
+- (id) initToBonjourService: (MYBonjourService*)service;
+{
+    NSNetService *netService = [[NSNetService alloc] initWithDomain: service.domain
+                                                               type: service.type name: service.name];
+    self = [self initToNetService: netService];
+    [netService release];
+    return self;
+}
+
 
 - (id) initIncomingFromSocket: (CFSocketNativeHandle)socket
                      listener: (TCPListener*)listener
@@ -110,6 +118,9 @@ static NSMutableArray *sAllConnections;
     CFReadStreamRef readStream = NULL;
     CFWriteStreamRef writeStream = NULL;
     CFStreamCreatePairWithSocket(kCFAllocatorDefault, socket, &readStream, &writeStream);
+	if( readStream )  [NSMakeCollectable(readStream) autorelease];
+    if( writeStream ) [NSMakeCollectable(writeStream) autorelease];
+	
     self = [self _initWithAddress: [IPAddress addressOfSocket: socket] 
                       inputStream: (NSInputStream*)readStream
                      outputStream: (NSOutputStream*)writeStream];
@@ -142,6 +153,8 @@ static NSMutableArray *sAllConnections;
 @synthesize address=_address, isIncoming=_isIncoming, status=_status,
             reader=_reader, writer=_writer, server=_server, openTimeout=_openTimeout;
 
+- (id<TCPConnectionDelegate>) delegate                      {return _delegate;}
+- (void) setDelegate: (id<TCPConnectionDelegate>) delegate  {_delegate = delegate;}
 
 - (NSError*) error
 {
@@ -348,7 +361,8 @@ static NSMutableArray *sAllConnections;
                     allow = NO; // Server MUST have a cert!
                 else {
                     SecCertificateRef cert = certs.count ?(SecCertificateRef)[certs objectAtIndex:0] :NULL;
-                    LogTo(TCP,@"%@: Peer cert = %@",self,cert);
+                    if ([TCPEndpoint respondsToSelector: @selector(describeCert:)])
+                        LogTo(TCP,@"%@: Peer cert = %@",self,[TCPEndpoint describeCert: cert]);
                     if( [_delegate respondsToSelector: @selector(connection:authorizeSSLPeer:)] )
                         allow = [_delegate connection: self authorizeSSLPeer: cert];
                 }

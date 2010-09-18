@@ -14,7 +14,13 @@
 #import "Test.h"
 
 
+#if !TARGET_OS_IPHONE
+// You can't do client-side SSL auth using CFStream without this constant,
+// but it was accidentally not declared in a public header.
+// Unfortunately you can't use this on iPhone without Apple rejecting your app
+// for using "private API". :-(
 extern const CFStringRef _kCFStreamPropertySSLClientSideAuthentication; // in CFNetwork
+#endif
 
 static NSError* fixStreamError( NSError *error );
 
@@ -77,9 +83,11 @@ static NSError* fixStreamError( NSError *error );
     LogTo(TCPVerbose,@"%@ SSL settings := %@",self,p);
     [self setProperty: p forKey: kCFStreamPropertySSLSettings];
     
+#if !TARGET_OS_IPHONE
     id clientAuth = [p objectForKey: kTCPPropertySSLClientSideAuthentication];
     if( clientAuth )
         [self setProperty: clientAuth forKey: _kCFStreamPropertySSLClientSideAuthentication];
+#endif
 }
 
 - (NSArray*) peerSSLCerts
@@ -96,7 +104,7 @@ static NSError* fixStreamError( NSError *error );
 - (void) open
 {
     Assert(_stream);
-    AssertEq(_stream.streamStatus,NSStreamStatusNotOpen);
+    AssertEq(_stream.streamStatus,(NSStreamStatus)NSStreamStatusNotOpen);
     LogTo(TCP,@"Opening %@",self);
     [_stream open];
 }

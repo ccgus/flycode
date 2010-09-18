@@ -7,15 +7,16 @@
 //
 
 #import "TCPEndpoint.h"
-
+#import "Test.h"
+#import "CollectionUtils.h"
 #import "ExceptionUtils.h"
+#import <Security/Security.h>
 
 
 NSString* const kTCPPropertySSLClientSideAuthentication = @"kTCPPropertySSLClientSideAuthentication";
 
 
 @implementation TCPEndpoint
-@synthesize delegate=_delegate;
 
 
 - (void) dealloc
@@ -48,6 +49,15 @@ NSString* const kTCPPropertySSLClientSideAuthentication = @"kTCPPropertySSLClien
 - (NSString*) securityLevel                 {return [_sslProperties objectForKey: (id)kCFStreamSSLLevel];}
 - (void) setSecurityLevel: (NSString*)level {[self setSSLProperty: level forKey: (id)kCFStreamSSLLevel];}
 
+- (void) setPeerToPeerIdentity: (SecIdentityRef)identity {
+    Assert(identity);
+    self.SSLProperties = $mdict(
+             {(id)kCFStreamSSLLevel, NSStreamSocketSecurityLevelTLSv1},
+             {kTCPPropertySSLCertificates, $array((id)identity)},
+             {kTCPPropertySSLAllowsAnyRoot, $true},
+             {kTCPPropertySSLPeerName, [NSNull null]},
+             {kTCPPropertySSLClientSideAuthentication, $object(kTCPAlwaysAuthenticate)});
+}
 
 - (void) tellDelegate: (SEL)selector withObject: (id)param
 {

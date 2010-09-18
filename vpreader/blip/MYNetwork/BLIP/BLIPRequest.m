@@ -44,10 +44,25 @@
     return [[[self alloc] _initWithConnection: nil body: body properties: nil] autorelease];
 }
 
++ (BLIPRequest*) requestWithBodyString: (NSString*)bodyString {
+    return [self requestWithBody: [bodyString dataUsingEncoding: NSUTF8StringEncoding]];
+}
+
 + (BLIPRequest*) requestWithBody: (NSData*)body
                       properties: (NSDictionary*)properties
 {
     return [[[self alloc] _initWithConnection: nil body: body properties: properties] autorelease];
+}
+
+- (id)mutableCopyWithZone:(NSZone *)zone
+{
+    Assert(self.complete);
+    BLIPRequest *copy = [[self class] requestWithBody: self.body 
+                                           properties: self.properties.allProperties];
+    copy.compressed = self.compressed;
+    copy.urgent = self.urgent;
+    copy.noReply = self.noReply;
+    return [copy retain];
 }
 
 
@@ -247,7 +262,7 @@
     if( complete && _onComplete ) {
         @try{
             [_onComplete invokeWithSender: self];
-        }catchAndReport(@"BLIPResponse onComplete target");
+        }catchAndReport(@"BLIPRequest onComplete target");
     }
 }
 
@@ -256,13 +271,17 @@
 {
     [super _connectionClosed];
     if( !_isMine && !_complete ) {
+        NSError *error = _connection.error;
+        if (!error)
+            error = BLIPMakeError(kBLIPError_Disconnected,
+                                  @"Connection closed before response was received");
         // Change incoming response to an error:
         _isMutable = YES;
         [_properties autorelease];
         _properties = [_properties mutableCopy];
-        [self _setError: BLIPMakeError(kBLIPError_Disconnected,
-                                         @"Connection closed before response was received")];
+        [self _setError: error];
         _isMutable = NO;
+        
         self.complete = YES;    // Calls onComplete target
     }
 }

@@ -108,7 +108,7 @@
     
     // Set up the cell...
     
-    cell.text = [_documentNames objectAtIndex:indexPath.row];
+    cell.textLabel.text = [_documentNames objectAtIndex:indexPath.row];
     
     return cell;
 }

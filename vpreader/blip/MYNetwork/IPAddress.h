@@ -14,6 +14,7 @@
     also remembers the DNS host-name. */
 @interface IPAddress : NSObject <NSCoding, NSCopying>
 {
+    @private
     UInt32 _ipv4;       // In network byte order (big-endian), just like struct in_addr
     UInt16 _port;       // native byte order
 }
@@ -23,6 +24,12 @@
     If the hostname is not in dotted-quad form, an instance of the subclass HostAddress will
     be returned instead. */
 - (id) initWithHostname: (NSString*)hostname port: (UInt16)port;
+
+/** Creates an IPAddress from a host name (which may be a DNS name or dotted-quad numeric form)
+    and port number.
+    If the hostname is not in dotted-quad form, an instance of the subclass HostAddress will
+    be returned instead. */
++ (IPAddress*) addressWithHostname: (NSString*)hostname port: (UInt16)port;
 
 /** Initializes an IPAddress from a raw IPv4 address (in network byte order, i.e. big-endian)
     and port number (in native byte order) */
@@ -34,6 +41,13 @@
 
 /** Initializes an IPAddress from a BSD struct sockaddr. */
 - (id) initWithSockAddr: (const struct sockaddr*)sockaddr;
+
+/** Initializes an IPAddress from NSData containing a BSD struct sockaddr. */
+- (id) initWithData: (NSData*)data;
+
+/** Returns the IP address of this host (plus the specified port number).
+    If multiple network interfaces are active, the main one's address is returned. */
++ (IPAddress*) localAddressWithPort: (UInt16)port;
 
 /** Returns the IP address of this host (with a port number of zero).
     If multiple network interfaces are active, the main one's address is returned. */
@@ -60,6 +74,9 @@
 /** The port number, or zero if none was specified, in native byte order. */
 @property (readonly) UInt16 port;
 
+/** The address as an NSData object containing a struct sockaddr. */
+@property (readonly) NSData* asData;
+
 /** Is this IP address in a designated private/local address range, such as 10.0.1.X?
     If so, the address is not globally meaningful outside of the local subnet. */
 @property (readonly) BOOL isPrivate;            // In a private/local addr range like 10.0.1.X?
@@ -71,10 +88,17 @@
     An instance of HostAddress looks up its ipv4 address on the fly by calling gethostbyname. */
 @interface HostAddress : IPAddress
 {
+    @private
     NSString *_hostname;
 }
 
 - (id) initWithHostname: (NSString*)hostname port: (UInt16)port;
+
+/** Initializes a HostAddress from a host name, plus a sockaddr struct and a port number.
+    (The port number overrides any port specified in the sockaddr struct.) */
+- (id) initWithHostname: (NSString*)hostname
+               sockaddr: (const struct sockaddr*)sockaddr
+                   port: (UInt16)port;
 
 @end
 
@@ -85,6 +109,7 @@
     addresses for a peer that doesn't have a stable address. */
 @interface RecentAddress : IPAddress
 {
+    @private
     CFAbsoluteTime _lastSuccess;
     UInt32 _successes;
 }

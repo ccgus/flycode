@@ -7,6 +7,7 @@
 //
 
 #import "URLUtils.h"
+#import "CollectionUtils.h"
 
 
 @implementation NSURL (MYUtilities)
@@ -75,8 +76,7 @@
     // HTTP status >= 300 is considered an error:
     int status = self.statusCode;
     if( status >= 300 ) {
-        NSString *reason = NSLocalizedStringFromTable( @"HTTP_ERROR_MESSAGE",@"UKCrashReporter",@"");
-        reason = [NSHTTPURLResponse localizedStringForStatusCode: status];
+        NSString *reason = [NSHTTPURLResponse localizedStringForStatusCode: status];
         NSDictionary *info = $dict({NSLocalizedFailureReasonErrorKey,reason});
         return [NSError errorWithDomain: MyHTTPErrorDomain code: status userInfo: info];
     } else

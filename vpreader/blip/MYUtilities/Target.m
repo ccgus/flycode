@@ -84,10 +84,10 @@ static BOOL equalInvocations( NSInvocation *a, NSInvocation *b )
     if( [_invocations isKindOfClass: [NSInvocation class]] && [t->_invocations isKindOfClass: [NSInvocation class]] )
         return equalInvocations(_invocations,t->_invocations);
     NSArray *myInvocations = self.invocations, *itsInvocations = t.invocations;
-    unsigned n = myInvocations.count;
+    NSUInteger n = myInvocations.count;
     if( n != itsInvocations.count )
         return NO;
-    for( int i=0; i<n; i++ )
+    for( NSUInteger i=0; i<n; i++ )
         if( ! equalInvocations( [myInvocations objectAtIndex: i],
                                 [itsInvocations objectAtIndex: i] ) )
             return NO;

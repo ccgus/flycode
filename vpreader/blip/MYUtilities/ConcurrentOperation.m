@@ -7,6 +7,7 @@
 //
 
 #import "ConcurrentOperation.h"
+#import "Test.h"
 
 // See file:///Developer/Documentation/DocSets/com.apple.ADC_Reference_Library.CoreReference.docset/Contents/Resources/Documents/documentation/Cocoa/Reference/NSOperation_class/Reference/Reference.html
 

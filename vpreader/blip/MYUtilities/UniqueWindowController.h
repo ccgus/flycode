@@ -9,7 +9,7 @@
 #import <Cocoa/Cocoa.h>
 
 
-@interface UniqueWindowController : NSWindowController
+@interface UniqueWindowController : NSWindowController <NSWindowDelegate>
 
 + (UniqueWindowController*) instanceWith: (id)model;
 + (UniqueWindowController*) openWith: (id)model;

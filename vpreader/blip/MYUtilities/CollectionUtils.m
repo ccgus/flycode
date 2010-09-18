@@ -149,19 +149,16 @@ BOOL ifSetObj( id *var, id value )
     }
 }
 
-
-void setString( NSString **var, NSString *value )
-{
-    if( value != *var ) {
+void setObjCopy( id *var, id valueToCopy ) {
+    if( valueToCopy != *var ) {
         [*var release];
-        *var = [value copy];
+        *var = [valueToCopy copy];
     }
 }
 
-
-BOOL ifSetString( NSString **var, NSString *value )
+BOOL ifSetObjCopy( id *var, id value )
 {
-    if( value != *var && ![value isEqualToString: *var] ) {
+    if( value != *var && ![value isEqual: *var] ) {
         [*var release];
         *var = [value copy];
         return YES;
@@ -177,6 +174,59 @@ NSString* $string( const char *utf8Str )
         return [NSString stringWithCString: utf8Str encoding: NSUTF8StringEncoding];
     else
         return nil;
+}
+
+
+BOOL kvSetSet( id owner, NSString *property, NSMutableSet *set, NSSet *newSet ) {
+    CAssert(set);
+    if (!newSet)
+        newSet = [NSSet set];
+    if (![set isEqualToSet: newSet]) {
+        [owner willChangeValueForKey: property
+                     withSetMutation:NSKeyValueSetSetMutation 
+                        usingObjects:newSet]; 
+        [set setSet: newSet];
+        [owner didChangeValueForKey: property 
+                    withSetMutation:NSKeyValueSetSetMutation 
+                       usingObjects:newSet]; 
+        return YES;
+    } else
+        return NO;
+}
+
+
+BOOL kvAddToSet( id owner, NSString *property, NSMutableSet *set, id objToAdd ) {
+    CAssert(set);
+    if (![set containsObject: objToAdd]) {
+        NSSet *changedObjects = [[NSSet alloc] initWithObjects: &objToAdd count: 1];
+        [owner willChangeValueForKey: property
+                     withSetMutation: NSKeyValueUnionSetMutation 
+                        usingObjects: changedObjects]; 
+        [set addObject: objToAdd];
+        [owner didChangeValueForKey: property 
+                    withSetMutation: NSKeyValueUnionSetMutation 
+                       usingObjects: changedObjects]; 
+        [changedObjects release];
+        return YES;
+    } else
+        return NO;
+}
+
+
+BOOL kvRemoveFromSet( id owner, NSString *property, NSMutableSet *set, id objToRemove ) {
+    if ([set containsObject: objToRemove]) {
+        NSSet *changedObjects = [[NSSet alloc] initWithObjects: &objToRemove count: 1];
+        [owner willChangeValueForKey: property
+                     withSetMutation: NSKeyValueMinusSetMutation 
+                        usingObjects: changedObjects]; 
+        [set removeObject: objToRemove];
+        [owner didChangeValueForKey: property 
+                    withSetMutation: NSKeyValueMinusSetMutation 
+                       usingObjects: changedObjects]; 
+        [changedObjects release];
+        return YES;
+    } else
+        return NO;
 }
 
 
@@ -231,6 +281,16 @@ NSString* $string( const char *utf8Str )
         [result minusSet: set2];
         return [result autorelease];
     }
+}
+
+@end
+
+
+
+@implementation NSData (MYUtils)
+
+- (NSString*) my_UTF8ToString {
+    return [[[NSString alloc] initWithData: self encoding: NSUTF8StringEncoding] autorelease];
 }
 
 @end

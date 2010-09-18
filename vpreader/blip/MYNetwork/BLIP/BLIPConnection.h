@@ -19,12 +19,13 @@
     Most of the API is inherited from TCPConnection. */
 @interface BLIPConnection : TCPConnection
 {
+    @private
     BLIPDispatcher *_dispatcher;
     BOOL _blipClosing;
 }
 
 /** The delegate object that will be called when the connection opens, closes or receives messages. */
-@property (assign) id<BLIPConnectionDelegate> delegate;
+@property (assign) id<TCPConnectionDelegate> delegate;
 
 /** The connection's request dispatcher. By default it's not configured to do anything; but you
     can add rules to the dispatcher to call specific target methods based on properties of the
@@ -65,11 +66,13 @@
 
 /** Called when a BLIPRequest is received from the peer, if there is no BLIPDispatcher
     rule to handle it.
+    If the delegate wants to accept the request it should return YES; if it returns NO,
+    a kBLIPError_NotFound error will be returned to the sender.
     The delegate should get the request's response object, fill in its data and properties
     or error property, and send it.
     If it doesn't explicitly send a response, a default empty one will be sent;
     to prevent this, call -deferResponse on the request if you want to send a response later. */
-- (void) connection: (BLIPConnection*)connection receivedRequest: (BLIPRequest*)request;
+- (BOOL) connection: (BLIPConnection*)connection receivedRequest: (BLIPRequest*)request;
 
 /** Called when a BLIPResponse (to one of your requests) is received from the peer.
     This is called <i>after</i> the response object's onComplete target, if any, is invoked.*/
