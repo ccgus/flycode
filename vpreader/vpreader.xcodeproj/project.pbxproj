@@ -23,6 +23,14 @@
 		CC1C89F10F18387F00E71072 /* SyncViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CC1C89F00F18387F00E71072 /* SyncViewController.xib */; };
 		CC1C89F50F18389F00E71072 /* SyncViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CC1C89F40F18389F00E71072 /* SyncViewController.m */; };
 		CC6A37D10F1AAACC006A09B6 /* VPReader.png in Resources */ = {isa = PBXBuildFile; fileRef = CC6A37D00F1AAACC006A09B6 /* VPReader.png */; };
+		CC7E3EBE1245401F0023FAA3 /* ConcurrentOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = CC7E3EBD1245401F0023FAA3 /* ConcurrentOperation.m */; };
+		CCAE4D4312440B85009BA635 /* MYAddressLookup.m in Sources */ = {isa = PBXBuildFile; fileRef = CCAE4D3A12440B85009BA635 /* MYAddressLookup.m */; };
+		CCAE4D4412440B85009BA635 /* MYBonjourBrowser.m in Sources */ = {isa = PBXBuildFile; fileRef = CCAE4D3C12440B85009BA635 /* MYBonjourBrowser.m */; };
+		CCAE4D4512440B85009BA635 /* MYBonjourQuery.m in Sources */ = {isa = PBXBuildFile; fileRef = CCAE4D3E12440B85009BA635 /* MYBonjourQuery.m */; };
+		CCAE4D4612440B85009BA635 /* MYBonjourRegistration.m in Sources */ = {isa = PBXBuildFile; fileRef = CCAE4D4012440B85009BA635 /* MYBonjourRegistration.m */; };
+		CCAE4D4712440B85009BA635 /* MYBonjourService.m in Sources */ = {isa = PBXBuildFile; fileRef = CCAE4D4212440B85009BA635 /* MYBonjourService.m */; };
+		CCAE4D6212440C6C009BA635 /* MYDNSService.m in Sources */ = {isa = PBXBuildFile; fileRef = CCAE4D5F12440C6C009BA635 /* MYDNSService.m */; };
+		CCAE4D6312440C6C009BA635 /* MYPortMapper.m in Sources */ = {isa = PBXBuildFile; fileRef = CCAE4D6112440C6C009BA635 /* MYPortMapper.m */; };
 		CCC14B950F184494004BD04E /* IPAddress.m in Sources */ = {isa = PBXBuildFile; fileRef = CCC14B660F184494004BD04E /* IPAddress.m */; };
 		CCC14B960F184494004BD04E /* TCPConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = CCC14B690F184494004BD04E /* TCPConnection.m */; };
 		CCC14B970F184494004BD04E /* TCPEndpoint.m in Sources */ = {isa = PBXBuildFile; fileRef = CCC14B6B0F184494004BD04E /* TCPEndpoint.m */; };
@@ -71,6 +79,22 @@
 		CC1C89F30F18389F00E71072 /* SyncViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SyncViewController.h; sourceTree = "<group>"; };
 		CC1C89F40F18389F00E71072 /* SyncViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SyncViewController.m; sourceTree = "<group>"; };
 		CC6A37D00F1AAACC006A09B6 /* VPReader.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = VPReader.png; path = res/VPReader.png; sourceTree = "<group>"; };
+		CC7E3EBC1245401F0023FAA3 /* ConcurrentOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConcurrentOperation.h; sourceTree = "<group>"; };
+		CC7E3EBD1245401F0023FAA3 /* ConcurrentOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConcurrentOperation.m; sourceTree = "<group>"; };
+		CCAE4D3912440B85009BA635 /* MYAddressLookup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MYAddressLookup.h; sourceTree = "<group>"; };
+		CCAE4D3A12440B85009BA635 /* MYAddressLookup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MYAddressLookup.m; sourceTree = "<group>"; };
+		CCAE4D3B12440B85009BA635 /* MYBonjourBrowser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MYBonjourBrowser.h; sourceTree = "<group>"; };
+		CCAE4D3C12440B85009BA635 /* MYBonjourBrowser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MYBonjourBrowser.m; sourceTree = "<group>"; };
+		CCAE4D3D12440B85009BA635 /* MYBonjourQuery.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MYBonjourQuery.h; sourceTree = "<group>"; };
+		CCAE4D3E12440B85009BA635 /* MYBonjourQuery.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MYBonjourQuery.m; sourceTree = "<group>"; };
+		CCAE4D3F12440B85009BA635 /* MYBonjourRegistration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MYBonjourRegistration.h; sourceTree = "<group>"; };
+		CCAE4D4012440B85009BA635 /* MYBonjourRegistration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MYBonjourRegistration.m; sourceTree = "<group>"; };
+		CCAE4D4112440B85009BA635 /* MYBonjourService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MYBonjourService.h; sourceTree = "<group>"; };
+		CCAE4D4212440B85009BA635 /* MYBonjourService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MYBonjourService.m; sourceTree = "<group>"; };
+		CCAE4D5E12440C6C009BA635 /* MYDNSService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MYDNSService.h; path = blip/MYNetwork/PortMapper/MYDNSService.h; sourceTree = "<group>"; };
+		CCAE4D5F12440C6C009BA635 /* MYDNSService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MYDNSService.m; path = blip/MYNetwork/PortMapper/MYDNSService.m; sourceTree = "<group>"; };
+		CCAE4D6012440C6C009BA635 /* MYPortMapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MYPortMapper.h; path = blip/MYNetwork/PortMapper/MYPortMapper.h; sourceTree = "<group>"; };
+		CCAE4D6112440C6C009BA635 /* MYPortMapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MYPortMapper.m; path = blip/MYNetwork/PortMapper/MYPortMapper.m; sourceTree = "<group>"; };
 		CCC14B650F184494004BD04E /* IPAddress.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = IPAddress.h; path = blip/MYNetwork/IPAddress.h; sourceTree = "<group>"; };
 		CCC14B660F184494004BD04E /* IPAddress.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = IPAddress.m; path = blip/MYNetwork/IPAddress.m; sourceTree = "<group>"; };
 		CCC14B680F184494004BD04E /* TCPConnection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TCPConnection.h; sourceTree = "<group>"; };
@@ -213,9 +237,32 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		CCAE4D3812440B85009BA635 /* Bonjour */ = {
+			isa = PBXGroup;
+			children = (
+				CCAE4D3912440B85009BA635 /* MYAddressLookup.h */,
+				CCAE4D3A12440B85009BA635 /* MYAddressLookup.m */,
+				CCAE4D3B12440B85009BA635 /* MYBonjourBrowser.h */,
+				CCAE4D3C12440B85009BA635 /* MYBonjourBrowser.m */,
+				CCAE4D3D12440B85009BA635 /* MYBonjourQuery.h */,
+				CCAE4D3E12440B85009BA635 /* MYBonjourQuery.m */,
+				CCAE4D3F12440B85009BA635 /* MYBonjourRegistration.h */,
+				CCAE4D4012440B85009BA635 /* MYBonjourRegistration.m */,
+				CCAE4D4112440B85009BA635 /* MYBonjourService.h */,
+				CCAE4D4212440B85009BA635 /* MYBonjourService.m */,
+			);
+			name = Bonjour;
+			path = blip/MYNetwork/Bonjour;
+			sourceTree = "<group>";
+		};
 		CCC14B640F184494004BD04E /* MYNetwork */ = {
 			isa = PBXGroup;
 			children = (
+				CCAE4D5E12440C6C009BA635 /* MYDNSService.h */,
+				CCAE4D5F12440C6C009BA635 /* MYDNSService.m */,
+				CCAE4D6012440C6C009BA635 /* MYPortMapper.h */,
+				CCAE4D6112440C6C009BA635 /* MYPortMapper.m */,
+				CCAE4D3812440B85009BA635 /* Bonjour */,
 				CCC14B650F184494004BD04E /* IPAddress.h */,
 				CCC14B660F184494004BD04E /* IPAddress.m */,
 				CCC14B670F184494004BD04E /* TCP */,
@@ -270,6 +317,8 @@
 		CCC14B840F184494004BD04E /* MYUtilities */ = {
 			isa = PBXGroup;
 			children = (
+				CC7E3EBC1245401F0023FAA3 /* ConcurrentOperation.h */,
+				CC7E3EBD1245401F0023FAA3 /* ConcurrentOperation.m */,
 				CCC14B860F184494004BD04E /* MYUtilities_Prefix.pch */,
 				CCC14B870F184494004BD04E /* CollectionUtils.h */,
 				CCC14B880F184494004BD04E /* CollectionUtils.m */,
@@ -324,6 +373,7 @@
 			isa = PBXProject;
 			buildConfigurationList = C01FCF4E08A954540054247B /* Build configuration list for PBXProject "vpreader" */;
 			compatibilityVersion = "Xcode 3.1";
+			developmentRegion = English;
 			hasScannedForEncodings = 1;
 			knownRegions = (
 				English,
@@ -390,6 +440,14 @@
 				CCC14BA70F184494004BD04E /* Test.m in Sources */,
 				CCC14BA80F184494004BD04E /* GTMNSData+zlib.m in Sources */,
 				CCC14E630F188A27004BD04E /* WebViewController.m in Sources */,
+				CCAE4D4312440B85009BA635 /* MYAddressLookup.m in Sources */,
+				CCAE4D4412440B85009BA635 /* MYBonjourBrowser.m in Sources */,
+				CCAE4D4512440B85009BA635 /* MYBonjourQuery.m in Sources */,
+				CCAE4D4612440B85009BA635 /* MYBonjourRegistration.m in Sources */,
+				CCAE4D4712440B85009BA635 /* MYBonjourService.m in Sources */,
+				CCAE4D6212440C6C009BA635 /* MYDNSService.m in Sources */,
+				CCAE4D6312440C6C009BA635 /* MYPortMapper.m in Sources */,
+				CC7E3EBE1245401F0023FAA3 /* ConcurrentOperation.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -400,17 +458,18 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				CODE_SIGN_IDENTITY = "iPhone Developer: August Mueller";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "Don't Code Sign";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				COPY_PHASE_STRIP = NO;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = vpreader_Prefix.pch;
 				INFOPLIST_FILE = Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 3.1.3;
 				OTHER_CFLAGS = "-DDEBUG";
 				PRODUCT_NAME = "VP Reader";
-				PROVISIONING_PROFILE = "B724A4B3-E812-4DF3-A4EC-F8391F2AACE6";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
+				SDKROOT = iphoneos4.1;
 			};
 			name = Debug;
 		};
@@ -418,12 +477,16 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "Don't Code Sign";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: August Mueller (2UQM47V9JC)";
 				COPY_PHASE_STRIP = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = vpreader_Prefix.pch;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				INFOPLIST_FILE = Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 3.1.3;
 				PRODUCT_NAME = "VP Reader";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "BBC835C2-F4FA-43E0-ADA2-C79665E4083A";
+				SDKROOT = iphoneos4.1;
 			};
 			name = Release;
 		};
@@ -431,12 +494,15 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: August Mueller (2UQM47V9JC)";
 				GCC_C_LANGUAGE_STANDARD = c99;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				PREBINDING = NO;
-				SDKROOT = iphonesimulator4.0;
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "7392298D-D14F-4712-9F43-E67BE0C13EEF";
+				SDKROOT = iphoneos3.2;
 			};
 			name = Debug;
 		};
@@ -449,7 +515,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				PREBINDING = NO;
-				SDKROOT = iphoneos4.0;
+				SDKROOT = iphoneos2.2;
 			};
 			name = Release;
 		};
@@ -463,6 +529,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				PREBINDING = NO;
 				SDKROOT = iphoneos2.2;
+				VALIDATE_PRODUCT = YES;
 			};
 			name = Distribution;
 		};
@@ -470,13 +537,17 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Flying Meat Inc.";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				COPY_PHASE_STRIP = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = vpreader_Prefix.pch;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				INFOPLIST_FILE = Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 3.1.3;
 				PRODUCT_NAME = "VP Reader";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "8962A593-FCE8-4BED-AAA0-3D6B0D8E3A07";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
+				SDKROOT = iphoneos4.1;
+				VALIDATE_PRODUCT = YES;
 			};
 			name = Distribution;
 		};

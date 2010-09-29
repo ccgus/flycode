@@ -46,8 +46,12 @@ NSString* AppSupportDirectory()
                                                              NSUserDomainMask, YES)
                          objectAtIndex: 0];
         dir = [dir stringByAppendingPathComponent: [[NSBundle mainBundle] bundleIdentifier]];
+        NSError *error;
         if( ! [[NSFileManager defaultManager] fileExistsAtPath: dir]
-                && ! [[NSFileManager defaultManager] createDirectoryAtPath: dir attributes: nil] )
+               && ! [[NSFileManager defaultManager] createDirectoryAtPath: dir
+                                              withIntermediateDirectories: YES
+                                                               attributes: nil
+                                                                    error: &error] )
             [NSException raise: NSGenericException format: @"Unable to create app support dir %@",dir];
         sPath = [dir copy];
     }

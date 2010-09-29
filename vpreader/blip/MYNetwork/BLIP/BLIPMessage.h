@@ -36,6 +36,7 @@ NSError *BLIPMakeError( int errorCode, NSString *message, ... ) __attribute__ ((
 /** Abstract superclass for <a href=".#blipdesc">BLIP</a> requests and responses. */
 @interface BLIPMessage : NSObject 
 {
+    @protected
     BLIPConnection *_connection;
     UInt16 _flags;
     UInt32 _number;

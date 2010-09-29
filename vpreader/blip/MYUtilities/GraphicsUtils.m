@@ -6,7 +6,9 @@
 //
 
 #import "GraphicsUtils.h"
+#import "CollectionUtils.h"
 #import "FileUtils.h"
+#import "Test.h"
 #import <ApplicationServices/ApplicationServices.h>
 
 

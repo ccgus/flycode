@@ -7,18 +7,37 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <Security/SecBase.h>
 #if TARGET_OS_IPHONE
 #include <CFNetwork/CFSocketStream.h>
 #else
 #import <CoreServices/CoreServices.h>
 #endif
-@protocol TCPListenerDelegate;
+
 
 // SSL properties:
+
+/** This defines the SSL identity to be used by this endpoint.
+    The value is an NSArray (or CFArray) whose first item must be a SecIdentityRef;
+    optionally, it can also contain SecCertificateRefs for supporting certificates in the
+    validation chain. */
 #define kTCPPropertySSLCertificates  ((NSString*)kCFStreamSSLCertificates)
+
+/** If set to YES, the connection will accept self-signed certificates from the peer,
+    or any certificate chain that terminates in an unrecognized root. */
 #define kTCPPropertySSLAllowsAnyRoot ((NSString*)kCFStreamSSLAllowsAnyRoot)
 
-extern NSString* const kTCPPropertySSLClientSideAuthentication;    // value is TCPAuthenticate enum
+/** This sets the hostname that the peer's certificate must have.
+    (The default value is the hostname, if any, that the connection was opened with.)
+    Setting a value of [NSNull null] completely disables host-name checking. */
+#define kTCPPropertySSLPeerName      ((NSString*)kCFStreamSSLPeerName)
+
+#if !TARGET_OS_IPHONE   /* not supported on iPhone, unfortunately */
+/** Specifies whether the client (the peer that opened the connection) will use a certificate.
+    The value is a TCPAuthenticate enum value wrapped in an NSNumber. */
+extern NSString* const kTCPPropertySSLClientSideAuthentication;
+#endif
+
 typedef enum {
 	kTCPNeverAuthenticate,			/* skip client authentication */
 	kTCPAlwaysAuthenticate,         /* require it */
@@ -42,15 +61,13 @@ typedef enum {
     property. */
 @property (copy) NSMutableDictionary *SSLProperties;
 
-
-/** Delegate object that will be called when interesting things happen to the listener --
- most importantly, when a new incoming connection is accepted. */
-@property (assign) id<TCPListenerDelegate> delegate;
-
-
 /** Shortcut to set a single SSL property. */
 - (void) setSSLProperty: (id)value 
                  forKey: (NSString*)key;
+
+/** High-level setup for secure P2P connections. Uses the given identity for SSL,
+    requires peers to use SSL, turns off root checking and peer-name checking. */
+- (void) setPeerToPeerIdentity: (SecIdentityRef)identity;
 
 //protected:
 - (void) tellDelegate: (SEL)selector withObject: (id)param;

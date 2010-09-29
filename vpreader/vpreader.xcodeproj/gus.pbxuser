@@ -2,15 +2,15 @@
 {
 	1D3623240D0F684500981E51 /* VPReaderAppDelegate.h */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1123, 914}}";
+			sepNavIntBoundsRect = "{{0, 0}, {1215, 1013}}";
 			sepNavSelRange = "{463, 28}";
 			sepNavVisRange = "{0, 499}";
 		};
 	};
 	1D3623250D0F684500981E51 /* VPReaderAppDelegate.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1451, 967}}";
-			sepNavSelRange = "{269, 34}";
+			sepNavIntBoundsRect = "{{0, 0}, {1215, 1013}}";
+			sepNavSelRange = "{212, 36}";
 			sepNavVisRange = "{0, 1183}";
 		};
 	};
@@ -22,9 +22,9 @@
 	};
 	28A0AAE50D9B0CCF005BE974 /* vpreader_Prefix.pch */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {732, 252}}";
-			sepNavSelRange = "{196, 5}";
-			sepNavVisRange = "{112, 169}";
+			sepNavIntBoundsRect = "{{0, 0}, {732, 270}}";
+			sepNavSelRange = "{194, 5}";
+			sepNavVisRange = "{185, 101}";
 		};
 	};
 	28C286DF0D94DF7D0034E888 /* RootViewController.h */ = {
@@ -36,15 +36,16 @@
 	};
 	28C286E00D94DF7D0034E888 /* RootViewController.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1451, 2400}}";
-			sepNavSelRange = "{1154, 0}";
-			sepNavVisRange = "{41, 1971}";
+			sepNavIntBoundsRect = "{{0, 0}, {923, 2355}}";
+			sepNavSelRange = "{3155, 0}";
+			sepNavVisRange = "{3124, 117}";
 		};
 	};
 	29B97313FDCFA39411CA2CEA /* Project object */ = {
-		activeBuildConfigurationName = Debug;
+		activeArchitecturePreference = armv6;
+		activeBuildConfigurationName = Distribution;
 		activeExecutable = CC1C89BA0F182CED00E71072 /* vpreader */;
-		activeSDKPreference = iphonesimulator4.0;
+		activeSDKPreference = iphoneos4.1;
 		activeTarget = 1D6058900D05DD3D006BFB54 /* vpreader */;
 		addToTargets = (
 			1D6058900D05DD3D006BFB54 /* vpreader */,
@@ -98,8 +99,8 @@
 					PBXFileDataSource_Warnings_ColumnID,
 				);
 			};
-			PBXPerProjectTemplateStateSaveDate = 300397842;
-			PBXWorkspaceStateSaveDate = 300397842;
+			PBXPerProjectTemplateStateSaveDate = 306529958;
+			PBXWorkspaceStateSaveDate = 306529958;
 		};
 		sourceControlManager = CC1C89D40F182D2100E71072 /* Source Control */;
 		userBuildSettings = {
@@ -107,9 +108,9 @@
 	};
 	8D1107310486CEB800E47090 /* Info.plist */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1526, 919}}";
-			sepNavSelRange = "{375, 16}";
-			sepNavVisRange = "{0, 913}";
+			sepNavIntBoundsRect = "{{0, 0}, {1237, 871}}";
+			sepNavSelRange = "{775, 0}";
+			sepNavVisRange = "{0, 897}";
 		};
 	};
 	CC1C89BA0F182CED00E71072 /* vpreader */ = {
@@ -165,58 +166,100 @@
 	};
 	CC1C89F40F18389F00E71072 /* SyncViewController.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1123, 3178}}";
-			sepNavSelRange = "{6853, 0}";
-			sepNavVisRange = "{4475, 2535}";
+			sepNavIntBoundsRect = "{{0, 0}, {1500, 3420}}";
+			sepNavSelRange = "{3981, 107}";
+			sepNavVisRange = "{3040, 1522}";
+		};
+	};
+	CCAE4D3A12440B85009BA635 /* MYAddressLookup.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {732, 3015}}";
+			sepNavSelRange = "{2661, 5}";
+			sepNavVisRange = "{2538, 342}";
+		};
+	};
+	CCAE4D4112440B85009BA635 /* MYBonjourService.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1500, 1785}}";
+			sepNavSelRange = "{513, 13}";
+			sepNavVisRange = "{133, 1507}";
+		};
+	};
+	CCAE4D4212440B85009BA635 /* MYBonjourService.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {923, 4515}}";
+			sepNavSelRange = "{1485, 4}";
+			sepNavVisRange = "{1441, 239}";
+		};
+	};
+	CCAE4D6112440C6C009BA635 /* MYPortMapper.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1237, 3465}}";
+			sepNavSelRange = "{1467, 20}";
+			sepNavVisRange = "{811, 1702}";
 		};
 	};
 	CCC14B680F184494004BD04E /* TCPConnection.h */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1123, 1904}}";
-			sepNavSelRange = "{0, 0}";
-			sepNavVisRange = "{0, 2178}";
+			sepNavIntBoundsRect = "{{0, 0}, {1237, 2070}}";
+			sepNavSelRange = "{2178, 93}";
+			sepNavVisRange = "{931, 2397}";
 		};
 	};
 	CCC14B690F184494004BD04E /* TCPConnection.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {923, 6975}}";
-			sepNavSelRange = "{4067, 0}";
-			sepNavVisRange = "{3908, 246}";
+			sepNavIntBoundsRect = "{{0, 0}, {923, 7080}}";
+			sepNavSelRange = "{2989, 0}";
+			sepNavVisRange = "{2930, 320}";
 		};
 	};
 	CCC14B6A0F184494004BD04E /* TCPEndpoint.h */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1474, 913}}";
-			sepNavSelRange = "{306, 0}";
-			sepNavVisRange = "{0, 1855}";
+			sepNavIntBoundsRect = "{{0, 0}, {1237, 848}}";
+			sepNavSelRange = "{1048, 0}";
+			sepNavVisRange = "{0, 1613}";
 		};
 	};
 	CCC14B6B0F184494004BD04E /* TCPEndpoint.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1474, 1515}}";
-			sepNavSelRange = "{351, 0}";
-			sepNavVisRange = "{0, 1458}";
+			sepNavIntBoundsRect = "{{0, 0}, {1237, 1530}}";
+			sepNavSelRange = "{319, 0}";
+			sepNavVisRange = "{0, 1425}";
 		};
 	};
 	CCC14B6C0F184494004BD04E /* TCPListener.h */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1474, 2145}}";
-			sepNavSelRange = "{217, 0}";
-			sepNavVisRange = "{0, 2119}";
+			sepNavIntBoundsRect = "{{0, 0}, {1500, 2295}}";
+			sepNavSelRange = "{1016, 0}";
+			sepNavVisRange = "{0, 2175}";
 		};
 	};
 	CCC14B6D0F184494004BD04E /* TCPListener.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1474, 5865}}";
-			sepNavSelRange = "{1283, 0}";
-			sepNavVisRange = "{342, 1457}";
+			sepNavIntBoundsRect = "{{0, 0}, {1500, 6390}}";
+			sepNavSelRange = "{8595, 0}";
+			sepNavVisRange = "{7563, 1789}";
+		};
+	};
+	CCC14B6E0F184494004BD04E /* TCPStream.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1500, 1590}}";
+			sepNavSelRange = "{361, 0}";
+			sepNavVisRange = "{0, 1678}";
+		};
+	};
+	CCC14B6F0F184494004BD04E /* TCPStream.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1500, 4815}}";
+			sepNavSelRange = "{873, 33}";
+			sepNavVisRange = "{0, 1431}";
 		};
 	};
 	CCC14B750F184494004BD04E /* BLIPConnection.h */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1123, 1456}}";
-			sepNavSelRange = "{0, 0}";
-			sepNavVisRange = "{134, 3035}";
+			sepNavIntBoundsRect = "{{0, 0}, {923, 1635}}";
+			sepNavSelRange = "{3243, 0}";
+			sepNavVisRange = "{3066, 446}";
 		};
 	};
 	CCC14B760F184494004BD04E /* BLIPConnection.m */ = {
@@ -261,6 +304,41 @@
 			sepNavVisRange = "{0, 2132}";
 		};
 	};
+	CCC14B880F184494004BD04E /* CollectionUtils.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1237, 5265}}";
+			sepNavSelRange = "{5600, 0}";
+			sepNavVisRange = "{4726, 1899}";
+		};
+	};
+	CCC14B8F0F184494004BD04E /* Test.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {923, 1470}}";
+			sepNavSelRange = "{4499, 0}";
+			sepNavVisRange = "{4348, 243}";
+		};
+	};
+	CCC14B900F184494004BD04E /* Test.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {923, 2805}}";
+			sepNavSelRange = "{3381, 0}";
+			sepNavVisRange = "{3373, 26}";
+		};
+	};
+	CCC14B920F184494004BD04E /* GTMDefines.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1500, 2010}}";
+			sepNavSelRange = "{2704, 75}";
+			sepNavVisRange = "{1587, 2670}";
+		};
+	};
+	CCC14B940F184494004BD04E /* GTMNSData+zlib.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {923, 4035}}";
+			sepNavSelRange = "{9413, 0}";
+			sepNavVisRange = "{1425, 357}";
+		};
+	};
 	CCC14E610F188A27004BD04E /* WebViewController.h */ = {
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {835, 648}}";
@@ -270,9 +348,9 @@
 	};
 	CCC14E620F188A27004BD04E /* WebViewController.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {732, 1635}}";
+			sepNavIntBoundsRect = "{{0, 0}, {1080, 1635}}";
 			sepNavSelRange = "{2585, 10}";
-			sepNavVisRange = "{2109, 402}";
+			sepNavVisRange = "{0, 1720}";
 		};
 	};
 }

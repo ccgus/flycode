@@ -25,6 +25,7 @@
     request based on property values. */
 @interface BLIPDispatcher : NSObject 
 {
+    @private
     NSMutableArray *_predicates, *_targets;
     BLIPDispatcher *_parent;
 }

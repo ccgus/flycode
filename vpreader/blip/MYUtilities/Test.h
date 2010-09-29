@@ -82,6 +82,10 @@ void _RequireTestCase( const char *name );
                                     CAssert(_val==_expected, @"Unexpected value for %s: %@ (expected %@)", #VAL,$object(_val),$object(_expected)); \
                                 }while(0)
 
+#define AssertNil(VAL)          AssertEq((VAL),nil)
+#define CAssertNil(VAL)         CAssertEq((VAL),nil)
+
+#define AssertAbstractMethod()  _AssertAbstractMethodFailed(self,_cmd);
 
 // Nasty internals ...
 #if DEBUG
@@ -89,6 +93,7 @@ void _RunTestCase( void (*testptr)(), const char *name );
 
 struct TestCaseLink {void (*testptr)(); const char *name; BOOL passed; struct TestCaseLink *next;};
 extern struct TestCaseLink *gAllTestCases;
-#endif DEBUG
+#endif // DEBUG
 void _AssertFailed( id rcvr, const void *selOrFn, const char *sourceFile, int sourceLine,
                    const char *condString, NSString *message, ... ) __attribute__((noreturn));
+void _AssertAbstractMethodFailed( id rcvr, SEL cmd) __attribute__((noreturn));

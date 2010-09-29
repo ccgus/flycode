@@ -7,6 +7,7 @@
 //
 
 #import "DateUtils.h"
+#import "Test.h"
 
 #include <assert.h>
 #include <CoreServices/CoreServices.h>
@@ -33,13 +34,17 @@ CFAbsoluteTime $time( NSDate* date )
 
 NSTimeInterval TimeIntervalSinceBoot(void)
 {
-    // From http://developer.apple.com/qa/qa2004/qa1398.html
-    uint64_t abstime = mach_absolute_time();
-    // Have to do some pointer fun because AbsoluteToNanoseconds
+    // Adapted from http://developer.apple.com/qa/qa2004/qa1398.html
+    // Have to do some union tricks because AbsoluteToNanoseconds
     // works in terms of UnsignedWide, which is a structure rather
     // than a proper 64-bit integer.
-    Nanoseconds elapsedNano = AbsoluteToNanoseconds( *(AbsoluteTime *) &abstime );
-    return *(uint64_t*)&elapsedNano / 1.0e9;
+    union {
+        uint64_t asUInt64;
+        UnsignedWide asUWide;
+    } t;
+    t.asUInt64 = mach_absolute_time();
+    t.asUWide = AbsoluteToNanoseconds(t.asUWide);
+    return t.asUInt64 / 1.0e9;
 }
 
 

@@ -34,16 +34,14 @@ void MYReportException( NSException *x, NSString *where, ... )
     va_start(args,where);
     where = [[NSString alloc] initWithFormat: where arguments: args];
     va_end(args);
-    if( sExceptionReporter ) {
-        Warn(@"Exception caught in %@:\n\t%@",where,x);
+    Warn(@"Exception caught in %@:\n\t%@\n%@",where,x,x.my_callStack);
+    if( sExceptionReporter )
         sExceptionReporter(x);
-    }else
-        Warn(@"Exception caught in %@:\n\t%@\n%@",where,x,x.my_callStack);
     [where release];
 }
 
 
-@implementation NSException (MooseyardUtil)
+@implementation NSException (MYUtilities)
 
 
 - (NSArray*) my_callStackReturnAddresses
@@ -70,10 +68,12 @@ void MYReportException( NSException *x, NSString *where, ... )
 
 - (NSString*) my_callStack
 {
-    NSArray *addresses = [self my_callStackReturnAddressesSkipping: 2 limit: 15];
+    NSArray *addresses = [self my_callStackReturnAddressesSkipping: 1 limit: 15];
     if (!addresses)
         return nil;
     
+    FILE *file = NULL;
+#if !TARGET_OS_IPHONE
     // We pipe the hex return addresses through the 'atos' tool to get symbolic names:
     // Adapted from <http://paste.lisp.org/display/47196>:
     NSMutableString *cmd = [NSMutableString stringWithFormat: @"/usr/bin/atos -p %d", getpid()];
@@ -81,32 +81,41 @@ void MYReportException( NSException *x, NSString *where, ... )
     foreach(addr,addresses) {
         [cmd appendFormat: @" %p", [addr pointerValue]];
     }
-    FILE *file = popen( [cmd UTF8String], "r" );
-    if( ! file )
-        return nil;
-    
-    NSMutableData *output = [NSMutableData data];
-    char buffer[512];
-    size_t length;
-    while ((length = fread( buffer, 1, sizeof( buffer ), file ) ))
-        [output appendBytes: buffer length: length];
-    pclose( file );
-    NSString *outStr = [[[NSString alloc] initWithData: output encoding: NSUTF8StringEncoding] autorelease];
+    file = popen( [cmd UTF8String], "r" );
+#endif
     
     NSMutableString *result = [NSMutableString string];
-    NSString *line;
-    foreach( line, [outStr componentsSeparatedByString: @"\n"] ) {
-        // Skip  frames that are part of the exception/assertion handling itself:
-        if( [line hasPrefix: @"-[NSAssertionHandler"] || [line hasPrefix: @"+[NSException"] 
-                || [line hasPrefix: @"-[NSException"] || [line hasPrefix: @"_AssertFailed"] )
-            continue;
-        if( result.length )
-            [result appendString: @"\n"];
-        [result appendString: @"\t"];
-        [result appendString: line];
-        // Don't show the "__start" frame below "main":
-        if( [line hasPrefix: @"main "] )
-            break;
+    if( file ) {
+        NSMutableData *output = [NSMutableData data];
+        char buffer[512];
+        size_t length;
+        while ((length = fread( buffer, 1, sizeof( buffer ), file ) ))
+            [output appendBytes: buffer length: length];
+        pclose( file );
+        NSString *outStr = [[[NSString alloc] initWithData: output encoding: NSUTF8StringEncoding] autorelease];
+        
+        NSString *line;
+        foreach( line, [outStr componentsSeparatedByString: @"\n"] ) {
+            // Skip  frames that are part of the exception/assertion handling itself:
+            if( [line hasPrefix: @"-[NSAssertionHandler"] || [line hasPrefix: @"+[NSException"] 
+                    || [line hasPrefix: @"-[NSException"] || [line hasPrefix: @"_AssertFailed"]
+                    || [line hasPrefix: @"objc_"] )
+                continue;
+            if( result.length )
+                [result appendString: @"\n"];
+            [result appendString: @"\t"];
+            [result appendString: line];
+            // Don't show the "__start" frame below "main":
+            if( [line hasPrefix: @"main "] )
+                break;
+        }
+    } else {
+        NSValue *addr;
+        foreach(addr,addresses) {
+            if( result.length )
+                [result appendString: @" <- "];
+            [result appendFormat: @"%p", [addr pointerValue]];
+        }
     }
     return result;
 }

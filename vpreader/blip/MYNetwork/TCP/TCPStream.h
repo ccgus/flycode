@@ -11,7 +11,9 @@
 
 
 /** Abstract superclass for data streams, used by TCPConnection. */
-@interface TCPStream : NSObject 
+@interface TCPStream : NSObject
+                                <NSStreamDelegate>
+
 {
     TCPConnection *_conn;
     NSStream *_stream;

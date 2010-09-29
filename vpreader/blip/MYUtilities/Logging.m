@@ -99,7 +99,7 @@ BOOL _WillLogTo( NSString *domain )
 {
     if( _gShouldLog == -1 )
         InitLogging();
-    return _gShouldLog && [sEnabledDomains containsObject: domain];
+    return _gShouldLog && (domain==nil || [sEnabledDomains containsObject: domain]);
 }
 
 BOOL _EnableLogTo( NSString *domain, BOOL enable )

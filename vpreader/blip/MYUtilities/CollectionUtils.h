@@ -44,8 +44,15 @@ NSString* $string( const char *utf8Str );
 
 void setObj( id *var, id value );
 BOOL ifSetObj( id *var, id value );
-void setString( NSString **var, NSString *value );
-BOOL ifSetString( NSString **var, NSString *value );
+void setObjCopy( id *var, id valueToCopy );
+BOOL ifSetObjCopy( id *var, id value );
+
+static inline void setString( NSString **var, NSString *value ) {setObjCopy(var,value);}
+static inline BOOL ifSetString( NSString **var, NSString *value ) {return ifSetObjCopy(var,value);}
+
+BOOL kvSetSet( id owner, NSString *property, NSMutableSet *set, NSSet *newSet );
+BOOL kvAddToSet( id owner, NSString *property, NSMutableSet *set, id objToAdd );
+BOOL kvRemoveFromSet( id owner, NSString *property, NSMutableSet *set, id objToRemove );
 
 
 #define $true   ((NSNumber*)kCFBooleanTrue)
@@ -62,6 +69,12 @@ BOOL ifSetString( NSString **var, NSString *value );
 + (NSSet*) my_intersectionOfSet: (NSSet*)set1 andSet: (NSSet*)set2;
 + (NSSet*) my_differenceOfSet: (NSSet*)set1 andSet: (NSSet*)set2;
 @end
+
+
+@interface NSData (MYUtils)
+- (NSString*) my_UTF8ToString;
+@end
+
 
 
 #pragma mark -

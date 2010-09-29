@@ -112,7 +112,6 @@
                       self,bytesRead,sizeof(BLIPFrameHeader)-_curBytesRead);
             } else {
                 // Finished reading the header!
-                headerLeft = 0;
                 NSString *err = [self _validateHeader];
                 if( err ) {
                     Warn(@"%@ read bogus frame header: %@",self,err);

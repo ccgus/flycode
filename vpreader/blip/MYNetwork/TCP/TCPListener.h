@@ -22,7 +22,9 @@
     You will almost always need to implement the TCPListenerDelegate protocol in your own
     code, and set an instance as the listener's delegate property, in order to be informed
     of important events such as incoming connections. */
-@interface TCPListener : TCPEndpoint 
+@interface TCPListener : TCPEndpoint
+                                <NSNetServiceDelegate>
+
 {
     @private
     uint16_t _port;
@@ -32,6 +34,7 @@
     CFSocketRef _ipv6socket;
     
     NSString *_bonjourServiceType, *_bonjourServiceName;
+    NSNetServiceOptions _bonjourServiceOptions;
     NSNetService *_netService;
     NSDictionary *_bonjourTXTRecord;
     BOOL _bonjourPublished;
@@ -40,13 +43,17 @@
     Class _connectionClass;
 }
 
-/** Initializes a new TCPListener that will listen on the given port when opened. */
+/** Initializes a new TCPListener that will listen on the given port when opened.
+    If port is 0, a random available TCP port number will be assigned; you can find the
+    actual port number by checking the "port" property after calling -open:. */
 - (id) initWithPort: (UInt16)port;
 
 /** The subclass of TCPConnection that will be instantiated. */
-@property Class connectionClass;
+@property (assign) Class connectionClass;
 
-
+/** Delegate object that will be called when interesting things happen to the listener --
+    most importantly, when a new incoming connection is accepted. */
+@property (assign) id<TCPListenerDelegate> delegate;
 
 /** Should the server listen for IPv6 connections (on the same port number)? Defaults to NO. */
 @property BOOL useIPv6;
@@ -85,6 +92,9 @@
 /** The Bonjour service name to advertise. Defaults to nil, meaning that a default name will be
     automatically generated if Bonjour is enabled (by setting -bonjourServiceType). */
 @property (copy) NSString *bonjourServiceName;
+
+/** Options to use when publishing the Bonjour service. */
+@property NSNetServiceOptions bonjourServiceOptions;
 
 /** The dictionary form of the Bonjour TXT record: metadata about the service that can be browsed
     by peers. Changes to this dictionary will be pushed in near-real-time to interested peers. */

@@ -69,7 +69,7 @@ static const char* kAbbreviations[] = {
     else
         props = [BLIPProperties properties];
     
-    *usedLength = props ?length :-1;
+    *usedLength = props ?(ssize_t)length :-1;
     return props;
 }
 
@@ -132,7 +132,7 @@ static const char* kAbbreviations[] = {
             goto fail;
 
         // The data consists of consecutive NUL-terminated strings, alternating key/value:
-        unsigned capacity = 0;
+        int capacity = 0;
         const char *end = bytes+length;
         for( const char *str=bytes; str < end; str += strlen(str)+1, _nStrings++ ) {
             if( _nStrings >= capacity ) {
@@ -228,7 +228,7 @@ static const char* kAbbreviations[] = {
 
 + (BLIPProperties*) properties
 {
-    return [[self alloc] initWithDictionary: nil];
+    return [[[self alloc] initWithDictionary: nil] autorelease];
 }
 
 - (id) init
@@ -285,7 +285,7 @@ static const char* kAbbreviations[] = {
 static void appendStr( NSMutableData *data, NSString *str ) {
     const char *utf8 = [str UTF8String];
     size_t size = strlen(utf8)+1;
-    for( int i=0; i<kNAbbreviations; i++ )
+    for( unsigned i=0; i<kNAbbreviations; i++ )
         if( memcmp(utf8,kAbbreviations[i],size)==0 ) {
             const UInt8 abbrev[2] = {i+1,0};
             [data appendBytes: &abbrev length: 2];
@@ -345,7 +345,7 @@ TestCase(BLIPProperties) {
     
     props = [BLIPProperties properties];
     CAssert(props);
-    CAssertEq(props.count,0);
+    CAssertEq(props.count,0U);
     Log(@"Empty properties:\n%@", props.allProperties);
     NSData *data = props.encodedData;
     Log(@"As data: %@", data);
@@ -359,7 +359,7 @@ TestCase(BLIPProperties) {
     
     ssize_t used;
     props = [BLIPProperties propertiesWithEncodedData: data usedLength: &used];
-    CAssertEq(used,data.length);
+    CAssertEq(used,(ssize_t)data.length);
     CAssertEqual(props,mprops);
     
     [mprops setValue: @"Jens" ofProperty: @"First-Name"];
@@ -377,13 +377,15 @@ TestCase(BLIPProperties) {
         CAssertEq(used,0);
     }
     props = [BLIPProperties propertiesWithEncodedData: data usedLength: &used];
-    CAssertEq(used,data.length);
+    CAssertEq(used,(ssize_t)data.length);
     Log(@"Read back in:\n%@",props.allProperties);
     CAssertEqual(props,mprops);
     
     NSDictionary *all = mprops.allProperties;
     for( NSString *prop in all )
         CAssertEqual([props valueOfProperty: prop],[all objectForKey: prop]);
+	
+	[mprops release];
 }
 
 

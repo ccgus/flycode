@@ -10,8 +10,10 @@
 @class BLIPRequest, BLIPResponse, BLIPMessage;
 
 
+/** INTERNAL class that sends BLIP frames over the socket. */
 @interface BLIPWriter : TCPWriter
 {
+    @private
     NSMutableArray *_outBox;
     UInt32 _numRequestsSent;
 }

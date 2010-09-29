@@ -69,13 +69,14 @@ NSError *BLIPMakeError( int errorCode, NSString *message, ... )
 }
 
 
-- (void) _dispatchMetaRequest: (BLIPRequest*)request
+- (BOOL) _dispatchMetaRequest: (BLIPRequest*)request
 {
     NSString* profile = request.profile;
-    if( [profile isEqualToString: kBLIPProfile_Bye] )
+    if( [profile isEqualToString: kBLIPProfile_Bye] ) {
         [self _handleCloseRequest: request];
-    else
-        [request respondWithErrorCode: kBLIPError_NotFound message: @"Unknown meta profile"];
+        return YES;
+    }
+    return NO;
 }
 
 
@@ -83,11 +84,19 @@ NSError *BLIPMakeError( int errorCode, NSString *message, ... )
 {
     LogTo(BLIP,@"Received all of %@",request.descriptionWithProperties);
     @try{
+        BOOL handled;
         if( request._flags & kBLIP_Meta )
-            [self _dispatchMetaRequest: request];
-        else if( ! [self.dispatcher dispatchMessage: request] )
-            [self tellDelegate: @selector(connection:receivedRequest:) withObject: request];
-        if( ! request.noReply && ! request.repliedTo ) {
+            handled =[self _dispatchMetaRequest: request];
+        else {
+            handled = [self.dispatcher dispatchMessage: request];
+            if (!handled && [_delegate respondsToSelector: @selector(connection:receivedRequest:)])
+                handled = [_delegate connection: self receivedRequest: request];
+        }
+        
+        if (!handled) {
+            LogTo(BLIP,@"No handler found for incoming %@",request);
+            [request respondWithErrorCode: kBLIPError_NotFound message: @"No handler was found"];
+        } else if( ! request.noReply && ! request.repliedTo ) {
             LogTo(BLIP,@"Returning default empty response to %@",request);
             [request respondWithData: nil contentType: nil];
         }
@@ -121,6 +130,12 @@ NSError *BLIPMakeError( int errorCode, NSString *message, ... )
 
 - (BLIPResponse*) sendRequest: (BLIPRequest*)request
 {
+    if (!request.isMine || request.sent) {
+        // This was an incoming request that I'm being asked to forward or echo;
+        // or it's an outgoing request being sent to multiple connections.
+        // Since a particular BLIPRequest can only be sent once, make a copy of it to send:
+        request = [[request mutableCopy] autorelease];
+    }
     BLIPConnection *itsConnection = request.connection;
     if( itsConnection==nil )
         request.connection = self;

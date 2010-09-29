@@ -45,6 +45,7 @@
 /** Mutable subclass of BLIPProperties, used for creating new instances. */
 @interface BLIPMutableProperties : BLIPProperties
 {
+    @private
     NSMutableDictionary *_properties;
 }
 

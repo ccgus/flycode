@@ -16,12 +16,20 @@ BOOL gRunningTestCase;
 
 struct TestCaseLink *gAllTestCases;
 static int sPassed, sFailed;
+static NSMutableArray* sFailedTestNames;
 static int sCurTestCaseExceptions;
 
 
 static void TestCaseExceptionReporter( NSException *x ) {
     sCurTestCaseExceptions++;
+    fflush(stderr);
     Log(@"XXX FAILED test case -- backtrace:\n%@\n\n", x.my_callStack);
+}
+
+static void RecordFailedTest( struct TestCaseLink *test ) {
+    if (!sFailedTestNames)
+        sFailedTestNames = [[NSMutableArray alloc] init];
+    [sFailedTestNames addObject: [NSString stringWithUTF8String: test->name]];
 }
 
 static BOOL RunTestCase( struct TestCaseLink *test )
@@ -45,14 +53,17 @@ static BOOL RunTestCase( struct TestCaseLink *test )
                 Log(@"XXX FAILED test case '%s' due to %i exception(s) already reported above",
                     test->name,sCurTestCaseExceptions);
                 sFailed++;
+                RecordFailedTest(test);
             }
         }@catch( NSException *x ) {
             if( [x.name isEqualToString: @"TestCaseSkipped"] )
                 Log(@"... skipping test %s since %@\n\n", test->name, x.reason);
             else {
+                fflush(stderr);
                 Log(@"XXX FAILED test case '%s' due to:\nException: %@\n%@\n\n", 
                       test->name,x,x.my_callStack);
                 sFailed++;
+                RecordFailedTest(test);
             }
         }@finally{
             [pool drain];
@@ -88,6 +99,7 @@ void _RequireTestCase( const char *name )
 void RunTestCases( int argc, const char **argv )
 {
     sPassed = sFailed = 0;
+    sFailedTestNames = nil;
     BOOL stopAfterTests = NO;
     for( int i=1; i<argc; i++ ) {
         const char *arg = argv[i];
@@ -104,21 +116,27 @@ void RunTestCases( int argc, const char **argv )
         }
     }
     if( sPassed>0 || sFailed>0 || stopAfterTests ) {
+        NSAutoreleasePool *pool = [NSAutoreleasePool new];
         if( sFailed==0 )
-            Log(@"√√√√√√ ALL %i TESTS PASSED √√√√√√", sPassed);
+            AlwaysLog(@"√√√√√√ ALL %i TESTS PASSED √√√√√√", sPassed);
         else {
-            Log(@"****** %i TESTS FAILED, %i PASSED ******", sFailed,sPassed);
+            Warn(@"****** %i of %i TESTS FAILED: %@ ******", 
+                 sFailed, sPassed+sFailed,
+                 [sFailedTestNames componentsJoinedByString: @", "]);
             exit(1);
         }
         if( stopAfterTests ) {
             Log(@"Stopping after tests ('Test_Only' arg detected)");
             exit(0);
         }
+        [pool drain];
     }
+    [sFailedTestNames release];
+    sFailedTestNames = nil;
 }
 
 
-#endif DEBUG
+#endif // DEBUG
 
 
 #pragma mark -
@@ -148,6 +166,15 @@ void _AssertFailed( id rcvr, const void *selOrFn, const char *sourceFile, int so
                                                                 file: [NSString stringWithUTF8String: sourceFile]
                                                           lineNumber: sourceLine 
                                                          description: @"%@", message];
+    abort(); // unreachable, but appeases compiler
+}
+
+
+void _AssertAbstractMethodFailed( id rcvr, SEL cmd)
+{
+    [NSException raise: NSInternalInconsistencyException 
+                format: @"Class %@ forgot to implement abstract method %@",
+                         [rcvr class], NSStringFromSelector(cmd)];
     abort(); // unreachable, but appeases compiler
 }
 

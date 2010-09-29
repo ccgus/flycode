@@ -9,7 +9,7 @@
 #import "TCPEndpoint.h"
 #import <Security/Security.h>
 @class IPAddress;
-@class TCPReader, TCPWriter, TCPListener;
+@class TCPReader, TCPWriter, TCPListener, MYBonjourService;
 @protocol TCPConnectionDelegate;
 
 
@@ -46,6 +46,10 @@ typedef enum {
 /** Initializes a TCPConnection to the given NSNetService's address and port.
     If the service's address cannot be resolved, nil is returned. */
 - (id) initToNetService: (NSNetService*)service;
+
+/** Initializes a TCPConnection to the given MYBonjourService's address and port.
+    If the service's address cannot be resolved, nil is returned. */
+- (id) initToBonjourService: (MYBonjourService*)service;
 
 /** Initializes a TCPConnection from an incoming TCP socket.
     You don't usually need to call this; TCPListener does it automatically. */
@@ -127,6 +131,7 @@ typedef enum {
     settings say to check the peer's certificate.
     This happens, if at all, after the -connectionDidOpen: call. */
 - (BOOL) connection: (TCPConnection*)connection authorizeSSLPeer: (SecCertificateRef)peerCert;
-/** Called after the connection closes. */
+/** Called after the connection closes.
+    You can check the connection's error property to see if it was normal or abnormal. */
 - (void) connectionDidClose: (TCPConnection*)connection;
 @end

@@ -11,7 +11,7 @@
 
 
 /** A Request, or initiating message, in the <a href=".#blipdesc">BLIP</a> protocol. */
-@interface BLIPRequest : BLIPMessage
+@interface BLIPRequest : BLIPMessage <NSMutableCopying>
 {
     @private
     BLIPResponse *_response;
@@ -23,6 +23,10 @@
     connection property before calling -send, or pass the request as a parameter to
     -[BLIPConnection sendRequest:]. */
 + (BLIPRequest*) requestWithBody: (NSData*)body;
+
+/** Creates an outgoing request.
+    This is just like requestWithBody: except that you supply a string. */
++ (BLIPRequest*) requestWithBodyString: (NSString*)bodyString;
 
 /** Creates an outgoing request.
     The body or properties may be nil.

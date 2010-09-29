@@ -175,7 +175,7 @@ NSData* VPDataFromPropertyList(id propList) {
 
 }
 
-- (void) connection: (BLIPConnection*)connection receivedRequest: (BLIPRequest*)request {
+- (BOOL) connection: (BLIPConnection*)connection receivedRequest: (BLIPRequest*)request {
     
     NSString *profile = request.profile;
     
@@ -216,6 +216,8 @@ NSData* VPDataFromPropertyList(id propList) {
         NSString *msg = [NSString stringWithFormat:@"Unknown profile '%@'", profile];
         [request respondWithString:msg];
     }
+    
+    return YES;
 }
 
 - (void) connectionDidClose: (TCPConnection*)connection {

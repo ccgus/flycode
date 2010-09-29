@@ -56,6 +56,11 @@
     return self;
 }
 
++ (IPAddress*) addressWithHostname: (NSString*)hostname port: (UInt16)port
+{
+    return [[[self alloc] initWithHostname: hostname port: port] autorelease];
+}
+
 
 - (id) initWithIPv4: (UInt32)ipv4 port: (UInt16)port
 {
@@ -82,6 +87,28 @@
         return nil;
     }
 }
+
+- (id) initWithSockAddr: (const struct sockaddr*)sockaddr
+                   port: (UInt16)port
+{
+    self = [self initWithSockAddr: sockaddr];
+    if (self)
+        _port = port;
+    return self;
+}
+
+- (id) initWithData: (NSData*)data
+{
+    if (!data) {
+        [self release];
+        return nil;
+    }
+    const struct sockaddr* addr = data.bytes;
+    if (data.length < sizeof(struct sockaddr_in))
+        addr = nil;
+    return [self initWithSockAddr: addr];
+}
+
 
 + (IPAddress*) addressOfSocket: (CFSocketNativeHandle)socket
 {
@@ -151,6 +178,16 @@
     return [self ipv4name];
 }
 
+- (NSData*) asData
+{
+    struct sockaddr_in addr = {
+        .sin_len    = sizeof(struct sockaddr_in),
+        .sin_family = AF_INET,
+        .sin_port   = htons(_port),
+        .sin_addr   = {htonl(_ipv4)} };
+    return [NSData dataWithBytes: &addr length: sizeof(addr)];
+}
+
 - (NSString*) description
 {
     NSString *name = self.hostname ?: @"0.0.0.0";
@@ -160,7 +197,7 @@
 }
 
 
-+ (IPAddress*) localAddress
++ (IPAddress*) localAddressWithPort: (UInt16)port
 {
     // getifaddrs returns a linked list of interface entries;
     // find the first active non-loopback interface with IPv4:
@@ -179,7 +216,12 @@
         }
         freeifaddrs(interfaces);
     }
-    return [[[self alloc] initWithIPv4: address] autorelease];
+    return [[[self alloc] initWithIPv4: address port: port] autorelease];
+}
+
++ (IPAddress*) localAddress
+{
+    return [self localAddressWithPort: 0];
 }
 
 
@@ -228,6 +270,21 @@ static const struct {UInt32 mask, value;} const kPrivateRanges[] = {
     return self;
 }
 
+- (id) initWithHostname: (NSString*)hostname
+               sockaddr: (const struct sockaddr*)sockaddr
+                   port: (UInt16)port;
+{
+    if( [hostname length]==0 ) {
+        [self release];
+        return nil;
+    }
+    self = [super initWithSockAddr: sockaddr port: port];
+    if( self ) {
+        _hostname = [hostname copy];
+    }
+    return self;
+}    
+
 
 - (void)encodeWithCoder:(NSCoder *)coder
 {
@@ -251,9 +308,21 @@ static const struct {UInt32 mask, value;} const kPrivateRanges[] = {
 }
 
 
+- (NSString*) description
+{
+    NSMutableString *desc = [[_hostname mutableCopy] autorelease];
+    NSString *addr = self.ipv4name;
+    if (addr)
+        [desc appendFormat: @"(%@)", addr];
+    if( self.port )
+        [desc appendFormat: @":%hu",self.port];
+    return desc;
+}
+
+
 - (NSUInteger) hash
 {
-    return [_hostname hash] ^ _port;
+    return [_hostname hash] ^ self.port;
 }
 
 
@@ -339,28 +408,31 @@ static const struct {UInt32 mask, value;} const kPrivateRanges[] = {
 TestCase(IPAddress) {
     RequireTestCase(CollectionUtils);
     IPAddress *addr = [[IPAddress alloc] initWithIPv4: htonl(0x0A0001FE) port: 8080];
-    CAssertEq(addr.ipv4,htonl(0x0A0001FE));
+    CAssertEq(addr.ipv4,(UInt32)htonl(0x0A0001FE));
     CAssertEq(addr.port,8080);
     CAssertEqual(addr.hostname,@"10.0.1.254");
     CAssertEqual(addr.description,@"10.0.1.254:8080");
     CAssert(addr.isPrivate);
+	[addr release];
     
     addr = [[IPAddress alloc] initWithHostname: @"66.66.0.255" port: 123];
     CAssertEq(addr.class,[IPAddress class]);
-    CAssertEq(addr.ipv4,htonl(0x424200FF));
+    CAssertEq(addr.ipv4,(UInt32)htonl(0x424200FF));
     CAssertEq(addr.port,123);
     CAssertEqual(addr.hostname,@"66.66.0.255");
     CAssertEqual(addr.description,@"66.66.0.255:123");
     CAssert(!addr.isPrivate);
-    
+ 	[addr release];
+   
     addr = [[IPAddress alloc] initWithHostname: @"www.apple.com" port: 80];
     CAssertEq(addr.class,[HostAddress class]);
-    Log(@"www.apple.com = 0x%08X", addr.ipv4);
-    CAssertEq(addr.ipv4,htonl(0x1195A00A));
+    Log(@"www.apple.com = %@ [0x%08X]", addr.ipv4name, ntohl(addr.ipv4));
+    CAssertEq(addr.ipv4,(UInt32)htonl(0x11FBC820));
     CAssertEq(addr.port,80);
     CAssertEqual(addr.hostname,@"www.apple.com");
     CAssertEqual(addr.description,@"www.apple.com:80");
     CAssert(!addr.isPrivate);
+	[addr release];
 }
 
 

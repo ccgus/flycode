@@ -6,6 +6,20 @@
 			CC1C8B2F0F18442B00E71072 /* MYNetwork-iPhone */,
 		);
 	};
+	270E9ACE0EE6111A003F17CA /* MYUtilitiesTest_main.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1258, 967}}";
+			sepNavSelRange = "{0, 0}";
+			sepNavVisRange = "{0, 247}";
+		};
+	};
+	270E9ADB0EE6111A003F17CA /* GTMDefines.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {732, 2070}}";
+			sepNavSelRange = "{4116, 6}";
+			sepNavVisRange = "{3979, 365}";
+		};
+	};
 	270E9B9D0EE64B4E003F17CA /* HelloWorldAppDelegate.h */ = {
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {1087, 924}}";
@@ -65,8 +79,8 @@
 					PBXFileDataSource_Target_ColumnID,
 				);
 			};
-			PBXPerProjectTemplateStateSaveDate = 253248586;
-			PBXWorkspaceStateSaveDate = 253248586;
+			PBXPerProjectTemplateStateSaveDate = 288304674;
+			PBXWorkspaceStateSaveDate = 288304674;
 		};
 		sourceControlManager = CC1C8B3A0F18443900E71072 /* Source Control */;
 		userBuildSettings = {
@@ -83,6 +97,9 @@
 		configStateDict = {
 		};
 		customDataFormattersEnabled = 1;
+		dataTipCustomDataFormattersEnabled = 1;
+		dataTipShowTypeColumn = 1;
+		dataTipSortType = 0;
 		debuggerPlugin = GDBDebugging;
 		disassemblyDisplayState = 0;
 		enableDebugStr = 1;
@@ -92,6 +109,7 @@
 		executableUserSymbolLevel = 0;
 		libgmallocEnabled = 0;
 		name = "MYNetwork-iPhone";
+		showTypeColumn = 0;
 		sourceDirectories = (
 		);
 	};
@@ -100,6 +118,9 @@
 		fallbackIsa = XCSourceControlManager;
 		isSCMEnabled = 0;
 		scmConfiguration = {
+			repositoryNamesForRoots = {
+				"" = "";
+			};
 		};
 	};
 	CC1C8B3B0F18443900E71072 /* Code sense */ = {

@@ -33,7 +33,7 @@
         }
         
         if( ! CheckOSErr(err,error) ) {
-            Warn(@"FileAlias init failed with OSStatus %i",err);
+            Warn(@"FileAlias init failed with OSStatus %i for %@",err,targetPath);
             [self release];
             return nil;
         }
@@ -74,7 +74,7 @@
 
     self = [super init];
     if( self ) {
-        Handle handle;
+        Handle handle = NULL;
         unsigned length;
         const void *bytes = [arch decodeBytesForKey:@"aliasHandle" returnedLength: &length];
         if( bytes )

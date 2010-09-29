@@ -36,7 +36,7 @@
 @end
 
 
-@interface NSObject (MYAnimatingSplitViewDelegate)
+@protocol MYAnimatingSplitViewDelegate <NSSplitViewDelegate>
 /** If the delegate implements this method, it will be called when the splitview
     begins and ends live resizing. */
 - (void)splitView: (NSSplitView*)splitView inLiveResize: (BOOL)inLiveResize;
