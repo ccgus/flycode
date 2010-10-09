@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 42;
+	objectVersion = 46;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -158,8 +158,15 @@
 		089C1669FE841209C02AAC07 /* Project object */ = {
 			isa = PBXProject;
 			buildConfigurationList = CC570C9208BA837B00978B66 /* Build configuration list for PBXProject "HTMLTools" */;
-			compatibilityVersion = "Xcode 2.4";
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
 			hasScannedForEncodings = 1;
+			knownRegions = (
+				English,
+				Japanese,
+				French,
+				German,
+			);
 			mainGroup = 089C166AFE841209C02AAC07 /* voodoopadplugins */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -236,9 +243,10 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
-		CC570C8F08BA837B00978B66 /* Development */ = {
+		CC570C8F08BA837B00978B66 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ARCHS = i386;
 				COPY_PHASE_STRIP = NO;
 				DEBUGGING_SYMBOLS = YES;
 				FRAMEWORK_SEARCH_PATHS = "\"$(SRCROOT)/../../../svn_voodoopad/plugin/build/Deployment\"";
@@ -266,11 +274,12 @@
 				WRAPPER_EXTENSION = vpplugin;
 				ZERO_LINK = YES;
 			};
-			name = Development;
+			name = Release;
 		};
-		CC570C9008BA837B00978B66 /* Deployment */ = {
+		CC570C9008BA837B00978B66 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ARCHS = i386;
 				COPY_PHASE_STRIP = YES;
 				FRAMEWORK_SEARCH_PATHS = "\"$(SRCROOT)/../../../svn_voodoopad/plugin/build/Deployment\"";
 				GCC_ENABLE_FIX_AND_CONTINUE = NO;
@@ -294,57 +303,25 @@
 				WRAPPER_EXTENSION = vpplugin;
 				ZERO_LINK = NO;
 			};
-			name = Deployment;
+			name = Debug;
 		};
-		CC570C9108BA837B00978B66 /* Default */ = {
+		CC570C9308BA837B00978B66 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				FRAMEWORK_SEARCH_PATHS = "\"$(SRCROOT)/../../../svn_voodoopad/plugin/build/Deployment\"";
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/AppKit.framework/Headers/AppKit.h";
-				GCC_WARN_FOUR_CHARACTER_CONSTANTS = NO;
-				GCC_WARN_UNKNOWN_PRAGMAS = NO;
-				INFOPLIST_FILE = Info.plist;
-				INSTALL_PATH = "@executable_path/../PlugIns";
-				OTHER_CFLAGS = "";
-				OTHER_LDFLAGS = (
-					"-framework",
-					Foundation,
-					"-framework",
-					AppKit,
-				);
-				OTHER_REZFLAGS = "";
-				PRODUCT_NAME = HTMLTools;
-				SECTORDER_FLAGS = "";
-				WARNING_CFLAGS = "-Wmost";
-				WRAPPER_EXTENSION = vpplugin;
+				SDKROOT = macosx10.6;
 			};
-			name = Default;
+			name = Release;
 		};
-		CC570C9308BA837B00978B66 /* Development */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				SDKROOT = /Developer/SDKs/MacOSX10.5.sdk;
-			};
-			name = Development;
-		};
-		CC570C9408BA837B00978B66 /* Deployment */ = {
+		CC570C9408BA837B00978B66 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = (
 					ppc,
 					i386,
 				);
-				SDKROOT = /Developer/SDKs/MacOSX10.5.sdk;
+				SDKROOT = macosx10.6;
 			};
-			name = Deployment;
-		};
-		CC570C9508BA837B00978B66 /* Default */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				SDKROOT = /Developer/SDKs/MacOSX10.5.sdk;
-			};
-			name = Default;
+			name = Debug;
 		};
 /* End XCBuildConfiguration section */
 
@@ -352,22 +329,20 @@
 		CC570C8E08BA837B00978B66 /* Build configuration list for PBXNativeTarget "HTMLTools" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				CC570C8F08BA837B00978B66 /* Development */,
-				CC570C9008BA837B00978B66 /* Deployment */,
-				CC570C9108BA837B00978B66 /* Default */,
+				CC570C8F08BA837B00978B66 /* Release */,
+				CC570C9008BA837B00978B66 /* Debug */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Default;
+			defaultConfigurationName = Release;
 		};
 		CC570C9208BA837B00978B66 /* Build configuration list for PBXProject "HTMLTools" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				CC570C9308BA837B00978B66 /* Development */,
-				CC570C9408BA837B00978B66 /* Deployment */,
-				CC570C9508BA837B00978B66 /* Default */,
+				CC570C9308BA837B00978B66 /* Release */,
+				CC570C9408BA837B00978B66 /* Debug */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Default;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
