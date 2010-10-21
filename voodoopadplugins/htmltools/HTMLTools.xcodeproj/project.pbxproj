@@ -10,11 +10,30 @@
 		CC3EA7460734132F00B1234A /* HTMLToolsPlugin.h in Headers */ = {isa = PBXBuildFile; fileRef = CC3EA7440734132F00B1234A /* HTMLToolsPlugin.h */; };
 		CC3EA7470734132F00B1234A /* HTMLToolsPlugin.m in Sources */ = {isa = PBXBuildFile; fileRef = CC3EA7450734132F00B1234A /* HTMLToolsPlugin.m */; };
 		CC3EA74E0734145B00B1234A /* HTMLPreview.nib in Resources */ = {isa = PBXBuildFile; fileRef = CC3EA74C0734145B00B1234A /* HTMLPreview.nib */; };
+		CC62AF64126E52310000CF95 /* JSTalk.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CC62AF63126E52310000CF95 /* JSTalk.framework */; };
+		CC62AF77126E52860000CF95 /* JSTalk.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = CC62AF63126E52310000CF95 /* JSTalk.framework */; };
 		CC7F895C0738844800A28172 /* Markdown.pl in Resources */ = {isa = PBXBuildFile; fileRef = CC7F895B0738844800A28172 /* Markdown.pl */; };
 		CC923D6208D2292A0014C92C /* VPPlugin.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CC923D6108D2292A0014C92C /* VPPlugin.framework */; };
+		CCDC8F0812651E8F00B10158 /* VPScriptletWriter.h in Headers */ = {isa = PBXBuildFile; fileRef = CCDC8F0612651E8F00B10158 /* VPScriptletWriter.h */; };
+		CCDC8F0912651E8F00B10158 /* VPScriptletWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = CCDC8F0712651E8F00B10158 /* VPScriptletWriter.m */; };
+		CCDC8F1E12651F4F00B10158 /* ScriptletWrapper.js in Resources */ = {isa = PBXBuildFile; fileRef = CCDC8F1D12651F4F00B10158 /* ScriptletWrapper.js */; };
 		CCFE4BA50D4E99920015D9D9 /* wakkarun.php in Resources */ = {isa = PBXBuildFile; fileRef = CCFE4BA30D4E99920015D9D9 /* wakkarun.php */; };
 		CCFE4BA60D4E99920015D9D9 /* wakka.php in Resources */ = {isa = PBXBuildFile; fileRef = CCFE4BA40D4E99920015D9D9 /* wakka.php */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		CCDC8FAF126520DF00B10158 /* Copy Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				CC62AF77126E52860000CF95 /* JSTalk.framework in Copy Frameworks */,
+			);
+			name = "Copy Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		089C1672FE841209C02AAC07 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = /System/Library/Frameworks/Foundation.framework; sourceTree = "<absolute>"; };
@@ -25,8 +44,12 @@
 		CC3EA7440734132F00B1234A /* HTMLToolsPlugin.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = HTMLToolsPlugin.h; path = "/Volumes/srv/Users/gus/Projects/vp2plugins/HTML Tools/HTML Tools Programmers Source/HTMLToolsPlugin.h"; sourceTree = "<absolute>"; };
 		CC3EA7450734132F00B1234A /* HTMLToolsPlugin.m */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.objc; name = HTMLToolsPlugin.m; path = "/Volumes/srv/Users/gus/Projects/vp2plugins/HTML Tools/HTML Tools Programmers Source/HTMLToolsPlugin.m"; sourceTree = "<absolute>"; };
 		CC3EA74D0734145B00B1234A /* English */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = English; path = HTMLPreview.nib; sourceTree = "<group>"; };
+		CC62AF63126E52310000CF95 /* JSTalk.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JSTalk.framework; path = /tmp/jstalk/build/Release/JSTalk.framework; sourceTree = "<absolute>"; };
 		CC7F895B0738844800A28172 /* Markdown.pl */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text.script.perl; path = Markdown.pl; sourceTree = SOURCE_ROOT; };
 		CC923D6108D2292A0014C92C /* VPPlugin.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = VPPlugin.framework; path = ../../../svn_voodoopad/plugin/build/Deployment/VPPlugin.framework; sourceTree = SOURCE_ROOT; };
+		CCDC8F0612651E8F00B10158 /* VPScriptletWriter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VPScriptletWriter.h; sourceTree = "<group>"; };
+		CCDC8F0712651E8F00B10158 /* VPScriptletWriter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VPScriptletWriter.m; sourceTree = "<group>"; };
+		CCDC8F1D12651F4F00B10158 /* ScriptletWrapper.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = ScriptletWrapper.js; sourceTree = "<group>"; };
 		CCFE4BA30D4E99920015D9D9 /* wakkarun.php */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.php; path = wakkarun.php; sourceTree = "<group>"; };
 		CCFE4BA40D4E99920015D9D9 /* wakka.php */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.php; path = wakka.php; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -37,6 +60,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CC923D6208D2292A0014C92C /* VPPlugin.framework in Frameworks */,
+				CC62AF64126E52310000CF95 /* JSTalk.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -67,6 +91,7 @@
 			isa = PBXGroup;
 			children = (
 				CCFE4BA30D4E99920015D9D9 /* wakkarun.php */,
+				CCDC8F1D12651F4F00B10158 /* ScriptletWrapper.js */,
 				CCFE4BA40D4E99920015D9D9 /* wakka.php */,
 				CC7F895B0738844800A28172 /* Markdown.pl */,
 				CC3EA74B0734145B00B1234A /* English.lproj */,
@@ -80,6 +105,8 @@
 			children = (
 				CC3EA7440734132F00B1234A /* HTMLToolsPlugin.h */,
 				CC3EA7450734132F00B1234A /* HTMLToolsPlugin.m */,
+				CCDC8F0612651E8F00B10158 /* VPScriptletWriter.h */,
+				CCDC8F0712651E8F00B10158 /* VPScriptletWriter.m */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -87,6 +114,7 @@
 		1058C7ACFEA557BF11CA2CBB /* Linked Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				CC62AF63126E52310000CF95 /* JSTalk.framework */,
 				CC923D6108D2292A0014C92C /* VPPlugin.framework */,
 				1058C7ADFEA557BF11CA2CBB /* Cocoa.framework */,
 			);
@@ -126,6 +154,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CC3EA7460734132F00B1234A /* HTMLToolsPlugin.h in Headers */,
+				CCDC8F0812651E8F00B10158 /* VPScriptletWriter.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -142,6 +171,7 @@
 				CC93E199066ECBC400D09EFE /* Frameworks */,
 				CC136984072D496300434FEB /* ShellScript */,
 				CCA82F750A757198005A6619 /* copy textile scripts */,
+				CCDC8FAF126520DF00B10158 /* Copy Frameworks */,
 			);
 			buildRules = (
 			);
@@ -181,6 +211,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CCDC8F1E12651F4F00B10158 /* ScriptletWrapper.js in Resources */,
 				CC3EA74E0734145B00B1234A /* HTMLPreview.nib in Resources */,
 				CC7F895C0738844800A28172 /* Markdown.pl in Resources */,
 				CCFE4BA50D4E99920015D9D9 /* wakkarun.php in Resources */,
@@ -226,6 +257,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CC3EA7470734132F00B1234A /* HTMLToolsPlugin.m in Sources */,
+				CCDC8F0912651E8F00B10158 /* VPScriptletWriter.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -249,7 +281,11 @@
 				ARCHS = i386;
 				COPY_PHASE_STRIP = NO;
 				DEBUGGING_SYMBOLS = YES;
-				FRAMEWORK_SEARCH_PATHS = "\"$(SRCROOT)/../../../svn_voodoopad/plugin/build/Deployment\"";
+				FRAMEWORK_SEARCH_PATHS = (
+					"\"$(SRCROOT)/../../../svn_voodoopad/plugin/build/Deployment\"",
+					/tmp/jstalk/build/Release,
+					/builds/Debug,
+				);
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_ENABLE_FIX_AND_CONTINUE = YES;
 				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
@@ -281,7 +317,11 @@
 			buildSettings = {
 				ARCHS = i386;
 				COPY_PHASE_STRIP = YES;
-				FRAMEWORK_SEARCH_PATHS = "\"$(SRCROOT)/../../../svn_voodoopad/plugin/build/Deployment\"";
+				FRAMEWORK_SEARCH_PATHS = (
+					"\"$(SRCROOT)/../../../svn_voodoopad/plugin/build/Deployment\"",
+					/tmp/jstalk/build/Release,
+					/builds/Debug,
+				);
 				GCC_ENABLE_FIX_AND_CONTINUE = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/AppKit.framework/Headers/AppKit.h";
@@ -289,7 +329,7 @@
 				GCC_WARN_UNKNOWN_PRAGMAS = NO;
 				INFOPLIST_FILE = Info.plist;
 				INSTALL_PATH = "@executable_path/../PlugIns";
-				OTHER_CFLAGS = "";
+				OTHER_CFLAGS = "-DDEBUG";
 				OTHER_LDFLAGS = (
 					"-framework",
 					Foundation,
@@ -308,6 +348,7 @@
 		CC570C9308BA837B00978B66 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				SDKROOT = macosx10.6;
 			};
 			name = Release;
@@ -319,6 +360,7 @@
 					ppc,
 					i386,
 				);
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				SDKROOT = macosx10.6;
 			};
 			name = Debug;
