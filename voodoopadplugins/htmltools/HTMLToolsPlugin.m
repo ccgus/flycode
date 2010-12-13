@@ -9,6 +9,7 @@
 #define TEXTILE  2
 #define MARKDOWN 3
 #define WIKKA 4
+#define RICHTEXT 5
 
 @implementation HTMLToolsPlugin
 
@@ -182,6 +183,132 @@
 }
 
 
+NSString *HVPNextNameUsingDictionary(NSString *s, NSMutableDictionary* d) {
+    
+    int idx = 1;
+    NSString *name = [s stringByDeletingPathExtension];
+    while ([d objectForKey:name]) {
+        name = [NSString stringWithFormat:@"%@_%d", [s stringByDeletingPathExtension], idx];
+        idx++;
+    }
+    
+    [d setObject:name forKey:name];
+    
+    return [NSString stringWithFormat:@"%@.%@", name, [s pathExtension]];
+    
+}
+
+- (void)writeImagesInAttributedString:(NSAttributedString*)str usingHTML:(NSMutableString*)html toDirectory:(NSString*)basePath  {
+    
+    int length = [str length];
+    
+    if (length == 0) {
+        return;
+    }
+    
+    
+    
+    NSMutableDictionary *usedNames = [NSMutableDictionary dictionary];
+    NSTextAttachment    *attachment;
+    NSRange             r;
+    NSDictionary        *attributes = [str attributesAtIndex:0 effectiveRange:&r];
+    
+    while (r.location + r.length <= length) {
+        
+        if ((attachment = [attributes objectForKey:NSAttachmentAttributeName])) {
+            
+            NSFileWrapper *wrap = [attachment fileWrapper];
+            
+            if ([wrap isRegularFile]) {
+                
+                NSString *originalName = [wrap preferredFilename];
+                
+                NSString *fileName  = HVPNextNameUsingDictionary([wrap preferredFilename], usedNames);
+                NSString *imgName   = [NSString stringWithFormat:@"%@", fileName];
+                NSString *saveTo    = [NSString stringWithFormat:@"%@/%@", basePath, imgName];
+                
+                if (!([[imgName lowercaseString] hasSuffix:@".jpg"] ||
+                      [[imgName lowercaseString] hasSuffix:@".jpeg"] ||
+                      [[imgName lowercaseString] hasSuffix:@".gif"] ||
+                      [[imgName lowercaseString] hasSuffix:@".png"]))
+                {   
+                    // need to convert this to a png.
+                    imgName = [imgName stringByDeletingPathExtension];
+                    imgName = [imgName stringByAppendingString:@".png"];
+                    
+                    
+                    saveTo  = [NSString stringWithFormat:@"%@/%@", basePath, imgName];
+                    
+                    NSImage *img                = [[NSImage alloc] initWithData:[wrap regularFileContents]];
+                    NSData *tiff                = [img TIFFRepresentation];
+                    NSBitmapImageRep *bitmap    = [NSBitmapImageRep imageRepWithData:tiff];
+                    NSData *pngData             = [bitmap representationUsingType:NSPNGFileType properties:nil];
+                    
+                    if (![pngData writeToFile:saveTo atomically:NO]) {
+                        NSLog(@"Could not write to file: %@", saveTo);
+                    }
+                    
+                    [img release];
+                }
+                else  if (![wrap writeToFile:saveTo
+                                  atomically:YES
+                             updateFilenames:YES])
+                {
+                    NSLog(@"Could not save to: %@", saveTo);
+                }
+                
+                imgName = (id)CFURLCreateStringByAddingPercentEscapes(NULL, (CFStringRef)imgName, nil, NULL, kCFStringEncodingUTF8);
+                [imgName autorelease];
+                
+                NSString *fixedName = (id)CFURLCreateStringByAddingPercentEscapes(NULL, (CFStringRef)originalName, nil, NULL, kCFStringEncodingUTF8);
+                [fixedName autorelease];
+                
+                NSString *lookingFor = [NSString stringWithFormat:@"file:///%@", fixedName];
+                NSString *replace    = [NSString stringWithFormat:@"file:///tmp/%@", imgName];
+                
+                [html replaceOccurrencesOfString:lookingFor
+                                      withString:replace
+                                         options:0
+                                           range:NSMakeRange(0, [html length])];
+            }
+        }
+        
+        if (r.location+r.length >= length) {
+            // we're done.
+            break;
+        }
+        
+        attributes = [str attributesAtIndex:r.location+r.length effectiveRange:&r];
+    }
+}
+
+
+
+
+
+
+- (NSString *)richTextMarkup:(NSAttributedString*)ats {
+    
+    NSMutableDictionary *dict = [NSMutableDictionary dictionary];
+    
+    [dict setObject:NSHTMLTextDocumentType forKey:NSDocumentTypeDocumentAttribute];
+    
+    NSData *data = [ats dataFromRange:NSMakeRange(0, [ats length])
+                     documentAttributes:dict
+                                  error:nil];
+    
+    NSMutableString *s = [[[NSMutableString alloc] initWithData:data encoding:NSUTF8StringEncoding] autorelease];
+    NSString *nonBreakingChar   = [NSString stringWithFormat:@"%C", 0x00A0];
+    [s replaceOccurrencesOfString:nonBreakingChar withString:@"&nbsp;" options:0 range:NSMakeRange(0, [s length])];
+    
+    [self writeImagesInAttributedString:ats usingHTML:s toDirectory:@"/tmp"];
+    
+    //NSLog(@"s: '%@'", s);
+    
+    return s;
+    
+}
+
 
 
 - (void) updateHTMLPreview:(id)sender {
@@ -243,6 +370,9 @@
         }
         else if ([formattingSelection indexOfSelectedItem] == WIKKA) {
             vpString = [NSMutableString stringWithString:[self convertString:vpString viaFormatter:[self wikkaScriptLocation]]];
+        }
+        else if ([formattingSelection indexOfSelectedItem] == RICHTEXT) {
+            vpString = [NSMutableString stringWithString:[self richTextMarkup:[vpd dataAsAttributedString]]];
         }
         
         NSString *docName   = [[previewDoc fileName] lastPathComponent];
