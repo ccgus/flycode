@@ -314,8 +314,8 @@
     [req setTimeoutInterval:60 * 5];
     
     // the trailing / always gets stripped off for some reason...
-    _uriLength = [[_url path] length] + 1;
-    
+    _uriLength = [[[_url path] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding] length] + 1;
+                   
     [req setHTTPMethod:@"PROPFIND"];
     
     NSString *xml = [NSString stringWithFormat:@"<?xml version=\"1.0\" encoding=\"utf-8\" ?>\n<D:propfind xmlns:D=\"DAV:\"><D:allprop/>%@</D:propfind>", extra];

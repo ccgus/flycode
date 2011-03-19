@@ -63,7 +63,7 @@
     
 }
 
-- (void) requestDidFetchDirectoryListingAndTestAuthenticationDidFinish:(FMWebDAVRequest*)req {
+- (void)requestDidFetchDirectoryListingAndTestAuthenticationDidFinish:(FMWebDAVRequest*)req {
     
     NSArray *directoryListing = [req directoryListing];
     
@@ -74,7 +74,7 @@
     waitingOnAuthentication = NO;
 }
 
-- (void) request:(FMWebDAVRequest*)request didReceiveAuthenticationChallenge:(NSURLAuthenticationChallenge *)challenge {
+- (void)request:(FMWebDAVRequest*)request didReceiveAuthenticationChallenge:(NSURLAuthenticationChallenge *)challenge {
     
     if ([challenge previousFailureCount] == 0) {
         
