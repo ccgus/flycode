@@ -182,7 +182,7 @@ static BOOL is_leap_year(unsigned year);
 			month_or_week = nowComponents.month;
 			day = nowComponents.day;
 		} else {
-			segment = 0U;
+			//segment = 0U;
 
 			while(*ch == '-') {
 				++num_leading_hyphens;

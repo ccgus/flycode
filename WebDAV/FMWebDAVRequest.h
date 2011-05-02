@@ -23,6 +23,7 @@ enum {
     FMWebDAVCreatedStatusCode = 201,
     FMWebDAVNoContentStatusCode = 204,
     FMWebDAVUnauthorized = 401,
+    FMWebDAVPaymentRequired = 402,
     FMWebDAVForbiddenStatusCode = 403,
     FMWebDAVNotFoundStatusCode = 404,
     FMWebDAVMethodNotAllowedStatusCode = 405,
@@ -32,7 +33,7 @@ enum {
 
 @class FMWebDAVRequest;
 
-@interface FMWebDAVRequest : NSObject {
+@interface FMWebDAVRequest : NSObject <NSXMLParserDelegate> {
     
     NSURLConnection *_connection;
     NSMutableData *_responseData;
@@ -53,6 +54,7 @@ enum {
     
     BOOL _synchronous;
     BOOL _rlSynchronous;
+    BOOL _canceling;
     
     NSError *_error;
     
@@ -76,6 +78,10 @@ enum {
 + (id)requestToURL:(NSURL*)url;
 + (id)requestToURL:(NSURL*)url delegate:(id)del;
 + (id)requestToURL:(NSURL*)url delegate:(id)del endSelector:(SEL)anEndSelector contextInfo:(id)context;
+
++ (void)addTestResponse:(NSString*)payload withResponseCode:(int)code;
++ (void)addTestResponseURL:(NSURL *)payloadURL withResponseCode:(int)code;
++ (void)removeAllTestResponses;
 
 - (FMWebDAVRequest*)fetchDirectoryListingWithDepth:(NSUInteger)depth extraToPropfind:(NSString*)extra;
 - (FMWebDAVRequest*)fetchDirectoryListingWithDepth:(NSUInteger)depth;

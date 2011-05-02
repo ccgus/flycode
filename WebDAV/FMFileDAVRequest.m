@@ -48,7 +48,7 @@
     NSFileManager *fileManager = [[NSFileManager alloc] init];
     
     if (![fileManager fileExistsAtPath:[self filePath]]) {
-        self.responseStatusCode = [fileManager createDirectoryAtPath:[self filePath] attributes:nil] ? FMWebDAVCreatedStatusCode : FMHTTPNotImplementedErrorCode;
+        self.responseStatusCode = [fileManager createDirectoryAtPath:[self filePath] withIntermediateDirectories:YES attributes:nil error:nil] ? FMWebDAVCreatedStatusCode : FMHTTPNotImplementedErrorCode;
     }
     else {
         self.responseStatusCode = FMWebDAVMethodNotAllowedStatusCode;
