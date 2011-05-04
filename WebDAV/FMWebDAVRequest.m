@@ -6,7 +6,7 @@
 //  Copyright 2008 Flying Meat Inc. All rights reserved.
 //
 
-#ifdef TARGET_OS_MAC
+#if !TARGET_OS_IPHONE
 #import <SecurityInterface/SFCertificateTrustPanel.h>
 #endif
 #import "FMWebDAVRequest.h"
@@ -550,7 +550,7 @@ static NSMutableArray *FMWebDAVRequestTestResponses = nil;
     }
 }
 
-#ifdef TARGET_OS_MAC
+#if !TARGET_OS_IPHONE
 
 - (BOOL)connectDespiteServerTrustChallenge:(NSURLAuthenticationChallenge *)challenge {
     
@@ -638,7 +638,7 @@ static NSMutableArray *FMWebDAVRequestTestResponses = nil;
     if ([[[challenge protectionSpace] authenticationMethod] isEqualToString:NSURLAuthenticationMethodServerTrust]) {
         // NSURLAuthenticationMethodServerTrust and -[NSURLProtectionSpace serverTrust] are present on Mac OS X 10.6 / iOS 3.0 and later
         
-#ifdef TARGET_OS_MAC
+#if !TARGET_OS_IPHONE
         if ([self connectDespiteServerTrustChallenge:challenge]) {
             [[self delegate] request:self didReceiveAuthenticationChallenge:challenge];
         }
