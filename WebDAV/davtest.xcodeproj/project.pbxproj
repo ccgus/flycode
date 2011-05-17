@@ -13,6 +13,8 @@
 		8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */; };
 		CC1719920E4AC6F7000302F8 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CC1719910E4AC6F7000302F8 /* AppDelegate.m */; };
 		CC171A130E4B6624000302F8 /* FMWebDAVRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = CC171A120E4B6624000302F8 /* FMWebDAVRequest.m */; };
+		CC7615E11382EC8300A52E7A /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CC7615E01382EC8300A52E7A /* Security.framework */; };
+		CC7615E51382ECD500A52E7A /* SecurityInterface.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CC7615E41382ECD500A52E7A /* SecurityInterface.framework */; };
 		CCD79F9510E96DE8002B6C6B /* FMFileDAVRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = CCD79F9410E96DE8002B6C6B /* FMFileDAVRequest.m */; };
 		CCD79FA510E970B6002B6C6B /* ISO8601DateFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = CCD79FA410E970B6002B6C6B /* ISO8601DateFormatter.m */; };
 /* End PBXBuildFile section */
@@ -32,6 +34,8 @@
 		CC1719910E4AC6F7000302F8 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		CC171A110E4B6624000302F8 /* FMWebDAVRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMWebDAVRequest.h; sourceTree = "<group>"; };
 		CC171A120E4B6624000302F8 /* FMWebDAVRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMWebDAVRequest.m; sourceTree = "<group>"; };
+		CC7615E01382EC8300A52E7A /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = /System/Library/Frameworks/Security.framework; sourceTree = "<absolute>"; };
+		CC7615E41382ECD500A52E7A /* SecurityInterface.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SecurityInterface.framework; path = /System/Library/Frameworks/SecurityInterface.framework; sourceTree = "<absolute>"; };
 		CCD79F9310E96DE8002B6C6B /* FMFileDAVRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMFileDAVRequest.h; sourceTree = "<group>"; };
 		CCD79F9410E96DE8002B6C6B /* FMFileDAVRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMFileDAVRequest.m; sourceTree = "<group>"; };
 		CCD79FA310E970B6002B6C6B /* ISO8601DateFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISO8601DateFormatter.h; sourceTree = "<group>"; };
@@ -44,6 +48,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */,
+				CC7615E11382EC8300A52E7A /* Security.framework in Frameworks */,
+				CC7615E51382ECD500A52E7A /* SecurityInterface.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -69,6 +75,8 @@
 			isa = PBXGroup;
 			children = (
 				1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */,
+				CC7615E01382EC8300A52E7A /* Security.framework */,
+				CC7615E41382ECD500A52E7A /* SecurityInterface.framework */,
 			);
 			name = "Linked Frameworks";
 			sourceTree = "<group>";
@@ -258,9 +266,10 @@
 		C01FCF4F08A954540054247B /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -271,8 +280,9 @@
 		C01FCF5008A954540054247B /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				GCC_C_LANGUAGE_STANDARD = c99;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				PREBINDING = NO;
