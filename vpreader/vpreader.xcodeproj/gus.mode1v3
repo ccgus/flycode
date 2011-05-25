@@ -399,9 +399,15 @@
 			</array>
 			<key>TableOfContents</key>
 			<array>
+<<<<<<< HEAD:vpreader/vpreader.xcodeproj/gus.mode1v3
 				<string>CCF497181381EB1F00E0E313</string>
 				<string>1CE0B1FE06471DED0097A5F4</string>
 				<string>CCF497191381EB1F00E0E313</string>
+=======
+				<string>CC13F8A11381D1DE00F68669</string>
+				<string>1CE0B1FE06471DED0097A5F4</string>
+				<string>CC13F8A21381D1DE00F68669</string>
+>>>>>>> 5f55882524688a23c74a251d117e086e08bdcfbf:vpreader/vpreader.xcodeproj/gus.mode1v3
 				<string>1CE0B20306471E060097A5F4</string>
 				<string>1CE0B20506471E060097A5F4</string>
 			</array>
@@ -506,7 +512,11 @@
 							<real>283</real>
 						</array>
 						<key>RubberWindowFrame</key>
+<<<<<<< HEAD:vpreader/vpreader.xcodeproj/gus.mode1v3
 						<string>1904 362 300 894 0 0 2560 1418 </string>
+=======
+						<string>1215 279 300 894 0 0 1920 1178 </string>
+>>>>>>> 5f55882524688a23c74a251d117e086e08bdcfbf:vpreader/vpreader.xcodeproj/gus.mode1v3
 					</dict>
 					<key>Module</key>
 					<string>PBXSmartGroupTreeModule</string>
@@ -525,7 +535,11 @@
 			</array>
 			<key>TableOfContents</key>
 			<array>
+<<<<<<< HEAD:vpreader/vpreader.xcodeproj/gus.mode1v3
 				<string>CCF4971A1381EB1F00E0E313</string>
+=======
+				<string>CC13F8A31381D1DE00F68669</string>
+>>>>>>> 5f55882524688a23c74a251d117e086e08bdcfbf:vpreader/vpreader.xcodeproj/gus.mode1v3
 				<string>11E0B1FE06471DED0097A5F4</string>
 			</array>
 			<key>ToolbarConfigUserDefaultsMinorVersion</key>
@@ -543,7 +557,11 @@
 	<key>StatusbarIsVisible</key>
 	<true/>
 	<key>TimeStamp</key>
+<<<<<<< HEAD:vpreader/vpreader.xcodeproj/gus.mode1v3
 	<real>327305060.92111498</real>
+=======
+	<real>327275905.87379402</real>
+>>>>>>> 5f55882524688a23c74a251d117e086e08bdcfbf:vpreader/vpreader.xcodeproj/gus.mode1v3
 	<key>ToolbarDisplayMode</key>
 	<integer>2</integer>
 	<key>ToolbarIsVisible</key>
@@ -560,11 +578,16 @@
 	<array>
 		<string>1CD10A99069EF8BA00B06720</string>
 		<string>CC1C89C60F182D2000E71072</string>
+		<string>1C78EAAD065D492600B07095</string>
 		<string>/Volumes/srv/Users/gus/Projects/flycode/vpreader/vpreader.xcodeproj</string>
 		<string>1C78EAAD065D492600B07095</string>
 	</array>
 	<key>WindowString</key>
+<<<<<<< HEAD:vpreader/vpreader.xcodeproj/gus.mode1v3
 	<string>1904 362 300 894 0 0 2560 1418 </string>
+=======
+	<string>1215 279 300 894 0 0 1920 1178 </string>
+>>>>>>> 5f55882524688a23c74a251d117e086e08bdcfbf:vpreader/vpreader.xcodeproj/gus.mode1v3
 	<key>WindowToolsV3</key>
 	<array>
 		<dict>
@@ -643,7 +666,11 @@
 			<key>TableOfContents</key>
 			<array>
 				<string>CC1C89C60F182D2000E71072</string>
+<<<<<<< HEAD:vpreader/vpreader.xcodeproj/gus.mode1v3
 				<string>CCF497151381EB1E00E0E313</string>
+=======
+				<string>CC13F89E1381D1DD00F68669</string>
+>>>>>>> 5f55882524688a23c74a251d117e086e08bdcfbf:vpreader/vpreader.xcodeproj/gus.mode1v3
 				<string>1CD0528F0623707200166675</string>
 				<string>XCMainBuildResultsModuleGUID</string>
 			</array>
@@ -763,6 +790,7 @@
 			<key>TableOfContents</key>
 			<array>
 				<string>1CD10A99069EF8BA00B06720</string>
+<<<<<<< HEAD:vpreader/vpreader.xcodeproj/gus.mode1v3
 				<string>CCF4971B1381EB1F00E0E313</string>
 				<string>1C162984064C10D400B95A72</string>
 				<string>CCF4971C1381EB1F00E0E313</string>
@@ -770,6 +798,15 @@
 				<string>CCF4971E1381EB1F00E0E313</string>
 				<string>CCF4971F1381EB1F00E0E313</string>
 				<string>CCF497201381EB1F00E0E313</string>
+=======
+				<string>CC13F8A41381D1DE00F68669</string>
+				<string>1C162984064C10D400B95A72</string>
+				<string>CC13F8A51381D1DE00F68669</string>
+				<string>CC13F8A61381D1DE00F68669</string>
+				<string>CC13F8A71381D1DE00F68669</string>
+				<string>CC13F8A81381D1DE00F68669</string>
+				<string>CC13F8A91381D1DE00F68669</string>
+>>>>>>> 5f55882524688a23c74a251d117e086e08bdcfbf:vpreader/vpreader.xcodeproj/gus.mode1v3
 			</array>
 			<key>ToolbarConfiguration</key>
 			<string>xcode.toolbar.config.debugV3</string>
@@ -902,7 +939,11 @@
 								<key>Frame</key>
 								<string>{{0, 0}, {1511, 255}}</string>
 								<key>RubberWindowFrame</key>
+<<<<<<< HEAD:vpreader/vpreader.xcodeproj/gus.mode1v3
 								<string>-1571 636 1511 296 -1600 240 1600 1200 </string>
+=======
+								<string>-1787 396 1511 296 -1920 0 1920 1200 </string>
+>>>>>>> 5f55882524688a23c74a251d117e086e08bdcfbf:vpreader/vpreader.xcodeproj/gus.mode1v3
 							</dict>
 							<key>Module</key>
 							<string>PBXDebugCLIModule</string>
@@ -925,13 +966,21 @@
 			<key>TableOfContents</key>
 			<array>
 				<string>1C78EAAD065D492600B07095</string>
+<<<<<<< HEAD:vpreader/vpreader.xcodeproj/gus.mode1v3
 				<string>CCF497211381EB1F00E0E313</string>
+=======
+				<string>CC13F8AA1381D1DE00F68669</string>
+>>>>>>> 5f55882524688a23c74a251d117e086e08bdcfbf:vpreader/vpreader.xcodeproj/gus.mode1v3
 				<string>1C78EAAC065D492600B07095</string>
 			</array>
 			<key>ToolbarConfiguration</key>
 			<string>xcode.toolbar.config.consoleV3</string>
 			<key>WindowString</key>
+<<<<<<< HEAD:vpreader/vpreader.xcodeproj/gus.mode1v3
 			<string>-1571 636 1511 296 -1600 240 1600 1200 </string>
+=======
+			<string>-1787 396 1511 296 -1920 0 1920 1200 </string>
+>>>>>>> 5f55882524688a23c74a251d117e086e08bdcfbf:vpreader/vpreader.xcodeproj/gus.mode1v3
 			<key>WindowToolGUID</key>
 			<string>1C78EAAD065D492600B07095</string>
 			<key>WindowToolIsVisible</key>

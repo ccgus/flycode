@@ -20,10 +20,9 @@ NSString * const FMWebDAVRequestTestPayloadURL   = @"FMWebDAVRequestTestPayloadU
 static NSMutableArray *FMWebDAVRequestTestResponses = nil;
 
 @interface FMWebDAVRequest ()
-
 - (void)logResponse:(NSHTTPURLResponse *)response;
 - (void)logRequest:(NSURLRequest *)request;
-
+- (void)callAndReleaseFinishBlock;
 @end
 
 
@@ -42,18 +41,17 @@ static NSMutableArray *FMWebDAVRequestTestResponses = nil;
 
 + (id)requestToURL:(NSURL*)url {
     
-    FMWebDAVRequest *request = [url isFileURL] ? [[FMFileDAVRequest alloc] init] : [[FMWebDAVRequest alloc] init];;
+    FMWebDAVRequest *request = [url isFileURL] ? [[FMFileDAVRequest alloc] init] : [[FMWebDAVRequest alloc] init];
     
     [request setUrl:url];
     
-    return request;
+    return [request autorelease];
 }
 
 + (id)requestToURL:(NSURL*)url delegate:(id)del {
     
-    FMWebDAVRequest *request = [url isFileURL] ? [[FMFileDAVRequest alloc] init] : [[FMWebDAVRequest alloc] init];;
+    FMWebDAVRequest *request = [self requestToURL:url];
     
-    [request setUrl:url];
     [request setDelegate:del];
     
     return request;
@@ -62,10 +60,8 @@ static NSMutableArray *FMWebDAVRequestTestResponses = nil;
 
 + (id)requestToURL:(NSURL*)url delegate:(id)del endSelector:(SEL)anEndSelector contextInfo:(id)context {
     
-    FMWebDAVRequest *request = [url isFileURL] ? [[FMFileDAVRequest alloc] init] : [[FMWebDAVRequest alloc] init];;
+    FMWebDAVRequest *request = [self requestToURL:url delegate:del];
     
-    [request setUrl:url];
-    [request setDelegate:del];
     [request setContextInfo:context];
     [request setEndSelector:anEndSelector];
     
@@ -105,6 +101,8 @@ static NSMutableArray *FMWebDAVRequestTestResponses = nil;
 - (void)dealloc {
     // _delegate isn't retained.
     
+    //debug(@"%s:%d", __FUNCTION__, __LINE__);
+    
     [_xmlBucket release];
     [_connection release];
     [_responseData release];
@@ -119,9 +117,14 @@ static NSMutableArray *FMWebDAVRequestTestResponses = nil;
     [super dealloc];
 }
 
+- (FMWebDAVRequest*)releaseWhenClosed {
+    _releasedWhenClosed++;
+    return [self retain];
+}
+
 - (FMWebDAVRequest*)synchronous {
     _synchronous = YES;
-    return [self autorelease];
+    return self;
 }
 
 - (FMWebDAVRequest*)rlsynchronous {
@@ -164,8 +167,6 @@ static NSMutableArray *FMWebDAVRequestTestResponses = nil;
         while (_rlSynchronous && [currentRunLoop runMode:NSDefaultRunLoopMode beforeDate:[NSDate distantFuture]]) {
             // Empty
         }
-        
-        //[self autorelease];
     }
     else if (_synchronous) {
         NSURLResponse *response = 0x00;
@@ -193,12 +194,10 @@ static NSMutableArray *FMWebDAVRequestTestResponses = nil;
             _responseStatusCode = [httpResponse statusCode];
         }
         
-        if (_finishBlock) {
-            _finishBlock(self);
-        }
+        [self callAndReleaseFinishBlock];
     }
     else {
-        self.connection = [NSURLConnection connectionWithRequest:req delegate:self];
+        [self setConnection:[NSURLConnection connectionWithRequest:req delegate:self]];
         [self logRequest:req];
     }
 }
@@ -250,6 +249,8 @@ static NSMutableArray *FMWebDAVRequestTestResponses = nil;
     if (!_endSelector) {
         _endSelector = @selector(requestDidPutData:);
     }
+    
+    assert(data);
     
     NSMutableURLRequest *req = [NSMutableURLRequest requestWithURL:_url];
     
@@ -422,6 +423,7 @@ static NSMutableArray *FMWebDAVRequestTestResponses = nil;
     }
     
     _parseState = FMWebDAVDirectoryListing;
+    [_directoryBucket release];
     _directoryBucket = [[NSMutableArray array] retain];
     
     NSXMLParser *parser = [[[NSXMLParser alloc] initWithData:_responseData] autorelease];
@@ -484,7 +486,7 @@ static NSMutableArray *FMWebDAVRequestTestResponses = nil;
         NSMutableString *logOutput = [[NSMutableString alloc] init];
         
         if ([self connection]) {
-            [logOutput appendFormat:@"Request for connection %p:\n", self.connection];
+            [logOutput appendFormat:@"Request for connection %p:\n", [self connection]];
         }
         else {
             [logOutput appendString:@"Synchronous request:\n"];
@@ -526,7 +528,7 @@ static NSMutableArray *FMWebDAVRequestTestResponses = nil;
         if (response) {
             
             if ([self connection]) {
-                [logOutput appendFormat:@"Response for connection %p:\n", self.connection];
+                [logOutput appendFormat:@"Response for connection %p:\n", [self connection]];
             }
             else {
                 [logOutput appendString:@"Synchronous response:\n"];
@@ -551,6 +553,8 @@ static NSMutableArray *FMWebDAVRequestTestResponses = nil;
 }
 
 #if !TARGET_OS_IPHONE
+
+// FIXME: move this to a delegate some day, because it really really really really doesn't belong here.
 
 - (BOOL)connectDespiteServerTrustChallenge:(NSURLAuthenticationChallenge *)challenge {
     
@@ -631,7 +635,7 @@ static NSMutableArray *FMWebDAVRequestTestResponses = nil;
 
 - (void)connection:(NSURLConnection *)connection didReceiveAuthenticationChallenge:(NSURLAuthenticationChallenge *)challenge {
     
-    if (![self delegate] || !(_username && _password)) {
+    if (!_delegate || !(_username && _password)) {
         NSLog(@"No delegate set, or password + username set for an auth challenge");
     }
     
@@ -659,7 +663,6 @@ static NSMutableArray *FMWebDAVRequestTestResponses = nil;
     
     else if (_username && _password && ([challenge previousFailureCount] == 0)) {
         
-        debug(@"Submitting password");
         NSURLCredential *cred = [NSURLCredential credentialWithUser:_username
                                                            password:_password
                                                         persistence:NSURLCredentialPersistenceForSession];
@@ -676,7 +679,6 @@ static NSMutableArray *FMWebDAVRequestTestResponses = nil;
 
 - (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)URLresponse {
     
-    
     [_responseData setLength:0]; 
     
     NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse*)URLresponse;
@@ -692,31 +694,45 @@ static NSMutableArray *FMWebDAVRequestTestResponses = nil;
     _responseStatusCode = [httpResponse statusCode];
     
     if (_responseStatusCode >= 400) {
-        
         if ([self delegate] && [[self delegate] respondsToSelector:@selector(request:hadStatusCodeErrorWithResponse:)]) {
             [[self delegate] request:self hadStatusCodeErrorWithResponse:httpResponse];
         }
     }
 }
 
+- (void)checkReleaseWhenClosed {
+    while (_releasedWhenClosed > 0) {
+        _releasedWhenClosed--;
+        [self autorelease];
+    }
+}
+
+- (void)callAndReleaseFinishBlock {
+    
+    if (_finishBlock) {
+        _finishBlock(self);
+        [_finishBlock release];
+        _finishBlock = 0x00;
+    }
+}
 
 - (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error {
+    
+    debug(@"%s:%d", __FUNCTION__, __LINE__);
     
     if (_canceling) {
         _canceling = NO;
         _rlSynchronous = NO;
-        [self autorelease];
+        [self checkReleaseWhenClosed];
         return;
     }
     
     [self setError:error];
     
-    // hrm... do we really want to do this?
     if ([[self delegate] respondsToSelector:@selector(connection:didFailWithError:)]) {
         [[self delegate] connection:connection didFailWithError:error];
     }
     
-    // what about this?
     if ([[self delegate] respondsToSelector:_endSelector]) {
         [[self delegate] performSelector:_endSelector withObject:self];
     }
@@ -725,9 +741,12 @@ static NSMutableArray *FMWebDAVRequestTestResponses = nil;
         NSLog( @"Error response: %p {\n\t%@\n}", connection, [error localizedDescription] );
     }
     
+    [self callAndReleaseFinishBlock];
+    
     _rlSynchronous = NO;
     
-    [self autorelease];
+    
+    [self checkReleaseWhenClosed];
 }
 
 
@@ -741,11 +760,8 @@ static NSMutableArray *FMWebDAVRequestTestResponses = nil;
     
     _rlSynchronous = NO;
     
-    if (_finishBlock) {
-        _finishBlock(self);
-    }
-    
-    [self autorelease];
+    [self callAndReleaseFinishBlock];
+    [self checkReleaseWhenClosed];
 }
 
 

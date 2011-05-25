@@ -13,4 +13,8 @@
     BOOL waitingOnAuthentication;
 }
 
+- (void)testErrorAction:(id)sender;
+- (void)testCopyAction:(id)sender;
+- (void)testBadUrlAction:(id)sender;
+- (void)testReleaseStuffAction:(id)sender;
 @end

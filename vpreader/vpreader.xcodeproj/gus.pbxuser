@@ -99,8 +99,13 @@
 					PBXFileDataSource_Warnings_ColumnID,
 				);
 			};
+<<<<<<< HEAD:vpreader/vpreader.xcodeproj/gus.pbxuser
 			PBXPerProjectTemplateStateSaveDate = 327281437;
 			PBXWorkspaceStateSaveDate = 327281437;
+=======
+			PBXPerProjectTemplateStateSaveDate = 327274968;
+			PBXWorkspaceStateSaveDate = 327274968;
+>>>>>>> 5f55882524688a23c74a251d117e086e08bdcfbf:vpreader/vpreader.xcodeproj/gus.pbxuser
 		};
 		sourceControlManager = CC1C89D40F182D2100E71072 /* Source Control */;
 		userBuildSettings = {

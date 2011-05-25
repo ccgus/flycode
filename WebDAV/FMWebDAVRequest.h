@@ -8,6 +8,18 @@
 
 #import <Foundation/Foundation.h>
 
+#ifndef __has_feature      // Optional.
+    #define __has_feature(x) 0 // Compatibility with non-clang compilers.
+#endif
+
+#ifndef NS_RETURNS_NOT_RETAINED
+    #if __has_feature(attribute_ns_returns_not_retained)
+        #define NS_RETURNS_NOT_RETAINED __attribute__((ns_returns_not_retained))
+    #else
+        #define NS_RETURNS_NOT_RETAINED
+    #endif
+#endif
+
 #define NSStringToURL(arrrrgh) [NSURL URLWithString:[arrrrgh stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]]
 #define NSDataToString(blah) [[[NSString alloc] initWithData:blah encoding:NSUTF8StringEncoding] autorelease]
 
@@ -56,6 +68,8 @@ enum {
     BOOL _rlSynchronous;
     BOOL _canceling;
     
+    NSUInteger _releasedWhenClosed;
+    
     NSError *_error;
     
     NSString *_username;
@@ -95,11 +109,12 @@ enum {
 - (FMWebDAVRequest*)putData:(NSData*)data;
 - (FMWebDAVRequest*)get;
 - (FMWebDAVRequest*)head;
-- (FMWebDAVRequest*)copyToDestinationURL:(NSURL*)dest;
+- (FMWebDAVRequest*)copyToDestinationURL:(NSURL*)dest NS_RETURNS_NOT_RETAINED;
 - (FMWebDAVRequest*)moveToDestinationURL:(NSURL*)dest;
 
 - (FMWebDAVRequest*)synchronous;
 - (FMWebDAVRequest*)rlsynchronous;
+- (FMWebDAVRequest*)releaseWhenClosed;
 
 - (FMWebDAVRequest*)propfind;
 

@@ -8,6 +8,9 @@
 
 #import "FMFileDAVRequest.h"
 
+@interface FMWebDAVRequest (PrivateSuperclassStuff)
+- (void)checkReleaseWhenClosed;
+@end
 
 @implementation FMFileDAVRequest
 
@@ -36,7 +39,7 @@
         _finishBlock(self);
     }
     
-    [self autorelease];
+    [self checkReleaseWhenClosed];
 }
 
 - (FMWebDAVRequest*)createDirectory {
