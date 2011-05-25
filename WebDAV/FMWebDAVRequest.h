@@ -43,6 +43,13 @@ enum {
     FMHTTPNotImplementedErrorCode = 501,
 };
 
+
+extern NSString *FMWebDAVContentTypeKey;
+extern NSString *FMWebDAVETagKey;
+extern NSString *FMWebDAVHREFKey;
+extern NSString *FMWebDAVURIKey;
+
+
 @class FMWebDAVRequest;
 
 @interface FMWebDAVRequest : NSObject <NSXMLParserDelegate> {

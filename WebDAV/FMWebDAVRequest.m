@@ -17,6 +17,11 @@ NSString * const FMWebDAVRequestTestPayloadData  = @"FMWebDAVRequestTestPayloadD
 NSString * const FMWebDAVRequestTestResponseCode = @"FMWebDAVRequestTestResponseCode";
 NSString * const FMWebDAVRequestTestPayloadURL   = @"FMWebDAVRequestTestPayloadURL";
 
+NSString *FMWebDAVContentTypeKey   = @"contenttype";
+NSString *FMWebDAVETagKey          = @"etag";
+NSString *FMWebDAVHREFKey          = @"href";
+NSString *FMWebDAVURIKey           = @"uri";
+
 static NSMutableArray *FMWebDAVRequestTestResponses = nil;
 
 @interface FMWebDAVRequest ()
@@ -635,7 +640,7 @@ static NSMutableArray *FMWebDAVRequestTestResponses = nil;
 
 - (void)connection:(NSURLConnection *)connection didReceiveAuthenticationChallenge:(NSURLAuthenticationChallenge *)challenge {
     
-    if (!_delegate || !(_username && _password)) {
+    if (!_delegate && !(_username && _password)) {
         NSLog(@"No delegate set, or password + username set for an auth challenge");
     }
     
@@ -860,16 +865,19 @@ static NSMutableArray *FMWebDAVRequestTestResponses = nil;
                 // aakkkk!
                 NSURL *junk = [NSURL URLWithString:_xmlChars];
                 BOOL trailingSlash = [_xmlChars hasSuffix:@"/"];
-                //                [_xmlChars setString:[[junk path] stringByAppendingString:@"/"]];
                 [_xmlChars setString:[junk path]];
                 if (trailingSlash) {
                     [_xmlChars appendString:@"/"];
                 }
             }
             
+            if ([_xmlChars length]) {
+                [_xmlBucket setObject:[[_xmlChars copy] autorelease] forKey:FMWebDAVURIKey];
+            }
+            
             NSString *lastBit = [_xmlChars substringFromIndex:_uriLength];
             if ([lastBit length]) {
-                [_xmlBucket setObject:lastBit forKey:@"href"];
+                [_xmlBucket setObject:lastBit forKey:FMWebDAVHREFKey];
             }
         }
         else if ([elementName hasSuffix:@":creationdate"] || [elementName hasSuffix:@":modificationdate"]) {
@@ -881,7 +889,7 @@ static NSMutableArray *FMWebDAVRequestTestResponses = nil;
             
             // stolen from http://www.cocoabuilder.com/archive/message/cocoa/2008/3/18/201578
             
-            if ( [_xmlChars length] ) {
+            if ([_xmlChars length]) {
                 
                 NSDate *d = [[self class] parseDateString:_xmlChars];
                 
@@ -898,6 +906,7 @@ static NSMutableArray *FMWebDAVRequestTestResponses = nil;
         }
         
         else if ([elementName hasSuffix:@":getlastmodified"]) {
+            #pragma message "FIXME: go ahead and do this bit."
             // 'Thu, 30 Oct 2008 02:52:47 GMT'
             // Monday, 12-Jan-98 09:25:56 GMT
             // Value: HTTP-date  ; defined in section 3.3.1 of RFC2068
@@ -912,6 +921,12 @@ static NSMutableArray *FMWebDAVRequestTestResponses = nil;
             //
             // I'll take a patch.  kthx, bai now.
         }
+        else if ([elementName hasSuffix:@":getetag"] && [_xmlChars length]) {
+            [_xmlBucket setObject:[[_xmlChars copy] autorelease] forKey:FMWebDAVETagKey];
+        }
+        else if ([elementName hasSuffix:@":getcontenttype"] && [_xmlChars length]) {
+            [_xmlBucket setObject:[[_xmlChars copy] autorelease] forKey:FMWebDAVContentTypeKey];
+        }
         else if ([elementName isEqualToString:@"D:response"]) {
             if ([_xmlBucket objectForKey:@"href"]) {
                 [_directoryBucket addObject:_xmlBucket];
@@ -919,10 +934,7 @@ static NSMutableArray *FMWebDAVRequestTestResponses = nil;
             [_xmlBucket release];
             _xmlBucket = nil;
         }
-        
-        
     }
-    
 }
 
 - (void)parser:(NSXMLParser *)parser foundCharacters:(NSString *)string {
